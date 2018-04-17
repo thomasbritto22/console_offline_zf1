@@ -1,0 +1,188 @@
+<?php 
+
+$tborder = !empty( $this->value->bodyBorder ) ? $this->value->bodyBorder : 0;
+$tdbgcolor = !empty( $this->value->bodyBgColor ) ? $this->value->bodyBgColor : "#6699CC";
+$tdtextcolor = !empty( $this->value->bodyTextColor ) ? $this->value->bodyTextColor : "#FFFFFF";
+
+// HTML init to construct the proper HTML
+$completeHTML = '';
+
+// Construct static html tags
+$preBody = <<<EOD
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr><td bgcolor="#6699CC" rowspan="2" width="90%" valign="middle"><font face="verdana,arial,helvetica" color="#FFFFFF" size="5">$this->contactText</font></td>
+<td bgcolor="#6699CC" align="right" width="10%"><a href="#" onClick="parent.window.close(); return(false);"><img src="$this->headerCloseImg" border="0" alt="Close"></a></td>
+</tr><tr><td bgcolor="#6699CC"></td></tr><tr><td colspan="2" width="100%"><img src="$this->dropShadowImg" border="0" width="100%" height="8" style="position:fixed" ></td></tr></table><br><br>
+<center><table cellpadding="20" cellspacing="0" border="0"  width="100%">
+<tr><td><table border="$tborder" width="100%" cellspacing="0" cellpadding="5"  valign="top"><tr bgcolor="$tdbgcolor" ><td align="center"><table border="0" cellpadding="0" cellspacing="10"  width="100%">
+EOD;
+
+$preSingleTR = <<<EOD
+    <tr>
+EOD;
+
+$postSingleTR = <<<EOD
+    </tr>
+EOD;
+$preFormat = <<<EOD
+<td><font face="verdana,arial,helvetica" color="$tdtextcolor" size="2">
+EOD;
+
+$postFormat = <<<EOD
+     </font></td>
+EOD;
+	
+$textHolder = $preFormat;
+
+/*
+ * We have custom Action that has services for retreiving files inside App controller.
+ * So, redirect to appController rather than in custom controller.
+ *
+ */
+$searchFor = "/custom/";
+$replaceWith = "/app" . $searchFor;
+$textHolder .= str_replace ( $searchFor, $replaceWith, $this->value->bodyText );
+
+// Remove \n\r and replace it with <br/> tag
+$textHolder = preg_replace("/\r\n|\r|\n/","<br/>",$textHolder);
+
+// Completing TextHolder
+$textHolder .= $postFormat;
+
+$imageHolder = '';
+if ( $this->value->imageFilename && !empty($this->value->imageFilename) ):
+
+// The Relative path
+$appendRPath = "/app/custom/";
+
+$imagePath = '';
+$archived = false;
+if ( $this->value->imageFilename && !empty($this->value->imageFilename) ) {
+
+	$imagePath = $appendRPath . $this->value->imageFilename;
+
+	if ( $this->value->status && !empty($this->value->status)) {
+			
+		// Deleted/Archived
+		if ( "active" != trim(strtolower($this->value->status)) ) {
+			$imagePath .= "/?err=1";
+			$archived = true;
+		}
+	}
+}
+	
+// Height
+$imageHeight = '';
+if ( $this->value->imageHeight && !empty($this->value->imageHeight) ) {
+	$imageHeight = "height=\"" .  $this->value->imageHeight . "\"";
+}
+	
+// Width
+$imageWidth = '';
+if ( $this->value->imageWidth && !empty($this->value->imageWidth) ) {
+	$imageWidth = "width=\"" .  $this->value->imageWidth . "\"";
+}
+	
+// VAlign
+$vAlign = '';
+if ( $this->value->imageValign && !empty($this->value->imageValign)) {
+	$vAlign = "valign=\"" . $this->value->imageValign . "\"";
+}
+	
+// Align
+$align = '';
+if ( $this->value->imageAlign && !empty($this->value->imageAlign)) {
+	$align = "align=\"" . $this->value->imageAlign . "\"";
+}
+	
+// Caption
+$caption = '';
+if ( $this->value->imageCaption && !empty($this->value->imageCaption) && !$archived ) {
+	// Remove \n\r and replace it with <br/> tag
+	$caption = preg_replace("/\r\n|\r|\n/","<br/>",$this->value->imageCaption);
+}
+
+$imageHolder = <<<EOD
+    <td $vAlign $align>
+				<table width="100%" border="0" cellpadding="3" cellspacing="0"><tr><td align='center'><img src="$imagePath" border=0 $imageWidth $imageHeight><br><font style='font-size:12px;font-weight:bold'>$caption</font></td></tr>
+				</table>
+			</td>
+EOD;
+	
+endif;
+	
+$completeHTML .= $preBody;
+
+// Checking for multiple TR
+if ( $this->value->imagePosition && !empty($this->value->imagePosition) ) {
+		
+	$imagePosition = trim(strtolower($this->value->imagePosition));
+
+	// Multiple TR
+	if (   'top' == $imagePosition || 'bottom' == $imagePosition ) {
+			
+		switch($imagePosition) {
+			case 'top':
+			case 'TOP':
+				// First TR
+				$completeHTML .= $preSingleTR;
+				$completeHTML .= $imageHolder;
+				$completeHTML .= $postSingleTR;
+					
+				// Second TR
+				$completeHTML .= $preSingleTR;
+				$completeHTML .= $textHolder;
+				$completeHTML .= $postSingleTR;
+					
+				break;
+			case 'bottom':
+			case 'BOTTOM':
+				// First TR
+				$completeHTML .= $preSingleTR;
+				$completeHTML .= $textHolder;
+				$completeHTML .= $postSingleTR;
+
+				// Second TR
+				$completeHTML .= $preSingleTR;
+				$completeHTML .= $imageHolder;
+				$completeHTML .= $postSingleTR;
+				break;
+		}
+			
+			
+	}
+	else { /* Single TR */
+
+		switch($imagePosition) {
+			case 'right':
+			case 'RIGHT':
+				$completeHTML .= $preSingleTR;
+				$completeHTML .= $textHolder;
+				$completeHTML .= $imageHolder;
+				$completeHTML .= $postSingleTR;
+				break;
+			case 'left':
+			case 'LEFT':
+				$completeHTML .= $preSingleTR;
+				$completeHTML .= $imageHolder;
+				$completeHTML .= $textHolder;
+				$completeHTML .= $postSingleTR;
+				break;
+		}
+			
+			
+	}
+}
+	
+
+$postBody = <<<EOD
+     </table>
+  </td></tr>
+</table>
+</table>
+</center>
+EOD;
+
+$completeHTML .= $postBody;
+echo html_entity_decode($completeHTML);
+?>

@@ -1,0 +1,7 @@
+<select id="languageSelect">
+	<?php foreach($this->availableLanguagesArr as $l):?>
+		<?php if(isset($l->language)):?>
+			<option value="<?= $l->language; ?>" <? if($l->language == $this->siteDefLang){ ?>selected="selected"<? } ?>><?= $this->xssSanitize($l->label); ?></option>
+		<?php endif;?>
+	<?php endforeach;?>
+</select>

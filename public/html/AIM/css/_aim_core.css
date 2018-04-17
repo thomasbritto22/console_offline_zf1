@@ -1,0 +1,354 @@
+html, body {
+	height: 100%;
+	width: 100%;
+	font-family: sans-serif;
+}
+
+body {
+	background: url('../images/top-gradient-bg.png') repeat-x top left;
+}
+/** NAVIGATION STYLES **/
+
+nav {
+	color: #FFF;
+	height: 30px;
+	width: 100%;
+}
+
+nav ul {
+	width: 60%;
+	float: right;
+}
+
+nav ul li {
+	float: left;
+	padding: 5px 10px;
+}
+
+nav ul li a {
+	color: #FFF;
+}
+
+nav ul li a:hover {
+	font-weight: bold;
+}
+
+nav ul li a.selected {
+	font-weight: bold;
+}
+
+/** BANNER STYLES **/
+
+.banner {
+	width: 60%;
+	margin: 5px auto;
+}
+
+.banner img {
+	width: 100%;
+	height: auto;
+}
+
+/** MAIN CONTENT STYLES **/
+
+#container {
+	background: #002157;
+	margin: 0 auto;
+	min-width: 700px;
+	width: 100%;
+}
+
+#container .contentWrapper {
+	background: #FFF;
+	box-shadow: 0 25px 50px 0 #FFF;
+	height: 100%;
+	margin: 0 auto;
+	width: 70%;
+}
+
+#container .contentWrapper h3 {
+	font-weight: bold;
+	padding: 10px 115px 0;
+}
+
+#container .contentWrapper .surveyManager {
+	margin: 0 auto;
+	width: 80%;
+}
+
+#container .contentWrapper .surveyManager .buildSurvey {
+	border: 1px solid #002157;
+	margin: 5px 0 10px;
+	width: 100%;
+}
+
+#container .contentWrapper .surveyManager .buildSurvey h3 {
+	background: #002157;
+	color: white;
+	font-weight: bold;
+	padding: 10px 30px;
+}
+
+#container .contentWrapper .surveyManager .buildSurvey p {
+	margin: 10px 30px;
+}
+
+#container .contentWrapper .surveyManager .buildSurvey p strong {
+	font-weight: bold;
+}
+
+#container .contentWrapper .surveyManager .buildSurvey .mainBtn {
+	margin: 20px 30px;
+}
+
+#container .contentWrapper .surveyManager .surveySection {
+	border: 1px solid #002157;
+	margin: 10px 0;
+	width: 100%;
+}
+
+#container .contentWrapper .surveyManager .surveySection h3 {
+	background: #002157;
+	color: white;
+	font-weight: bold;
+	padding: 10px 30px;
+}
+
+#container .contentWrapper .surveyManager .surveySection .surveysFound {
+	background: #F3F1F1;
+	margin: 20px auto 0;
+	padding: 5px;
+	width: 90%;
+}
+
+#container .contentWrapper .surveyManager .surveySection ul #surveyNameHdr {
+	background: #8B8B8B;
+	color: #FFF;
+	float: left;
+	margin-left: 42px;
+	padding: 5px;
+	text-decoration: underline;
+	width: 73.5%;
+}
+
+#container .contentWrapper .surveyManager .surveySection ul #statusHdr {
+	background: #8B8B8B;
+	color: #FFF;
+	float: right;
+	margin-right: 42px;
+	padding: 5px;
+	text-decoration: underline;
+	width: 15%;
+}
+
+#container .contentWrapper .surveyManager .surveySection .surveys {
+	width: 91%;
+	margin: 0 auto 40px;
+}
+
+#container .contentWrapper .surveyManager .surveySection .surveyName {
+	float: left;
+	clear: both;
+	padding: 5px;
+	width: 80.7%;
+}
+
+#container .contentWrapper .surveyManager .surveySection .surveyStatus {
+	float: right;
+	margin: 0 55px 0 0;
+	padding: 5px 0;
+	text-align: left;
+	width: 10%
+}
+
+#container .contentWrapper .surveyManager .surveySection .surveyName:hover {
+	background: #EAEAEA;
+}
+
+#container .contentWrapper .surveyManager .surveySection .surveyName:hover .surveyStatus {
+	background: #EAEAEA;
+}
+
+#container .contentWrapper .questionManager {
+	margin: 0 auto;
+	min-width: 680px;
+	width: 95%;
+}
+
+#container .contentWrapper h3 .createQuestion {
+	float: right;
+}
+
+#container .contentWrapper .questionManager form {
+	margin: 20px 0;
+	width: 100%;
+}
+
+#container .contentWrapper .questionManager .label {
+	color: #666;
+}
+
+#container .contentWrapper .questionManager form fieldset .findQuestion {
+	float: left;
+}
+
+#container .contentWrapper .questionManager form fieldset .findQuestion select {
+	width: 200px;
+}
+
+#container .contentWrapper .questionManager form fieldset .qContains {
+	float: right;
+}
+
+#container .contentWrapper .questionManager form fieldset .qContains input {
+	width: 400px;
+}
+
+#container .contentWrapper .questionManager form fieldset .questionCategory {
+	border: 1px solid #999;
+	height: 150px;
+	overflow: scroll;
+}
+
+#container .contentWrapper .questionManager .questionSection {
+	border: 1px solid #002157;
+	margin: 10px 0;
+	width: 100%;
+}
+
+#container .contentWrapper .questionManager .questionSection h3 {
+	background: #002157;
+	color: white;
+	font-weight: bold;
+	padding: 10px 30px;
+}
+
+#container .contentWrapper .questionManager .questionSection .questionWrap {
+	margin: 0 0 40px 0;
+	padding: 10px;
+}
+
+#container .contentWrapper .questionManager .questionSection .questionWrap .resultsFound {
+	float: left;
+	margin: 10px 0 10px 20px;
+}
+
+#container .contentWrapper .questionManager .questionSection .questionWrap .pagination {
+	height: 20px;
+	margin: 10px 0 10px 170px;
+	width: 70%;
+}
+
+#container .contentWrapper .questionManager .questionSection .questionWrap .pagination li {
+	float: left;
+	margin: 0 10px 0 0;
+}
+
+#container .contentWrapper .questionManager .questionSection .questionWrap .pagination li:last-child {
+	margin: 0;
+}
+
+#container .contentWrapper .questionManager .questionSection .questionWrap .pagination li a {
+	color: blue;
+	text-decoration: underline;
+}
+
+#container .contentWrapper .questionManager .questionSection .questionWrap .questionHdr {
+	clear: left;
+	margin: 0 auto;
+	width: 100%;
+}
+
+#container .contentWrapper .questionManager .questionSection .questionWrap .questionHdr li {
+	background: #DDD;
+	color: #FFF;
+	float: left;
+	margin: 0 10px 0 0;
+	padding: 5px;
+}
+
+#container .contentWrapper .questionManager .questionSection .questionWrap .questionHdr li a {
+	color: #FFF;
+	text-decoration: underline;
+}
+
+#container .contentWrapper .questionManager .questionSection .questionWrap .questionHdr li.column1 {
+	width: 39%;
+}
+
+#container .contentWrapper .questionManager .questionSection .questionWrap .questionHdr li.column2 {
+	width: 16%;
+}
+
+#container .contentWrapper .questionManager .questionSection .questionWrap .questionHdr li.column3 {
+	width: 18%;
+}
+
+#container .contentWrapper .questionManager .questionSection .questionWrap .questionHdr li.column4 {
+	margin: 0;
+	width: 16%;
+}
+
+#container .contentWrapper .questionManager .questionSection .questionWrap .questionList {
+	clear: left;
+	margin: 0 auto;
+	width: 99%;
+}
+
+#container .contentWrapper .questionManager .questionSection .questionWrap .questionList p {
+	display: inline-block;
+	padding: 0 0 0 5px;
+}
+
+#container .contentWrapper .questionManager .questionSection .questionWrap .questionList .qText {
+	margin: 10px 10px 0 0;
+	width: 39%;
+}
+
+#container .contentWrapper .questionManager .questionSection .questionWrap .questionList .qId {
+	margin: 10px 10px 0 0;
+	width: 17%;
+}
+
+#container .contentWrapper .questionManager .questionSection .questionWrap .questionList .lModified {
+	margin: 10px 10px 0 0;
+	width: 19%;
+}
+
+#container .contentWrapper .questionManager .questionSection .questionWrap .questionList .cBy {
+	margin: 10px 10px 0 0;
+	width: 15%;
+}
+
+/** FOOTER STYLES **/
+
+#container .contentWrapper footer {
+	margin: 20px auto;
+	width: 95%;
+}
+
+#container .contentWrapper footer .fFloat {
+	float: left;
+	margin: 0 10px 0 0;
+}
+
+#container .contentWrapper footer .fFloat a {
+	color: blue;
+	font-size: 12px;
+	text-decoration: underline;
+}
+
+/** CLEAR FIX **/
+
+.cf:before, .cf:after {
+	content: "";
+	display: table;
+}
+
+.cf:after {
+	clear: both;
+}
+
+.cf {
+	zoom: 1;
+}

@@ -1,0 +1,248 @@
+<?php $this->headScript()->captureStart() ?>
+
+var  url = '<?= str_replace('<site>', $_SESSION['ConsoleSessionGlobal']['siteName'], CATALYST_DASHBOARD_REST_API) ?>';
+var siteId = '<?= $this->user->dashSiteId ?>';
+var loggedInUserId = '<?= $this->user->userId ?>';
+var hasDashBoardConfig = 0;
+var flag_to_start = 1;
+var hasDashBoardView = '<?= $this->user->dashViewAll ?>';
+var isAdmin = 1;
+var hasConfigPermission = '<?= $this->user->dashConfigure ?>';
+var dashStatus = '<?= $_SESSION['ConsoleSessionGlobal']['dashBoardStatus'] ?>';
+var EnableDashboardManager = '<?= $_SESSION['ConsoleSessionGlobal']['siteConfigs']['EnableDashboardManager'] ?>';
+var UserIdentity ='<?= $this->siteLabels['UserName']; ?>';
+
+<?php $this->headScript()->captureEnd() ?>
+<div class="dashboard"> 
+    <input type="hidden"  id ="dashboardId" />
+    <input type="hidden"  id="showCourseCompletionStatusWithGroupByChart"/> <!-- graph 1 -->
+    <input type="hidden"  id="showIncompletePastDue"/> <!-- graph 2 -->
+    <input type="hidden"  id="showUserAssignmentStatusChart"/> <!-- graph 3 -->
+    <input type="hidden"  id="showCourseCompletionStatusChart"/> <!-- graph 4 -->
+    <input type="hidden"  id="showDrillDownReport"/> <!-- drill -->
+    <input type="hidden"  id="showDrillDownUserSummaryDetailReport"/> <!-- drill user details -->
+
+
+    <div id="dashMsg" style="display:none;" class="contentTextIcons contentTitles font-size16">Dashboard has not been configured for you to use at this time</div>
+    <div id="dashFilterGroup" style="display:none;">
+        <div class="div-table">
+            <div class="div-table-row">
+                <div class="div-table-col-first"><label for="viewDashboard" class="contentTextIcons font-style4">View Dashboard as:</label> </div>
+                <div  class="div-table-col-second"><select onchange="resizeSelect()" onblur="resizeSelect()"  name="viewDashboardAs" id="viewDashboardAs"></select></div>
+            </div>
+            <div class="div-table-row">
+                <div class="div-table-col-first"> <label for="groupBy" class="contentTextIcons font-style4">Group by:</label> </div>
+                <div class="div-table-col-second"><select name="groupBy" id="groupBy"></select> </div>
+            </div>
+        </div>
+        <?php if ($this->user->dashProxy) { ?>
+            <div class="div-table-second">
+                <button class="startBtn customButton" id="assignProxy"> Assign proxy</button>
+            </div>
+        <?php } ?>
+
+    </div>
+    <div class="cls-both"></div>
+    <div id="loader" style="text-align:center;display:none;"><img src="<?php echo CDN_IMG_URL ?>/images/icons/ajax-loader-light.gif"></div>
+    <div id="dashGraph">
+        <div class="fusionchart clearfix"> 
+            <!-- Bar  Chart 2 -->
+            <div class="dashloadcls" id="chartone">
+                <!-- CHART TOOL -->
+                <div id="exportOne" class="exportDiv" >
+                    <div class="exportRight">
+                        <table cellspacing="0" cellpadding="2">
+                            <tr>
+                                <td>Zoom</td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td><div id="sliderHeight" class="zoomslider"></div></td>
+                                <td>&nbsp;&nbsp;</td>
+                                <td>
+                                    <div class="multicharsel"> 
+                                        <label><input  name="chart-type" class='chart-type' id='line' type='radio' value='msbar2d' /> Series Bar Chart</label>    
+                                        <label><input  name="chart-type" class='chart-type' id='bar' type='radio' value='stackedbar2d' /> Stacked Bar chart</label>   
+                                        <label><input  name="chart-type" class='chart-type' id='radioOne' type='radio' value='scrollstackedcolumn2d' checked='true' /> Default</label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div>
+                        <select id="dl-typechart1"  class="exportSelect">
+                            <option selected="selected" value="pdf">PDF</option>
+                            <option value="csv">CSV</option> 
+                        </select> &nbsp;
+                        <button   id="dl-btnchart1" class="exportBtn" style="cursor:pointer;font-size:20px;"><i class="fa fa-download"></i><i class="material-icons">&#xE2C4;</i></button>
+                    </div>
+                </div>
+                <!-- CHART TOOL -->
+                <div class="load" id="loaderone" style="display:none;">Loading Course Completion Status Chart...</div>
+                <div id="Pichart2Container"></div>
+            </div>
+            <div id="chart2Toggle" class="tableToggle"> <img id="chart2_plus" src="<?php echo CDN_IMG_URL ?>/images/icons/plus.png"> <img id="chart2_minus" src="<?php echo CDN_IMG_URL ?>/images/icons/minus.png">
+                <div class="drillTbl" id="chart2Detail"> 
+                    <div id="modalBox1" style="float: inherit !important">
+                        <div class="dtContainer">
+                            <div id="dashImg"><img id="chart2_loader" src="<?php echo CDN_IMG_URL ?>/images/icons/ajax-loader-light.gif"> </div>   
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End -->
+            <!-- Pie Chart -->
+            <div  id="exportTwo" class="exportDiv">
+                <div class="exportRight">
+                    <table cellspacing="0" cellpadding="2">
+                        <tr>
+                            <td>Zoom</td>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                            <td><div id="sliderHeightSecond" class="zoomslider"></div></td>
+                            <td>&nbsp;&nbsp;</td>
+                            <td>
+                                <div class="multicharsel"> 
+                                    <label><input  name="chart-type1" class='chart-type1' id='line' type='radio' value='bar3d' /> Bar 3D Chart</label>    
+                                    <label><input  name="chart-type1" class='chart-type1' id='bar' type='radio' value='bar2d' /> Bar 2D chart</label>   
+                                    <label><input  name="chart-type1" class='chart-type1' id='radioTwo' type='radio' value='pie3d' checked='true' /> Default</label>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <select id="dl-typechart2"  class="exportSelect">
+                        <option selected="selected" value="pdf">PDF</option>
+                        <option value="csv">CSV</option> 
+                    </select> &nbsp;
+                    <button id="dl-btnchart2" class="exportBtn" style="cursor:pointer;font-size:20px;"><i class="fa fa-download"></i><i class="material-icons">&#xE2C4;</i>
+                    </button>
+                </div>
+            </div>
+            <div class="dashloadcls" id="charttwo">
+                <div class="load" id="loadertwo" style="display:none;">Loading Incomplete and Past Due Courses Chart...</div>
+                <div id="PichartContainer"></div>
+            </div>
+            <div id="pieToggle" class="tableToggle"> <img id="pie_plus" src="<?php echo CDN_IMG_URL ?>/images/icons/plus.png"> <img id="pie_minus" src="<?php echo CDN_IMG_URL ?>/images/icons/minus.png">
+                <div class="drillTbl" id="pieDetail"> 
+                    <div id="modalBox1" style="float: inherit !important">
+                        <div class="dtContainer">
+                            <div id="dashImg"><img id="pie_loader" src="<?php echo CDN_IMG_URL ?>/images/icons/ajax-loader-light.gif"> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End-->
+            <!-- Bar Chart 1 -->
+            <div  id="exportThree" class="exportDiv">
+                <div class="exportRight">
+                    <table cellspacing="0" cellpadding="2">
+                        <tr>
+                            <td>Zoom</td>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                            <td><div id="sliderHeightThird" class="zoomslider"></div></td>
+                            <td>&nbsp;&nbsp;</td>
+                            <td>
+                                <div class="multicharsel"> 
+                                    <label><input  name="chart-type2" class='chart-type2' id='line' type='radio' value='msbar2d' /> Series Bar Chart</label>    
+                                    <label><input  name="chart-type2" class='chart-type2' id='bar' type='radio' value='stackedbar2d' /> Stacked Bar chart</label>   
+                                    <label><input  name="chart-type2" class='chart-type2' id='radioThree' type='radio' value='scrollstackedcolumn2d' checked='true' /> Default</label>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <select id="dl-typechart3"  class="exportSelect">
+                        <option selected="selected" value="pdf">PDF</option>
+                        <option value="csv">CSV</option> 
+                    </select> &nbsp;
+                    <button id="dl-btnchart3" class="exportBtn" style="cursor:pointer;font-size:20px;"><i class="fa fa-download"></i><i class="material-icons">&#xE2C4;</i>
+                    </button>
+                </div>
+            </div>
+            <div class="dashloadcls" id="chartthree">
+                <div class="load" id="loaderthree" style="display:none;">Loading User Completion Status Chart...</div>
+                <div id="chartContainer"></div>
+            </div>
+            <div id="chart1Toggle" class="tableToggle"> <img id="chart1_plus" src="<?php echo CDN_IMG_URL ?>/images/icons/plus.png"> <img id="chart1_minus" src="<?php echo CDN_IMG_URL ?>/images/icons/minus.png">
+                <div class="drillTbl" id="chart1Detail"> 
+                    <div id="modalBox1" style="float: inherit !important">
+                        <div class="dtContainer">
+                            <div id="dashImg"><img id="chart1_loader" src="<?php echo CDN_IMG_URL ?>/images/icons/ajax-loader-light.gif"> </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End-->
+            <!-- Donut Chart  -->
+            <div  id="exportFour" class="exportDiv">
+                <div class="exportRight">
+                    <table cellspacing="0" cellpadding="2">
+                        <tr>
+                            <td>Zoom</td>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                            <td><div id="sliderHeightFourth" class="zoomslider"></div></td>
+                            <td>&nbsp;&nbsp;</td>
+                            <td>
+                                <div class="multicharsel"> 
+                                    <label><input  name="chart-type3" class='chart-type3' id='line' type='radio' value='bar3d' /> Bar 3D Chart</label>    
+                                    <label><input  name="chart-type3" class='chart-type3' id='bar' type='radio' value='bar2d' /> Bar 2D chart</label>   
+                                    <label><input  name="chart-type3" class='chart-type3' id='radioFour' type='radio' value='doughnut2d' checked='true' /> Default</label>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <select id="dl-typechart4"  class="exportSelect">
+                        <option selected="selected" value="pdf">PDF</option>
+                        <option value="csv">CSV</option> 
+                    </select> &nbsp;
+                    <button id="dl-btnchart4" class="exportBtn" style="cursor:pointer;font-size:20px;"><i class="fa fa-download"></i><i class="material-icons">&#xE2C4;</i>
+                    </button>
+                </div>
+            </div>
+            <div class="dashloadcls" id="chartfour">
+                <div class="load" id="loaderfour" style="display:none;">Loading Course Status Details Chart...</div>
+                <div id="donutchartContainer"></div>
+            </div>
+            <div id="donutToggle" class="tableToggle"> <img id="donut_plus" src="<?php echo CDN_IMG_URL ?>/images/icons/plus.png"> <img id="donut_minus" src="<?php echo CDN_IMG_URL ?>/images/icons/minus.png">
+                <div class="drillTbl" id="donutDetail" style="float: inherit !important"> 
+                    <div id="modalBox1" style="float: inherit !important">
+                        <div class="dtContainer">
+                            <div id="dashImg"><img id="donut_loader" src="<?php echo CDN_IMG_URL ?>/images/icons/ajax-loader-light.gif"> </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- end -->
+        </div>
+    </div>
+</div>
+<div style="display:none;" id="proxypopup" class="ui-corner-all contentBgColor">
+    <h4 class=" proxypopup contentTextIcons font-style4">Give someone else the ability to view your Dashboard reports</h4>
+
+    <div class="proxypopup">
+        <input type="textbox" id="proxyuserid" name="proxyuserid" value="" >
+    </div>
+    <div class="proxypopup" id="errProxy"></div> 
+    <fieldset class="proxypopup updateButtons">
+        <button  id="submitProxy" class="customButton">Add proxy</button>            
+    </fieldset>
+    <div class="proxypopup" id="submitLoader" style="display:none;">
+        <img src="<?php echo CDN_IMG_URL ?>/images/icons/ajax-loader-light.gif">
+    </div>
+    <!-- </form>-->   
+    <table id="proxyTable" class="display"  cellspacing="0" width="100%"> 
+    </table>
+    <div align="center" id="noRecords" style="display:none;">No Records Found</div>
+    <div class="loader" id="proxy_loader" style="display:none;">
+        <div align="center">
+            <img src="<?php echo CDN_IMG_URL ?>/images/icons/ajax-loader-light.gif">
+            <div class="waitMsg">Please wait...</div>
+        </div>
+    </div>
+</div>
+<div id="messageModalProxy" style="display:none"></div>

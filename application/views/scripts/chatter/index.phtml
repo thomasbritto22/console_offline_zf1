@@ -1,0 +1,16 @@
+<div class="shareWrapper">
+    <div class="shareHeader">
+	    <div class="chatterLogo"></div>
+	</div>
+	<div class="shareForm">
+<?php if(!$this->hasError) : ?>
+        <p style="text-align: center;"><?= $this->siteLabels['YourBeingRedirected']; ?></p>
+        <p style="text-align: center;"><?= $this->siteInstructions['YouBeSharingBeforeYouKnowIt']; ?></p>
+        <p>&nbsp;</p>
+<?php else : ?>
+        <p style="text-align: center;"><?= str_replace("%appname%", 'Chatter', $this->siteErrors['CEA020']); ?></p>
+        <p style="text-align: center;"><?= $this->siteInstructions['ToContinueCloseThisWindow']; ?></p>
+        <p>&nbsp;</p>
+<?php endif; ?>
+	</div>
+</div>

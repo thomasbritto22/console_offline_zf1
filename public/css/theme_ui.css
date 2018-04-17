@@ -1,0 +1,939 @@
+#themeui_container {
+	width:100%;
+	background-color:#000;
+	position:absolute;
+	left:0px;
+	top:0px;
+	height: 585px;
+}
+
+#themeui_controls {
+	width: 310px;
+	float: left;
+	padding-top: 10px;
+	position: relative;
+	height: 585px;
+	background-image:url('../images/theme-ui/themectrl_bkg.jpg');
+}
+
+.themeui_header_branding {
+	text-align: center;
+	height:48px;
+	position: absolute;
+	width: 100%;
+}
+
+.themeui_header_branding img {
+	max-height:100%;
+}
+
+
+#themeui_display {
+	width: 686px;
+	float: right;
+	height: 567px;
+	overflow: hidden;
+	position: relative;
+	background-color: #ffffff;
+}
+
+#themeui_dialog {display:none;}
+
+
+button.ui-button, span.ui-button-text {
+	text-decoration: none;	
+}
+
+span.ui-button-text {
+	color: white;
+	background-color: #3284c0;
+	text-transform: uppercase;
+	/*width: 60px;*/
+}
+
+
+#themeui_controls section {
+	margin-left: 10px;
+	border-bottom-left-radius: 8px;
+	border-top-right-radius:8px;
+	border:1px solid #707070;
+	width: 280px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+	background-image:none;
+	background-color: #303030;
+}
+
+.themeui_section {
+	
+}
+#themeui_controls h4 a {
+	display: block;
+	font-size: 0.9em;
+	font-weight:bolder;
+	color: #fbed02;
+	width: 94%;
+	background:none;
+	text-decoration:none;
+}
+
+#themeui_controls h4 a:hover {
+	color:white;
+}
+
+#themeui_controls  h4 {
+	padding-bottom:3px;
+	display: block;
+	font-size: 12px;
+	color: #fbed02;
+	border-bottom: 1px solid #707070;
+	width: 90%;
+	margin-left:10px;
+	margin-top:10px;
+}
+
+
+.themeui_controls_row {
+	height: 20px;
+	padding-top: 5px;	
+}
+
+.themeui_controls_row label {
+	font-size:0.8em;
+	cursor:pointer;
+	color:#aaa;
+	position:relative;
+	top:2px;
+	vertical-align:middle;
+}
+
+.themeui_controls_row label:hover {
+	color:white;
+}
+
+.themeui_controls_desc {
+	float: left;
+	text-align:right;
+	position: relative;
+	width: 160px;
+}
+
+.themeui_controls_data {
+	position: relative;
+	display: inline;
+	float: right;
+	margin-right: 10px;
+}
+
+.themeui_controls_row select {
+	font-size: 12px;
+	width: 91px;
+	border-radius: 3px;
+	color: #505050;
+}
+
+#themeui_ctrlfooter {
+	width: 100%;
+	height: 40px;
+	position: fixed;
+	left: 0px;
+	bottom: 0px;
+	text-align: left;
+	background-color:#303030;
+	z-index: 99;
+}
+
+#themeui_ctrlfooter input {
+	cursor: pointer;
+	width: 120px;
+	padding: 4px;
+	border-radius: 5px;
+	font-family: verdana;
+	border:0px;
+	font-size: 11px;
+	margin-right: 5px;
+	margin-left: 5px;
+	background-color: #fbed02;
+	color: #101010;
+	position: relative;
+	top: 10px;
+	font-weight: bolder;
+	background-image:url('../images/theme-ui/btnbkg.jpg');
+
+	}
+#themeui_ctrlfooter input:hover {color:#909090;}
+
+#branding-options section p {
+	color:#efefef;
+	padding:10px;
+}
+	
+
+/* #########  DISPLAY AREA STRUCTURAL STYLES ##########*/
+
+
+#themeui_scrollpanel {
+	height:570px;
+	overflow:hidden;
+	position:relative;
+}
+
+.themeui_panel {
+	width:686px;
+	height:566px;
+	float:left;
+	position:relative;
+	background-repeat: no-repeat;
+}
+
+
+#themeui_panel_welcome {background-image:url('../images/mocks/welcome_mock.jpg');}
+#themeui_panel_branding {background-color:white;}
+
+.themeui_panel div {
+	position:relative;
+	float:left;
+	margin:0;
+	padding:0;
+}
+
+.themeui_display_background {
+	width:100%;
+	height:566px;
+}
+
+.themeui_display_header {
+	width:100%;
+	height: 45px;
+}
+
+.themeui_display_subheader {
+	width:100%;
+	border-bottom:1px solid #c0c0c0;
+	height:21px;
+}
+
+.themeui_display_body {
+	width:100%;
+	height:514px;
+}
+
+.themeui_display_leftside {
+	width:108px;
+	height:514px;
+}
+
+.themeui_display_page {
+	width:470px;
+	height:514px;
+}
+
+.themeui_display_rightside {
+	width:108px;
+	height:514px;
+}
+
+.themeui_display_header_branding {
+	width:100%; 
+	height:45px;
+	text-align:center;
+	position:absolute;
+}
+
+.themeui_display_header_branding img {
+	height:45px;
+	z-index:0;	
+}
+
+
+.themeui_header_icons {width:650px;margin-left:15px;}
+.themeui_header_icons a {font-size:30px;}
+.themeui_display_header_icons p {
+	position:relative;
+	float:left;
+	color:white;
+}
+
+.themeui_icons_left {
+	position:relative;
+	float:left;
+	margin-left:10px;
+}
+
+.themeui_icons_left p {
+	position:relative;
+	float:left;
+	margin-right:20px;
+}
+
+.themeui_icons_right {
+	position:relative;
+	float:right;
+}
+
+.themeui_icons_right p {
+	position:relative;
+	float:right;
+	margin-left:20px;
+}
+
+.themeui_header {
+	width:100%;
+	height:45px;
+}
+
+
+.themeui_header_logo {
+	margin-left:21px;
+	width: 76px;
+	height: 21px;
+	overflow:hidden
+}
+
+.themeui_header_logo img {width:100%;}
+
+.themeui_display_subheader_title {
+	font-family: Droid Sans;
+	position: relative;
+	font-size:1.2em;
+	left: 10px;
+	margin-top: 3px;
+}
+
+.themeui_display_listtyperow {
+	width:100%;
+	height:20px;
+	border-bottom:1px solid #c0c0c0;
+}
+
+.tilestyle {
+	margin-top:10px;
+}
+
+.themeui_display_fulltile {
+	width:90%;
+	margin-left:5%;
+	margin-right:5%;
+	border:2px solid #c0c0c0;
+	border-radius:10px;
+	height:120px;
+}
+
+.themeui_display_listtile {
+	width:90%;
+	margin-left:5%;
+	margin-right:5%;
+	border:2px solid #c0c0c0;
+	border-radius:10px;
+	height:90px;
+}
+
+.themeui_display_fulltile div {
+	position:absolute;
+}
+
+.themeui_display_fulltile .themeui_display_coursenbr {
+	left: 14px;
+	font-weight:bolder;
+	font-size:0.9em;
+	top:3px;
+}
+
+
+.themeui_display_fulltile .themeui_display_courseimg {
+	left: 14px;
+	top: 20px;
+}
+
+.themeui_display_fulltile .themeui_display_coursetitle {
+	border-bottom: 1px solid #c0c0c0;
+	left: 140px;
+	top: 17px;
+	width: 271px;
+}	
+
+ .themeui_display_coursetitle {
+	font-weight: bolder;
+	font-size: 1.2em;
+ }
+
+.course_titlecolor {text-decoration:none;}
+
+.themeui_display_fulltile .themeui_display_duedate {
+	font-weight: bold;
+	top: 40px;
+	width: 100px;
+	font-size: 0.8em;
+	left: 140px;
+}
+
+.themeui_display_fulltile .themeui_display_series {
+	top: 38px;
+	left: 235px;
+	width: 100px;
+}
+
+.themeui_display_series p {
+	display:block;
+	position:relative;
+	float:left;
+	font-weight:bolder;
+	font-size:0.9em;
+}
+
+.themeui_display_seriescount {
+	border:1px solid;
+	padding-left: 1px;
+	margin-left: 5px;
+	margin-right: 5px;
+	padding-right: 1px;
+	}
+
+p.themeui_display_seriesicon {font-size:16px;top:-3px;}
+
+.themeui_display_fulltile .themeui_display_progress {
+	left: 345px;
+	width: 75px;
+	top: 39px;
+}
+
+.themeui_display_progress p {display:block;float:left;position:relative;}
+p.themeui_display_progressicon {font-size:20px;top: -5px;}
+p.themeui_display_progresstext {margin-left:2px;font-size:0.9em;}
+
+.themeui_display_fulltile input.themeui_display_startbutton {
+	padding: 2px;
+	font-size: 0.8em;
+	font-weight: bolder;
+	top: 92px;
+	width: 82px;
+	position: absolute;
+	left: 332px;
+	border: 0;
+	border-radius: 8px;
+}
+
+#themeui_fileupload_overlay {
+	width:690px;
+	height:569px;
+	position:absolute;
+	z-index:100; 
+	display:none;
+	background-image:url('../images/theme-ui/file_upload_overlay.png'); 
+	background-repeat: no-repeat;
+	top:-2px;
+}
+
+
+#themeui_welcome_fileupload_overlay {
+	width:690px;
+	height:569px;
+	position:absolute;
+	z-index:100; 
+	display:none;
+	background-image:url('../images/theme-ui/welcome_file_upload_overlay.png'); 
+	background-repeat: no-repeat;
+	top:-2px;
+}
+
+
+.themeui_display_welcome_rightcol {
+	top: 26px;
+	left: 79px;
+	height: 462px;
+	width: 443px;
+}
+.themeui_display_welcome_righttoprow {
+	width: 100%;
+	min-height: 30px;
+}
+
+.themui_display_welcome_rightmidrow {
+	width:100%;
+	margin-top:10px;
+}
+
+.themeui_display_welcome_rightbtmrow {
+	width:100%;
+}
+
+
+
+.themeui_display_listtile .themeui_display_coursetitle {
+	width:300px;
+	top:4px;
+	left:10px;
+}	
+	
+	
+.themeui_display_listtile input.themeui_display_startbutton {
+	padding: 4px;
+	font-size: 0.8em;
+	font-weight: bolder;
+	top: 63px;
+	width: 21px;
+	position: absolute;
+	left: 392px;
+	border: 0;
+	border-radius: 10px;
+}	
+	
+.themeui_display_listtile .themeui_display_coursenbr {
+	left: -10px;
+	float:right;
+	font-weight:bolder;
+	font-size:0.9em;
+	top:3px;
+}	
+	
+
+.themeui_display_listtile .themeui_display_duedate {
+	font-weight: bold;
+	width: 100px;
+	font-size: 0.8em;
+	top:1px;
+}	
+	
+.themeui_display_listtile .themeui_display_coursedesc {	
+	overflow: hidden;
+	height: 35px;
+	width: 378px;
+	top: 8px;
+	left: 12px;
+	font-size: 0.75em;	
+}	
+
+.themeui_display_listtile .themeui_display_series {
+
+}
+
+.themeui_display_page_content {
+	padding:30px;
+	font-size:0.8em;
+	
+}
+
+
+.themeui_display_listtile .themeui_display_courseinfo {
+	top: 15px;
+	left: 12px;	
+	
+}
+	
+.themeui_display_listtile .themeui_display_progress {
+	left:38px;
+}	
+
+
+.themeui_display_resourcelist_title {
+	margin-left: 5px;
+	margin-top: 5px;
+	font-weight: bolder;
+	color: white;
+	border-bottom: 1px solid white;
+	width: 100%;
+}
+
+	
+ul.themeui_display_resourcelist {
+	padding-left: 7px;
+	font-size: 0.85em;
+	padding-top:25px;
+}
+
+.subtitle {
+	top: 6px;
+	position: relative;
+	color: white;
+	font-weight: bolder;
+	font-size: 11px;
+	padding-left: 10px;
+	}
+
+ul.themeui_display_resourcelist li {
+	padding-bottom:5px;
+}	
+	
+ul.themeui_display_resourcelist li span.themeui_display_resource_icon {
+	padding-right:5px;
+	display:block;
+	float:left;
+	font-size:0.9em;
+}
+
+.themeui_display_resource_title {display:block;float:left;}
+
+.themeui_display_resource {width: 100%;
+	padding-bottom: 11px;
+	display: block;
+	float: left;
+	padding-top: 1px;
+	margin-left:10px;
+}
+
+
+#branding_image_hotspot {
+	width:154px;
+	height:48px;
+	position:absolute;
+	left:263px;}
+	
+
+#branding_image_hotspot img {
+	width:154px;
+	height:48px;
+	position:relative;
+}
+
+
+#logo_image_hotspot {
+	width: 81px;
+	height: 32px;
+	top: 42px;
+	left: 19px;
+	position: absolute;
+}
+
+#logo_image_hotspot img {
+	width: 81px;
+	height: 32px;
+	position:relative;
+}
+
+
+ 
+
+#inside_page_branding_options,
+#welcome_branding_options {
+	text-decoration:none;
+	color:white;padding-top:5px;
+}
+
+#inside_page_branding_options:hover,
+#welcome_branding_options:hover {
+	text-decoration:underline;
+}
+
+
+.themeui_display_welcome_leftcol {
+	border-radius: 10px;
+	top: 25px;
+	left: 68px;
+	display: block;
+	position: absolute;
+	width: 157px;
+}
+
+.themeui_display_welcome_leftcol .themeui_welcome_resources {width:150px;}
+
+.generaltext {
+	font-size: 0.75em;
+	margin: 10px;	
+}
+
+.themeui_display_welcome_slideshow {
+	width: 380px;
+	height: 132px;
+	top: 5px;
+	position:absolute;
+}
+
+#site_branding_opts {
+	left: 33px;
+	float: left;}
+	
+.themeui_display_welcome_leftcolimg {
+	position:absolute;
+	left:0px;
+	top:9px;
+	border-top-right-radius: 7px;
+	width:129px;
+	height:523px;
+	overflow:hidden;
+}
+
+.themeui_display_welcome_leftcolimg img {
+	width:100%;
+	height:auto;
+}
+
+
+.themeui_welcome_logo {
+	width:140px;
+	max-width:140px;
+	border-radius:8px;
+	left:4px;
+	top:5px;
+	padding:4px;
+}
+
+
+
+.themeui_welcome_login {
+	width:140px;
+	height:154px;
+	border-radius:8px;
+	left:4px;
+	top:5px;
+	padding:4px;
+	margin-top:7px;
+	margin-bottom:10px;
+}
+
+
+.themeui_welcome_login_title {
+	font-size: 1.5em;
+	border-bottom: 1px solid #c0c0c0;
+	display: block;
+	width: 90%;
+}
+
+
+.themeui_display_login_textbox {
+	margin-left: 4px;
+	padding: 3px;
+	border-radius: 4px;
+	font-size: 10px;
+	width: 82%;
+}
+
+
+
+.themeui_display_signin_button {
+	padding: 2px;
+	font-size: 0.8em;
+	font-weight: bolder;
+	top: 112px;
+	width: 108px;
+	position: absolute;
+	left: 12px;
+	border: 0;
+	border-radius: 8px;
+}
+
+
+
+.themeui_display_login_forgotpwd {
+position: absolute;
+left: 40px;
+top: 136px;
+font-size: 0.7em;
+}
+
+
+.themeui_display_welcome_slideshow_wrapper {
+	width: 380px;
+	height: 140px;
+}
+
+.themeui_display_welcome_slideshow img {
+	height: 125px;
+	width: 185px;
+	position: relative;
+	float: left;
+}
+
+.themeui_display_home_slide_text {
+	top: 4px;
+	height: 122px;
+	width: 183px;
+	display: block;
+	position: relative;
+	float: right;
+}
+
+.themeui_display_home_slide_title {
+	width: 100%;
+	font-size: 14px;
+	font-weight: bolder;
+	display: block;
+	padding-bottom: 5px;
+}
+
+.themeui_display_welcome_bottom {
+	width:380px;
+	height:155px;
+	margin-top:20px;
+}
+	
+.themeui_display_welcome_message {
+	width:287px;
+	position:absolute;
+	border-radius:10px;
+}
+
+.themeui_display_vip_image {
+	padding-bottom: 5px;
+	padding-left: 5px;
+}
+
+.themeui_display_vip_image img {
+	border-radius:5px;
+	width:75px;
+	height:100px;
+}
+.themeui_display_virtual_tour_btn {
+	width:83px;
+	position:absolute;
+	border-radius: 10px;
+	left: 294px;
+}
+
+
+
+.themeui_display_virtual_tour_img {
+	position:relative;
+	float:left;
+	width: 67px;
+	height: 52px;
+	margin-bottom:10px;	
+	margin-left: 7px;
+}
+
+.themeui_display_virtual_tour_img img {
+	width: 67px;
+	height: 52px;
+}
+
+.themeui_display_welcome_main_title {
+	color: white;
+	font-size: 20px;
+}
+
+.themeui_display_welcome_message_title, 
+.themeui_display_virtual_tour_title{
+	margin-bottom: 5px;
+	border-bottom: 1px solid #c0c0c0;
+	margin-top: 4px;
+	font-weight: bolder;
+	width: 95%;
+	display: block;
+	margin-left: 6px;	
+}
+
+.themeui_display_virtual_tour_title {
+	width:85%;
+}
+
+.themeui_display_welcome_message_text {
+	width: 190px;
+	margin-left: 7px;
+	font-size: 0.75em;	
+}
+
+
+
+#leftlogo_image_hotspot {
+	top: 79px;
+	left: 79px;
+	width: 128px;
+	height: 40px;
+	position: absolute;
+}
+
+#leftlogo_image_hotspot img {
+	width: 128px;
+	height: 40px;
+}
+
+
+#leftcol_image_hotspot {
+	top: 133px;
+	left: 0px;
+	width: 63px;
+	height: 172px;
+	position: absolute;	
+}
+
+#leftcol_image_hotspot img {
+	width: 63px;
+	height: 172px;
+	
+}
+
+#vip_image_hotspot {
+	width: 75px;
+	height: 100px;
+	position: absolute;
+	left: 234px;
+	top: 311px;	
+}
+
+#vip_image_hotspot img {
+	width: 75px;
+	height: 100px;
+}
+
+.themeui_display_listtyperow .listitem {
+	height: 20px;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+
+.themeui_display_listtyperow .listitem a {
+	text-decoration:none;
+	font-size:0.7em;
+}
+
+
+.themeui_display_listview_icon, 
+.themeui_display_imageview_icon {
+	width:15px;
+}	
+
+
+ul.themeui_display_leftcol_links {}
+
+ul.themeui_display_leftcol_links li {}
+
+ul.themeui_display_leftcol_links li a {text-decoration: none;
+	font-size: 0.8em;
+	padding: 4px;
+	display: block;
+	width: 100%;
+	padding-left: 10px;}
+
+#start_instructions_panel {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow:hidden;
+}
+
+#start_instructions {
+	height: 600px;
+	width: 278px;
+	position: relative;
+	top:20px;
+}
+
+
+#start_instructions img {
+	position:relative;
+	top:200px;
+	left:0px;
+}
+
+#themeContentPreview{
+	width: 665px;
+	float: left;
+	height: 100%;
+	overflow: hidden;
+}
+
+#themeContentAdvCSS{
+	height: inherit;
+	float: right;
+	width: 68%;
+}
+#themeAdvCSSText{
+	height: inherit;
+	width: 100%;
+	float: left;
+	margin: 0;
+}
+
+.themeui_wrapper > p {
+	padding: 10px;
+}

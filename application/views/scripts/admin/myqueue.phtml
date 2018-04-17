@@ -1,0 +1,19 @@
+<?php
+	$myQueueSettings = $this->mqSettings;
+?>
+<section class="adminSection ui-corner-all">
+	<h3>My Queue</h3>
+	<form name="myQueueLayoutForm" action="/admin/updateComponent" method="post">
+		<fieldset>
+			<p>Choose A Default Layout...</p>
+			<input type="radio" name="layout" value="listView" <?= isset($myQueueSettings['layout']) && $myQueueSettings['layout']->value == 'listView' ? 'checked="checked"' : ''; ?> >List View
+			<input type="radio" name="layout" value="imgView" <?= isset($myQueueSettings['layout']) && $myQueueSettings['layout']->value == 'imgView' ? 'checked="checked"' : ''; ?>>Image View
+			<input type="hidden" name="layout_id" value="<?= isset($myQueueSettings['layout']) ? $myQueueSettings['layout']->id : ''; ?>" />
+		</fieldset>
+		<fieldset>
+            <input type="hidden" name="adminAction" value="updateMyQueueLayout" />
+            <button type="submit" class="adminFormSubmit">Update My Queue Layout</button>
+            <span class="feedback"></span>
+        </fieldset>
+	</form>
+</section>

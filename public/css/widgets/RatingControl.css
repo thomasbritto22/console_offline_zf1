@@ -1,0 +1,174 @@
+ /*--- styles for the regular-size rating control --- 
+.ratingControl {
+	float: left;
+	margin: 0 0 5px;
+    width: 135px;
+    height: 30px;
+    position: relative;
+}
+
+ increase control width if there is a label. 
+.ratingControl.hasLabel {
+    width: 250px;
+}
+
+.ratingControl .ratingControlLabel {
+    float: left;
+    padding: 8px 0 0 5px;
+}
+
+.ratingControl .ratingControlList {
+    height: auto;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    float: left;
+    white-space: normal;
+}
+
+.ratingControl .ratingControlList .formField {
+    margin: 0 1px 0 0;
+    list-style: none;
+    float: left;
+    width: 25px;
+    height: 30px;
+    background: url('../../images/sprites/ratings-sprite.png') no-repeat -87px -2px;
+    text-indent: -9999px;
+}
+
+.ratingControl .ratingControlList .formField label,
+.ratingControl .ratingControlList .formField input {
+    display: none;
+}
+
+.ratingControl .ratingControlList .formField.half {
+    background: url('../../images/sprites/ratings-sprite.png') no-repeat -47px -2px;
+}
+
+.ratingControl .ratingControlList .formField.whole {
+    background: url('../../images/sprites/ratings-sprite.png') no-repeat -8px -2px;
+}
+
+ REMOVED HALF RATING CONTROLS
+
+
+.ratingControl .ratingControlList .formField span.wholeControl {
+    width: 49%; REMOVED HALF RATING CONTROLS 
+    width: 100%;
+    display: block;
+    height: 100%;
+    float: right;
+}*/
+
+
+
+
+
+/**
+ * --- MEDIUM SIZED RATING CONTROL ---
+ * This control is mostly used in the review list to show
+ * the users overall rating.
+ */
+.ratingControl.med {
+    float: left;
+    width: 90px;
+    height: 25px;
+    position: relative;
+}
+
+/* increase the control width if it has a label */
+.ratingControl.med.hasLabel {
+    width: 190px;
+}
+
+.ratingControl.med .ratingControlLabel {
+    float: left;
+    padding: 4px 0 0 5px;
+}
+
+.ratingControl.med .ratingControlList {
+    width: 75px;
+    height: 100%;
+    display: block;
+    position: relative;
+    float: left;
+    word-wrap: break-word;
+}
+
+.ratingControl.med .ratingControlList .formField {
+    list-style: none;
+    float: left;
+    width: 15px;
+    height: 10px;
+    background: url('../../images/sprites/ratings-sprite.png') no-repeat -93px -95px;
+    text-indent: -9999px;
+}
+
+/* adjust the whole/half/none image backgrounds */
+.ratingControl.med .ratingControlList .formField.half {
+    background: url('../../images/sprites/ratings-sprite.png') no-repeat -50px -90px;
+}
+
+.ratingControl.med .ratingControlList .formField.whole {
+    background: url('../../images/sprites/ratings-sprite.png') no-repeat -13px -95px;
+}
+
+.ratingControl .ratingControlList .formField span.wholeControl {
+    width: 100%;
+    height: 100%;
+    display: block;
+    float: left;
+    clear: right;
+}
+
+
+
+/**
+ * --- MINI SIZED RATING CONTROL ---
+ * This control is mostly used in the ratings tooltip.
+ */
+/*.ratingControl.mini {
+    width: 65px;
+    height: 12px;
+    position: relative;
+}*/
+
+/* increase the control width if it has a label */
+.ratingControl.mini.hasLabel {
+    width: 190px;
+}
+
+.ratingControl.mini .ratingControlLabel {
+    float: left;
+    padding: 3px 0 0 3px;
+}
+
+.ratingControl.mini .ratingControlList {
+    width: 65px;
+    /*height: 100%;*/
+    display: block;
+    position: relative;
+    /*overflow: auto;*/
+    float: left;
+}
+
+.ratingControl.mini .ratingControlList .formField {
+    margin: 0 1px 0 0;
+    list-style: none;
+    float: left;
+    width: 11px;
+    height: 11px;
+    background: url('../../images/sprites/ratings-sprite.png') no-repeat -95px -95px;
+    overflow: auto;
+    text-indent: -9999px;
+}
+
+/* adjust the whole/half/none image backgrounds */
+.ratingControl.mini .ratingControlList .formField.half {
+    background: url('../../images/sprites/ratings-sprite.png') no-repeat -55px -95px;
+}
+
+.ratingControl.mini .ratingControlList .formField.whole {
+    background: url('../../images/sprites/ratings-sprite.png') no-repeat -15px -95px;
+}
+

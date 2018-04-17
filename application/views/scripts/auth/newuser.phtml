@@ -1,0 +1,22 @@
+<div id="selfRegWrapper">
+    <form name="newUser" action="/auth/login/" method="post" autocomplete="off">
+		<fieldset>
+			<div class="selfRegHeader clearfix">
+				<h4 class="contentTextIcons"><?= $this->siteLabels['NewUserReg']; ?></h4>
+				<a class="trusteWrap" href="http://www.truste.com/consumer-privacy/trusted-directory/"
+					target="_blank">
+					<img src="<?php echo CDN_IMG_URL ?>/images/branding/TRUSTeLogo.png" title="TRUSTe" />  
+				</a>			
+			</div>
+			<div class="userInstructions contentTextIcons">
+				<?php if($this->regWelMsg != '') 
+					echo $this->regWelMsg; ?>				
+			</div>
+		</fieldset>
+		<div class="updateButtons">
+			<fieldset>
+				<input type="submit" id="signInBtn" class="customButton" value="<?= $this->siteLabels['SignInBtn']; ?>"/>
+			</fieldset>
+		</div>
+	</form>
+</div>

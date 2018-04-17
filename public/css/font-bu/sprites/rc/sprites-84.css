@@ -1,0 +1,122 @@
+[class*="icon-"] {
+	display: inline-block;
+	width: 84px;
+	height: 84px;
+	background-image: url(sprites.svg);
+	background-repeat: no-repeat;
+}
+.icon-play {
+	background-position: 0 0;
+	width: 84px;
+}
+.icon-book {
+	background-position: -100px 0;
+	width: 84px;
+}
+.icon-home {
+	background-position: -200px 0;
+	width: 84px;
+}
+.icon-pencil {
+	background-position: -300px 0;
+	width: 84px;
+}
+.icon-stack {
+	background-position: -400px 0;
+	width: 84px;
+}
+.icon-screen {
+	background-position: -500px 0;
+	width: 84px;
+}
+.icon-history {
+	background-position: -600px 0;
+	width: 84px;
+}
+.icon-envelop {
+	background-position: -700px 0;
+	width: 84px;
+}
+.icon-phone {
+	background-position: -800px 0;
+	width: 84px;
+}
+.icon-busy {
+	background-position: -900px 0;
+	width: 84px;
+}
+.icon-user {
+	background-position: -1000px 0;
+	width: 84px;
+}
+.icon-search {
+	background-position: -1100px 0;
+	width: 84px;
+}
+.icon-cog {
+	background-position: -1200px 0;
+	width: 84px;
+}
+.icon-star {
+	background-position: -1300px 0;
+	width: 84px;
+}
+.icon-star2 {
+	background-position: -1400px 0;
+	width: 84px;
+}
+.icon-star3 {
+	background-position: -1500px 0;
+	width: 84px;
+}
+.icon-warning {
+	background-position: 0 -100px;
+}
+.icon-point-up {
+	background-position: -100px -100px;
+}
+.icon-notification {
+	background-position: -200px -100px;
+}
+.icon-question {
+	background-position: -300px -100px;
+}
+.icon-info {
+	background-position: -400px -100px;
+}
+.icon-exit {
+	background-position: -500px -100px;
+}
+.icon-info2 {
+	background-position: -600px -100px;
+}
+.icon-checkmark-circle {
+	background-position: -700px -100px;
+}
+.icon-close {
+	background-position: -800px -100px;
+}
+.icon-checkmark {
+	background-position: -900px -100px;
+}
+.icon-play2 {
+	background-position: -1000px -100px;
+}
+.icon-filter {
+	background-position: -1100px -100px;
+}
+.icon-arrow-right {
+	background-position: -1200px -100px;
+}
+.icon-checkmark2 {
+	background-position: -1300px -100px;
+}
+.icon-print {
+	background-position: -1400px -100px;
+}
+.icon-binoculars {
+	background-position: -1500px -100px;
+}
+.icon-remove {
+	background-position: 0 -200px;
+}

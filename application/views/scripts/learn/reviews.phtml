@@ -1,0 +1,11 @@
+<div id="userReviewWrapper" class="pageSafeReviews clearfix">
+	<? if($this->showNoCompletion){ ?>
+	    <h3 class="contentTitles font-style6 noCompletionNote"><?= $this->siteLabels['IncompleteModuleNote']; ?></h3>
+	<? } ?>
+	<p class="contentTextIcons font-style5 reviewInstructions"><?= $this->siteLabels['CompleteRating']; ?></p>
+	<h3 class="contentTitles borderBottomMedium font-style6 courseTitle clearfix"><?= $this->course['name']; ?>
+	    <span class="contentTextIcons modId"><?= $this->siteLabels['ModuleID']; ?>: <?= $this->course['baseCatalogId']; ?></span>
+	</h3>
+    <section id="reviewFormWrapper"><?= $this->reviewForm; ?></section>
+    <section id="reviewListWrapper"><?= $this->reviewList; ?></section>
+</div>

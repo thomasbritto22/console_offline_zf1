@@ -1,0 +1,193 @@
+<div id="leftColumn" class="sideBar col-lg-2 col-md-2 col-sm-2">
+     <nav class="navbar" role="navigation">
+        <ul id="navigationMenu" class="nav">
+            <?php if (!empty($this->carouselHTML) || !empty($this->vipHTML)):?>
+                <li class="primaryLink">
+                    <a href="/index" title="<?= isset($this->siteLabels['NavHome']) ? $this->siteLabels['NavHome'] : "Home"; ?>" class="primaryTextIcons font-size16">
+                        <i class="fa fa-home secondaryTextIcons home"></i><i class="material-icons home">&#xE88A;</i>
+                        <span><?= $this->siteLabels['NavHome']; ?></span>
+                    </a>
+                </li>
+             <?php endif;?>
+             <li class="primaryLink">
+                <a href="/learn/queue" title="<?= isset($this->siteLabels['Myqueue']) ? $this->siteLabels['MyQueue'] : "My queue"; ?>" class="primaryTextIcons font-size16">
+                    <i class="fa fa-check secondaryTextIcons list"></i><i class="material-icons list">&#xE241;</i>
+                    <span><?= $this->siteLabels['MyQueue']?></span>
+                </a>
+            </li>
+            <?php if ($this->siteConfigs['CourseListModuleButton'] == 't'):?>
+                <li class="primaryLink">
+                    <a href="/catalog" title="<?= isset($this->siteLabels['Catalog']) ? $this->siteLabels['Catalog'] : "Course Catalog"; ?>" class="primaryTextIcons font-size16">
+                        <i class="fa fa-book secondaryTextIcons library"></i><i class="material-icons library">&#xE54B;</i>
+                        <span><?= $this->siteLabels['Catalog']; ?></span>
+                    </a>
+                </li>
+            <?php endif;?>
+            <?php if(isset($this->resourcesNumber) && !empty($this->resourcesNumber)):?>
+                <li class="primaryLink">
+                    <a href="/resourcecenter" title="<?= isset($this->siteLabels['Resources']) ? $this->siteLabels['Resources'] : "Resource Center"; ?>" class="primaryTextIcons font-size16">
+                        <i class="fa fa-info-circle secondaryTextIcons resources"></i><i class="material-icons resources">&#xE2C8;</i>
+                        <span><?= $this->siteLabels['Resources']; ?></span>
+                    </a>
+                </li>
+            <?php endif;?>
+            <li class="primaryLink">
+                <a href="/notifications/history" title="<?= isset($this->siteLabels['NavHistory']) ? $this->siteLabels['NavHistory'] : "History"; ?>" class="primaryTextIcons font-size16">
+                    <i class="fa fa-history secondaryTextIcons history"></i><i class="material-icons history">&#xE8BA;</i>
+                    <span><?= $this->siteLabels['NavHistory']; ?></span>
+                </a>
+            </li>
+            <?php if($this->user->dashConfigure == 1 || $this->user->dashViewAll == 1){ ?> 
+                <li>
+                    <a href="/viewdashboard" title="<?= isset($this->siteLabels['NavDashboard']) ? $this->siteLabels['NavDashboard'] : "Dashboard" ?>" class="primaryTextIcons font-size16">
+                        <i class="fa fa-bar-chart secondaryTextIcons"></i><i class="material-icons report">&#xE335;</i>
+                        <span class="defaultStyle">Dashboard</span>
+                        <span class="traditionalStyle">Status Report</span>
+                    </a>
+                </li>
+            <?php }else if($this->dashboardStatus == 1) {?>
+                <li><a href="/viewdashboard" title="<?= isset($this->siteLabels['NavDashboard']) ? $this->siteLabels['NavDashboard'] : "Dashboard" ?>" class="primaryTextIcons font-size16"><i class="fa fa-bar-chart secondaryTextIcons"></i><span>Dashboard</span></a></li>
+            <?php }?>
+            <li class="secondaryDivider contentImageBorder clearfix"></li>
+            <li class="secondaryLink">
+                <a href="/profile" title="<?= isset($this->siteLabels['NavProfile']) ? $this->siteLabels['NavProfile'] : "Profile"; ?>" class="primaryTextIcons font-size16">
+                    <i class="fa fa-user secondaryTextIcons"></i>
+                    <span><?= $this->siteLabels['NavProfile']; ?></span>
+                </a>
+            </li>
+            <li class="secondaryLink helpLink">
+                <a href="/help/UserGuide1.pdf" title="<?= isset($this->siteLabels['NavHelp']) ? $this->siteLabels['NavHelp'] : "Help" ?>" target="_blank" class="primaryTextIcons font-size16">
+                    <i class="fa fa-question-circle secondaryTextIcons"></i>
+                    <span><?= $this->siteLabels['NavHelp']; ?></span>
+                </a>
+            </li>
+             <?php if($this->user->role == "admin" || $this->user->role == "lcecadmin" || $this->user->role == "dashboardadmin" || $this->user->role == "vcadmin" || $this->user->role == "emadmin"|| $this->user->role == "dashboardvcadmin" || $this->user->role == "dashboardvcemadmin"  || $this->user->role == "vcemadmin"){ ?>
+            <li id="adminSectionLink" class="secondaryLink hover menu-item menu-level-0 menu-item-has-children" aria-expanded="false">
+             <a aria-haspopup="true" aria-controls="sub-menu-1" aria-owns="sub-menu-1" id="menu-item-1-link" href="#"  id="menu-item-1-link" class="menu-item-link nohover"  role="menuitem">
+                <?php if($this->user->role == 'admin') {?>
+                <i class="fa fa-gear secondaryTextIcons downArrow"></i><i class="material-icons primaryTextIcons">&#xE313;</i><span class="primaryTextIcons font-size16"><?= $this->siteLabels['Settings']?></span>
+                <?php } else { ?>
+                <i class="fa fa-gear secondaryTextIcons downArrow"></i><i class="material-icons primaryTextIcons">&#xE313;</i><span class="primaryTextIcons font-size16"><?= $this->siteLabels['Settings']?></span>
+                 <?php }?>
+             </a>
+                 <ul class="adminNav sub-menu sub-menu-wrapper"  id="sub-menu-1" role="group" aria-labelledby="menu-item-1-link">
+                       <?php if($this->user->dashConfigure == 1 || $this->user->dashViewAll == 1): ?>
+                        <li role="menuitem" class="menu-item menu-level-1">
+                            <a href="/admin/dashboardmanager" title="Dashboard Manager" class="menu-item-link primaryTextIcons font-size14 defaultStyle">Dashboard Manager</a>
+                            <a href="/admin/dashboardmanager" title="Status Report Manager" class="menu-item-link primaryTextIcons font-size14 traditionalStyle">Status Report Manager</a>
+                        </li>
+                        <?php endif; ?>
+                       <?php if($this->user->role == 'admin') {?>
+                        <li role="menuitem" class="menu-item menu-level-1">
+                            <a href="/admin/home" title="Site Customization" class="menu-item-link primaryTextIcons font-size14">Site customization</a>
+                        </li>
+                        <!--                        <li>
+                            <a href="/admin/exportmanager" title="Export Manager" class="primaryTextIcons font-size14">Export manager</a>
+                        </li>-->
+                        <?php } ?>
+                        <?php if($this->user->exportManager == 1 ): ?>
+                        <li role="menuitem" class="menu-item menu-level-1">
+                            <a href="/admin/exportmanager" title="Export Manager" class="primaryTextIcons font-size14">Export manager</a>
+                        </li>
+                        <?php endif; ?>
+                        <?php if($this->user->vcConfigure == 1 ): ?>
+                        <li role="menuitem" class="menu-item menu-level-1">
+                            <a href="/admin/virtualcatalyst" title="Virtual Catalyst" class="menu-item-link primaryTextIcons font-size14">Virtual Catalyst</a>
+                        </li>
+                        <?php endif; ?>
+                        <?php if($this->user->role == 'admin') {?>
+                        <li role="menuitem" class="menu-item menu-level-1">
+                            <a href="/admin/resourcemanager" title="Resources Settings" class="menu-item-link primaryTextIcons font-size14">Resources</a>
+                        </li>
+                        <li role="menuitem" class="menu-item menu-level-1">
+                            <a href="/admin/labels" title="Active Labels" class="menu-item-link primaryTextIcons font-size14">Active labels</a>
+                        </li>
+                        <li role="menuitem" class="menu-item menu-level-1">
+                            <a href="/admin/theme" title="Advanced Customization" class="menu-item-link primaryTextIcons font-size14">Advanced customization</a>
+                        </li>
+                        <li role="menuitem" class="menu-item menu-level-1">
+                            <a href="/admin/librarymanager" title="Library Manager" class="menu-item-link primaryTextIcons font-size14">Library manager</a>
+                        </li>
+                        <li role="menuitem" class="menu-item menu-level-1">
+                            <a href="/admin/courseconfiguration" title="Module Configuration" class="menu-item-link primaryTextIcons font-size14">Module configuration</a>
+                        </li>
+                        <?php if ($this->siteConfigs['ProfileColumn'] == 'Language' && !empty($this->siteConfigs['ProfileColumnDefault']) && !empty($this->siteConfigs['DefaultLanguage'])):?>
+                            <li role="menuitem" class="menu-item menu-level-1">
+                                <a href="/admin/getenabledsitelanguages" title="Enabled Languages Settings" class="menu-item-link primaryTextIcons font-size14">Enabled languages</a>
+                            </li>
+                        <?php endif;?>
+                        <li role="menuitem" class="menu-item menu-level-1">
+                            <a href="/admin/social" title="Social Settings" class="menu-item-link primaryTextIcons font-size14">Social settings</a>
+                        </li>
+                    <?php } ?>
+                    <?php if ($this->user->accessControl->lcecAdmin == 'true' || $this->user->accessControl->aimAdmin == 'true' || $this->user->accessControl->ramAdmin == 'true'):?>
+                        <li role="menuitem" class="menu-item menu-level-1">
+                            <a href="/admin/legacy?app=lcec&targetURI=/app/page/AdminTools" title="LCEC Passthru" class="menu-item-link primaryTextIcons font-size14" id="lcecPassThru">LCEC</a>
+                        </li>
+                        <?php if ($this->siteName == 'lrnmodules'): ?>
+                            <li role="menuitem" class="menu-item menu-level-1">
+                                <a href="/admin/slosites" title="SLO Testpage" class="menu-item-link primaryTextIcons font-size14">SLO sites</a>
+                            </li>
+                        <?php endif;?>
+                    <?php endif;?>
+                    <?php if($this->user->role == 'admin') {?>
+                        <li role="menuitem" class="menu-item menu-level-1">
+                            <a href="/help/CatalystAdmin.pdf" title="Admin Guide" target="_blank" class="menu-item-link primaryTextIcons font-size14">Admin guide</a>
+                        </li>
+                    <?php } ?>
+                </ul>
+            </li>
+            <? } ?>
+            <li class="secondaryLink">
+                <a href="/auth/logout/" title="<?= isset($this->siteLabels['SignOut']) ? $this->siteLabels['SignOut'] : "Log Out"; ?>" class="primaryTextIcons font-size16" id="menuLogout">
+                    <i class="fa fa-sign-out secondaryTextIcons"></i>
+                    <span class="noBorder"><?= $this->siteLabels['SignOut'] ?></span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <?php if($this->userMyQueueStatus != 'Off') { ?>
+     <script type="text/javascript">         
+     $(document).ready(function(){
+         Lrn.Applications.Application = new Lrn.Application();
+         Lrn.Applications.Application.initMyStatus();
+     });
+     </script>
+     <div id="myQueueInfo"></div>
+    <?php } ?>
+</div>
+<script>
+    jQuery( document ).ready( function( $ ) {
+  
+    $( '.nav' ).on( 'mouseenter focus', '.menu-level-0.menu-item-has-children > .menu-item-link', function( e ) {
+            var el = $( this );
+        el.toggleClass( 'has-focus' );
+            // Show sub-menu
+            el.parents( '.menu-item' ).attr( 'aria-expanded', 'true' );
+        }).on( 'mouseleave blur', '.menu-level-0.menu-item-has-children > .menu-item-link', function( e ) {
+            var el = $( this );
+        el.toggleClass( 'has-focus' );
+            // Only hide sub-menu after a short delay, so links get a chance to catch focus from tabbing
+            setTimeout( function() {
+                if ( el.siblings( '.sub-menu-wrapper' ).attr( 'data-has-focus' ) !== 'true' ) {
+                    el.parents( '.menu-item' ).attr( 'aria-expanded', 'false' );
+                }
+            }, 100 );
+        }).on( 'mouseenter focusin', '.sub-menu-wrapper', function( e ) {
+            var el = $( this );
+            el.attr( 'data-has-focus', 'true' );
+        }).on( 'mouseleave focusout', '.sub-menu-wrapper', function( e ) {
+            var el = $( this );
+            setTimeout( function() {
+                // Check if anything else has picked up focus (i.e. next link in sub-menu)
+                if ( el.find( ':focus' ).length === 0 ) {
+                    el.attr( 'data-has-focus', 'false' );                       
+                    // Hide sub-menu on the way out if parent link doesn't have focus now
+            if ( el.siblings( '.menu-item-link.has-focus' ).length === 0 ) {
+                        el.parents( '.menu-level-0' ).attr( 'aria-expanded', 'false' );
+          }
+        }
+            }, 100 );
+        });
+});
+</script>

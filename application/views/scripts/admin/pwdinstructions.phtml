@@ -1,0 +1,49 @@
+<hgroup class="adminHeader">
+	<h2>Password Instructions</h2>
+</hgroup>
+<div id="categorySection" class="ui-corner-all">
+	<h3 class="sectionHeader">Manage the password instructions for your site below:</h3>
+	<div class="instructionalHeader">
+		<span></span>
+		<p <?=count($this->siteLang)>1 ? 'class="border"': '';?>> Here you can change your password instructions.
+			<?php if (count($this->siteLang)>1):?>
+				Use the language selection on the right to manage your password instructions for that language.
+			<?php endif; ?>
+		</p>
+		<?php if (count($this->siteLang)>1):?>
+			<fieldset>
+				<label for="fieldLanguages">Language:</label><br />
+				<select id="fieldLanguages" name="selectName">
+					<?php foreach($this->siteLang as $lang):
+						$check = '';
+						if ('en' === $lang->language):
+							$check = 'selected';
+						endif;
+					?>
+						<option value="<?=$lang->language;?>" <?=$check;?>><?=$lang->enName;?></option>
+					<?php endforeach;?>
+				</select>
+			</fieldset>
+		<?php endif; ?>
+	</div>
+	<div id="langNotification">
+		<p>Note: You are currently editing in <span id="languageNameId"></span></p>
+	</div>
+	<section class="adminSection">
+		<form name="pwdinstructForm" action="/admin/updateinstructions" method="post">
+			<div class="adminSectionContent themeSection">
+				 <fieldset>
+		            <p class="formField">
+		            	<span class="fieldLabel">Password Instructions<span class="charLimit">(1000 characters)</span></span>
+		            	<textarea cols="15" rows="5" id="pwdinstructiontext" name="pwdinstructiontext" maxlength="1000" placeholder="Please enter password instruction."><?= $this->passwordinstructions; ?></textarea>
+		            	<input type="hidden" id="translationId" name="translationId" value="<?=$this->translationId;?>">
+		            </p>
+		            <fieldset class="updateButtons">
+						<button id="pwdinstSubmit" type="button" class="themeSubmit">update</button>
+					</fieldset>
+		        </fieldset>
+			</div>
+		</form>
+	</section>
+
+</div>

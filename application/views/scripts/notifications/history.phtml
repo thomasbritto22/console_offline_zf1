@@ -1,0 +1,55 @@
+<div class="historyPage">
+    <? if(empty($this->historyList)){ ?>
+    <p  style="padding:20px 20px 5px;font-size:18px;color:#424242;">
+            <?= $this->emptyHistoryMsg;?>
+        </p>
+    <? } else { ?>
+    <h3 class="profileInfo contentTitles"><?= $this->userNameLabel; ?>: 
+        <?= $this->userLabel['displayValue']; ?>
+    </h3>
+    <section id="filterBar" class="ui-corner-all expandable">
+        <button class="filterTitle contentTitles filterHistory-btn borders" aria-label="<?= $this->siteLabels['FilterBy']; ?>"><?= $this->siteLabels['FilterBy']; ?></button>
+        <form class="filterForm borders" name="filterForm" action="/notifications/refreshHistory" method="post">
+            <fieldset class="filterDateWrapper">
+                <p class="selectDateText contentTextIcons">
+                    <legend><?= $this->siteLabels['SelectCompletionDates']; ?>:</legend>
+                </p>
+                <div class="formField contentTextIcons">
+                    <div class="formField">
+                        <label for="historyFilter_from"><?= $this->siteLabels['DateFrom']; ?>: </label>
+                        <div class="historyFilter_fromArea">
+                            <input type="text" id="historyFilter_from" name="filterFrom" placeholder="mm/dd/yyyy" />
+                             <div id="errorFromDate" aria-hidden="true"> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="formField contentTextIcons">
+                    <div class="formField">
+                        <label for="historyFilter_to"><?= $this->siteLabels['DateTo']; ?>: </label>
+                        <div class="historyFilter_toArea">
+                            <input type="hidden" id="bootlegHistoryFilter_to" name="bootlegFilterTo">
+                            <input type="text" id="historyFilter_to" name="filterTo" placeholder="mm/dd/yyyy" />
+                            <div id="errorTODate"  aria-hidden="true"> </div>
+                        </div>
+                    </div>   
+                </div>
+                <p class="formField clearFilterBtn">
+                    <a href="#" id="clearFilterDates" aria-label="<?= $this->siteLabels['ClearDates']; ?>"><?= $this->siteLabels['ClearDates']; ?></a>
+                </p>
+                <fieldset id="filterButtons"><legend></legend>
+                    <input type="hidden" name="filter" value="true" />
+                    <button type="submit" class="customButton"><?= $this->siteLabels['ApplyFilter']; ?></button>
+                </fieldset>
+            </fieldset>
+        </form>
+    </section>
+    <section id="historyWrapper" class="sortable">
+        <?= $this->historyListView; ?>
+    </section>
+        <? if($this->reviewsToggle == 'on' || $this->ratingsToggle == 'on'){ ?>
+        <div id="userReviewWrapper" class="reviewDialog"></div>
+        <? } ?>
+    <? } ?>    
+</div>
+
+

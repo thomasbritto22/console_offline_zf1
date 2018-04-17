@@ -1,0 +1,76 @@
+<?php
+$iconClass = array(
+		'doc'    => 'fa fa-file-o',
+		'email'  => 'fa fa-envelope-o',
+		'text'   => 'fa fa-file-text',
+		'url'    => 'fa fa-hand-o-up',
+		'phone'  => 'fa fa-phone',
+		'video'  => 'fa fa-file-movie-o',
+		);
+
+$protocol = array(
+		'email'  => 'mailto:',
+		'doc'	 => null,
+		'url'	 => null,
+		'phone'  => 'tel:',
+		'text'	 => null,
+		'video'  => null,
+		);
+
+?>
+<?php foreach($this->resources as $resource):?>
+<div class="resourceWrapper">
+	<div class="resourceItem <?php if("video" == $resource['type']):?>videoResource<?php endif;?> clearfix">
+		<div class="resourceIcon">
+			<i class="<?=$iconClass[$resource['type']];?> contentTextIcons" aria-hidden="true"></i>
+		</div>
+		<div class="resourceInfo">
+			<h3 class="font-size16 bold contentTextIcons borderBottomThin"><?=$resource['title']?></h3>
+			<?php if("video" == $resource['type']):?>
+				<p class="resourceVideo videoImg">
+					<img src="<?= $protocol[$resource['type']]. htmlspecialchars($resource['text']);?>">
+				</p>
+				<div class = "videoInfo">
+					<input class="videoText" type="hidden" value="<?= htmlspecialchars($resource['text']);?>">
+					<input class="videoTitle" type="hidden" value="<?= htmlspecialchars($resource['title']);?>">
+					<input class="videoPath" type="hidden" value="<?= htmlspecialchars(isset($resource['customfile']) ? $this->baseImgUrl.$resource['customfile']->path :'');?>">
+					<input class="videoThumbnail" type="hidden" value="<?= htmlspecialchars(isset($resource['thumbnail']) ? $this->baseImgUrl.$resource['thumbnail']->path :'');?>">
+				</div>
+			<?php endif;?>
+                        <?php if(!empty($resource['description'])){?>
+                            <p class="resourceDescription font-size16 contentTextIcons"><?=$resource['description']?></p>
+                        <?php }?>
+			<p class="resource">
+					<?php if("text" == $resource['type']):?>
+					<span class="secondaryTextIcons font-size16"><?= htmlspecialchars($resource['text']);?></span>
+					<?php elseif ("doc" == $resource['type']):
+					   $path = null;
+					   $ext = null;
+					   $path = pathinfo($resource['text']);
+
+					   //this is used to extract the extension when there is querystring variables passed
+					   $ext = explode('?', $path['extension'], 2);
+					   $file_name = htmlspecialchars(isset($resource['customfile']->title) && $resource['customfile']->title != '') ?  $resource['customfile']->title : (!empty($path['filename']) ? $path['filename'].'.'.$ext[0]:'');
+					?>
+                                        <a href="/resourcecenter/download?filepath=<?=  htmlspecialchars($resource['text']);?>&filename=<?=$file_name?>&type=<?=$ext[0]?>" target="_blank" class="secondaryTextIcons font-size16" >>><?=$file_name?></a>
+					<?php else:?>
+					<?php if("video" == $resource['type']):?>
+					<span class="secondaryTextIcons font-size16"><?= htmlspecialchars($resource['title']);?> Video:</span>
+					<span class = "videoInfo">
+						<input class="videoText" type="hidden" value="<?= htmlspecialchars($resource['text']);?>">
+						<input class="videoTitle" type="hidden" value="<?= htmlspecialchars($resource['title']);?>">
+						<input class="videoPath" type="hidden" value="<?= htmlspecialchars(isset($resource['customfile']) ? $this->baseImgUrl.$resource['customfile']->path :'');?>">
+						<input class="videoThumbnail" type="hidden" value="<?= htmlspecialchars(isset($resource['thumbnail']) ? $this->baseImgUrl.$resource['thumbnail']->path :'');?>">
+					</span>
+					<a class="secondaryTextIcons font-size16 videoImg videoLink">>><?= $this->baseImgUrl.'/custom_files/'. htmlspecialchars(isset($resource['customfile']) ? $resource['customfile']->title :'');?></a>
+					<?php elseif ("email" == $resource['type']):?>
+					<a href="<?= $protocol[$resource['type']]. htmlspecialchars($resource['text']);?>" class="emailLink secondaryTextIcons font-size16">>><?= htmlspecialchars($resource['text']);?></a>
+					<?php else:?>
+						<a href="<?= $protocol[$resource['type']]. htmlspecialchars($resource['text']);?>"  target="_blank" class="secondaryTextIcons font-size16">>><?= htmlspecialchars($resource['text']);?></a>
+					<?php endif;?>
+					<?php endif;?>
+			</p>
+		</div>
+	</div>
+</div>
+<?php endforeach;?>

@@ -1,0 +1,9 @@
+<div class="codeOfConduct">
+	<hgroup class="sectionTitle">
+		<h3><?= $this->siteLabels['CodeOfConduct']; ?></h3>
+	</hgroup>
+	<p><?= isset($this->codeOfConduct['text']) ? $this->codeOfConduct['text'] : ''; ?></p>
+	<?php if(isset($this->codeOfConduct['link'])) : ?>
+	<span class="viewCode"><a href="<?= $this->codeOfConduct['link']; ?>" target="_blank"><?= $this->siteLabels['ViewCodeOfConduct']; ?></a></span>
+	<?php endif; ?>
+</div>

@@ -1,0 +1,502 @@
+<html>
+<head>
+	<title>LRN Catalyst</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta id="viewport" name="viewport" content="initial-scale=1; user-scalable=1; minimum-scale=1; maximum-scale=1">
+	<link rel="stylesheet" type="text/css" href="/css/_core.css">
+	<link rel="stylesheet" type="text/css" href="timeline.css">
+	<script type="text/javascript" src="/js/jquery/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="/js/jquery/jquery.cookie.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/timeline.a8a9d8000b798895f6161cfba89aa641.default.css" />
+	
+<style>
+
+body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: 'Droid Sans', Helvetica, Arial, sans-serif;
+	font-size: 12px;
+}
+
+#container {
+	height: 95%;
+	margin: 0 auto;
+	min-width: 890px;
+	position: relative;
+	width: 90%;
+}
+
+#container #contentWrapper {
+	margin: 0 0 10px 0;
+}
+
+#container #contentWrapper .headSection {
+	margin: 0 auto;
+	width: 95%;
+}
+
+#container #contentWrapper .headSection .companyBranding {
+	width: 167px;
+	height: 57px;
+	margin: 20px 0 0 0;
+}
+
+#companyBrandingImg {
+	width: 167px;
+	height: 57px;
+	margin: 20px 0 0 0;
+}
+
+#container #contentWrapper .headSection .noteBy {
+	color: #e47910;
+	font-family: Arial, sans-serif;
+	font-size: 24px;
+	margin: 20px 0 24px 0;
+	padding: 0 20px;
+}
+
+#container #contentWrapper .leftSideContent {
+	display: inline-block;
+	height: 100%;
+	margin: 0 30px;
+	padding: 0 10px 0 10px;
+	width: 300px;
+}
+
+#container #contentWrapper .leftSideContent .courseImg {
+	width: 300px;
+	height: 145px;
+	background-size: 100% auto;
+	margin: 0 0 10px;
+}
+
+#courseImgImg {
+	width: 300px;
+	height: 145px;
+	background-size: 100% auto;
+	margin: 0 0 10px;
+}
+#container #contentWrapper .leftSideContent .courseTitle h3 {
+	color: #344b9f;
+	font-family: 'Droid Sans', sans-serif;
+	font-size: 15px;
+	font-weight: bold;
+	margin: 5px 0;
+	width: 55%;
+}
+
+#container #contentWrapper .leftSideContent .courseTitle p {
+	float: left;
+}
+
+#container #contentWrapper .leftSideContent .lrnLogo {
+	background: url(/images/icons/landing-page-lrn-logo-small.png) no-repeat top left;
+	height: 17px;
+	width: 68px;
+}
+
+#container #contentWrapper .leftSideContent .lrnSlogan {
+	background: url(/images/icons/landing-page-tagline.png) no-repeat top left;
+	height: 17px;
+	width: 190px;
+}
+
+#container #contentWrapper .leftSideContent .courseDescription {
+	margin: 10px 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#container #contentWrapper .leftSideContent .courseDescription p {
+	padding: 0 20px 0 0;
+}
+
+#container #contentWrapper .leftSideContent .links p {
+	visibility: hidden;
+}
+
+#container #contentWrapper .userInfo {
+	display: inline-block;
+	width: 57%;
+	vertical-align: top;
+}
+
+#container #contentWrapper .userInfo #twitterInfo {
+    border: 1px solid #DDD;
+    border-radius: 5px;
+    box-shadow: 0 0 15px -5px #000;
+    height: auto;
+    width: 90%;
+    position: relative;
+    overflow: auto;
+    padding: 10px 20px 10px 5px;
+}
+
+#container #contentWrapper .userInfo #twitterInfo .header #twitter_text {
+	color: #323333;
+	font-family: Verdana, sans-serif;
+	font-size: 16px;
+}
+
+#container #contentWrapper .userInfo #twitterInfo .header #snippet_text {
+	font-family: Georgia, serif;
+	font-size: 16px;
+}
+
+/** FOOTER STYLE **/
+footer {
+	border-top: 1px dotted #DDD;
+}
+
+footer p {
+	float: right;
+	padding: 10px 0;
+}
+
+footer .privacyStatement a {
+	color: #004b9a;
+	margin: 0 5px 0 5px;
+}
+
+</style>
+<style>
+
+/** CHANGED TWITTER STYLES **/
+
+.standalone-tweet .subject{
+    float:left;
+    width: 100%;
+}
+
+.standalone-tweet .subject .header .profile .profile {
+	float: left;
+}
+
+.standalone-tweet .subject .header .profile .p-name {
+	float: left;
+	margin: 0 5px 0 0;
+}
+
+.tweet .e-entry-content {
+	float: right;
+	width: 90%;
+}
+
+.tweet .e-entry-title {
+	white-space: pre-line;
+}
+
+.tweet .e-entry-title .dateline .date-tweet {
+	color: #929292;
+	font-family: Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+</style>
+<script>
+
+$(document).ready(function() {
+	$.ajax({
+		url: '/rest/getalltweetinfo' + location.search,
+		contentType: 'application/json',
+		success: function(data,textStatus,jqXHR) {
+			//convert json object into javascript object
+			var dataObj = typeof(data) === "string"  ? JSON.parse(data).dataObject : data.dataObject;
+			
+			//var userTweet = dataObj.name;
+			//var snippetTweet = dataObj.tweet;
+			//var bitlyUrl = dataObj.bitlyUrl;
+			var bitlyUrlId = dataObj.bitlyUrlId;
+			var curriculumId = dataObj.curriculumId;
+			var systemId = dataObj.systemId;
+			var userId = dataObj.userId;
+			var siteId = null;
+			var shareText = dataObj.shareText;
+			var userComment = '';
+			if(dataObj.userComment != null)
+			userComment = dataObj.userComment;
+			var componentSectionId = dataObj.componentSectionId;
+			var tweetId = dataObj.socialMediaId;
+			var createDate = dataObj.createDate;
+
+			var username = '';
+			
+			if(shareText != null) {
+				$('#twitter_text').html(': ' + userComment);
+				//shareText = shareText.replace(bitlyUrl,'');
+				if(shareText != ''){
+					shareText = '&quot;' + shareText + '&quot;';
+				} else {
+					shareText = '';
+				}
+				$('#snippet_text').html(shareText);
+				//$('#twitterInfo').html(shareText);
+			}
+			//$('#url').html(bitlyUrl);
+			//var url_link = $('#url-link').attr('href',bitlyUrl);
+			//url_link.attr('title',bitlyUrl);
+			//url_link.attr('data-expanded-url',bitlyUrl);
+			//get the sideId for site			
+			$.ajax({
+				url: '/rest/getsiteid',
+				contentType: 'application/json',
+				success: function(data,textStatus,jqXHR) {
+					//convert json object into javascript object
+					var dataObj = typeof(data) === "string"  ? JSON.parse(data) : data;
+					
+					siteId = dataObj.siteid;			
+					//get the user info
+					$.ajax({
+						url: '/rest/getuserinfo?userId=' + userId,
+						contentType: 'application/json',
+						success: function(data,textStatus,jqXHR) {
+							//convert json object into javascript object
+							var dataObj = typeof(data) === "string"  ? JSON.parse(data) : data;
+							
+							username = dataObj.firstName + ' ' + dataObj.lastName;
+							
+							//get the siteBranding for logo
+							$.ajax({
+								url: '/rest/getsitebranding?siteId=' + siteId,
+								contentType: 'application/json',
+								success: function(data,textStatus,jqXHR) {
+									//convert json object into javascript object
+									var dataObj = typeof(data) === "string"  ? JSON.parse(data) : data;
+									
+									var logoImg = dataObj.logo;
+									var logoImgUrl = location.protocol + "//" + location.hostname.replace("console", "lcec").replace('.dev3.','.qa7.') + "/" + logoImg;
+									$('#companyBrandingImg').attr("src", logoImgUrl).on('load',function(e){
+										var $this = $(this).parents('#contentWrapper');
+										$this.hide().css('visibility','visible');
+										$this.fadeIn(250);
+									});
+								}
+							});
+							
+							//get the courseImgUrl
+							$.ajax({
+								url: '/rest/getmodulepreview?curriculumId=' + curriculumId +"&systemId=" + systemId +"&userId=" + userId +"&siteId=" + siteId,
+								contentType: 'application/json',
+								success: function(data,textStatus,jqXHR) {
+									var dataObj = typeof(data) === "string"  ? JSON.parse(data) : data;
+									
+									var courseImgUrl = '',courseDescription= '',courseTitle='',courseImg = null;
+									if(dataObj != null){
+										
+										courseImg = dataObj.courseLookupDTO['courseImgURL'] || "/images/samples/defaultModuleImage.jpg";
+										
+										courseDescription = dataObj.courseLookupDTO['description'];
+										courseTitle = '<h3>' + dataObj.courseLookupDTO['courseShortName'] + '</h3>';
+										
+										$('.courseDescription').html(courseDescription);
+										$('.courseTitle').html(courseTitle);
+										courseImgUrl = location.protocol + "//" + ((dataObj.courseLookupDTO['courseImgURL'] == null) ? 
+												(location.hostname) : 
+												(location.hostname.replace('.dev3.','.qa7.').replace('-console.','-lcec.'))) + courseImg;
+//												(location.hostname.replace('.dev3.','.qa7.').replace('-console.','-lcec.course.'))) + courseImg;
+										$.ajax({
+											url: '/rest/getedgeauthcookie?path=' + encodeURIComponent(courseImgUrl),
+											contentType: 'application/json',
+											success: function(data,textStatus,jqXHR) {
+//												var dataObj = typeof(data) === "string" ? JSON.parse(data) : data;
+												//$.cookie('edge-auth',data.cookie,{
+												//	domain: '.lrn.com',
+												//	path: '/',
+												//	expires: 7
+												//});
+												var onload = function(){
+													var $this = $(this).parents('.leftSideContent');
+													$this.hide().css('visibility','visible');
+													$this.fadeIn(250);
+												};
+												$('#courseImgImg').attr("src", courseImgUrl).on('load',onload).on('error',onload);
+											}
+										});
+//										$('#courseImgImg').attr("src", courseImgUrl);
+									}
+								}
+							});
+						}
+					});
+				}
+			});
+			//get the twitter user access token
+ 			var oauth_token = '';
+			var oauth_token_secret = '';
+			var screen_name = '';
+			
+			$.ajax({
+				url: '/rest/getsocialmediauseraccesstoken?userId=' + userId,
+				contentType: 'application/json',
+				success: function(data,textStatus,jqXHR) {
+					//convert json object into javascript object
+					var dataObj = typeof(data) === "string"  ? JSON.parse(data) : data;
+
+					if(dataObj != 'null') {
+						var tokenArray = dataObj.value.split("&");
+						//get the oauth_token and oauth_token_secret from the tokenArray
+						for(var i=0,l=tokenArray.length; i<l; i++) {
+							var tokenValue = tokenArray[i].split("=");
+	 						
+							if(tokenValue[0] == 'oauth_token')
+								oauth_token = tokenValue[1];
+							if(tokenValue[0] == 'oauth_token_secret')
+								oauth_token_secret = tokenValue[1];
+							if(tokenValue[0] == 'screen_name')
+								screen_name = tokenValue[1];
+	 					}	 
+					}
+					
+					$('#username').html(screen_name);
+					$('.p-name').html(screen_name);
+					
+					$('#tweet-name').html(screen_name);
+					
+
+					
+					$('#twitterInfo > .root > blockquote > iframe').attr('src','https://platform.twitter.com/widgets/follow_button.html?screen_name='+screen_name);
+					$('.p-nickname').html('@<b>'+screen_name+'</b>');
+					
+					//$('.tco-display').html(bitlyUrl);
+					//$('.linktweet').attr('href',bitlyUrl);
+					
+					$('.reply-action').attr('href','https://twitter.com/intent/tweet?in_reply_to='+tweetId).attr('target','_blank');
+					$('.retweet-action').attr('href','https://twitter.com/intent/retweet?tweet_id='+tweetId).attr('target','_blank');
+					$('.favorite-action').attr('href','https://twitter.com/intent/favorite?tweet_id='+tweetId).attr('target','_blank');
+					
+					var twimg = function(data,textStatus,jqXHR) {
+						//check if our object is a string and convert it to an object w/ the built-in JSON object
+						var dataObj = typeof(data) === "string"  ? JSON.parse(data) : data;
+						
+						var profileImgUrl = '';
+						if(dataObj.user)
+								profileImgUrl = dataObj.user['profile_image_url'];
+
+						var avatarsrc = profileImgUrl; //data.user['profile_image_url'+(location.protocol === 'https:' ? '_https':'')];
+						var ran = false;
+						var onload = function(e){
+//							e.stopImmediatePropagation();
+
+							var $this = $(this).parents('#tweetStuff');
+							$this.hide();
+							$this.css('visibility','visible');
+							setTimeout(function(){
+								$this.fadeIn(250);
+								$('.avatar').attr('data-src-2x',avatarsrc.replace('_normal.','.'));
+							},1000);
+						};
+						$('.avatar').attr('src',avatarsrc.replace('http:',location.protocol)).on('load',onload).on('error',onload);
+					};
+					//get the social media log to get the tweetId
+					$.ajax({
+						url: '/rest/gettweetfromtwitter?tweetId=' + tweetId + "&oauth_token=" + oauth_token + "&oauth_token_secret=" + oauth_token_secret,
+						contentType: 'application/json',
+						success: twimg
+					});
+					
+				}
+				
+			});
+			
+			var date = new Date(createDate);
+			
+			var day = date.getDate();
+		    var month = date.getMonth() + 1;
+		    var year = date.getFullYear().toString().slice(2);
+			
+			var m_names = new Array("January", "February", "March", 
+							"April", "May", "June", "July", "August", "September", 
+							"October", "November", "December");
+					var curr_hour = date.getHours();
+					var a_p = "";
+					if (curr_hour < 12)
+					   {
+					   a_p = "AM";
+					   }
+					else
+					   {
+					   a_p = "PM";
+					   }
+					if (curr_hour == 0)
+					   {
+					   curr_hour = 12;
+					   }
+					if (curr_hour > 12)
+					   {
+					   curr_hour = curr_hour - 12;
+					   }
+			
+			var curr_min = date.getMinutes();
+			$('#date-tweet').html(date.getDate() + " " + m_names[date.getMonth()] + " " + date.getFullYear() + " " + curr_hour + " : " + curr_min + " " + a_p);	
+		}
+	});
+});
+
+</script>
+
+</head>
+<body>
+	<div id="container">
+		<div id="contentWrapper"  style="visibility:hidden">
+			<div class="headSection">
+				<div class="companyBranding">
+					<img src="" id="companyBrandingImg"/>
+				</div>
+				<hr>
+				<div class="noteBy">A shared snippet and note by <span id="username"></span></div>
+			</div>	
+			<div class="leftSideContent" style="visibility:hidden">
+				<div class="courseImg"><img src="" id="courseImgImg"/></div>
+				<div class="courseTitle">
+				</div>
+				<div class="courseDescription"></div>
+				<div class="links">
+					<a href="http://www.lrn.com" target="_blank" title="LRN"><div class="lrnLogo"></div></a>
+					<a href="http://www.lrn.com" target="_blank" title="LRN"><div class="lrnSlogan"></div></a>
+					<p><a href="#">Want to access to this content?</a></p>
+					<p><a href="#">Learn more.</a></p>
+					<p class="previewBtn"><a href="#">Preview this course</a></p>
+				</div>
+			</div>
+			<div class="userInfo" id="tweetStuff" style="visibility:hidden">
+				<div id="twitterInfo">
+					<div class="root standalone-tweet ltr twitter-tweet not-touch" dir="ltr" data-dt-months="Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec" data-dt-full="%{hours12}:%{minutes} %{amPm} - %{day} %{month} %{year}" data-dt-am="AM" data-dt-pm="PM" id="twitter-widget-0" lang="en" data-twitter-event-id="0">
+  						<blockquote class="tweet subject expanded h-entry" data-tweet-id="" cite="">
+    						<div class="header h-card p-author">
+  								<a class="u-url profile" href="" aria-label="">
+    								<img class="u-photo avatar" alt="" src="" data-src-2x="" width="48" height="48">
+    								<span class="full-name">
+      									<span id="tweet-name" class="p-name customisable-highlight"></span>
+    								</span>
+  								</a>
+  								<p id="twitter_text"></p>
+							</div>
+							<div class="e-entry-content">
+								<p class="e-entry-title">
+									<span id="snippet_text"></span>
+									<a href="" rel="nofollow" dir="ltr" data-expanded-url="" class="link customisable linktweet" target="_blank" title="">
+										<span class="tco-hidden"></span>
+										<span class="tco-display"></span>
+										<span class="tco-hidden"></span>
+										<span class="tco-ellipsis">
+											<span class="tco-hidden">&nbsp;</span>
+										</span>
+									</a>
+								</p>
+      							<div class="dateline">
+  									<time id="date-tweet" pubdate="" class="dt-updated" datetime="" title=""></time>
+								</div>
+							</div>
+  						</blockquote>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer>
+			<p class="privacyStatement"><a href="http://www.lrn.com/#showprivacylink" target="_blank" title="LRN Privacy Statement">Privacy Statement</a>&#149;<a href="http://www.lrn.com/#showtermsandconditionslink" target="_blank" title="LRN Terms and Conditions">Terms and Conditions</a></p>
+		</footer>
+	</div>
+</body>
+</html>

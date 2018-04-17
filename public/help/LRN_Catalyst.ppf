@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ppfml version="2.00" project="LRN Catalyst" type="1">
+ <windowlist>
+  <window name="NewWindow" x="5%" y="5%" width="90%" height="90%" viewtype="doublepane" workspacestyle="DEFAULT" caption="NewWindow" toolbar="off" locationbar="off" menu="off" resizable="yes" statusbar="off" usecurrentwindowsettings="yes" skin="WebHelp_Skin_Files\Default\Default.skn">
+   <elements><element name="BrowseSequence" Present="no" /><element name="SearchInput" Present="yes" /><element name="SkinInstruction" value="whskin_ep_ins.ski" />
+   </elements>
+   <agents defaultagent="toc">
+    <agent>toc
+    </agent>
+    <agent>nls
+    </agent>
+   </agents>
+  </window>
+ </windowlist>
+ <contextmap>
+ </contextmap>
+ <topiclist defaulttopic="Preface.htm">
+  <topic>Share_a_snippet_from_a_course.htm
+  </topic>
+  <topic>Change_your_password.htm
+  </topic>
+  <topic>Take_End-of-Course_survey.htm
+  </topic>
+  <topic>Certification_Variances.htm
+  </topic>
+  <topic>Size_the_ribbon.htm
+  </topic>
+  <topic>Take_the_next_module_in_a_chain.htm
+  </topic>
+  <topic>LRN_Catalyst_Administration.htm
+  </topic>
+  <topic>Determine_user_access.htm
+  </topic>
+  <topic>View_course_ratings_and_reviews.htm
+  </topic>
+  <topic>Correct_certification_variances.htm
+  </topic>
+  <topic>Take_a_course.htm
+  </topic>
+  <topic>Navigate_the_My_Queue_screen.htm
+  </topic>
+  <topic>Review_a_module.htm
+  </topic>
+  <topic>Issues.htm
+  </topic>
+  <topic>Desktop-Only_Administrative_Functions.htm
+  </topic>
+  <topic>Rate_and_review_a_course.htm
+  </topic>
+  <topic>Review_certification_variances.htm
+  </topic>
+  <topic>System_Requirements.htm
+  </topic>
+  <topic>Access_LCEC_administrative_functions.htm
+  </topic>
+  <topic>Reset_a_forgotten_password.htm
+  </topic>
+  <topic>Icons.htm
+  </topic>
+  <topic>Common_User_Tasks.htm
+  </topic>
+  <topic>Print_a_list_of_completed_courses.htm
+  </topic>
+  <topic>Access_RA+M.htm
+  </topic>
+  <topic>Support_and_System_Maintenance.htm
+  </topic>
+  <topic>Access_AIM_and_RA+M_Administrative_Functions.htm
+  </topic>
+  <topic>Print_your_course_completion_certificate.htm
+  </topic>
+  <topic>Export_modules_in_SCORM_or_PDF_format.htm
+  </topic>
+  <topic>Change_your_view.htm
+  </topic>
+  <topic>View_your_completed_courses.htm
+  </topic>
+  <topic>Add_your_branding_to_the_LRN_Compass.htm
+  </topic>
+  <topic>Stop_a_module_before_completing_it.htm
+  </topic>
+  <topic>Access_AIM.htm
+  </topic>
+  <topic>Preface.htm
+  </topic>
+  <topic>Sign_in_to_LRN_Catalyst.htm
+  </topic>
+ </topiclist>
+ <projectincludes>
+ </projectincludes>
+ <filenamemap>
+  <filenameentry moniker="wh_languagetype">
+   <filename>en_US
+   </filename>
+  </filenameentry>
+  <filenameentry moniker="toc">
+   <filename>LRN_Catalyst.hhc
+   </filename>
+  </filenameentry>
+  <filenameentry moniker="ndx">
+   <filename>LRN_Catalyst.hhk
+   </filename>
+  </filenameentry>
+  <filenameentry moniker="nls">
+   <filename>LRN_Catalyst.nla
+   </filename>
+  </filenameentry>
+  <filenameentry moniker="gls">
+   <filename>LRN_Catalyst.glo
+   </filename>
+  </filenameentry>
+  <filenameentry moniker="wh_lngfile">
+   <filename>LRN_Catalyst.lng
+   </filename>
+  </filenameentry>
+  <filenameentry moniker="wh_stoplist">
+   <filename>LRN_Catalyst.stp
+   </filename>
+  </filenameentry>
+  <filenameentry moniker="hiderankcolumn">
+   <filename>1
+   </filename>
+  </filenameentry>
+  <filenameentry moniker="enabletotalnumberofsearchresults">
+   <filename>1
+   </filename>
+  </filenameentry>
+  <filenameentry moniker="giveandsearch">
+   <filename>0
+   </filename>
+  </filenameentry>
+  <filenameentry moniker="enableandsearch">
+   <filename>0
+   </filename>
+  </filenameentry>
+ </filenamemap>
+</ppfml>

@@ -1,0 +1,54 @@
+<div id="selfRegWrapper">
+    <form name="newUserForm" action="saveuser" method="post" autocomplete="off">
+	<fieldset>
+		<div class="selfRegHeader clearfix">
+			<h4 class="contentTextIcons"><?= $this->siteLabels['NewUserReg']; ?></h4>
+			<a class="trusteWrap" href="http://www.truste.com/consumer-privacy/trusted-directory/"
+				target="_blank">
+				<img src="<?php echo CDN_IMG_URL ?>/images/branding/TRUSTeLogo.png" title="TRUSTe" />  
+			</a>
+		</div>
+		<p class="userInstructions contentTextIcons">
+			<?php if($this->regTopMsg != ''){ ?>
+			<?= $this->regTopMsg; ?>
+			<?php } else 
+				echo $this->siteInstr['SelfRegMessage'];
+			?>
+		</p>
+		
+		<?php foreach ($this->userLabel as $value) { ?>
+			<?= $this->authSelfRegistration($value,true,$this->userLang,$this->siteLabels['Pleaseselect']); ?>
+		<?php } ?>
+		<?php if($this->regCaptcha):?>
+		
+			<div class="userInfoRow" id="Grprecaptcha_widget_div">
+				<label for="recaptcha_widget_div" class="contentTextIcons">
+				*Verification: </label>
+				<?php
+				require_once ('Recaptcha/recaptchalib.php');
+				$publickey = "6LcVUfQSAAAAAE7qPOlXNrUbF0MQO8J6R8oXdLkb";
+				echo recaptcha_get_html ( $publickey,null,true, $this->siteInstr['Entertextfromimage'] );
+				?>				
+			</div>
+		
+		<?php endif;?>
+		<p class="userInstructions">
+			<?php if($this->regBotMsg != ''): ?>
+			<?= $this->regBotMsg; ?>
+			<?php endif; ?>
+		</p>		
+				
+	</fieldset>
+				
+	<div class="updateButtons">
+		<fieldset>
+			<input type="button" id="saveSelfRegist" class="customButton button" value="<?= $this->siteLabels['register']; ?>"/>
+			<input type="button" id="clearSelfRegist" class="customSecondaryBtn" value="<?= $this->siteLabels['clear']; ?>" onClick="window.location.reload();"/>
+			<input type="button" id="cancelSelfRegist" class="customSecondaryBtn" value="<?= $this->siteLabels['Cancel']; ?>"/>
+			<input type="hidden" id="hasErrors" value="No"/>
+			<input type="hidden" id="validateCap" value="Yes"/>
+			<input type="hidden" id="activeSubmit" value="No"/>
+		</fieldset>
+	</div>
+	</form>
+</div>

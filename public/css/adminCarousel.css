@@ -1,0 +1,9 @@
+.adminSection .carouselItem {
+    margin: 0 0 0 10px;
+    padding: 5px 5px 5px 20px;
+    border: 1px solid #000;
+}
+
+.adminSection .addSlide {
+	margin-left: 20px;
+}

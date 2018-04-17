@@ -1,0 +1,65 @@
+.sectionTitle {
+	background: #555;
+	height: 22px;
+	margin: 0 0 10px 0;
+	padding: 5px 0 0 10px;
+}
+
+.resourceSection .email {
+	background: url(/images/sprites/resource-ctr-sprite.png) no-repeat 0 -45px;
+	height: 35px;
+	padding: 0 0 0 40px;
+	margin: 10px 10px;
+	font-size: 15px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight: normal;
+} 
+
+.resourceSection .email a {
+	text-decoration: none;
+	color: #6A7796;
+}
+
+.resourceSection .email a:hover {
+	text-decoration: underline;
+}
+
+.resourceSection .phone {
+	background: url(/images/sprites/resource-ctr-sprite.png) no-repeat 0 -5px;
+	height: 35px;
+	padding: 0 0 0 40px;
+	margin: 10px 10px;
+	font-size: 15px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight: normal;
+}
+
+.resourceSection .phone span {
+	color: #6A7796;
+}
+
+.resourceSection .link {
+	background: url(/images/sprites/resource-ctr-sprite.png) no-repeat 0 -85px;
+	height: 35px;
+	margin: 10px 10px;
+	padding: 0 0 0 40px;
+	font-size: 15px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight: normal;
+}
+
+.resourceSection .link a {
+	text-decoration: none;
+	color: #6A7796;
+}
+
+.resourceSection .link a:hover {
+	text-decoration: underline;
+}
+
+
+
+
+ 
+
+

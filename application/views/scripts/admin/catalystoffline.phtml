@@ -1,0 +1,161 @@
+<?php $this->headScript()->captureStart() ?>
+var url = '<?= str_replace('<site>-console', "eucatalystoffline", CATALYST_REST_URL) ?>';
+<!--var settingData = <?php //json_encode(array('key' => 'getSetting', 'siteName' => $this->company));      ?>;-->
+var company = "<?= $this->company; ?>";
+var siteId = "<?= $this->siteId; ?>";
+<?php $this->headScript()->captureEnd() ?>
+<hgroup class="adminHeader" id="vcHeader">
+    <h2></h2>
+</hgroup>
+<div id="confirmModal" class="hidden ui-dialog-content ui-widget-content contentBgColor contentTextIcons ui-corner-all" scrolltop="0" scrollleft="0" style="display: none; width: auto; min-height: 0px; height: auto;">    
+    <p class="pbLabel headerSection">Don&#39;t forget to save</p>
+    <p class="messageModalText">    
+        <span class="messageModalImg">You are about to navigate away without saving your changes. You must save your changes here or you will lose them. Click the Save button to save changes or the Cancel button to discard any changes on this tab that you have made since your last save.</span>
+    </p>
+</div>
+<div id="adminAccordion">
+    <div id="tabs_login" >
+        <ul >
+            <li  class="gradient"><a href="#home"  data-id="home">Setup</a></li>
+            <li  class="gradient"><a href="#profile"  data-id="profile">Sync status</a></li>
+        </ul> 
+        <!-- Tab panes -->
+        <div id="lang_data" class="adminContentWrapper">
+            <div  id="home">
+                <section class="adminSection">
+                        <div class="adminSectionHeader">
+                            <span ></span>
+                            <h3 class="content1">Download application</h3>
+                        </div>
+                        <div class="adminSectionContent">
+                    <form name="accCodeForm" action="/api/virtual-catalyst/setting" method="post" class="clearfix brandingsection">
+                            <p class="pbInstructions hideErrorMsg" id="accessResponse"></p>
+                            <p class="pbInstructions">Set the access code for administrators to view Sync Manager in the Catalyst Offline application.</p>
+                            <div class="headerBgSection">
+                                <p class="pbLabel headerSection">Access code</p>
+                                        <!--textarea class="form-control" rows="2" maxlength="100"
+                                            name="txtAccessCode" id="txtAccessCode"
+                                            placeholder="Type in your access code here" data-length="100"
+                                            data-maxLength="100" oldtext="" type="text">
+                                            
+                                        </textarea-->
+                                <input type="text" class="form-control" placeholder="Type in your access code here" value="" name="txtAccessCode" id="txtAccessCode" oldtext="" maxlength="100" autocomplete="off"/>
+                                <input type="hidden" name="accCodeMsgErr" id="accCodeMsgErr" value="No" />
+                                <p id="errorAccessText" class="hideErrorMsg"></p>
+                            </div>
+                            <div class="headerUpdateButtons">
+                                <button id="btnAccessCodeSubmit" type="submit" class="adminFormSubmit adminBlueBtn gradient disabled" disabled="disabled">Save</button>
+                                <button class="cancelLink disabled" data-id="headline" id="btnAccessCodeReset" disabled="disabled">Cancel</button>
+                            </div>
+                    </form>
+                        <!--                    <p class="pbInstructions">Click to download the Virtual Catalyst application.</p>-->
+                            <div class="downloadBtnWrapper">
+                                <p>Click to download the Catalyst Offline application.</p>
+                                <div id="divFileDownload" class="ie8BtnInactive"></div>
+                                <button type="button" class="gradient adminBlueBtn disabled" disabled="disabled" id="btnFileDownload">Download</button><!--<a href="javascript:void(0);" style="text-decoration:none;color:black;"></a>-->
+                            </div>
+                        </div>
+                </section>
+                <section class="adminSection">
+                    <form name="emailForm" action="/api/virtual-catalyst/setting" method="post" class="clearfix brandingsection">
+                        <div class="adminSectionHeader">
+                            <span ></span>
+                            <h3 class="content2">Sync notification e-mail</h3>
+                        </div>
+                        <div class="adminSectionContent">
+                            <p class="pbInstructions hideErrorMsg" id="accessResponse2"></p>
+                            <p class="pbInstructions">A notification e-mail will be sent to the e-mail address(es) below whenever module completions are synced in Catalyst Offline.</p>
+                            <div class="headerBgSection">
+                                <p class="pbLabel headerSection">Administrator e-mail address(es) <span class="charLimit">(Separate each e-mail address with a comma.)</span></p>
+                                <div class="inputEmail">
+<!--                                    <input type="email" class="form-control" id="txtNotificationEmail" name="txtNotificationEmail" placeholder="Enter e-mail address(es)" value="" oldtext="" autocomplete="off">-->
+                                        <textarea class="form-control" rows="5" maxlength="1000"
+                                            name="txtNotificationEmail" id="txtNotificationEmail"
+                                            placeholder="Enter e-mail address(es)" data-length="999"
+                                            data-maxLength="1000" oldtext="" type="email">
+                                            
+                                        </textarea>
+                                    <input type="hidden" name="emailMsgErr" id="emailMsgErr" value="No" />
+                                </div>
+                                <p class="hideErrorMsg" id="errorMsgNotificationEmail"></p>
+                            </div>
+                            <div class="updateButtons">
+                                <button id="btnNotifyEmailSubmit" type="submit" class="adminFormSubmit adminBlueBtn gradient disabled" disabled="disabled">Save</button>
+                                <button class="cancelLink disabled" data-id="btnNotifyEmailSubmitReset" id="btnNotifyEmailSubmitReset" disabled="disabled">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+                <section class="adminSection">
+                    <form name="vc_auto_user_createForm"
+                        action="/admin/setsitesettingslist" method="post">
+                        <div class="adminSectionHeader noExpand">
+                            <h3>Automatically add new users on sync</h3>
+                            <fieldset>
+                                <p class="formField">
+                                    <input type="checkbox" id="vc_auto_user_create"
+                                        name="vc_auto_user_create" class="slideToggle"
+                                        show-label="ON" hide-label="OFF"
+                                        <?= $this->vc_auto_user_create; ?> /> 
+                                    <input type="hidden" name="adminAction"
+                                        value="vc_auto_user_create" />
+                            <span class="hidden">
+                                <button type="submit" id="vc_auto_user_create_submit" class="adminFormSubmit adminBlueBtn gradient">Automatically add new user on Sync</button>
+                            </span>
+                                </p>
+                            </fieldset>
+                        </div>
+                    </form>
+                </section>
+                <div class="updateBtns" style="display: block;">
+                    <button type="submit" id="saveAll" class="adminBlueBtn gradient disabled" disabled="disabled">Save all</button>
+                    <button disabled="disabled" id="cancelAll"  class="cancelAllLink adminCancelBtn disabled">Cancel</button>
+                </div>
+            </div>
+            <div id="profile" class="content">
+                <!--Data Table part will come here-->
+                <div id="dynamic" class="clearfix">
+                <div class="contentTextIcons entriesLength">
+                    <label>Show</label>
+                    <select id="entries"  aria-controls="entries">
+                        <option>10</option>
+                        <option>20</option>
+                        <option>30</option>
+                        <option>40</option>
+                        <option>50</option>
+                    </select>
+                    <label>entries</label>
+                </div>
+                <table id="vcAdminTable" class="statusUpdate syncedError" width="100%" style="margin: 20px auto;">
+                    <thead class="secondaryBgColor">
+                        <tr>
+                            <th style="width:20% !important;"><div class="heading">Sync date</div></th>
+                            <th style="width:30% !important;"><div class="heading"># Completions synced</div></th>
+                            <th style="width:30% !important;"><div class="heading">Notification e-mail sent</div></th>
+                            <th style="width:20% !important;"><div class="heading">Synced by</div></th>
+                        </tr>
+                    </thead>
+                </table>
+
+
+            </div>
+            </div>
+            <input type="hidden" id="selTab" value="home"/>
+            <input type="hidden" id="selTabId" value="ui-id-2"/>
+            <input type="hidden" id="selTabBfr" value="home"/>
+            <input type="hidden" id="selTabBfrId" value="ui-id-2"/>
+            <input type="hidden" id="cancelAllClick" value="No"/>
+        </div>
+    </div>
+    <input type="hidden" name="slideVal" id="slideVal" value="NotSet">
+    <input type="hidden" name="initialLoad" id="initialLoad" value="Yes">
+    <input type="hidden" name="videoFile" id="videoFile" value="NotSet">
+    <input type="hidden" name="accordianOpen" id="accordianOpen" value="0">
+    <input type="hidden" name="btnsCheck" id="btnsCheck" value="Yes">
+    <input type="hidden" name="saveAllCheck" id="saveAllCheck" value="No">
+    <input type="hidden" name="cancelAllCheck" id="cancelAllCheck" value="No">
+    <input type="hidden" name="afterClose" id="afterClose" value="No">
+    <input type="hidden" name="vcSettings" id="vcSettings" value="Yes">
+</div>
+<div id="userSaveSelection"></div>
+<div id="userSaveSelectionPad"></div>

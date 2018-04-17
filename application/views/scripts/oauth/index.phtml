@@ -1,0 +1,23 @@
+<style>
+	html .welcome > #container {
+		min-width: 100% !important;
+	}
+</style>
+<div id="shareWrapper" class="middle">
+    <div id="shareFormWrapper" class="secondaryBgColor">
+        <form id="authLogin" name="authLogin" method="post" class="clearfix contentBgColor" action="/oauth/authenticate">
+            <h3 class="contentTextIcons borderBottomThin"><?= $this->siteLabels['Share']; ?></h3>
+            <fieldset id="formFieldset">
+                <p class="<? if(isset($this->errMsg)){ echo "errorMessage"; } else if(isset($this->sysMsg)){ echo "systemMessage"; } ?>"><span></span><? if(isset($this->errMsg)){ echo $this->errMsg; } else if(isset($this->sysMsg)){ echo $this->sysMsg; }?></p>
+                <p class="formField contentTextIcons">
+                    <label for="tweet">Tweet</label>
+                <textarea id="user_msg" class="<? if(isset($this->errMsg)) echo "errorField" ?>" name="user_msg" rows="5" placeholder="<?= $this->siteLabels['YourCommentsHere']; ?>..."  maxlength="880"></textarea>
+                <textarea id="tweet" class="<? if(isset($this->errMsg)) echo "errorField" ?>" readonly="readonly" name="tweet" rows="5" ><? if(isset($this->tweetText)) echo $this->tweetText; ?></textarea>
+                </p>
+            </fieldset>
+            <div class="loginBtns share clearfix">
+                <p class="loginBtn"><input type="submit" id="tweetSubmit" class="button customButton" value="<?= $this->siteLabels['Tweet']; ?>" /></p>
+            </div>
+        </form>
+    </div>
+</div>

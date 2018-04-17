@@ -1,0 +1,87 @@
+<hgroup class="adminHeader">
+	<h2>Library manager</h2>
+</hgroup>
+<div id="categorySection" class="ui-corner-all" style="border: none;">
+	<div id="fileLibrary" class="ui-dialog-content ui-widget-content contentBgColor ui-tabs ui-widget ui-corner-all">
+	    <ul class="fileToolNav ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+	        <li><a id="tab-upload" href="#uploadView">Upload</a></li>
+	        <li><a id="tab-libraryload" href="#library">Library</a></li>
+	    </ul>
+	    <div id="tabCurtain" class="hidden"></div>
+	    <div id="uploadView">
+	        <form id="fileupload" action="/files/upload" method="POST" enctype="multipart/form-data">
+	            <noscript>You must have JavaScript enabled to use this feature.</noscript>
+	            <div class="fileupload-buttonbar">
+                    <span class="button fileinput-button fileUploadBtn gradient">
+                        <span>Browse files</span>
+                        <input type="file" name="files[]" multiple="multiple" />
+                    </span>
+                    <button type="submit" class="fileupload-start disabled fileUploadBtn gradient" disabled="disabled">Start upload</button>
+                    <button type="reset" class="fileupload-cancel cancel disabled fileUploadBtn gradient" disabled="disabled"><span>Cancel upload</span></button>
+		            <div class="uploadRequirements">
+	                    <p>Allowed file types: jpg, jpeg, gif, png, mp4, ogg.<span> 50 MB per file.</span></p>
+	                </div>
+	                <div class="uploadStatus">
+	                    <p class="uploadLoading"></p>
+		                <div class="fileupload-progress fade">
+		                    <div class="progress progress-success progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+		                        <div class="bar" style="width:0%;"></div>
+		                    </div>
+		                    <div class="progress-extended">&nbsp;</div>
+		                </div>
+		            </div>
+	                <p class="selectAllBar">
+	                    <label for="selectAll">Select all:</label>
+	                    <input type="checkbox" class="toggle" name="selectAll" />
+	                    <a class="delete" href="#">Delete selected</a>
+	                </p>
+	            </div>
+	            <section class="files"></section>
+	        </form>
+	    </div>
+	    <div id="library">
+	       <div id="dynamic" class="clearfix"></div>
+	    </div>
+	    <input type="hidden" name="filetype" id="filetype" value="all">
+	    <div id="fileFilter" style="float:right">
+	       <span id="allFile"><a href="#" class="filefilter" data-type="">All</a>(<span class="number">0</span>)</span>
+	       <span id="doc"><a href="#" class="filefilter" data-type="doc">Documents</a>(<span class="number">0</span>)</span>
+	       <span id="image"><a href="#" class="filefilter" data-type="image">Images</a>(<span class="number">0</span>)</span>
+	       <span id="video"><a href="#" class="filefilter" data-type="video">Videos</a>(<span class="number">0</span>)</span>
+	    </div>
+	</div>
+
+	<!-- The template to display files available for upload -->
+	<!-- <button class="link fileupload-start">Upload</button> -->
+	<!-- DO NOT REMOVE OR JS ERROR WILL OCCUR -->
+	<script id="template-upload" type="text/x-tmpl">
+	{% for (var i=0, file; file=o.files[i]; i++) { %}
+	    <div class="uploadQueue fade ui-corner-all">
+	        <input type="checkbox" name="delete" class="delete" value="1">
+	        <div class="preview"><span class="fade"></span></div>
+	        <div class="info">
+	            <h4 title="{%=file.name%}">
+					{% if (file.name.length > 20) { %}
+	                	{%=file.name.substring(0,10)%}...{%=file.name.substring(file.name.lastIndexOf('.')-10)%}
+					{% } else { %}
+						{%=file.name%}
+					{% } %}
+	            </h4>
+	            <span class="size">{%=o.formatFileSize(file.size)%}</span>
+	            {% if (file.error) { %}
+	                <div class="error ui-corner-all">
+	                    <span class="fa fa-exclamation-triangle"></span>
+	                    {%#file.error%}
+	                </div>
+	            {% } %}
+	        </div>
+	        <div class="controls" >
+	        {% if (!i) { %}
+	            <button class="link fileupload-cancel" title="Remove"><i class="fa fa-times"></i></button>
+	            <button class="link fileupload-start" style="display:none">Upload</button>
+	        {% } %}
+	        </div>
+	    </div>
+	{% } %}
+	</script>
+</div>

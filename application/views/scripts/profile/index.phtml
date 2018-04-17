@@ -1,0 +1,49 @@
+<?php
+// set up an easy way to check that the site is internationalized.
+$isValid_profileColumn = ($this->siteConfigs['ProfileColumn'] == 'Language');
+$isValid_profileColumnDefault = !empty($this->siteConfigs['ProfileColumnDefault']);
+$isValid_defaultLanguage = !empty($this->siteConfigs['DefaultLanguage']);
+
+$j = 0;
+foreach($this->allFields as $field){
+	if($field->propertyName == 'firstName' || $field->propertyName == 'lastName'
+		|| $field->propertyName == 'middleName' || $field->propertyName =='username'
+		|| $field->propertyName == 'language' || $field->propertyName == 'email') {
+	    	    $j++;
+	}
+}
+?>
+<section class="myProfile" id="slide_1">
+	<div class="profileInfo borderBottomThin"><?php //print_r($this->allFields);?>
+		<h3 class="contentTitles"><?= $this->user->firstName . ' ' .$this->user->middleName. ' ' . $this->user->lastName; ?></h3>
+		<p class="contentTextIcons"><span class="username"><?= $this->userBasicFields['Login_name']; ?>:</span><span class="profileValue"><?= $this->user->username ?></span></p>
+		<? if(isset($this->user->email)){ ?>
+		<p class="contentTextIcons"><span class="email"><?= $this->userBasicFields['Email']; ?>:</span><span class="profileValue"><?= $this->user->email; ?></span></p>
+		<? } if($isValid_profileColumn && $isValid_profileColumnDefault && $isValid_defaultLanguage){?>
+		<p class="contentTextIcons"><span class="language"><?= isset($this->userBasicFields['Language']) ? $this->userBasicFields['Language']:''; ?>:</span><span class="profileValue"><?= isset($this->userLanguage) && $this->userLanguage!=''? $this->userLanguage : '';//$this->langMap[$this->user->language]; ?></span></p>
+		<?php } ?>
+	</div>
+	<?php if(count($this->allFields) > $j) {?>
+	<div class="profileDetails">
+		<p class="detailsTitle contentTitles bold"><?= $this->siteLabels['ProfileDetails']; ?>:</p>
+		<div class="theDetails secondaryBgColor">
+			<?php
+    	 	$i = 1;
+    	 	foreach($this->allFields as $field){//print_r($field);
+				if($field->propertyName != 'firstName' && $field->propertyName != 'lastName'
+				 && $field->propertyName != 'middleName' && $field->propertyName !='username'
+					&& $field->propertyName != 'language' && $field->propertyName != 'email') {?>
+		    	    <p>
+		    	    	<span class="titles contentTextIcons"><?=isset($field->fieldLabel)? htmlentities($field->fieldLabel):'';?>:</span>
+                                <span class="values contentTextIcons"><?=isset($field->displayValue) ? $this->xssSanitize($field->displayValue) : '';?></span>
+		    	    </p>
+		        		<?php if($i%3 == 0){?>
+		        		<?php
+		       			}
+		        	$i++;
+				}
+			}?>
+		</div>
+	</div>
+	<?php }?>
+</section>

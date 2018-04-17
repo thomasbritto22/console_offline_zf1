@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Catalyst / AIM Integration</title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/_aim_core.css">
+</head>
+<body>
+	<nav>
+		<ul>
+			<li class="userName">Welcome, Deepak Crowley</li>
+			<li><a href="#">Admin Tools</a></li>
+			<li><a href="#">My Page</a></li>
+			<li><a href="#">My Profile</a></li>
+			<li><a href="#">Help</a></li>
+			<li><a href="#">Sign Out</a></li>
+		</ul>
+	</nav>
+	<div class="banner">
+		<img src="images/banner.png" alt="AIM Banner" >
+	</div>
+	<div id="container">
+		<div class="contentWrapper">
+			<h3>Question Manager
+				<button type="button" class="mainBtn createQuestion">Create Question</button>
+			</h3>
+			<div class="questionManager">
+				<form>
+					<fieldset>
+						<p class="findQuestion">
+							<label for="findQuestions" class="label">Find Questions Where</label><br>
+							<select name="findQuestions">
+								<option value="questionText">Question Text</option>
+							</select>
+						</p>
+						<p class="qContains">
+							<label for="questionContains" class="label">Contains...</label><br>
+							<input type="text" name="questionContains">
+						</p>		
+					</fieldset>
+				</form>
+				<form>
+					<label for="filterByCategory" class="label">Filter By Knowledge Category</label>
+					<fieldset>
+						<p class="questionCategory">
+							<input type="checkbox" name="category" value="All">All (mapped to any category or not mapped to a category)<br>
+							<input type="checkbox" name="category" value="Not Mapped">Not mapped to a category<br>
+							<input type="checkbox" name="category" value="Any category">Any category<br>
+						</p>	
+					</fieldset>
+				</form>
+				<button type="button" class="mainBtn">Search Questions</button>
+				<button type="button" class="mainBtn">Clear Search</button>
+				<section class="questionSection">
+					<h3><span class="arrowIcon"></span>Questions</h3>
+					<div class="questionWrap">
+						<p class="resultsFound">100 results found</p>
+						<ul class="pagination">
+							<li><a href="#">Prev</a></li>
+							<li><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">Next</a></li>
+						</ul>
+						<ul class="questionHdr">
+							<li class="column1"><a href id="questionText">Question Text</a><span class="arrowIcon"></span></li>
+							<li class="column2"><a href id="questionId">Question ID</a><span class="arrowIcon"></span></li>
+							<li class="column3"><a href id="lastModified">Last Modified</a><span class="arrowIcon"></span></li>
+							<li class="column4"><a href id="createdBy">Created By</a><span class="arrowIcon"></span></li>
+						</ul>
+						<div class="questionList">
+							<article><p class="qText">I, or employees I manage, inspect, maintain, or repair electrical circuits greater than 50 volts.</p><p class="qId">1</p><p class="lModified">Mar 19, 2013</p><p class="cBy">LRN</p></article>
+							<article><p class="qText">Are you or your employees involved in the hiring process, either in interviewing candidates or in making hiring decisions?</p><p class="qId">2</p><p class="lModified">Mar 1, 2013</p><p class="cBy">LRN</p></article>
+							<article><p class="qText">Do you deal with import or export of goods or technology, either company products or supplies?</p><p class="qId">4</p><p class="lModified">May 5, 2013</p><p class="cBy">LRN</p></article>
+							<article><p class="qText">Are you paid a salary regardless of time worked, or are you paid on an hourly basis for time worked?</p><p class="qId">6</p><p class="lModified">Mar 20, 2013</p><p class="cBy">LRN</p></article>
+						</div>
+					</div>
+					<div class="cf"></div>
+				</section>
+			</div>
+			<footer>
+				<a href="http://lrn.com" target="_blank"><img src="images/powered-by-lrn.gif" class="fFloat" alt="Powered by LRN" ></a>
+				<p class="fFloat"> LRN Copyright | <a href="http://lrn.com/privacy.html" target="_blank">LRN Privacy Statement</a></p>
+				<a href="https://privacy-policy.truste.com/click-with-confidence/wps/em/www.lrn.com/seal_m" target="c"><img src="images/trust-e.png" class="fFloat" alt="TRUSTe Certified Privacy" ></a>
+			</footer>
+		</div>
+	</div>
+</body>
+</html>

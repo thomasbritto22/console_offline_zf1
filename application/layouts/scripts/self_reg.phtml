@@ -1,0 +1,34 @@
+<?= $this->doctype(); ?>
+<html>
+<head>
+	<?= $this->headTitle(); ?>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta id="viewport" name="viewport" content="initial-scale=1; user-scalable=1; minimum-scale=1; maximum-scale=1" />
+	<link rel="shortcut icon" type="image/x-icon" href="/custom_files/<?=$this->siteName?>.ico?t=<?=mktime()?>" />
+	<?= $this->headLink(); ?>
+	<style type="text/css">
+		<?= $this->cssStr; ?>
+	</style>
+	<?= $this->headStyle(); ?>
+    <?= $this->headScript(); ?>
+
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		<?= $this->docReadyJS; ?>
+    	});
+    </script>
+    <link href="<?=$this->customCSSFile?>" media="screen" rel="stylesheet" type="text/css">
+</head>
+<body class="welcome globalBgColor">
+    <?= $this->render('common/header.phtml'); ?>
+    <div class="clearfix container">        
+        <div id="contentWrapper" class="clearfix">
+            <?= $this->layout()->content; ?>
+        </div>
+    </div>    
+    <?= $this->render('common/footer.phtml'); ?>
+</body>
+</html>
+<!--#### self_reg.phtml ####-->

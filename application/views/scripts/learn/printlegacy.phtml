@@ -1,0 +1,6 @@
+<?php echo $this->samlRedirectPostForm($this->samlredirectPostVariables['postURI'], 
+                                       $this->samlredirectPostVariables['targetURI'],
+                                       $this->samlredirectPostVariables['SAMLResponse'],
+                                       'printlegacyframe');
+?>
+<iframe src="<?= $this->frameSrc; ?>" id="legacyFrame" height="99%" width="100%" border="0" name="printlegacyframe"></iframe>

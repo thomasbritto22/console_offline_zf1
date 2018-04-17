@@ -1,0 +1,6 @@
+<div id="pageTitle" class="titleBarBtnBgColor clearfix">
+   <h1 class="titleBarBtnFgColor"><i class="fa <?= $this->applicationTitleIcon(Zend_Controller_Front::getInstance()->getRequest()->getControllerName(), Zend_Controller_Front::getInstance()->getRequest()->getActionName()) ;?> titleBarBtnFgColor"></i><?= $this->pageTitle; ?></h1>
+   <div class="subLinks titleBarBtnFgColor clearfix">
+   	<?= $this->applicationPageTitleBar($this->pageTitleBarItems);?>
+   </div>
+</div>

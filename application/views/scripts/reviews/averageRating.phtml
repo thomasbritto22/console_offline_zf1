@@ -1,0 +1,13 @@
+<?= $this->mainRatingControl; ?>
+<? if(!empty($this->tooltipControls)){ ?>
+<div class="ratingsTooltipWrapper" >
+    <span class="ratingsTooltipArrow" tabindex="0" role="button" onkeydown="attachClickHandler();"></span>
+    <div class="ratingsTooltip secondaryBgColor">
+        <h4 class="contentTitles"><?= $this->featuredRatings; ?></h4>
+        <?= $this->tooltipControls; ?>
+    </div>
+</div>
+<? } ?>
+<? if(isset($this->config['showTotals'])){ ?>
+<div class="mainRatingInfo">(<?= $this->totalRatings; ?>)</div>
+<? } ?>

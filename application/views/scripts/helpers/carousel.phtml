@@ -1,0 +1,16 @@
+<?php if (count($this->carouselItems) > 0) { ?>
+    <div id="welcomeSlider">
+        <div class="camera_wrap camera_azure_skin" id="camera_wrap_1">
+            <?php foreach($this->carouselItems as $item) {
+                if(isset($item['image'])){ ?>
+                    <div data-src="<?= $item['image']; ?>"> 
+                        <div class="camera_caption bottomToTop">
+                            <h4 class="slideHeader secondaryTextIcons borderBottomThin"><?= (!empty($item['title'])) ? $item['title'] : '' ; ?></h4>
+                            <p class="contentTextIcons"><?= (!empty($item['text']) && $item['text'] != 'Please enter text.') ? $item['text'] : '' ; ?></p>
+                        </div>
+                    </div> 
+                <?php }
+            } ?>
+        </div>
+    </div>
+<?php } ?>

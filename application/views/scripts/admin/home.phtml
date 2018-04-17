@@ -1,0 +1,1206 @@
+<?php
+    $uploadButtonText = "Upload image";
+    $replaceButtonText = "Replace image";
+
+	$vipMessageToggle = '';
+	$vipMessageGroupId = '';
+    if(isset($this->components['VIP_message'])){
+    	$vipMessage = $this->components['VIP_message']; //var_dump($vipMessage);exit;
+    	if(isset($vipMessage['toggle'])){
+        	if($vipMessage['toggle']->value == 'on')
+        		$vipMessageToggle = 'checked="checked"';
+        } else {
+        	$vipMessageToggle = '';
+        }
+    	if(isset($vipMessage['customfile'])){
+    		$vipCustomFile = $vipMessage['customfile']->customFileDTO;
+    	}
+    	if(isset($vipMessage['signature']->customFileDTO)) {
+    		$VIP_messagesignatureFile = $vipMessage['signature']->customFileDTO;
+    	}
+    	//find VIP message groupId
+    	if(isset($vipMessage['groupId'])){
+    	   $vipMessageGroupId =  $vipMessage['groupId'];
+    	}
+    }
+
+//     $VIP_signature = '';
+//     if(isset($this->components['VIP_signature'])){
+//     	$VIP_signature = $this->components['VIP_signature'];
+//     	if(isset($VIP_signature['customfile']->customFileDTO))
+//     		$VIP_signatureFile = $VIP_signature['customfile']->customFileDTO;
+//     }
+
+    $backgroundToggle = '';
+    $backgroundTile = '';
+    if(isset($this->components['bg_image'])){//var_dump($this->components['bg_image']);
+    	$backgroundImage = $this->components['bg_image'];
+    	if(isset($backgroundImage['customfile']->customFileDTO))
+    	$backgroundImageFile = $backgroundImage['customfile']->customFileDTO;
+
+    	if(isset($backgroundImage['toggle'])) {
+    		if($backgroundImage['toggle']->value == 'on')
+    			$backgroundToggle = 'checked="checked"';
+    	} else {
+    		$backgroundToggle = 'checked="checked"';
+    	}
+
+    	//initial background Image tile
+    	if(isset($backgroundImage['tile'])) {
+    		if('off' === $backgroundImage['tile']->value)
+    			$backgroundTile = 'checked="checked"';
+    	}
+
+    }
+    
+    $selfRegistrationToggle = '';
+    if(isset($this->components['self_registration'])){
+       $selfRegist = $this->components['self_registration'];
+       if(isset($selfRegist['toggle'])) {
+     		if($selfRegist['toggle']->value == 'on'){
+     		   $selfRegistrationToggle = 'checked="checked"';
+     		}
+       }
+    }
+
+    $brandingToggle = '';
+    $brandingImageTile = '';
+    $brandingImageCenter = '';
+    if(isset($this->components['Header'])){
+    	$brandingImage = $this->components['Header'];
+
+  	if(isset($brandingImage['customfile']->customFileDTO))
+    		$brandingImageFile = $brandingImage['customfile']->customFileDTO;
+    	if(isset($brandingImage['tile'])) {
+    		if('on' === $brandingImage['tile']->value)
+    			$brandingImageTile = 'checked="checked"';
+    	}
+    	if(isset($brandingImage['center'])) {
+    		if('on' === $brandingImage['center']->value)
+    			$brandingImageCenter = 'checked="checked"';
+    	}
+//     	if(isset($brandingImage['toggle'])) {
+//     		if($brandingImage['toggle']->value == 'on')
+//     			$brandingToggle = 'checked="checked"';
+//     	} else {
+//     		$brandingToggle = 'checked="checked"';
+//     	}
+    }
+    //if nothing is set by for the site as yet, select tiled by default
+    if($brandingImageTile == '' && $brandingImageCenter == '')
+    	$brandingImageTile = 'checked="checked"';
+
+    $company_logo = '';
+    $company_logoLeft = '';
+    $company_logoCenter = '';
+    $company_logoRight = '';
+    if(isset($this->components['company_logo'])){
+    	$company_logo = $this->components['company_logo'];
+    	if(isset($company_logo['customfile']->customFileDTO))
+    		$company_logoFile = $company_logo['customfile']->customFileDTO;
+    	if(isset($company_logo['left'])) {
+    		if('on' === $company_logo['left']->value)
+    			$company_logoLeft = 'checked="checked"';
+    	}
+    	if(isset($company_logo['center'])) {
+    		if('on' === $company_logo['center']->value)
+    			$company_logoCenter = 'checked="checked"';
+    	}
+    	if(isset($company_logo['right'])) {
+    		if('on' === $company_logo['right']->value)
+    			$company_logoRight = 'checked="checked"';
+    	}
+    }
+    //if nothing is set by for the site as yet, select left by default
+    if($company_logoLeft == '' && $company_logoCenter == '' && $company_logoRight == '')
+    	$company_logoLeft = 'checked="checked"';
+
+    $header_tagline = '';
+    $header_taglineLeft = '';
+    $header_taglineCenter = '';
+    $header_taglineRight = '';
+    if(isset($this->components['header_tagline'])){
+    	$header_tagline = $this->components['header_tagline'];
+    	if(isset($header_tagline['left'])) {
+    		if('on' === $header_tagline['left']->value)
+    			$header_taglineLeft = 'checked="checked"';
+    	}
+    	if(isset($header_tagline['center'])) {
+    		if('on' === $header_tagline['center']->value)
+    			$header_taglineCenter = 'checked="checked"';
+    	}
+    	if(isset($header_tagline['right'])) {
+    		if('on' === $header_tagline['right']->value)
+    			$header_taglineRight = 'checked="checked"';
+    	}
+    }
+    //if nothing is set by for the site as yet, select right by default
+    if($header_taglineLeft == '' && $header_taglineCenter == '' && $header_taglineRight == '')
+    	$header_taglineRight = 'checked="checked"';
+
+    $faviconImage = false;
+    $faviconImageFile = false;
+    if(isset($this->components['favicon'])){
+    	$faviconImage = $this->components['favicon'];
+    	if(isset($faviconImage['customfile']) && isset($faviconImage['customfile']->customFileDTO))
+    		$faviconImageFile = $faviconImage['customfile']->customFileDTO;
+    }
+
+    $videoTourValue = '';
+    $videoTourToggle = '';
+    $videoTourStatus = 'Not Set';
+
+    //default image
+    $videoThumbNailUrl = CDN_IMG_URL . '/images/placeholders/video-placeholder.png';
+    if(isset($this->components['video_tour'])) {
+        $videoTour = $this->components['video_tour'];
+        
+        if(isset($videoTour['customfile']->customFileDTO)){
+        	$videoTourFile = $videoTour['customfile']->customFileDTO;
+        	$videoTourThumb = null;
+        	if(isset($videoTour['thumbnail']->customFileDTO))
+        		$videoTourThumb = $videoTour['thumbnail']->customFileDTO;
+        	if (!empty($videoTourThumb->path))
+        	{
+        		$videoThumbNailUrl = $this->baseImgUrl.$videoTourThumb->path;
+        	}
+        	elseif (!empty($videoTourFile->path))
+        	{
+        		$videoThumbNailUrl = substr($this->baseImgUrl.$videoTourFile->path,0,strrpos($this->baseImgUrl.$videoTourFile->path,'.')).'-00002.jpg';
+        	}
+        }
+
+        if(isset($videoTour['toggle'])) {
+        	if($videoTour['toggle']->value == 'on')
+        		$videoTourToggle = 'checked="checked"';
+        } else {
+        	$videoTourToggle = 'checked="checked"';
+        }
+        if(isset($videoTour['text']) && is_null($videoTour['text']->value)){
+        	$videoTourValue = '<span style="color:#999;">Please enter text.</span>';
+        	$videoTourValue = '';
+        	$videoTourStatus = 'Set';
+        }
+        if(isset($videoTour['text']->value)){
+        	$videoTourValue = $videoTour['text']->value;
+        	$videoTourStatus = 'Set';
+        }
+    }
+
+    $headlineValue = '';
+    $headlineToggle = '';
+    $headlineStatus = 'Not Set';
+    if (isset($this->components['headline'])){
+        $headline = $this->components['headline'];
+
+        if(isset($headline['toggle'])){
+        	if($headline['toggle']->value == 'on')
+        		$headlineToggle = 'checked="checked"';
+        } else {
+        	$headlineToggle = 'checked="checked"';
+
+        }
+        if(isset($headline['text']) && is_null($headline['text']->value)){
+        	$headlineValue = '<span style="color:#999;">Please enter text.</span>';
+        	$headlineValue = '';
+        	$headlineStatus = 'Set';
+        }
+        if(isset($headline['text']->value)){
+	        $headlineValue = $headline['text']->value;
+	        $headlineStatus = 'Set';
+        }
+    }
+
+    if(isset($this->components['carousel'])) {
+        $carousel = $this->components['carousel'];
+        $carouselToggle = '';
+        $carouselToggleStat = '';
+        if(isset($carousel['toggle'])){
+        	$carouselToggle = $carousel['toggle'];
+        	if($carouselToggle->value == 'on')
+        		$carouselToggleStat = 'checked="checked"';
+        	unset($carousel['toggle']);
+        } else {
+        	$carouselToggleStat = 'checked="checked"';
+        }
+        $carouselTemp = array();
+        foreach($carousel as $key=>$val){
+        	$carousel[$key]['groupId'] = $key;
+        	if(isset($val['toggle']['position']))
+        		$carouselTemp[$val['toggle']['position']] = $carousel[$key];
+        }
+        ksort($carouselTemp);
+        $carousel = $carouselTemp;
+ //var_dump($carousel); exit;
+    }
+    if(isset($this->components['my_status'])) {
+    	$my_status = $this->components['my_status'];
+    	$my_statusToggle = '';
+    	$my_statusToggleStat = '';
+    	if(isset($my_status['toggle'])){
+    		$my_statusToggle = $my_status['toggle'];
+    		if($my_statusToggle->value == 'on')
+    			$my_statusToggleStat = 'checked="checked"';
+    	} else {
+        	$my_statusToggleStat = 'checked="checked"';
+        }
+    }
+    if(isset($this->components['completed_courses_onmyqueue'])) {
+    	$completed_courses_onmyqueue = $this->components['completed_courses_onmyqueue'];
+    	$completed_courses_onmyqueueToggle = '';
+    	$completed_courses_onmyqueueToggleStat = '';
+    	if(isset($completed_courses_onmyqueue['toggle'])){
+    		$completed_courses_onmyqueueToggle = $completed_courses_onmyqueue['toggle'];
+    		if($completed_courses_onmyqueueToggle->value == 'on')
+    			$completed_courses_onmyqueueToggleStat = 'checked="checked"';
+    	} else {
+    		$completed_courses_onmyqueueToggleStat = 'checked="checked"';
+    	}
+    }
+?>
+<hgroup class="adminHeader">
+	<h2>Customize your site</h2>
+</hgroup>
+<div id="categorySection" class="ui-corner-all">
+	<div id="login_page">
+        <div class="instructionalHeader clearfix">
+            <h3 class="sectionHeader">Design</h3>
+			<?php if(!empty($this->siteLangs)) { ?>
+			<fieldset>
+				<p>
+					<label for="fieldLanguages">Select a language:</label> <select
+						name="fieldLanguages" id="fieldLanguages">
+						<?php if(!empty($this->siteLangs) && count($this->siteLangs)> 0) {
+							foreach ($this->siteLangs as $key=>$lang){
+		                    ?>
+						<option value="<?=$lang->language;?>"
+						<?= $lang->language == $this->siteDefLang ? 'selected' : ''; ?>>
+							<?=$lang->enName;?>
+						</option>
+						<? }
+						} else {
+						 ?>
+						<option value="<?= $this->siteDefLang; ?>">
+							<?= $this->siteDefLangName;?>
+						</option>
+						<?php }?>
+					</select>
+				</p>
+			</fieldset>
+            <span><i class="fa fa-flag"></i></span>
+			<?php } ?>
+		</div>
+		<?php if(!empty($this->siteLangs)) { ?>
+		<!-- <div id="langNotification">
+			<p>
+				Note: You are currently editing in
+				<?= DEFAULT_LANGUAGE_NAME; ?>
+			</p>
+		</div> -->
+		<?php }?>
+		<div id="adminAccordion">
+			<div id="tabs_login">
+				<ul>
+					<li class="gradient">
+                        <a href="#global" data-id="global">Global</a>
+                    </li>
+					<li class="gradient">
+                        <a href="#loginPage" data-id="loginPage">Login page</a>
+                    </li>
+					<li class="gradient">
+                        <a href="#homePage" data-id="homePage">Home page</a>
+                    </li>
+                    <li class="gradient">
+                        <a href="#myQueuePage" data-id="myQueuePage">My Queue page</a>
+                    </li>
+                    <li class="gradient">
+                        <a href="#sideBar" data-id="sideBar">Sidebar</a>
+                    </li>
+				</ul>
+                <div class="adminContentWrapper">
+                    <div id="personalize">
+    			        <div id="my_status" class="hidden">
+    			            <section class="adminSection">
+    			                <form name="my_statusForm" action="/admin/updateComponent"
+    			                    method="post">
+    			                    <div class="adminSectionHeader noExpand">
+    			                        <h3>Show my status (Left sidebar)</h3>
+    			                        <fieldset>
+    			                            <p class="formField">
+    			                                <input type="checkbox" id="my_statustoggle"
+    			                                    name="my_statustoggle" class="slideToggle" show-label="ON"
+    			                                    hide-label="OFF" <?= $my_statusToggleStat; ?> /> <input
+    			                                    type="hidden" name="my_statustoggle_id" id="my_statustoggle_id"
+    			                                    value="<?= (isset($my_statusToggle)) ? $my_statusToggle->id : ''; ?>" />
+    			                                <input type="hidden" class="my_statusgroupId" name="groupId"
+    			                                    id="my_statusgroupId"
+    			                                    value="<?= (isset($my_statusToggle)) ? $my_statusToggle->groupId : ''; ?>">
+    			                                <input type="hidden" name="adminAction" value="updatemyStatus" />
+    			                                <span class="hidden">
+                                                    <button type="submit" class="adminFormSubmit adminBlueBtn gradient">Update My Status</button>
+                                                </span>
+    			                            </p>
+    			                        </fieldset>
+    			                    </div>
+    			                </form>
+    			            </section>
+    			        </div>
+    			        <div id="show_completed" class="hidden">
+    			            <section class="adminSection">
+    			                <form name="completed_courses_onmyqueueForm"
+    			                    action="/admin/updateComponent" method="post">
+    			                    <div class="adminSectionHeader noExpand">
+    			                        <h3>Show completed courses on My Queue</h3>
+    			                        <fieldset>
+    			                            <p class="formField">
+    			                                <input type="checkbox" id="completed_courses_onmyqueuetoggle"
+    			                                    name="completed_courses_onmyqueuetoggle" class="slideToggle"
+    			                                    show-label="ON" hide-label="OFF"
+    			                                    <?= $completed_courses_onmyqueueToggleStat; ?> /> <input
+    			                                    type="hidden" name="completed_courses_onmyqueuetoggle_id"
+    			                                    id="completed_courses_onmyqueuetoggle_id"
+    			                                    value="<?= (isset($completed_courses_onmyqueueToggle)) ? $completed_courses_onmyqueueToggle->id : ''; ?>" />
+    			                                <input type="hidden" class="completed_courses_onmyqueuegroupId"
+    			                                    name="groupId" id="completed_courses_onmyqueuegroupId"
+    			                                    value="<?= (isset($completed_courses_onmyqueueToggle)) ? $completed_courses_onmyqueueToggle->groupId : ''; ?>">
+    			                                <input type="hidden" name="adminAction"
+    			                                    value="updatecompleted_courses_onmyqueue" />
+                                                <span class="hidden">
+                                                    <button type="submit" class="adminFormSubmit gradient">Show completed courses on My Queue</button>
+                                                </span>
+    			                            </p>
+    			                        </fieldset>
+    			                    </div>
+    			                </form>
+    			            </section>
+    			        </div>
+        			</div>
+                    <!--********************-->
+                    <!--***GLOBAL SECTION***-->
+                    <!--********************-->
+    				<div id="lang_data">
+    					<div id="global">
+    						<section class="adminSection">
+    							<div class="adminSectionHeader">
+    								<h3>Program branding</h3>
+    							</div>
+    							<div class="adminSectionContent">
+    								<form name="headerForm" action="/admin/updateComponent"
+    									method="post" class="clearfix brandingsection">
+    	                                <sub class="pbInstructions">Select an image & how it should be displayed as your header image and logo. Then add in text for your tagline:</sub>
+    	                                <div class="headerBgSection">
+    	                                    <p class="pbLabel">Header background image <span class="dimension">(Recommended image dimensions: 213 x 72 pixels)</span></p>
+    	                                    <div class="displayOptions">
+    	                                        <div class="formElements clearfix">
+    	                                            <fieldset>
+    	                                                <legend>Display style: </legend>
+    	                                                <input type="radio" id="Headercenter" name="updatebrandingImage[Headerdisplay]"
+    	                                                <?= $brandingImageCenter;?> value="center" /> <label
+    	                                                    for="Headercenter">Centered</label> <input type="hidden"
+    	                                                    id="Headercenter_id" name="updatebrandingImage[Headercenter_id]"
+    	                                                    value="<?=(isset($brandingImage['center']->id)) ? $brandingImage['center']->id : '' ; ?>" />
+    	                                                <input type="radio" id="Headertile" name="updatebrandingImage[Headerdisplay]"
+    	                                                <?= $brandingImageTile;?> value="tile" /> <label
+    	                                                    for="headertile">Tiled</label> <input type="hidden"
+    	                                                    id="Headertile_id" name="updatebrandingImage[Headertile_id]"
+    	                                                    value="<?=(isset($brandingImage['tile']->id)) ? $brandingImage['tile']->id : '' ; ?>" />
+    	                                            </fieldset>
+    	                                        </div>
+    	                                    </div>
+    	                                    <div class="headerImage">
+    	                                        <div class="imageWrap">
+    	                                            <img
+    	                                                src="<?= (isset($brandingImageFile->path) ) ? $this->baseImgUrl . $brandingImageFile->path : CDN_IMG_URL . '/images/placeholders/placeholder1.png'; ?>"
+    	                                                oldsrc="<?= (isset($brandingImageFile->path) ) ? $this->baseImgUrl . $brandingImageFile->path : CDN_IMG_URL . '/images/placeholders/placeholder1.png'; ?>"
+    	                                                class="Headercustomfile customfile" formparent="updatebrandingImage"
+    	                                                data-image="<?= (isset($brandingImageFile->path)) ? 'bgCustomImage': CDN_IMG_URL . '/images/placeholders/placeholder1.png'; ?>"
+    	                                                data-placeholder="<?php echo CDN_IMG_URL ?>/images/placeholders/placeholder1.png" />
+    	                                        </div>
+    	                                        <fieldset>
+    	                                            <input type="hidden" class="hiddenImageIdField" name="updatebrandingImage[Headercustomfile]"
+    	                                                value="<?=(isset($brandingImageFile->id)) ? $brandingImageFile->id : '' ; ?>" />
+    	                                            <input type="hidden" id="Headercustomfile_id"
+    	                                                name="updatebrandingImage[Headercustomfile_id]"
+    	                                                value="<?= (isset($brandingImage['customfile']->id)) ? $brandingImage['customfile']->id : ''; ?>" />
+    	                                            <button type="button" id="Headercustomfile" name="updatebrandingImage[Headercustomfile]"
+    	                                                class="getFile customfile adminBlueBtn gradient pbSave" data-width="213" data-height="72"
+    	                                                data-type="img" data-existed="<?= (isset($brandingImage['customfile']->id)) ? $brandingImage['customfile']->id : ''; ?>"><?= (isset($brandingImage['customfile']->id)) ? $replaceButtonText : $uploadButtonText; ?></button>
+    	                                            <p class="clearLink">Clear image</p>
+    	                                        </fieldset>
+    	                                    </div>
+    	                                </div>
+    									<div class="logoSection">
+    	                                    <p class="pbLabel">Logo <span class="dimension">(Recommended image dimensions: 213 x 72 pixels)</span></p>
+    	                                    <div class="displayOptions">
+    	                                        <div class="formElements clearfix">
+    	                                            <fieldset>
+    	                                                <legend>Position:</legend>
+    	                                                <input type="radio" id="company_logoleft"
+    	                                                    name="updatecompany_logo[company_logodisplay]" <?= $company_logoLeft;?>
+    	                                                    value="left" />
+    	                                                <label for="company_logoleft">Left</label>
+    	                                                <input type="hidden" id="company_logoleft_id"
+    	                                                    name="updatecompany_logo[company_logoleft_id]"
+    	                                                    value="<?=(!empty($company_logo['left']->id)) ? $company_logo['left']->id : '' ; ?>" />
+    	                                                <input type="radio" id="company_logocenter"
+    	                                                    name="updatecompany_logo[company_logodisplay]" <?= $company_logoCenter;?>
+    	                                                    value="center" />
+    	                                                <label for="company_logocenter">Centered</label>
+    	                                                <input type="hidden" id="company_logocenter_id"
+    	                                                    name="updatecompany_logo[company_logocenter_id]"
+    	                                                    value="<?=(!empty($company_logo['center']->id)) ? $company_logo['center']->id : '' ; ?>" />
+    	                                                <input type="radio" id="company_logoright"
+    	                                                    name="updatecompany_logo[company_logodisplay]" <?= $company_logoRight;?>
+    	                                                    value="right" />
+    	                                                <label for="company_logoright">Right</label>
+    	                                                <input type="hidden" id="company_logoright_id"
+    	                                                    name="updatecompany_logo[company_logoright_id]"
+    	                                                    value="<?=(!empty($company_logo['right']->id)) ? $company_logo['right']->id : '' ; ?>" />
+    	                                            </fieldset>
+    	                                        </div>
+    	                                    </div>
+    	                                    <div class="headerImage">
+    	                                        <div class="imageWrap">
+    	                                            <img
+    	                                                src="<?= (isset($company_logoFile->path) ) ? $this->baseImgUrl . $company_logoFile->path : CDN_IMG_URL . '/images/placeholders/placeholder1.png'; ?>"
+    	                                                oldsrc="<?= (isset($company_logoFile->path) ) ? $this->baseImgUrl . $company_logoFile->path : CDN_IMG_URL . '/images/placeholders/placeholder1.png'; ?>"
+    	                                                class="company_logocustomfile customfile" formparent="updatecompany_logo"
+    	                                                data-image="<?= (isset($company_logoFile->path)) ? 'bgCustomImage': CDN_IMG_URL . '/images/placeholders/placeholder1.png'; ?>"
+    	                                                data-placeholder="<?php echo CDN_IMG_URL ?>/images/placeholders/placeholder1.png" />
+    	                                        </div>
+    	                                        <fieldset>
+    	                                            <input type="hidden" class="hiddenImageIdField" name="updatecompany_logo[company_logocustomfile]"
+    	                                                value="<?=(isset($company_logoFile->id)) ? $company_logoFile->id : '' ; ?>" />
+    	                                            <input type="hidden" id="company_logocustomfile_id"
+    	                                                name="updatecompany_logo[company_logocustomfile_id]"
+    	                                                value="<?= (isset($company_logo['customfile']->id)) ? $company_logo['customfile']->id : ''; ?>" />
+    	                                            <button id="company_logocustomfile"
+    	                                                name="updatecompany_logo[company_logocustomfile]" class="getFile customfile adminBlueBtn gradient pbSave"
+    	                                                data-width="213" data-height="72" data-type="img" data-existed="<?= (isset($company_logo['customfile']->id)) ? $company_logo['customfile']->id : ''; ?>"><?= (isset($company_logo['customfile']->id)) ? $replaceButtonText : $uploadButtonText; ?></button>
+    	                                            <p class="clearLink">Clear image</p>
+    	                                        </fieldset>
+    	                                    </div>
+    	                                </div>
+    									<div class="taglineSection">
+    	                                    <p class="pbLabel">Header tagline <span class="charLimit">(Recommended: 100 characters)</span></p>
+    	                                    <div class="headerDisplayOptions">
+    	                                        <div class="formElements clearfix">
+    	                                            <fieldset>
+    						                            <legend>Position:</legend>
+    						        	            	<input type="radio" id="header_taglineleft" name="updateheader_tagline[header_taglinedisplay]"
+    						        	            		<?= $header_taglineLeft;?> value="left"/>
+    						                            <label for="header_taglineleft">Left</label>
+    						        	            	<input type="hidden" id="header_taglineleft_id" name="updateheader_tagline[header_taglineleft_id]"
+    						        	            		value="<?=(isset($header_tagline['left']->id)) ? $header_tagline['left']->id : '' ; ?>"/>
+    						        	            	<input type="radio" id="header_taglinecenter" name="updateheader_tagline[header_taglinedisplay]"
+    						        	            		<?= $header_taglineCenter;?> value="center"/>
+    						                            <label for="header_taglinecenter">Centered</label>
+    						        	            	<input type="hidden" id="header_taglinecenter_id" name="updateheader_tagline[header_taglinecenter_id]"
+    						        	            		value="<?=(isset($header_tagline['center']->id)) ? $header_tagline['center']->id : '' ; ?>"/>
+    						        	            	<input type="radio" id="header_taglineright" name="updateheader_tagline[header_taglinedisplay]"
+    						        	            		<?= $header_taglineRight;?> value="right"/>
+    						                            <label for="header_taglineright">Right</label>
+    						                            <input type="hidden" id="header_taglineright_id" name="updateheader_tagline[header_taglineright_id]"
+    						                            	value="<?=(isset($header_tagline['right']->id)) ? $header_tagline['right']->id : '' ; ?>"/>
+    						                        </fieldset>
+    	                                            <fieldset class="taglineInput">
+    	                                                <textarea class="dataField" cols="50" rows="3" maxlength="1000"
+    	                                                    name="updateheader_tagline[header_taglinetitle]" id="header_taglinetitle"
+    	                                                    placeholder="Type in your tagline here" data-length="999"
+    	                                                    data-maxLength="1000" data-value="<?= $header_tagline['title']->value;  ?>">
+    	                                                    <?= $header_tagline['title']->value;  ?>
+    	                                                </textarea>
+    	                                                <input type="hidden"
+    	                                                    id="header_taglinetitle_id" name="updateheader_tagline[header_taglinetitle_id]"
+    	                                                    value="<?= (isset($header_tagline['title']->id)) ? $header_tagline['title']->id : '' ; ?>" />
+    	                                                <span class="feedback"></span> <sub class="instruction"></sub>
+    	                                            </fieldset>
+    	                                        </div>
+    	                                    </div>
+    	                                </div>
+    	                                <div class="faviconSection">
+    	                                    <p class="pbLabel">Favicon <span class="dimension">(Recommended image dimensions: 64 x 64 pixels)</span></p>
+    	                                    <sub class="pbInstructions">Your favicon will remain the same across all languages of you site.  Select an image to be displayed as your favicon.  This small image will show up in the address bar, in your bookmarks and in the page tab.</sub>
+    	                                    <div class="headerImage">
+    	                                        <div class="imageWrap">
+    	                                            <img
+    	                                                src="<?= (isset($faviconImageFile->path) ) ? $this->baseImgUrl . $faviconImageFile->path : CDN_IMG_URL . '/images/placeholders/placeholder2.png'; ?>"
+    	                                                oldsrc="<?= (isset($faviconImageFile->path) ) ? $this->baseImgUrl . $faviconImageFile->path : CDN_IMG_URL . '/images/placeholders/placeholder2.png'; ?>"
+    	                                                class="faviconcustomfile customfile" formparent="updatefavicon"
+    	                                                data-image="<?= (isset($faviconImageFile->path)) ? 'bgCustomImage' : CDN_IMG_URL . '/images/placeholders/placeholder2.png'; ?>"
+    	                                                data-placeholder="<?php echo CDN_IMG_URL ?>/images/placeholders/placeholder2.png" />
+    	                                        </div>
+    	                                        <fieldset>
+    	                                            <input type="hidden" class="hiddenImageIdField" name="updatefavicon[faviconcustomfile]"
+    	                                                value="<?=(isset($faviconImageFile->id)) ? $faviconImageFile->id : '' ; ?>" />
+    	                                            <input type="hidden" id="faviconcustomfile_id"
+    	                                                name="updatefavicon[faviconcustomfile_id]"
+    	                                                value="<?= (isset($faviconImage['customfile']->id)) ? $faviconImage['customfile']->id : ''; ?>" />
+    	                                            <button id="faviconcustomfile" name="updatefavicon[faviconcustomfile]"
+    	                                                class="getFile customfile adminBlueBtn gradient pbSave" data-width="64" data-height="64"
+    	                                                data-type="img" data-existed="<?=(isset($faviconImageFile->id)) ? $faviconImageFile->id : '' ; ?>"><?= (isset($faviconImage['customfile']->id)) ? $replaceButtonText : $uploadButtonText; ?></button>
+    	                                            <p class="clearLink">Clear image</p>
+    	                                        </fieldset>
+    	                                    </div>
+    	                                </div>
+    									<fieldset class="headerUpdateButtons">
+    										<input type="hidden" name="datatype" value="object" />
+    										<input type="hidden" class="header_taglinegroupId"
+    											name="groupId" id="header_taglinegroupId"
+    											value="<?= (isset($header_tagline['left']->groupId)) ? $header_tagline['left']->groupId : ''; ?>">
+    										<input type="hidden" name="adminAction"
+    											value="updateheader_tagline" />
+    										<button type="submit" id="header_taglineSubmit"
+    											class="adminFormSubmit adminBlueBtn gradient">Save</button>
+    	                                    <p class="cancelLink" data-id="headline">Cancel</p>
+    									</fieldset>
+    								</form>
+    							</div>
+    						</section>
+    						<section class="adminSection">
+    							<div class="adminSectionHeader">
+    								<h3>Password instructions</h3>
+    							</div>
+    							<div class="adminSectionContent">
+    	                            <div class="instrHeader clearfix">
+    	                                <h3 class="sectionHeader resourceHeader">Manage the password instructions for your site below:</h3>
+    	                            </div>
+    								<form name="pwdinstructForm" action="/admin/updateinstructions"
+    									method="post">
+    									<fieldset>
+    										<p class="formField">
+    											<span class="fieldLabel">Password instructions<span
+    												class="charLimit">(Recommended: 1,000 characters)</span>
+    											</span>
+    											<textarea cols="15" rows="5" id="pwdinstructiontext" maxlength="1000"
+    												name="pwdinstructiontext"
+    												placeholder="Please enter password instructions.">
+    								            <?= $this->passwordinstructions; ?>
+    	                                        </textarea>
+    											<input type="hidden" id="translationId"
+    												name="translationId" value="<?=$this->translationId;?>">
+    										</p>
+    										<fieldset class="updateButtons">
+    											<button id="pwdinstSubmit" type="button"
+    												class="themeSubmit adminBlueBtn gradient">Save</button>
+    											<p class="cancelLink" data-id="pwdinstructiontexts">Cancel</p>
+    										</fieldset>
+    									</fieldset>
+    								</form>
+    							</div>
+    						</section>
+    					</div>
+
+                    <!--********************-->
+                    <!--****LOGIN SECTION***-->
+                    <!--********************-->
+
+    					<div id="loginPage">
+    						<section class="adminSection">
+    							<form name="headlineForm" action="/admin/updateComponent"
+    								method="post">
+    								<div class="adminSectionHeader">
+    									<h3>Headline</h3>
+    									<fieldset>
+    										<p class="formField">
+    											<input type="checkbox" name="headlinetoggle"
+    												id="headlinetoggle" class="slideToggle" show-label="ON"
+    												hide-label="OFF" <?= $headlineToggle; ?> /> <input
+    												type="hidden" name="headlinetoggle_id" id="headlinetoggle_id"
+    												value="<?= (isset($headline['toggle'])) ? $headline['toggle']->id : ''; ?>" />
+    										</p>
+    									</fieldset>
+    								</div>
+    								<div class="adminSectionContent">
+    									<sub class="instruction">Enter and format a headline to appear
+    										on your Login page.</sub>
+    									<fieldset>
+    										<p class="formField">
+    											<span class="fieldLabel">Headline text<span class="charLimit">(Recommended: 750 characters)</span>
+    											</span>
+    											<textarea class="rte dataField" cols="50" rows="3"
+    												name="headlinetext" id="headlinetext"
+    												placeholder="Please enter text." data-length="999"
+    												data-maxLength="1000" data-value="<?= htmlspecialchars($headlineValue);  ?>">
+    												<?= htmlspecialchars($headlineValue);  ?>
+    											</textarea>
+    											<input type="hidden" name="headlinetextErr"
+    												id="headlinetextErr" value="No" /> <input type="hidden"
+    												name="headlinetext_id" id="headlinetext_id"
+    												value="<?= (isset($headline['text']->id)) ? $headline['text']->id : ''; ?>" />
+    											<span class="feedback"></span> <sub class="instruction"></sub>
+    										</p>
+    									</fieldset>
+    									<fieldset class="updateButtons">
+    										<input type="hidden" class="headlinegroupId" name="groupId"
+    											id="headlinegroupId"
+    											value="<?= (isset($headline['toggle'])) ? $headline['toggle']->groupId : ''; ?>">
+    										<input type="hidden" name="adminAction" value="updateHeadline" />
+    										<button type="submit" id="headlineSubmit"
+    											class="adminFormSubmit adminBlueBtn gradient">Save</button>
+    										<p class="cancelLink" data-id="headline">Cancel</p>
+    									</fieldset>
+    								</div>
+    							</form>
+    						</section>
+    						<section class="adminSection">
+    							<form name="bgImageForm" action="/admin/updateComponent"
+    								method="post">
+    								<div class="adminSectionHeader">
+    									<h3>Background image</h3>
+    									<fieldset>
+    										<p class="formField">
+    											<input type="checkbox" id="bg_imagetoggle"
+    												name="bg_imagetoggle" class="slideToggle" show-label="ON"
+    												hide-label="OFF" <?= $backgroundToggle; ?> /> <input
+    												type="hidden" name="bg_imagetoggle_id" id="bg_imagetoggle_id"
+    												value="<?= (isset($backgroundImage['toggle'])) ? $backgroundImage['toggle']->id : ''; ?>" />
+    											<span class="feedback"></span> <sub class="instruction"></sub>
+    										</p>
+    									</fieldset>
+    								</div>
+    								<div class="adminSectionContent">
+    									<sub class="instruction">This image will appear on the left
+    										vertical portion of your Login Page.</sub>
+    									<div class="mediaWrapper bgimage clearfix">
+    										<div class="imageWrap">
+    											<img
+    												src="<?= (isset($backgroundImageFile->path) ) ? $this->baseImgUrl . $backgroundImageFile->path : CDN_IMG_URL . '/images/placeholders/placeholder3.png'; ?>"
+    												oldsrc="<?= (isset($backgroundImageFile->path) ) ? $this->baseImgUrl . $backgroundImageFile->path : CDN_IMG_URL . '/images/placeholders/placeholder3.png'; ?>"
+    												class="bg_imagecustomfile customfile"
+    	                                            formparent="bg_image"
+    												data-image="<?= (isset($backgroundImageFile->path)) ? 'bgCustomImage':''; ?>"
+    												data-placeholder="<?php echo CDN_IMG_URL ?>/images/placeholders/placeholder3.png" />
+    										</div>
+    										<p>
+    											<input type="checkbox" id="bg_imagetile" name="bg_imagetile"
+    											<?= $backgroundTile;?> /> Do not tile this image.
+    										</p>
+    										<input type="hidden" id="bg_imagetile_id"
+    											name="bg_imagetile_id"
+    											value="<?=(isset($backgroundImage['tile']->id)) ? $backgroundImage['tile']->id : '' ; ?>" />
+    										<fieldset style="float:left;">
+    											<input type="hidden" class="hiddenImageIdField" name="bg_imagecustomfile"
+    												value="<?=(isset($backgroundImageFile->id)) ? $backgroundImageFile->id : '' ; ?>" />
+    											<input type="hidden" id="bg_imagecustomfile_id"
+    												name="bg_imagecustomfile_id"
+    												value="<?= (isset($backgroundImage['customfile']->id)) ? $backgroundImage['customfile']->id : ''; ?>" />
+    											<button id="bg_imagecustomfile" name="bg_imagecustomfile"
+    												class="getFile customfile adminBlueBtn gradient" data-width="200"
+    												data-height="1200" data-type="img" data-existed="<?= (isset($backgroundImage['customfile']->id)) ? $backgroundImage['customfile']->id : ''; ?>"><?= (isset($backgroundImage['customfile']->id)) ? $replaceButtonText : $uploadButtonText; ?></button>
+    			                				<p class="clearLink">Clear image</p>
+    			                			</fieldset>
+    									</div>
+    									<fieldset class="updateButtons">
+    										<input type="hidden" class="bg_imagegroupId" name="groupId"
+    											id="bg_imagegroupId"
+    											value="<?= (isset($backgroundImage['toggle'])) ? $backgroundImage['toggle']->groupId : ''; ?>">
+    										<input type="hidden" name="adminAction"
+    											value="updateBackgroundImage" />
+    										<button type="submit" id="bgImageSubmit"
+    											class="adminFormSubmit adminBlueBtn gradient">Save</button>
+    										<p class="cancelLink">Cancel</p>
+    									</fieldset>
+    								</div>
+    							</form>
+    						</section>
+    						<?php if(true === $this->selfRegistEnabled): ?>
+    	                    <section class="adminSection">
+    	                        <form  name="self_registrationForm" action="/admin/updateComponent" data-group="selfRegistration" method="post">
+    	                            <div class="adminSectionHeader">
+    	                                <h3>Self registration</h3>
+    	                                <fieldset>
+    	                                    <p class="formField">
+    	                                        <input type="checkbox" id="self_registrationtoggle" class="slideToggle"
+    	                                            name="self_registrationtoggle" show-label="ON"
+    	                                            hide-label="OFF" <?=$selfRegistrationToggle;?> />
+    	                                        <input
+    	                                            type="hidden" name="self_registrationtoggle_id" id="self_registrationtoggle_id"
+    	                                            value="<?= isset($selfRegist['toggle']) ? $selfRegist['toggle']->id : ''; ?>"/>
+    	                                        <input type="hidden" class="self_registrationgroupId" name="groupId" id="self_registrationgroupId" value="<?= (isset($selfRegist['toggle'])) ? $selfRegist['toggle']->groupId : ''; ?>">
+    	                                    </p>
+    	                                    <input type="hidden" name="adminAction" value="updateself_registration" />
+    	                                    <button type="submit" id="Submit" class="adminFormSubmit adminBlueBtn gradient" style="display:none">Save Toggle</button>
+    	                                </fieldset>
+    	                            </div>
+    	                            <div class="adminSectionContent">
+    	                                <sub class="instruction registrationInstr">
+    	                                    <p>Customize your self-registration Form</p>
+    	                                    <p>Below is the form that LRN has set up for you based on requirements you provided. You may add special 
+    instructions to your users (at the beginning, beside each text field EXCEPT Password and at the end of your 
+    form) by clicking into the blue text. Once you save the form you can click the Edit button to make more changes 
+    before clicking Publish. Instructional text for <b>Password and Confirm Password will be drawn in from 
+    instructions you set in the Password Instructions area in the Global tab:</b></p>
+    	                                </sub>
+    	                                <div class="selfRegForm">
+    	                                    <fieldset>
+    	                                        <h4 class="clearfix">New user registration
+                                                <img src="<?php echo CDN_IMG_URL ?>/images/branding/TRUSTeLogo.png">
+                                                </h4>
+    	                                        <fieldset>
+          	                                        <div class="editableInstructions dataElement" data-prop='{"groupName":"fieldLists", "fieldName":"userRegistrationTopMessage"}' placeholder="Enter instructional text here">Enter instructional text here</div>
+    	                                            <p class="formPreview"></p>
+    	                                        </fieldset>
+    	                                        <?php 
+    	                                        foreach ($this->selfRegistRecords as $field):
+    	                                           if (!isset($field->notRegistrationField)):
+    	                                        ?>
+    	                                              <?=$this->authSelfRegistration($field, false);?>
+    	                                        <?php
+    	                                           endif;
+    	                                        endforeach;
+    	                                        ?>
+    	                                        <div class="formRow clearfix captcha">
+    		                                       <p class="labelText captcha" style="display: inline-block;">* Verification</p>
+    		                                       <p class="userInput captcha" style="display: inline-block;"><img src="<?php echo CDN_IMG_URL ?>/images/placeholders/Captcha.png" /></p>
+    		                                       <p class="formField">
+    		                                          <span class="verificationToggle">Disable or enable Captcha verification</span>
+    	                                              <input type="checkbox" class="checkSlidder dataElement notShow" data-prop='{"groupName":"fieldLists", "fieldName":"userRegistrationCaptcha"}' />
+    	                                           </p>
+    		                                    </div>
+    		                                    
+    		                                    <fieldset>
+          	                                        <div class="editableInstructions dataElement" data-prop='{"groupName":"fieldLists", "fieldName":"userRegistrationBottomMessage"}' placeholder="Click in this area to type in a custom message to your users that will appear above the register button on your self-registration form for new users. Maximum length: 1,000 characters.">
+          	                                           Click in this area to type in a custom message to your users that will appear above the register button on your self-registration form for new users. Maximum length: 1,000 characters.
+          	                                        </div>
+          	                                        <p class="formPreview" style="display:none"></p>
+    	                                        </fieldset>
+                                                <div>
+                                                    <button class="adminBlueBtn disabled" disabled="disabled">Register</button>
+                                                    <button class="adminGreyBtn disabled" disabled="disabled">Clear</button>
+                                                    <button class="adminGreyBtn disabled" disabled="disabled">Cancel</button>
+                                                </div>
+    	                                    </fieldset>
+    	                                </div>
+    	                                <sub class="instruction">
+    	                                    <p>Customizing your confirmation message (1,000 characters maximum)</p>
+    	                                    <p>Below is the confirmation message that your users will get after successfully completing the self-registration form.  If you would like to customize the message just click the blue text below to launch editor:</p>
+    	                                </sub>
+    	                                <div class="congratsMessage">
+    	                                    <fieldset>
+    	                                        <p>
+    	                                           <div class="editableInstructions dataElement" data-prop='{"groupName":"fieldLists", "fieldName":"userRegistrationCongratsMessage"}' placeholder="Enter Confirmation Message text here">
+    	                                              Enter confirmation message text here
+    	                                           </div>
+    	                                           <div class="formPreview" style="display:none"></div>
+    	                                        </p>
+    	                                    </fieldset>
+    	                                </div>
+    	                                <fieldset class="selfReg updateButtns">
+    	                                    <button class="adminBlueBtn btnPublish btnPublished" id="publishSelfRegist" style="display:none">Publish</button> <button class="adminBlueBtn btnSave" id="saveSelfRegist">Save</button> <button class="adminBlueBtn btnPublish" id="editSelfRegist" style="display:none">Edit</button>
+    	                                    <p class="cancelLink" id="cancelSelfRegist">Cancel</p><button class="adminGreyBtn btnClear" id="clearSelfRegist">Cancel</button>
+    	                                </fieldset>
+    	                            </div>
+    	                        </form>
+    	                    </section>
+    	                    <?php endif;?>
+    					</div>
+
+                    <!--********************-->
+                    <!--**HOMEPAGE SECTION**-->
+                    <!--********************-->
+
+    					<div id="homePage">
+    						<section id="carousel" class="adminSection">
+    							<form name="imageCarouselForm" action="/admin/updateComponent"
+    								method="post">
+    								<div class="adminSectionHeader">
+    									<h3>Slideshow</h3>
+    									<fieldset>
+    										<p class="formField">
+    										   <span class="feedback"></span>
+    	                                       <sub class="instruction"></sub>
+    										</p>
+    									</fieldset>
+    								</div>
+    								<div class="adminSectionContent">
+    									<sub class="instruction">
+    									   Upload up to six slides, and enter accompanying captions and descriptions.
+    									   <b>Two visible slides are recommended for best results, but you may elect to upload and display only one.</b>
+    									</sub>
+    									<div class="carouselItems">
+    										<div class="slideTabHeader">
+    											<p class="slideTabs selected" id="slideTab1">Slide 1</p>
+    											<p class="slideTabs" id="slideTab2">Slide 2</p>
+    											<p class="slideTabs" id="slideTab3">Slide 3</p>
+    											<p class="slideTabs" id="slideTab4">Slide 4</p>
+    											<p class="slideTabs" id="slideTab5">Slide 5</p>
+    											<p class="slideTabs" id="slideTab6">Slide 6</p>
+    										</div>
+    										<? //foreach($carousel as $item) { ?>
+    										<? for($i = 0; $i < 6 ; $i++) {
+    											$item = array();
+    											$j = $i+1;
+    											if(isset($carousel[$j]))
+    												$item = $carousel[$j];
+    											?>
+    										<div id="<?= 'slide_'.$j ;?>"
+    											class="carouselItem clearfix <?= ($i > 0) ? 'hide' : '' ;?>">
+    											<div class="slidePreview">
+    												<div class="slideshowImgWrap">
+    													<img
+    														src="<?= (isset($item['image']['value']->path)) ? $this->baseImgUrl . $item['image']['value']->path : CDN_IMG_URL . '/images/placeholders/ss-placeholder.png'; ?>"
+    														oldsrc="<?= (isset($item['image']['value']->path)) ? $this->baseImgUrl . $item['image']['value']->path : CDN_IMG_URL . '/images/placeholders/ss-placeholder.png'; ?>"
+    														class="carouselcustomfile_<?= $i; ?> customfile"
+    														title="Homepage Slideshow Image" formparent="carouselcustomfile"
+    														data-placeholder="<?php echo CDN_IMG_URL ?>/images/placeholders/ss-placeholder.png" />
+    												</div>
+    												<fieldset>
+    													<input type="hidden" class="hiddenImageIdField" name="carouselcustomfile[<?= $i; ?>]"
+    														value="<?= (isset($item['image']['value']->id)) ? $item['image']['value']->id : ''; ?>" />
+    													<input type="hidden" class="carouselcustomfile_id"
+    														id="carouselcustomfile_id" name="carouselcustomfile_id[<?= $i; ?>]"
+    														value="<?= (isset($item['image']['id'])) ? $item['image']['id'] : ''; ?>" />
+    													<input type="hidden"
+    														name="clearCarouselImage-<?= $i; ?>"
+    														value="" />
+    													<button id="carouselcustomfile[<?= $i; ?>]"
+    														name="carouselcustomfile[<?= $i; ?>]" class="getFile customfile adminBlueBtn gradient"
+    														data-width="294" data-height="198" data-type="img" data-existed="<?= (isset($item['image']['id'])) ? $item['image']['id'] : ''; ?>"><?= (isset($item['image']['id'])) ? $replaceButtonText : $uploadButtonText; ?></button>
+    													<button type="button" name="clearSlideShowImage" class="clearLink" style="margin-right:5px;">Clear image</button>
+    												</fieldset>
+    											</div>
+    											<fieldset>
+    												<p class="fieldLabel">
+    													Title <span class="charLimit">(Recommended: 52 characters)</span>
+    												</p>
+    												<p class="formField">
+    													<input type="hidden" class="carouseltitle_id"
+    														name="carouseltitle_id[<?= $i; ?>]"
+    														value="<?= (isset($item['title']['id'])) ? $item['title']['id'] : ''; ?>" />
+    	                                                <input type="text"
+    	                                                    class="slideTitle dataField carouseltitle" maxlength="1000"
+    	                                                    name="carouseltitle[<?= $i; ?>]" placeholder="Type in your slideshow title here"
+                                                            value="<?= (isset($item['title']['value'])) ? htmlspecialchars($item['title']['value']) : ''; ?>"
+    	                                                    />
+    												</p>
+    												<p class="fieldLabel">
+    													Message <span class="charLimit">(Recommended: 1,000 characters)</span>
+    												</p>
+    												<p class="formField">
+    													<input type="hidden" class="carouseltext_id"
+    														name="carouseltext_id[<?= $i; ?>]"
+    														value="<?= (isset($item['text']['id'])) ? $item['text']['id'] : ''; ?>" />
+    													<textarea class="slideDescription dataField carouseltext" maxlength="1000"
+    	                                                    name="carouseltext[<?= $i; ?>]" rows="5"
+    	                                                    placeholder="Type in your message here" >
+    	                                                    <?= (isset($item['text']['value'])) ? $item['text']['value'] : '' ; ?>
+    	                                                </textarea>
+    												</p>
+    											</fieldset>
+    											<fieldset>
+    												<p class="formField">
+    													<input type="hidden" class="carouseltoggle_id"
+    														name="carouseltoggle_id[<?= $i; ?>]"
+    														value="<?= (isset($item['toggle']['id'])) ? $item['toggle']['id'] : ''; ?>" />
+    													<input type="checkbox" name="carouseltoggle[<?= $i; ?>]"
+    														id="carouseltoggle<?= $i; ?>"
+    														class="carouselCheckbox carouseltoggle" value="<?= isset($item['toggle']['value']) ? $item['toggle']['value']: '';?>"
+    														<?= (isset($item['toggle']['value']) && $item['toggle']['value'] == 'on') ? 'checked="checked" oldtext="on"' : 'oldtext="off"'; ?> />
+    													Visible
+    												</p>
+    											</fieldset>
+    											<fieldset>
+    												<input type="hidden" class="carouselgroupId" name="groupId[<?= $i; ?>]"
+    													value="<?= (isset($item['groupId'])) ? $item['groupId'] : '' ; ?>">
+    											</fieldset>
+    										</div>
+    										<?php } ?>
+    									</div>
+    									<div>
+    										<span class="errormsg"></span>
+    									</div>
+    									<fieldset class="updateButtons">
+    										<input type="hidden" name="adminAction"
+    											value="updateCarouselItems" />
+    										<button type="submit" id="carouselSubmit"
+    											class="adminFormSubmit adminBlueBtn gradient">Save</button>
+    										<p class="cancelLink">Cancel</p>
+    									</fieldset>
+
+    								</div>
+    							</form>
+    						</section>
+    						<section class="adminSection">
+    							<div class="adminSectionHeader">
+    								<h3>VIP section</h3>
+    								<form name="vipMessageToggleForm" action="/admin/updateComponent"
+    									method="post">
+    									<fieldset>
+    										<p class="formField">
+    											<input type="checkbox" id="VIP_messagetoggle"
+    												name="VIP_messagetoggle" class="slideToggle" show-label="ON"
+    												hide-label="OFF" <?= $vipMessageToggle; ?> /> <input
+    												type="hidden" name="VIP_messagetoggle_id"
+    												id="VIP_messagetoggle_id"
+    												value="<?= (isset($vipMessage['toggle']->id)) ? $vipMessage['toggle']->id : '' ; ?>" />
+    											<span class="feedback"></span> <sub class="instruction"></sub>
+    										</p>
+    									</fieldset>
+    									<fieldset class="updateButtons">
+    										<input type="hidden" class="VIP_messagegroupId" name="groupId" id="VIP_messagegroupId" value="<?= $vipMessageGroupId; ?>"> 
+                                            <input type="hidden" name="adminAction" value="updateVIPMessageToggle" />
+                                            <span class="hidden">
+                                                <button	type="submit" data-field="toggle" id="vipToggleSubmit" class="adminFormSubmit adminBlueBtn gradient">Save</button>
+                                            </span>
+    									</fieldset>
+    								</form>
+    							</div>
+    							<div class="adminSectionContent">
+    								<form name="vipMessageForm" action="/admin/updateComponent"
+    									method="post" class="clearfix">
+    									<sub class="instruction">A spokesperson from your organization
+    										can share a message.</sub>
+    									<fieldset>
+    										<p class="fieldLabel">
+    											Title <span class="charLimit">(Recommended: 30 characters)</span>
+    										</p>
+    										<p class="formField">
+    											<textarea class="rte dataField" id="VIP_messagetitle" maxlength="1000"
+    												name="VIP_messagetitle" cols="25" rows="2"
+    												placeholder="Type in your VIP title here" data-length="30"
+    												data-maxLength="30">
+    												<?= (isset($vipMessage['title']->value)) ? htmlspecialchars($vipMessage['title']->value) : '' ; ?>
+    											</textarea>
+    											<input type="hidden" id="VIP_messagetitle_id"
+    												name="VIP_messagetitle_id"
+    												value="<?= (isset($vipMessage['title']->id)) ? $vipMessage['title']->id : '' ; ?>" />
+    											<input type="hidden" name="VIP_messagetitleErr"
+    												id="VIP_messagetitleErr" value="No" />
+    	                                    </p>
+    										<p class="fieldLabel">
+    											Message <span class="charLimit">(Recommended: 1,500 characters)</span>
+    										</p>
+    										<p class="formField">
+    											<input type="hidden" id="VIP_messagetext_id"
+    												name="VIP_messagetext_id"
+    												value="<?= (isset($vipMessage['text']->id)) ? $vipMessage['text']->id : ''; ?>" />
+    											<textarea class="rte dataField" id="VIP_messagetext"
+    												name="VIP_messagetext" cols="25" rows="3"
+    												placeholder="Type in your message here." data-length="999"
+    												data-maxLength="1000">
+    												<?= (isset($vipMessage['text']->value)) ? htmlspecialchars($vipMessage['text']->value) : '' ; ?>
+    											</textarea>
+    											<input type="hidden" name="VIP_messagetextErr"
+    												id="VIP_messagetextErr" value="No" />
+    										</p>
+    									</fieldset>
+    									<div class="mediaWrapper vip">
+    										<p class="fieldLabel">
+    											VIP image <span class="dimension">(Recommended image dimensions: 120 x 160
+    												pixels)</span>
+    										</p>
+    										<div class="imageWrap">
+    											<img class="VIP_messagecustomfile customfile"
+    												src="<?= (isset($vipCustomFile->path) ) ? $this->baseImgUrl . $vipCustomFile->path : CDN_IMG_URL . '/images/placeholders/placeholder4.png'; ?>"
+    												oldsrc="<?= (isset($vipCustomFile->path) ) ? $this->baseImgUrl . $vipCustomFile->path : CDN_IMG_URL . '/images/placeholders/placeholder4.png'; ?>" formparent="VIP_messagecustomfile"
+    												data-image="<?= (isset($vipCustomFile->path)) ? 'vipCustomImage':''; ?>"
+    												data-placeholder="<?php echo CDN_IMG_URL ?>/images/placeholders/placeholder4.png" />
+    										</div>
+    										<fieldset>
+    											<input type="hidden" class="hiddenImageIdField" name="VIP_messagecustomfile"
+    												value="<?= (isset($vipCustomFile->id)) ? $vipCustomFile->id : '' ; ?>" />
+    											<input type="hidden" id="VIP_messagecustomfile_id"
+    												name="VIP_messagecustomfile_id"
+    												value="<?= (isset($vipMessage['customfile']->id)) ? $vipMessage['customfile']->id : '' ; ?>" />
+    											<button id="VIP_messagecustomfile"
+    												name="VIP_messagecustomfile" class="getFile customfile adminBlueBtn gradient"
+    												data-width="120" data-height="160" data-type="img" data-existed="<?= (isset($vipMessage['customfile']->id)) ? $vipMessage['customfile']->id : '' ; ?>"><?= (isset($vipMessage['customfile']->id)) ? $replaceButtonText : $uploadButtonText; ?></button>
+    			                					<p class="clearLink">Clear image</p>
+    										</fieldset>
+    									</div>
+    									<div class="mediaWrapper sig">
+    										<p class="fieldLabel">
+    											VIP signature <span class="dimension">(Recommended image dimensions: 300 x 100
+    												pixels)</span>
+    										</p>
+    										<div class="imageWrap">
+    											<img
+    												src="<?= (isset($VIP_messagesignatureFile->path) ) ? $this->baseImgUrl . $VIP_messagesignatureFile->path : CDN_IMG_URL . '/images/placeholders/placeholder5.png'; ?>"
+    												oldsrc="<?= (isset($VIP_messagesignatureFile->path) ) ? $this->baseImgUrl . $VIP_messagesignatureFile->path : CDN_IMG_URL . '/images/placeholders/placeholder5.png'; ?>"
+    												class="VIP_messagesignature customfile" formparent="VIP_messagesignature"
+    												data-image="<?= (isset($VIP_messagesignatureFile->path)) ? 'bgCustomImage':''; ?>"
+    												data-placeholder="<?php echo CDN_IMG_URL ?>/images/placeholders/placeholder5.png" />
+    										</div>
+    										<fieldset>
+    											<!-- CUSTOM_FILE ID value -->
+    											<input type="hidden" class="hiddenImageIdField" name="VIP_messagesignature"
+    												value="<?=(isset($VIP_messagesignatureFile->id)) ? $VIP_messagesignatureFile->id : '' ; ?>" />
+    											<!-- COMPONENT_SETTING ID value -->
+    											<input type="hidden" id="VIP_messagesignature_id"
+    												name="VIP_messagesignature_id"
+    												value="<?= (isset($vipMessage['signature']->id)) ? $vipMessage['signature']->id : ''; ?>" />
+    											<button id="VIP_messagesignature" name="VIP_messagesignature"
+    												class="getFile customfile adminBlueBtn gradient" data-width="300" data-height="100"
+    												data-type="img" data-existed="<?= (isset($vipMessage['signature']->id)) ? $vipMessage['signature']->id : ''; ?>"><?= (isset($vipMessage['signature']->id)) ? $replaceButtonText : $uploadButtonText; ?></button>
+    			                					<p class="clearLink">Clear image</p>
+    										</fieldset>
+    										<fieldset class="updateButtons">
+    											<input type="hidden" class="VIP_messagegroupId" name="groupId"
+    												id="VIP_messagegroupId"
+    												value="<?= (isset($vipMessage['toggle'])) ? $vipMessage['toggle']->groupId : ''; ?>">
+    											<input type="hidden" name="adminAction"
+    												value="updateVIPMessage" />
+    											<button type="submit" id="vipSubmit" class="adminFormSubmit adminBlueBtn gradient">Save</button>
+    											<p class="cancelLink">Cancel</p>
+    										</fieldset>
+    									</div>
+    								</form>
+    							</div>
+    						</section>
+    					</div>
+
+                    <!--********************-->
+                    <!--**MY QUEUE SECTION**-->
+                    <!--********************-->
+
+    	                <div id="myQueuePage">
+
+    	                </div>
+
+                    <!--********************-->
+                    <!--***SIDEBAR SECTION**-->
+                    <!--********************-->
+
+    	                <div id="sideBar">
+    	                    <section class="adminSection">
+    	                        <form name="videoTourForm" action="/admin/updateComponent"
+    	                            method="post">
+    	                            <div class="adminSectionHeader">
+    	                                <h3>Video (Right sidebar)</h3>
+    	                                <fieldset>
+    	                                    <p class="formField">
+    	                                        <input type="checkbox" name="video_tourtoggle"
+    	                                            id="video_tourtoggle" class="slideToggle" show-label="ON"
+    	                                            hide-label="OFF"
+    	                                            <?= isset($videoTour['toggle']) && $videoTour['toggle']->value == 'on' ? 'checked="checked"' : ''; ?> />
+    	                                        <input type="hidden" name="video_tourtoggle_id"
+    	                                            id="video_tourtoggle_id"
+    	                                            value="<?= (isset($videoTour['toggle']->id)) ? $videoTour['toggle']->id : ''; ?>" />
+    	                                        <span class="feedback"></span> <sub class="instruction"></sub>
+    	                                    </p>
+    	                                </fieldset>
+    	                            </div>
+    	                            <div class="adminSectionContent videoUploadSection">
+    	                                <sub class="instruction">Upload a video to appear on your right
+    	                                    hand side column of the pages.<br /> <b>Accepted file types are
+    	                                        MP4 and WEBM. Maximum file size is 100MB.</b>
+    	                                </sub>
+    	                                <fieldset>
+    	                                    <p class="fieldLabel">
+    	                                        Title <span class="charLimit">(Recommended: 68 characters)</span>
+    	                                    </p>
+    	                                    <p class="formField">
+    	                                        <input type="text" name="video_tourtitle" id="video_tourtitle"
+    	                                            class="video_tourtitle" maxlength="1000"
+    	                                            placeholder="Type in your Video title here" 
+    												data-maxLength="68" value="<?= (isset($videoTour['title']->value)) ? htmlspecialchars($videoTour['title']->value) : '' ; ?>" />
+    	                                        <input type="hidden" name="video_tourtitleErr"	id="video_tourtitleErr" value="No" />
+    	                                        <input
+    	                                            type="hidden" id="video_tourtitle_id"
+    	                                            name="video_tourtitle_id"
+    	                                            value="<?= (isset($videoTour['title']->id)) ? $videoTour['title']->id : '' ; ?>" />
+    	                                    </p>
+    	                                    <p class="fieldLabel">Video & thumbnail</p>
+    	                                    <div class="videoImg imageWrap">
+    	                                        <img src="<?= $videoThumbNailUrl; ?>"
+    	                                            oldsrc="<?= $videoThumbNailUrl; ?>"
+    	                                            class="video_tourthumbnail video_tourcustomfile customfile"
+    	                                            data-type="vid" width="200" height="150" formparent="video_tourcustomfile"
+    	                                            data-placeholder="<?php echo CDN_IMG_URL ?>/images/placeholders/video-placeholder.png" />
+    	                                    </div>
+    	                                    <p class="constraint">Maximum file size is 100MB</p>
+    	                                    <fieldset>
+    	                                        <input type="hidden" class="hiddenImageIdField" name="video_tourcustomfile"
+    	                                            value="<?= (isset($videoTourFile->id)) ? $videoTourFile->id : '' ; ?>" />
+    	                                        <input type="hidden" id="video_tourcustomfile_id"
+    	                                            name="video_tourcustomfile_id"
+    	                                            value="<?= (isset($videoTour['customfile']->id)) ? $videoTour['customfile']->id : '' ; ?>" />
+    	                                        <input type="hidden" class="hiddenImageIdField" name="video_tourthumbnail"
+    	                                            value="<?= (isset($videoTourThumb->id)) ? $videoTourThumb->id : '' ; ?>" />
+    	                                        <input type="hidden" id="video_tourthumbnail_id"
+    	                                            name="video_tourthumbnail_id"
+    	                                            value="<?= (isset($videoTour['thumbnail']->id)) ? $videoTour['thumbnail']->id : '' ; ?>" />
+    	                                        <button id="video_tourcustomfile" name="video_tourcustomfile"
+    	                                            class="getFile customfile adminBlueBtn gradient" data-width="640" data-height="480"
+    	                                            data-type="vid"><?= (isset($videoTourFile->id)) ? 'Replace Video' : 'Add Video' ; ?></button>
+    	                                        <button id="video_tourthumbnail"
+    	                                            name="video_tourthumbnail"
+    	                                            class="getFile customfile adminBlueBtn gradient <?= (!isset($videoTourFile->id) || empty($videoTourFile->id)) ? 'disabledBtn' : '' ;?>"
+    	                                            <?= (!isset($videoTourFile->id) || empty($videoTourFile->id)) ? 'disabled' : '' ;?>
+    	                                            data-width="640" data-height="480" data-type="img"
+    	                                            data-property="noLabelChange">Replace thumbnail</button>
+    	                                    </fieldset>
+    	                                    <p class="fieldLabel">
+    	                                        Description <span class="charLimit">(Recommended: 580 characters)</span>
+    	                                    </p>
+    	                                    <p class="formField">
+    	                                        <textarea id="video_tourtext" name="video_tourtext" maxlength="1000"
+    	                                            placeholder="Please enter a description of your video"
+    	                                            data-maxLength="580">
+    	                                            <?= (isset($videoTour['text']->value)) ? $videoTour['text']->value : '' ; ?>
+    	                                        </textarea>
+    	                                        <input type="hidden" name="video_tourtextErr"
+    	                                            id="video_tourtextErr" value="No"/>
+    	                                        <input type="hidden" name="video_tourtext_id"
+    	                                            id="video_tourtext_id"
+    	                                            value="<?= (isset($videoTour['text']->id)) ? $videoTour['text']->id : '' ; ?>" />
+    	                                    </p>
+
+    	                                    <p class="fieldLabel">Visibility</p>
+    	                                    <p class="constraint">Select the pages that you would like your video to be visible on:</p>
+    	                                    <fieldset id="videoTourVisibility">
+    	                                       <p><input type="checkbox" id="visibilityLogin" value="login" data-value="login" /> Login page</p>
+    	                                       <p <?= (false == $this->homepageAvailable ? 'title="Tip: If you don\'t have content on your Home Page, this option will be disabled."' : ''); ?>>
+    	                                          <input type="checkbox" id="visibilityHome" value="home" data-value="home" <?= (false == $this->homepageAvailable ? 'disabled' : ''); ?>/> Home page
+    	                                       </p>
+    	                                       <p><input type="checkbox" id="visibilityMyqueue" value="myqueue" data-value="myqueue" /> My Queue page</p>
+    	                                       <p><input type="checkbox" id="visibilityCatalog" value="catalog" data-value="catalog" /> Catalog page</p>
+    	                                       <p><input type="checkbox" id="visibilityResource" value="resource" data-value="resource" /> Resource page</p>
+    	                                       <p><input type="checkbox" id="visibilityHistory" value="history" data-value="history" /> History page</p>
+    	                                       <p><input type="checkbox" id="visibilityProfile" value="profile" data-value="profile"/> Profile page</p>
+    	                                       <input type="hidden" id="video_tourvisibility" name="video_tourvisibility" value="<?= (isset($videoTour['visibility']->value)) ? htmlentities($videoTour['visibility']->value) : '' ; ?>" />
+    	                                       <input type="hidden" id="video_tourvisibility_id" name="video_tourvisibility_id" value="<?= (isset($videoTour['visibility']->id)) ? $videoTour['visibility']->id : '' ; ?>" />
+    	                                    </fieldset>
+    	                                    <div id="videoPlayer"></div>
+    	                                </fieldset>
+    	                                <fieldset class="updateButtons">
+    	                                    <input type="hidden" class="video_tourgroupId" name="groupId"
+    	                                        id="video_tourgroupId"
+    	                                        value="<?= (isset($videoTour['toggle'])) ? $videoTour['toggle']->groupId : ''; ?>">
+    	                                    <input type="hidden" name="adminAction" value="updateVideoTour" />
+    	                                    <button type="submit" id="videoTourSubmit" class="adminFormSubmit adminBlueBtn gradient">Save</button>
+    	                                    <p class="cancelLink">Cancel</p>
+    	                                </fieldset>
+    	                            </div>
+    	                        </form>
+    	                    </section>
+    	                </div>
+    	                <div class="updateBtns">
+    	                    <button type="submit" id="saveAll" disabled="disabled" class="adminBlueBtn gradient disabled">Save all</button>
+    	                    <button disabled="disabled" class="cancelAllLink adminCancelBtn disabled">Cancel</button>
+    	                </div>
+                    </div>
+                </div>
+                <input type="hidden" id="selTab" value="global"/>
+                <input type="hidden" id="selTabId" value="ui-id-2"/>
+                <input type="hidden" id="selTabBfr" value="global"/>
+                <input type="hidden" id="selTabBfrId" value="ui-id-2"/>
+                <input type="hidden" id="cancelAllClick" value="No"/>
+			</div>
+		</div>
+	</div>
+	
+</div>
+<input type="hidden" name="slideVal" id="slideVal" value="NotSet">
+<input type="hidden" name="initialLoad" id="initialLoad" value="Yes">
+<input type="hidden" name="baseImgPath" id="baseImgPath" value="<?= $this->baseImgUrl; ?>">
+<input type="hidden" name="videoFile" id="videoFile" value="NotSet">
+<input type="hidden" name="accordianOpen" id="accordianOpen" value="0">
+<input type="hidden" name="btnsCheck" id="btnsCheck" value="Yes">
+<input type="hidden" name="saveAllCheck" id="saveAllCheck" value="No">
+<input type="hidden" name="cancelAllCheck" id="cancelAllCheck" value="No">
+<input type="hidden" name="afterClose" id="afterClose" value="No">
+
+<div id="userSaveSelection"></div>
+<?= $this->fileTool; ?>

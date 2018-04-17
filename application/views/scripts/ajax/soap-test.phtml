@@ -1,0 +1,17 @@
+//soapCallAction
+<script type="text/javascript">
+	
+	$.ajax({
+            //dataType: 'json',
+            url: '/<?= $this->controllerName ?>/soap-call?service=<?= $this->serviceName ?>&call=<?= $this->callName ?><?= $this->params ?>' ,
+            success: function(response){
+                // set the data from the response
+                //surveyMgr.displaySurveyData(response);
+                //alert("response"+response);
+                
+            },
+            error: function(response){
+                alert('There was a problem with AJAX requesting '+response);
+            }
+     });
+</script>

@@ -1,0 +1,46 @@
+<div id="authWrapper" class="col-lg-6 col-md-8 col-sm-9">
+    <?php if(isset($this->headlineHTML)) echo $this->headlineHTML; ?>
+    <div id="formWrapper" class="sideBarImageBorder">
+        <form id="authLogin" name="authLogin" method="post" class="loginForm contentBgColor clearfix" action="/auth/dologin" autocomplete="off">
+            <fieldset id="formFieldset">
+                <p class="<? if(!isset($this->errMsg) && !isset($this->sysMsg)){echo "noMessage"; } else if(isset($this->errMsg)){ echo "errorMessage"; } else if(isset($this->sysMsg)){ echo "systemMessage"; } ?>">
+                <? if(!isset($this->errMsg) && !isset($this->sysMsg)){echo ""; } else if(isset($this->errMsg) || isset($this->sysMsg)){ echo '<i class="fa '. $this->iconClass.'"></i>'; } ?><? if(isset($this->errMsg)){ echo $this->errMsg; } else if(isset($this->sysMsg)){ echo $this->sysMsg; }?></p>
+                <p class="formField contentTextIcons">
+                    <label for="username"><?= $this->siteLabels['UserName']; ?>:</label>
+                    <input type="text" id="username" class="floatlabel <? if(isset($this->errMsg)) echo "errorField" ?>" name="username" placeholder="<?= $this->siteLabels['UserName']; ?>" />
+                </p>
+                <p class="formField contentTextIcons">
+                    <label for="password"><?= $this->siteLabels['Password']; ?>:</label>
+                    <input type="password" id="password" class="floatlabel <? if(isset($this->errMsg)) echo "errorField" ?>" name="password" placeholder="<?= $this->siteLabels['Password']; ?>" />
+                </p>
+                <?php if (isset($this->languageDropdownStatus) && true == $this->languageDropdownStatus):?>
+                <p class="formField contentTextIcons" style="margin: 0px 10px 10px;">
+                    <span class="label contentTextIcons"><?= $this->siteLabels['Language']; ?>:</span>
+                    <?= $this->languageSelection; ?>
+                </p>
+                <?php endif;?>
+            </fieldset>
+            <div class="loginBtns clearfix">
+                <input type="hidden" name="submitx" />
+                <p class="loginBtn">
+                    <button id="authSubmit" class=""><?= $this->siteLabels['SignInBtn']; ?></button>
+                </p>
+                <?php if($this->selfRegStat):?>
+                <p class="selfRegLaunch tooltipster" title="<?= $this->siteLabels['registerToolTip']; ?>">
+                    <a href="/auth/sitepassword" class="customSecondaryBtn"><?= $this->siteLabels['register']; ?></a>
+                </p>
+                 <?php endif;?>
+            </div>
+        </form>
+    </div>
+    <div class="helpLinks">
+        <p id="forgotAuthWrapper">
+            <a href="/auth/forgotpassword" id="authForgot" class="primaryTextIcons" title="<?= $this->siteLabels['ForgotPassTitle']; ?>"><?= $this->siteLabels['ForgotPass']; ?></a>
+            <span class="primaryTextIcons">  |  </span>
+            <a class="help primaryTextIcons" href="/help/UserGuide/Catalyst_LoginHelp_<?= $this->siteConfigs['DefaultLanguage']?>.pdf" title="<?= $this->siteLabels['NavHelp']; ?>" target="_blank"><?= $this->siteLabels['NavHelp']; ?></a> 
+        </p>
+    </div>
+</div>
+
+<iframe id="lcecLogout" style="position:fixed; height: 1px; width: 1px; top: -10000px; left: -10000px;" src="<?=$this->lcecHost;?>/app/logout"></iframe>
+<!-- -->

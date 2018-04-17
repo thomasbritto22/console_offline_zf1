@@ -1,0 +1,1 @@
+gXMLBuffer="<?xml version=\"1.0\" encoding=\"UTF-8\"?><cki><ck fm=\"Change your password\" to=\"View your completed courses\" num=\"16\"/></cki>";

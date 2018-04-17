@@ -1,0 +1,145 @@
+/* user fields box*/
+.fieldsBox {
+background: #FFF;
+border: 1px solid #000;
+margin: 20px;
+padding: 10px;
+}
+.fieldsInputLocked{
+	border: 0px;
+	background: none;
+}
+.fieldLabel {
+	color: #4582bf;
+	font-weight: bold;
+}
+#lockedFields span input {
+	background: none;
+}
+.fieldRow{
+	width: 160px;
+	display:inline-block;
+}
+.detailsTitle {
+	color: #2878b5;
+	display: inline-block;
+	font-family: 'Droid Sans', Helvetica, Arial, sans-serif;
+	font-size: 18px;
+	margin: 20px 30px 20px 0;
+	width: 130px;
+	vertical-align: top;
+}
+
+.theDetails {
+	background: #F3F3F3;
+	display: inline-block;
+	padding: 20px;
+	border-radius:15px;
+	width: 100%;
+}
+
+.theDetails p {
+	color: #333;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 14px;
+}
+
+.titles {
+	display: inline-block;
+	font-weight: bold;
+	width: 170px;
+}
+
+.values {
+	display: inline-block;
+	font-size: 12px;
+	width: 360px;
+}
+
+.editProfile {
+	margin: 20px;
+}
+
+.theDetails input, .theDetails select {
+	margin: 10px 0 10px;
+	padding: 5px;
+	width: 100%;
+}
+
+.theDetails select {
+	margin-right: 12px;
+}
+
+.theDetails .required {
+	color: red;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.viewSection input {
+	width: 20px;
+}
+
+.changeProfile {
+	margin: 20px;
+}
+
+#categorySection .error {
+	display: inline-block;
+	margin: 0 0 0 180px;
+	width: 260px;
+}
+
+.note {
+	color: #666;
+	display: inline-block;
+	margin: 20px 0 100px 70px;
+	width: 225px;
+	vertical-align: middle;
+}
+
+.changePass .theDetails {
+}
+
+.changePassSection input {
+	width: 230px;
+}
+
+.changePassSection label {
+	display: block;
+	margin-right: 135px;
+	text-align: right;
+}
+
+.updateButtons {
+	margin:25px 0;
+}
+
+.cancelLink {
+	color: #3A3A3A;
+	cursor: pointer;
+	display: inline-block;
+	font-weight: bold;
+	margin: 0 25px 0 0;
+	text-decoration: underline;
+	text-transform: lowercase;
+}
+
+.theDetails .errorMessage {
+	margin: 0 0 0 224px;
+	width: 44%;
+}
+
+.instLabel {
+	display: block;
+	width: 100%;
+}
+
+.borderRightWhite {
+	 border-right: 1px solid;
+}
+
+.paddingRightLeft {
+	padding-right: 5px;
+	padding-left: 5px;
+}

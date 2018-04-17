@@ -1,0 +1,145 @@
+<?
+// create a URL for printing the current view
+$allowedTags = '<a><abbr><acronym><address><b><basefont><bdo><big><blockquote><br><caption><center><cite><code><col><colgroup><dd><del><dfn><dir>
+<div><dl><dt><em><font><h1><h2><h3><h4><h5><h6><hr><i><img><ins><kbd><li><menu><ol><p><pre><q><s><samp><small><span><strike><strong><sub><sup><table>
+<tbody><td><tfoot><th><thead><tr><tt><u><ul><var>';
+$printURL = '/notifications/printHistory';
+if(!empty($this->sortURL)) $printURL .= '?'.$this->sortURL;
+if(!empty($this->sortURL) && !empty($this->filterURL)) $printURL .= '&';
+else if(!empty($this->filterURL)) $printURL .= '?';
+if(!empty($this->filterURL)) $printURL .= $this->filterURL;
+
+
+// create an easy way to find out which col is sorted and style it
+// by default, we are sorting the date column in asc order (newest first)
+$isDateSort = true;
+//$sortDirClass = 'sortAsc';
+if(!empty($this->sortURL)){
+$isTitleSort = strpos($this->sortURL, '=title&');
+$isCatalogSort = strpos($this->sortURL, '=catalogId&');
+$isTimeSort = strpos($this->sortURL, '=timeSpent&');
+$isDateSort = strpos($this->sortURL, '=completionDate&');
+
+$sortDir = substr($this->sortURL, strpos($this->sortURL,'&dir=')+5);// changed earlier calculation to make sort arrows work properly
+
+$sortDirClass = ($sortDir == 'SORT_ASC') ? 'sortAsc' : 'sortDesc';
+}
+
+// if there is no history to render, output a message
+// otherwise, generate the history list.
+if(empty($this->historyList)){ ?>
+
+<!-- <h4>Sorry <?= $this->user->firstName; ?>,</h4> -->
+
+<p class="noCompletions contentTextIcons">
+    <?= $this->siteLabels['NoCompletionsForDates']; ?>
+    <!--  You don't have any completions between <?= $this->startDate; ?> and <?= $this->endDate; ?>. Try changing your date range or clear the dates to see the entire list. -->
+</p>
+
+<? } else { ?>
+<p class="historyPrintLink primaryTextIcons">
+    <a id="printHistory" href="<?= $printURL; ?>"><?= $this->siteLabels['PrintThisPage']; ?></a>
+</p>
+<ul class="sortBar ui-corner-top clearfix secondaryBgColor">
+    <li style="margin-left: 25px;" tabindex="0" ><a href="" id="title" role="button" class="<? if($isTitleSort) echo $sortDirClass; ?> contentTextIcons historyHeaderTitle" <?  echo "aria-label='".$this->siteLabels['Title'].": activate to sort column descending'"; ?>>
+        <?= $this->siteLabels['Title']; ?>
+    </a></li>
+<li tabindex="0" ><a href="" id="catalogId" role="button" class="<? if($isCatalogSort) echo $sortDirClass; ?> contentTextIcons historyHeaderTitle" <?  echo "aria-label='".$this->siteLabels['ModuleID'].": activate to sort column descending'"; ?>><?= $this->siteLabels['ModuleID']; ?></a></li>
+<li tabindex="0"><a href="" id="timeSpent" role="button" class="<? if($isTimeSort) echo $sortDirClass; ?> contentTextIcons historyHeaderTitle" <?  echo "aria-label='".$this->siteLabels['TimeSpent'].": activate to sort column descending'"; ?>><?= $this->siteLabels['TimeSpent']; ?></a></li>
+<li tabindex="0"><a href="" id="completionDate" role="button" class="<? if($isDateSort) echo $sortDirClass; ?> contentTextIcons historyHeaderTitle" <?  echo "aria-label='".$this->siteLabels['CompletionDate'].": activate to sort column descending'"; ?>><?= $this->siteLabels['CompletionDate']; ?></a></li>
+</ul>
+<script>
+    $(".historyHeaderTitle").click(function(){
+        $(".historyHeaderTitle").removeClass("titleFocusBorder");
+        $(this).addClass("titleFocusBorder");
+        var currentElem = $(this).id ; 
+    });
+</script>
+<div id="historyList" role="tablist">
+    <?foreach((array)$this->historyList as $h){ ?>
+    <?
+    $printCompletionURL = '/learn/printlegacy?print=completion&certificateId='.$h['certificateId'];
+    $printCertURL = '/learn/printlegacy?print=certificate&certificateId='.$h['certificateId'];
+    ?>
+    <div class="expandable" >
+        <article class="collapsedWrapper clearfix borders secondaryBgColor" aria-label="<?= $this->escape($h['title']); ?>: <?= $h['catalogId']; ?>: <?= $h['timeSpent'] == "00:00:00" ? "N/A" : $h['timeSpent']; ?>: <?= $h['completionDateInMDY']; ?>">
+            <!--<span id="cond" style="display: none"></span>-->
+            <p class="title contentTitles" tabindex="0" aria-label="<?= $this->escape($h['title']); ?>"><?= $this->escape($h['title']); ?></p>
+            <p class="catalogId contentTitles" tabindex="0" aria-label="<?= $h['catalogId']; ?>"><?= $h['catalogId']; ?></p>
+            <p class="timeSpent contentTitles" tabindex="0" aria-label="<?= $h['timeSpent'] == "00:00:00" ? "N/A" : $h['timeSpent']; ?>"><?= $h['timeSpent'] == "00:00:00" ? "N/A" : $h['timeSpent']; ?></p>
+            <p class="completionDate contentTitles" tabindex="0" aria-label="<?= $h['completionDateInMDY']; ?>"><?= $h['completionDateInMDY']; ?></p>
+        </article>
+        <article  class="expandedWrapper borders contentBgColor" aria-label="<?= $this->escape($h['title']); ?>">
+            <div class="left" >
+                <? if(isset($h['avgRatingsOutput'])){ ?>
+                <div tabindex="0" role="heading" class="moduleRating secondaryTextIcons clearfix"><?= $h['avgRatingsOutput']; ?></div>
+                <? } ?>
+
+                <img tabindex="0" class="image" src="<?= $h['image']; ?>" title="<?= $this->escape($h['title']); ?>" alt="<?= $this->escape($h['title']); ?>" height="50" />
+                <div class="description contentTextIcons"><?= strip_tags($h['description'], $allowedTags); ?></div>
+                <?php
+                $onclick = (isset($h['destination']) && $h['destination'] != '') ? "document.location.href='" . $h['destination'] . "'" : '';
+                if ($h['isCourseAvailableInSite'] == 'true' && $onclick != '') {
+                    ?>
+                    <p class="modStart">
+                        <button onclick="<?= $onclick ?>;" class="courseBtn customButton"><?= $this->siteLabels['ModuleStartBtn']; ?></button>
+                    </p>
+                <?php } ?>
+                <? if($this->reviewsToggle == 'on' || $this->ratingsToggle == 'on') : ?>
+                
+                    <a href="/learn/reviews?curriculumId=<?= $h['curriculumId']; ?>&moduleId=<?= $h['moduleId']; ?>&systemId=<?= $h['systemId']; ?>" class="openReviewDialog secondaryTextIcons clearfix historyAnchor" data-system-id="<?= $h['systemId']; ?>" data-catalog-id="<?= $h['catalogId']; ?>" tabindex="0">
+                        <?= $this->ratingsToggle == 'on' ? $this->siteLabels['RateReview'] : ''; ?>
+                    </a>
+                
+                <? endif; ?>
+            </div>
+            <div class="right">
+                <?
+                /* currently, hasCert is our sign that this course
+                * does not have a certification. Calculated in java space.
+                */
+                if($h['hasCert'] == "1" && true == $this->CompletionCertificate){ ?>
+                <p class="viewCertification secondaryTextIcons">
+                    <a href="<?= $printCertURL; ?>" target="_blank" class="secondaryTextIcons clearfix" tabindex="0" >
+                        <?= $this->siteLabels['Certification']; ?> <span class="offscreen">Print</span>
+                        <span class="coursePrintIcon" aria-hidden="true"><i class="fa fa-print" alt="Print" aria-hidden="true"></i><i class="material-icons">&#xE8AD;</i></span>
+                    </a>
+
+                </p>
+                <? } ?>
+                <?
+                /* Jasper Certifications do not have a certificate
+                * of completion. Therefore, no link to print is necessary.
+                */
+                if(($h['assetType'] != 'jasper' || true === $h['embeddedCert']) && true == $this->CompletionCertificate){ ?>
+                <p class="viewCompletionCert secondaryTextIcons">
+                    <a href="<?= $printCompletionURL; ?>" target="_blank" class="secondaryTextIcons clearfix" tabindex="0"  >
+                        <?= $this->siteLabels['ModuleCompletionCertificate']; ?> <span class="offscreen">Print</span>
+                        <span class="coursePrintIcon" aria-hidden="true"><i role="img" class="fa fa-print" alt="Print"  aria-hidden="true"></i><i class="material-icons">&#xE8AD;</i></span>
+                    </a>
+                </p>
+                <? } ?>
+                <?
+                /* Never display "no" for manual credit given. It's confusing
+                * to users who don't understand what manual credit is.
+                */
+                if(isset($h['creditReasonId']) && null != $h['creditReasonId']){ ?>
+                <p class="receivedCredit secondaryTextIcons" >
+                    <span tabindex="0"><?= $this->siteLabels['ManualCreditGiven']; ?>:</span>
+                    <span  tabindex="0" class="rightAlign"><?= $this->siteLabels['Yes'] ?></span>
+                </p>
+                <? } ?>
+                <?
+                /* If there is no score, don't display empty % */
+                if(!empty($h['score']) || (0 == $h['score'] && "" != $h['score'])){ ?>
+                <p class="score secondaryTextIcons" >
+                    <span tabindex="0"><?= $this->siteLabels['Score']; ?>:</span>
+                    <span tabindex="0" class="rightAlign"><?= $h['score']; ?>%</span>
+                </p>
+                <? } ?>
+            </div>
+        </article>
+    </div>
+    <? } ?>
+</div>
+<? } ?>

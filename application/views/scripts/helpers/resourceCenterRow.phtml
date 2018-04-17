@@ -1,0 +1,50 @@
+<?php
+$protocol = array(
+		'email'  => 'mailto:',
+		'doc'	 => null,
+		'url'	 => null,
+		'phone'  => 'tel:',
+		'text'	 => null,
+		'video'  => null,
+		);
+
+$maxLenDisplay = 120;
+
+?>
+<p class="resourceItem">
+	<span class="resourceTitle primaryTextIcons font-size14"><?= htmlspecialchars($this->title);?></span>
+	<?php if("video" == $this->type):?>
+		<span class = "videoInfo">
+					<input class="videoText" type="hidden" value="<?= htmlspecialchars($this->text);?>">
+					<input class="videoTitle" type="hidden" value="<?= htmlspecialchars($this->title);?>">
+					<input class="videoPath" type="hidden" value="<?= htmlspecialchars(isset($this->customfile) ? $this->customfile->path :'');?>">
+					<input class="videoThumbnail" type="hidden" value="<?= htmlspecialchars(isset($this->thumbnail) ? $this->thumbnail->path :'');?>">
+		</span>
+		<span class="videoImg">
+			<img src="<?= $protocol[$this->type].htmlspecialchars($this->text);?>">
+		</span>
+	<?php endif;?>
+	<?php if("text" == $this->type):?>
+	<span class="secondaryTextIcons font-size14"><?= htmlspecialchars(mb_strlen($this->text, 'UTF-8') > $maxLenDisplay ? mb_substr($this->text, 0, $maxLenDisplay, "UTF-8"). '...' : $this->text);?></span>
+	<?php elseif("doc" == $this->type):
+	 $path = null;
+   	$ext = null;
+   	$path = pathinfo($this->text);
+
+   	//this is used to extract the extension when there is querystring variables passed
+   	$ext = explode('?', $path['extension'], 2);
+   	$file_name = htmlspecialchars(isset($this->customfile->title) && $this->customfile->title != '') ?  $this->customfile->title : (!empty($path['filename']) ? $path['filename'].'.'.$ext[0]:'');
+   	$file_path = htmlspecialchars(isset($this->customfile->customFileDTO) && $this->customfile->customFileDTO->path != '') ?  $this->customfile->customFileDTO->path : (!empty($this->text) ? $this->text :'');
+   		?>
+	<span><a href="/resourcecenter/download?filepath=<?=$file_path;?>&filename=<?=$file_name?>&type=<?=$ext[0]?>" class="secondaryTextIcons font-size14" target="_blank"><?=$this->desc;?></a></span>
+	<?php else:?>
+	<span class="secondaryTextIcons font-size14">
+	<?php if("video" == $this->type):?>
+		<?= htmlspecialchars(isset($this->customfile->title) && $this->customfile->title != '' ?  $this->customfile->title :'');?>	
+	<?php elseif("email" == $this->type):?>
+		<a href="<?= $protocol[$this->type].htmlspecialchars($this->text);?>" class="emailLink secondaryTextIcons font-size14"><?=$this->desc;?></a></span>
+	<?php else:?>
+		<a href="<?= $protocol[$this->type].htmlspecialchars($this->text);?>" class="secondaryTextIcons font-size14" target="_blank"><?=$this->desc;?></a></span>
+	<?php endif;?>
+	<?php endif;?>
+</p>

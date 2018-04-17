@@ -1,0 +1,156 @@
+<?
+/**
+ * --- INTRO VIEW ---
+ * This is the view that the user should see first,
+ * after they have completed a course. This is not
+ * visible any other time.
+ */
+if($this->showIntro){
+?>
+<section id="introView" class="reviewFormView">
+    <h3 class="reviewFormTitle contentTextIcons font-size14"><?= $this->siteLabels['Rating']; ?></h3>
+    <p class="font-size14 contentTextIcons rateInstructions"><?= $this->siteLabels['ClickToRate']; ?></p>
+    <form id="reviewForm" action="reviews/saveUserReview" method="post">
+    <? if(($this->userCanReview == 'on' || $this->userCanRate == 'on') && !empty($this->formRatingControls)){ ?>
+        <div id="ratingsPanel" class="clearfix">
+            <?= $this->formRatingControls; ?>
+        </div>
+    <? } ?>
+    <? if($this->userCanReview == 'on' || $this->userCanRate == 'on'){ ?>
+        <fieldset>
+            <p class="reviewLabel font-size14 contentTextIcons bold"><?= $this->siteLabels['Review']; ?></p>
+            <label class="reviewInputLabel" style="display:none"><?= $this->siteLabels['ReviewInputPlaceholder']; ?></label>
+            <textarea id="reviewInput" name="reviewInput" rows="6" placeholder="<?= $this->siteLabels['ReviewInputPlaceholder']; ?>"><?= !empty($this->review->review) ? $this->review->review : ''; ?></textarea>
+        </fieldset>
+    <? } ?>
+        <fieldset class="reviewFormButtons">
+            <input type="hidden" name="systemId" value="<?= $this->systemId; ?>" />
+            <button id="reviewSubmit" class="customDisabledBtn" disabled="disabled"><?= $this->siteLabels['Publish']; ?></button>
+            <button id="reviewCancel" class="customDisabledGreyBtn" disabled="disabled"><?= $this->siteLabels['Cancel']; ?></button>
+        </fieldset>
+    </form>
+</section>
+<? } ?>
+
+
+<?
+/**
+ * --- COURSE NOT COMPLETED VIEW ---
+ * This is the view that the user should see if they
+ * have not yet completed the course. This is not
+ * visible any other time.
+ */
+$backURL = '/learn/preview?curriculumId='.$this->curriculumId.'&systemId='.$this->systemId;
+if($this->showNoCompletion){
+?>
+<section id="noCompletionView" class="reviewFormView">
+    <h3 class="reviewFormTitle contentTextIcons font-size14"><?= $this->siteLabels['Rating']; ?></h3>
+    <p class="font-size14 contentTextIcons rateInstructions"><?= $this->siteLabels['ClickToRate']; ?></p>
+    <form id="reviewForm" action="reviews/saveUserReview" method="post">
+    <? if(($this->userCanReview == 'on' || $this->userCanRate == 'on') && !empty($this->formRatingControls)){ ?>
+        <div id="ratingsPanel" class="notCompletedRatings clearfix">
+            <?= $this->formRatingControls; ?>
+        </div>
+    <? } ?>
+    <? if($this->userCanReview == 'on' || $this->userCanRate == 'on'){ ?>
+        <fieldset>
+            <p class="reviewLabel font-size14 contentTextIcons bold"><?= $this->siteLabels['MyReview']; ?></p>
+            <label class="reviewInputLabel" style="display:none"><?= $this->siteLabels['ReviewInputPlaceholder']; ?></label>
+            <textarea id="reviewInput" name="reviewInput" rows="6" placeholder="<?= $this->siteLabels['ReviewInputPlaceholder']; ?>" readonly><?= !empty($this->review->review) ? $this->review->review : ''; ?></textarea>
+        </fieldset>
+    <? } ?>
+        <fieldset class="reviewFormButtons">
+            <input type="hidden" name="systemId" value="<?= $this->systemId; ?>" />
+            <button id="reviewSubmit" class="customDisabledBtn" disabled="disabled"><?= $this->siteLabels['Publish']; ?></button>
+            <button id="reviewCancel" class="customDisabledGreyBtn" disabled="disabled"><?= $this->siteLabels['Cancel']; ?></button>
+        </fieldset>
+    </form>
+</section>
+<? } ?>
+
+
+<?
+/**
+ * --- FROM VIEW ---
+ * This is the section that has the actual review and rating form.
+ * This view will display when a user doesn't already have a review
+ * and is not coming from the end of a course.
+ */
+if($this->showForm){
+?>
+<section id="formView" class="reviewFormView">
+    <h3 class="reviewFormTitle contentTextIcons font-size14"><?= $this->siteLabels['Rating']; ?></h3>
+    <p class="font-size14 contentTextIcons rateInstructions"><?= $this->siteLabels['ClickToRate']; ?></p>
+    <form id="reviewForm" action="reviews/saveUserReview" method="post">
+    <? if(($this->userCanReview == 'on' || $this->userCanRate == 'on') && !empty($this->formRatingControls)){ ?>
+        <div id="ratingsPanel" class="clearfix">
+            <?= $this->formRatingControls; ?>
+        </div>
+    <? } ?>
+    <? if($this->userCanReview == 'on' || $this->userCanRate == 'on'){ ?>
+        <fieldset>
+            <p class="reviewLabel font-size14 contentTextIcons bold"><?= $this->siteLabels['MyReview']; ?></p>
+            <label class="reviewInputLabel" style="display:none"><?= $this->siteLabels['ReviewInputPlaceholder']; ?></label>
+            <textarea id="reviewInput" name="reviewInput" rows="6" placeholder="<?= $this->siteLabels['ReviewInputPlaceholder']; ?>"><?= !empty($this->review->review) ? $this->review->review : ''; ?></textarea>
+        </fieldset>
+    <? } ?>
+        <fieldset class="reviewFormButtons">
+            <input type="hidden" name="systemId" value="<?= $this->systemId; ?>" />
+            <button id="reviewSubmit" class="customButton"><?= $this->siteLabels['Publish']; ?></button>
+            <button id="reviewCancel" class="customSecondaryBtn"><?= $this->siteLabels['Cancel']; ?></button>
+        </fieldset>
+    </form>
+</section>
+<? } ?>
+
+
+<?
+/**
+ * --- PREPOPULATED VIEW ---
+ * This view contains the review and rating values when the current user
+ * has already left a review.
+ */
+if($this->showPrepop){
+?>
+<section id="prepopView" class="reviewFormView">
+    <h3 class="reviewFormTitle contentTextIcons font-size14"><?= $this->siteLabels['Rating']; ?></h3>
+    <p class="font-size14 contentTextIcons rateInstructions"><?= $this->siteLabels['ClickToRate']; ?></p>
+    <? if($this->rating){ ?>
+    <div id="ratingsPanel" class="clearfix prepopRatings">
+        <?= $this->prepopRatingControls; ?>
+    </div>
+    <? } ?>
+    <fieldset>
+        <p class="reviewLabel font-size14 contentTextIcons bold"><?= $this->siteLabels['MyReview']; ?></p>
+        <p class="prepopReviewInput contentTextIcons"><?= isset($this->review) ? nl2br($this->review->review) : "(You have not reviewed this module yet.)"; ?></p>
+    </fieldset>
+    <fieldset class="reviewFormButtons">
+        <button id="reviewDelete" class="customButton"><?= $this->siteLabels['Delete']; ?></button>
+        <button id="reviewEdit" class="customSecondaryBtn"><?= $this->siteLabels['Edit']; ?></button>
+    </fieldset>
+</section>
+<? } ?>
+
+
+<?
+/**
+ * --- VERIFY VIEW ---
+ * This view is used when the user is about to delete their review and rating.
+ * This is basically an 'are you sure?' view.
+ */
+if($this->showVerify){
+?>
+<section id="verifyView" class="reviewFormView contentBgColor borders">
+    <h3 class="reviewFormTitle contentTitles"><?= $this->siteLabels['DeleteReview']; ?></h3>
+    <form id="deleteForm" action="reviews/delete">
+        <fieldset>
+            <p class="contentTextIcons"><?= $this->siteLabels['DeleteConfirm']; ?></p>
+        </fieldset>
+        <fieldset class="reviewFormButtons">
+            <input type="hidden" name="systemId" value="<?= $this->systemId; ?>" />
+            <button id="reviewYes" class="customButton"><?= $this->siteLabels['Yes']; ?></button>
+            <button id="reviewNo" class="customSecondaryBtn"><?= $this->siteLabels['No']; ?></button>
+        </fieldset>
+    </form>
+</section>
+<? } ?>

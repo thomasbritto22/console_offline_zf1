@@ -1,0 +1,239 @@
+#fileList_wrapper {
+	overflow: hidden;
+}
+#categorySection > .courseConfigHeader {
+	border-bottom: 1px solid black;
+	float: none;
+	margin: 0 auto;
+}
+#courseconfigurationTable_filter {
+	background: none;
+	height: 40px;
+	padding: 0;
+	position: absolute;
+	right: 5px;
+	top: -30px;
+}
+#courseconfigurationTable thead{
+    display:none;
+}
+#courseconfigurationTable {
+	margin: 0 auto;
+}
+
+#courseconfigurationTable thead tr {
+	height: 44px;
+}
+
+#courseconfigurationTable tbody tr {
+	display: block;
+	float: left;
+	margin-top: 10px;
+}
+
+.ui-icon {
+	height: 16px;
+	width: 16px;
+}
+
+.closed span.ui-icon {
+	background: #4B4B4B url(/images/sprites/misc-sprite.png) no-repeat -217px -867px;
+	position: absolute;
+	top: 15px;
+	left: 15px;
+}
+
+span.ui-icon {
+	background: #4B4B4B url(/images/sprites/misc-sprite.png) no-repeat -217px -917px;
+	position: absolute;
+	top: 15px;
+	left: 15px;
+}
+
+.courseTitle > a {
+	color: #4B4B4B;
+	font-weight: bold;
+}
+
+#courseconfigurationTable tr .courseTitle {
+	padding: 1.2em;
+	text-align: left;
+}
+
+.clearLink {
+	border-radius: 5px;
+	border-left: 1px solid #666;
+	font-weight: bold;
+	float: left;
+	height: 30px;
+	min-width: 90px;
+	padding: 5px;
+	text-align: center;
+}
+
+/*#courseconfigurationTable tbody tr.even, #courseconfigurationTable tbody tr.odd {
+	background-color: white;
+}
+#courseconfigurationTable tr.even, #courseconfigurationTable tr.odd {
+	border-bottom: 1px solid black;
+}*/
+
+#courseconfigurationTable td {
+	border: none;
+}
+
+#courseconfigurationTable_length{
+	-webkit-border-top-left-radius: 4px;
+	-webkit-border-bottom-left-radius: 4px;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-bottomleft: 4px;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+	height: 30px;
+	margin: 2em 0 2em 3.3em;
+	padding: 5px 21px 10px 12px;
+	width: 20em;
+	vertical-align: middle;
+}
+.dataTables_info {
+	display: none;
+	visibility: hidden;
+}
+
+.paginate_enabled_previous, .paginate_enabled_next {
+	color: #4582bf;
+}
+
+.paginate_disabled_previous, .paginate_disabled_next {
+	color: #4567bc;
+}
+#courseconfigurationTable tr {
+	width: 100%;
+}
+
+#courseconfigurationTable tr.odd,
+#courseconfigurationTable tr.even {
+	background-color: #CCC;
+}
+
+#courseconfigurationTable tr.detailsRow {
+	margin: 0;
+}
+
+div.innerDetails {
+	padding: 5px;
+}
+
+td.details {
+	width: 750px;
+}
+
+.pbInstructions {
+	color: black;
+	font-size: 1.2em;
+}
+.pbLabel {
+	margin: 10px 0;
+}
+
+#courseconfigurationTable tr > .control{
+	display: block;
+	float: left;
+	width: 2em !important;
+	height: 2.1em;
+	cursor: pointer;
+	position: relative;
+}
+
+#courseconfigurationTable thead tr > .control {
+	background: none;
+	height: auto;
+}
+
+#courseconfigurationTable tr .courseLanguage{
+	cursor: pointer;
+	width: 16em !important;
+	padding: 1em;
+	text-align: left;
+}
+
+#courseconfigurationTable tr .courseLanguage select{
+	margin-top:-1em;
+}
+
+#courseconfigurationTable .innerDetails{
+	width: 100%;
+}
+
+#courseconfigurationTable tr *{
+	text-decoration: none;
+}
+
+/*#courseconfigurationTable .innerDetails > * > *{
+	position: static;
+	float:left;
+}*/
+
+#courseconfigurationTable .courseDesc button:hover {
+	background: none;
+	border: 1px solid #339AD5;
+}
+
+#courseconfigurationTable .courseDesc button:hover i {
+	color: #339AD5;
+}
+
+#courseconfigurationTable tr .courseImgWrap {
+	background: none;
+	width: 221px;
+	height: 110px;
+	padding: 5px;
+	margin: 0 10px 10px 0;
+	overflow: hidden;
+}
+
+#courseconfigurationTable tr .courseImgWrap img {
+	width: 100%;
+	height: auto;
+}
+
+#courseconfigurationTable tr .courseDesc{
+	margin: 20px 0;
+}
+
+/*.pbLabel > span {
+	display: block;
+}*/
+
+div.visibilityTypes {
+	color: #666;
+}
+
+div.visibilityTypes > input[type=checkbox] {
+	margin-right: 5px; 
+}
+
+.formOptions {
+	margin: 20px 0;
+}
+
+.formOptions button {
+	margin-right: 5px;
+}
+
+.pageNumber{
+	float:left;
+	padding:5px;
+	margin:-5px 0 0 5px;
+	border:1px solid #000;
+	cursor: pointer;
+	color:#111;
+}
+
+.pageNumber.current{
+	color: #666;
+}
+
+#courseconfigurationTable_paginate,#courseconfigurationTable_info{
+	margin-top:10px;
+}

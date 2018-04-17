@@ -1,0 +1,24 @@
+<?= $this->doctype(); ?>
+<html>
+<head>
+	<?= $this->headTitle(); ?>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	<?= $this->headLink(); ?>
+	<?= $this->headStyle(); ?>
+    <?= $this->headScript(); ?>
+    
+    <script type="text/javascript">
+		$(document).ready(function(){
+			<?= $this->docReadyJS; ?>
+		});
+    </script>
+</head>
+<body>
+	
+    				    <?= $this->layout()->content; ?>
+    				
+</body>
+</html>
+<!--#### print_layout.phtml ####-->

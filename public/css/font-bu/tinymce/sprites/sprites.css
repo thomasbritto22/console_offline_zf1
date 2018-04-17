@@ -1,0 +1,123 @@
+body.notshow .mce-widget button{
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	background-image: url("/css/font-bu/tinymce/sprites/sprites.png");
+	background-repeat: no-repeat;
+}
+body.notshow [aria-label="Bold"] button/*.mce-i-bold*/ {
+	background-position: 8px 8px;
+	width: 32px;
+}
+body.notshow [aria-label=Underline] button/*.mce-i-underline*/ {
+	background-position: -16px 8px;
+	width: 32px;
+}
+body.notshow [aria-label=Italic] button/*.mce-i-italic*/ {
+	background-position: -40px 8px;
+	width: 32px;
+}
+body.notshow [aria-label="Align left"] button/*.mce-i-paragraph-left*/ {
+	background-position: -64px 8px;
+	width: 32px;
+}
+body.notshow [aria-label="Align center"] button/*.mce-i-paragraph-center*/ {
+	background-position: -88px 8px;
+	width: 32px;
+}
+body.notshow [aria-label="Align right"] button/*.mce-i-paragraph-right*/ {
+	background-position: -112px 8px;
+	width: 32px;
+}
+body.notshow [aria-label="Justify"] button/*.mce-i-paragraph-justify*/ {
+	background-position: -136px 8px;
+	width: 32px;
+}
+body.notshow [aria-label="Bullet list"] button/*.mce-i-list*/ {
+	background-position: -160px 8px;
+	width: 32px;
+}
+body.notshow [aria-label="Remove link"] button/*.mce-i-unlink*/ {
+	background-position: -184px 8px;
+	width: 31px;
+}
+body.notshow [aria-label="Insert/edit link"] button/*.mce-i-link*/ {
+	background-position: -207px 8px;
+	width: 31px;
+}
+body.notshow .mce-i-console {
+	background-position: -230px 8px;
+	width: 32px;
+}
+
+body.notshow [aria-label="Paste"] button/*.mce-i-paste*/ {
+	background-position: -254px 8px;
+	width: 32px;
+}
+body.notshow .mce-i-arrow-up {
+	background-position: -278px 8px;
+	width: 31px;
+}
+
+body .mce-widget button{
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	background-image: url("/css/font-bu/tinymce/sprites/sprites.png");
+	background-repeat: no-repeat;
+	background-position: -9999px -9999px;
+}
+body [aria-label="Bold"] button/*.mce-i-bold*/ {
+	background-position: 8px 8px;
+	width: 32px;
+}
+body [aria-label=Underline] button/*.mce-i-underline*/ {
+	background-position: -16px 8px;
+	width: 32px;
+}
+body [aria-label=Italic] button/*.mce-i-italic*/ {
+	background-position: -40px 8px;
+	width: 32px;
+}
+body [aria-label="Align left"] button/*.mce-i-paragraph-left*/ {
+	background-position: -64px 8px;
+	width: 32px;
+}
+body [aria-label="Align center"] button/*.mce-i-paragraph-center*/ {
+	background-position: -88px 8px;
+	width: 32px;
+}
+body [aria-label="Align right"] button/*.mce-i-paragraph-right*/ {
+	background-position: -112px 8px;
+	width: 32px;
+}
+body [aria-label="Justify"] button/*.mce-i-paragraph-justify*/ {
+	background-position: -136px 8px;
+	width: 32px;
+}
+body [aria-label="Bullet list"] button/*.mce-i-list*/ {
+	background-position: -160px 8px;
+	width: 32px;
+}
+body [aria-label="Remove link"] button/*.mce-i-unlink*/ {
+	background-position: -184px 8px;
+	width: 31px;
+}
+body [aria-label="Insert/edit link"] button/*.mce-i-link*/ {
+	background-position: -207px 8px;
+	width: 31px;
+}
+body .mce-i-console {
+	background-position: -230px 8px;
+	width: 32px;
+}
+
+body [aria-label="Paste"] button/*.mce-i-paste*/ {
+	background-position: -254px 8px;
+	width: 32px;
+}
+body .mce-i-arrow-up {
+	background-position: -278px 8px;
+	width: 31px;
+}
+

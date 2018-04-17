@@ -1,0 +1,47 @@
+<?
+// this will be used to say "n out of _ratingLabels".
+// subtract one because one of the labels is 0 for no rating
+// and this doesn't display to the user.
+$labelCount = count($this->ratingLabels)-1;
+?>
+
+<div class="ratingControl <?= $this->config['size']; ?> clearfix">
+    <fieldset class="ratingControlList font-style5">
+    
+    <? if($this->config['displayTitle']){ ?><legend class="contentTextIcons"><?= $this->config['name']; ?></legend><? } ?>
+    
+    <? foreach($this->ratingLabels as $i => $v):
+        // we will not generate a star for 0, it is only used as a label
+        if($i != 0):
+            // check if there is a predefined value for the control,
+            // if so, set the appropriate style for this item.
+            $itemClass = ($i <= $this->config['rating']) ? 'whole' : 'none';
+            if($i == $this->config['rating'] + 0.5) $itemClass = 'half';
+            
+            $checked = ($i == $this->config['rating']) ? 'checked' : '';
+        ?>
+            <p class="formField <?= $itemClass; ?> primaryTextIcons">
+                <label><?= $i; ?> out of <?= $labelCount; ?></label>
+                <input
+                    type="radio"
+                    class="controlItemRadio"
+                    name="ratingId_<?= $this->config['siteRatingTypeId']; ?>_<?= isset($this->config['isLibrary']) ? $this->config['isLibrary'] : $i; ?>"
+                    value="<?= $i; ?>"
+                    <?= $checked; ?>
+                />
+                <span class="wholeControl"></span>
+            </p>
+        <? endif; ?>
+    <? endforeach; ?>
+	</fieldset>
+
+	<?if(!empty($this->tooltipControls) && true == $this->summaryControl){ ?>
+      <div class="ratingsTooltipWrapper">
+          <span class="ratingsTooltipArrow"></span>
+          <div class="ratingsTooltip secondaryBgColor clearfix">
+              <h4 class="contentTitles"><?= $this->siteLabels['FeaturedRatings']; ?></h4>
+              <?= $this->tooltipControls; ?>
+          </div>
+      </div>
+   <? } ?>
+</div>

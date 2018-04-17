@@ -1,0 +1,461 @@
+/* we need to hide the sub-nav because my queue
+ * does not use it in the design */
+#headerSubNav {
+    display: none;
+}
+
+/* we also need to hide the branding becuase
+ * an admin can make the sub nav appear when they
+ * click the 'gears' icon in the header. On channel
+ * preview, we don't want the branding, EVER!
+ */
+#headerSubNav .branding {
+	display: none;
+}
+
+/**
+ * --- PREVIEW WRAPPER ---
+ * The previewWrapper contains all the elements
+ * for the channel preview. We have 4 columns: back button
+ * preview graphic, preview info, and reminder info.
+ * Hidden by default.
+ */
+#previewWrapper {
+	height: 100%;
+	width: 90%;
+	margin: 0 auto;
+    position: relative;
+}
+
+/* --- PREVIEW GRAPHIC STYLES --- */
+#previewWrapper .courseNumber {
+	color: #2180af;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 10px;
+	margin: 20px 10px 10px;
+	border-bottom: 2px solid #2180af;
+}
+#previewWrapper #graphicWrapper {
+    width: 343px;
+    height: 171px;
+    background-color: #FFF;
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: auto 100%;
+    margin: 20px 40px 20px 20px;
+    float: left;
+}
+
+#previewWrapper #graphicWrapper .length {
+    margin: 20px 0 0 -30px;
+    padding: 2px;
+    width: 170px;
+    display: block;
+    background: #09E;
+    color: #FFF;
+    box-shadow: 2px 2px 2px #333;
+    -moz-box-shadow: 2px 2px 2px #333;
+    -webkit-box-shadow: 2px 2px 2px #333;
+}
+/* --- END PREVIEW GRAPHIC STYLES --- */
+
+
+
+/* --- PREVIEW INFORMATION STYLES --- */
+#previewWrapper #infoWrapper {
+	box-sizing: border-box; *behavior: url(/css/boxsizing.htc);
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+    color: #FFF;
+    float: left;
+    overflow: auto;
+    width: 345px;
+    margin: 20px 0;
+    padding: 0;
+}
+
+#previewWrapper #infoWrapper h3 {
+	color: #555;
+    font-family: 'Droid Sans', Helvetica, Arial, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    border: none;
+    padding: 0;
+}
+
+#previewWrapper #infoWrapper .previewDueDate {
+	padding: 15px 0;
+	text-transform: lowercase;
+	color: #424242;
+	font-weight: bold;
+	font-size: 11px;
+}
+
+#previewWrapper #infoWrapper .startBtn {
+	float: left;
+}
+
+#previewWrapper #infoWrapper .catalogId {
+	padding: 5px 0 0 30px;
+	width: 260px;
+	height: 20px;
+	color: #888;
+	position: relative;
+	margin: 0 0 10px 0;
+}
+
+#previewWrapper #infoWrapper .catalogId.module:before {
+	background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/icons/categories/module-orange.png");
+    background-origin: padding-box;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    content: " ";
+    height: 24px;
+    left: 2px;
+    position: absolute;
+    top: 0;
+    width: 24px;
+}
+
+#previewWrapper #infoWrapper .desc {
+	color: #000;
+	margin: 20px 0 0;
+    padding: 20px 0 0;
+    width: 100%;
+    float: left;
+    border-top: solid 1px #AAA;
+    line-height: 1.5em;
+}
+
+#previewWrapper #infoWrapper .desc ul {
+	margin: 0 0 0 20px;
+    list-style: disc;
+}
+
+#previewWrapper #infoWrapper .rowWrap {
+	clear: both;
+	overflow: hidden;
+}
+
+#previewWrapper #infoWrapper #playbackMode {
+	background: #FFF;
+	border-radius: 10px;
+	border: 1px solid #BBB;
+	color: #333;
+	margin: 0 10px 10px 0;
+	padding: 5px 10px;
+	float: left;
+	font-weight: bold;
+	width: auto;
+}
+
+#previewWrapper #infoWrapper .startBtn {
+	margin: 0 20px 0 0;
+    float: left;
+    width: 40%;
+    text-transform: lowercase;
+}
+
+.mqItemProgress {
+	background: url(/images/icons/hourglass.png) no-repeat 0 0;
+	margin: 7px 0;
+    padding: 0 0 0 17px;
+    height: 20px;
+    min-width: 1px;
+    position: relative;
+    color: #3084bf;
+    float: left;
+}
+
+.mqItemProgress:before {
+	background: url(/images/icons/hourglass.png) no-repeat o 3px;
+	content: ' ';
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* -- COURSE RATINGS -- */
+#previewWrapper #infoWrapper #courseRatingWrapper {
+	margin: 0 0 10px 10px;
+	float: left;
+	width: auto;
+}
+
+#previewWrapper #infoWrapper #courseRatingWrapper .ratingControl {
+	float: left;
+	margin: 0;
+}
+
+#previewWrapper #infoWrapper #courseRatingWrapper .mainRatingInfo {
+	clear: both;
+	color: #000;
+	font-style: italic;
+}
+/* -- END COURSE RATINGS -- */
+/* --- END PREVIEW INFORMATION STYLES --- */
+
+
+
+/* --- REMINDER INFORMATION STYLES --- */
+#previewWrapper #remindWrapper {
+    padding: 0;
+    width: 200px;
+}
+
+#previewWrapper #remindWrapper .partnerBranding {
+    margin: 0 0 20px;
+    padding: 0;
+    background: #FFF;
+    box-shadow: 2px 2px 2px #000;
+    -moz-box-shadow: 2px 2px 2px #000;
+    -webkit-box-shadow: 2px 2px 2px #000;
+    text-align: center;
+}
+
+#previewWrapper #remindWrapper #dueDateLabel {
+    margin: 0 0 20px;
+    padding: 5px;
+    background: #08D;
+    color: #FFF;
+    box-shadow: 2px 2px 2px #000;
+    -moz-box-shadow: 2px 2px 2px #000;
+    -webkit-box-shadow: 2px 2px 2px #000;
+}
+
+#previewWrapper #remindWrapper #dueDateLabel span {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+/* this style will also take care of .dueDate styling */
+#previewWrapper #remindWrapper #dueDateLabel.pastDue {
+    background: #F00;
+    color: #FF0;
+}
+
+#previewWrapper #remindWrapper #dueDateLabel .dueDate {
+    padding: 2px;
+    height: 15px;
+    display: inline-block;
+}
+
+/* .dayCount will have this style when not due yet */
+#previewWrapper #remindWrapper #dueDateLabel .dayCount {
+    padding: 2px 5px 2px 5px;
+    background: #0B0;
+    color: #FFF;
+    display: inline-block;
+    border-top-right-radius: 10px; /* 10px to match curve of image */
+    -moz-border-top-right-radius: 10px;
+}
+
+/* .dayCount will have this style when past due, or due today */
+#previewWrapper #remindWrapper #dueDateLabel.pastDue .dayCount {
+    background: #FF0;
+    color: #F00;
+}
+/* --- END REMINDER INFORMATION STYLES --- */
+
+/* --- START MEDIA QUERIES --- */
+
+@media all and (max-width: 769px) {
+	
+	#previewWrapper {
+		width: 400px;
+		margin: 0 auto;
+	}
+	
+	#previewWrapper #infoWrapper {
+		width: 350px;
+		margin: 20px auto;
+		float: none;
+	}
+}
+
+@media all and (min-width: 1300px) {
+	
+	#previewWrapper {
+		width: 1000px;
+	}
+	
+	#previewWrapper #infoWrapper {
+		width: 375px;
+	}
+	
+	#previewWrapper #graphicWrapper {
+		width: 433px;
+		height: 216px;
+	}
+	
+	#previewWrapper #infoWrapper .startBtn {
+		width: 37%;
+	}
+}
+
+
+
+
+/**
+ * --- PREVIEW FOOTER ---
+ * Because the channel preview has such a different
+ * footer than the other pages, we will need to do 513 343
+ * some re-styling before we can start to style our
+ * preview specific elements.
+ */
+ /* FOOTER RE-STYLE */
+#wrapper {
+    margin: 0 0 -135px;
+}
+
+/* the wrapper will be collapsed when others are expanded */
+#wrapper.collapsed {
+    margin: 0 0 -250px;
+}
+
+/*
+#footer,
+#fspace {
+    height: 135px;
+}
+
+/* we should also expand fspace to match *
+#footer.expanded,
+#fspace.expanded {
+    height: 250px;
+}
+
+#footer {
+    background: #FFF;
+}
+
+#footer #f_top {
+    height: 100px;
+}
+
+#footer #f_top.expanded {
+    height: 215px;
+}
+
+#footer #f_left {
+    width: 100%;
+    height: 100px;
+    overflow: auto;
+    background: #EEE;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#BBBBBB'); /* for IE *
+    background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#BBBBBB)); /* for webkit browsers *
+    background: -moz-linear-gradient(top,  #FFFFFF,  #BBBBBB); /* for firefox 3.6+ *
+}
+
+#footer #f_left.expanded {
+    height: 215px;
+}
+/* END FOOTER RE-STYLE */
+
+
+/* PREVIEW SPECIFIC FOOTER STYLES */
+#footer #f_left .toggle {
+    width: 100%;
+    height: 30px;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#EEEEEE', endColorstr='#BBBBBB'); /* for IE */
+    background: -webkit-gradient(linear, left top, left bottom, from(#EEEEEE), to(#BBBBBB)); /* for webkit browsers */
+    background: -moz-linear-gradient(top,  #EEEEEE,  #BBBBBB); /* for firefox 3.6+ */
+    box-shadow: 0 2px 2px #777;
+    -moz-box-shadow: 0 2px 2px #777;
+    -webkit-box-shadow: 0 2px 2px #777;
+}
+
+#footer #f_left .toggle h3 {
+    padding: 6px;
+    height: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    background: url('../images/icons/grip.png') no-repeat center 5px;
+}
+
+#footer #f_left #componentCount {
+    padding: 15px 0;
+    width: 7%;
+    height: 40px;
+    float: left;
+    background: #333;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#111111', endColorstr='#444444'); /* for IE */
+    background: -webkit-gradient(linear, left top, left bottom, from(#111111), to(#444444)); /* for webkit browsers */
+    background: -moz-linear-gradient(top,  #111111,  #444444); /* for firefox 3.6+ */
+    color: #FFF;
+    font-size: 30px;
+    font-weight: normal;
+    text-align: center;
+    text-shadow: 5px 5px 5px #000;
+    -moz-text-shadow: 5px 5px 5px #000;
+    -webkit-text-shadow: 5px 5px 5px #000;
+}
+
+/* component list styles */
+/* the wrapper is what we use as our scroll frame */
+#footer #f_left #componentListWrapper {
+    width: 93%;
+    height: 67px;
+    overflow: auto;
+}
+
+/* the list (ul) is what we scroll */
+#footer #f_left #componentList {
+    height: 70px;
+    padding: 0 0 0 10px;
+}
+
+/* style for each component/module item */
+#footer #f_left #componentList li {
+    margin: 5px;
+    width: 200px;
+    height: 50px;
+    float: left;
+    border: solid 1px #AAA;
+    overflow: auto;
+}
+
+/* show when modules are part of a module chain */
+#footer #f_left #componentList li.chained {
+	margin: 4px 0;
+	border: solid 2px #3284C0;
+}
+
+/* we give first seq in module chain a bit more space
+ * to separate from other chains/modules */
+#footer #f_left #componentList li.chained.first {
+	margin: 4px 0 0 5px;
+}
+
+/* grey out modules that have been completed */
+#footer #f_left #componentList li.completed {
+	opacity: 0.5;
+	filter:alpha(opacity=50);
+	background: #DDD;
+}
+
+#footer #f_left #componentList li img {
+    margin: 5px;
+    height: 35px;
+    width: 35px;
+}
+
+/* also grey out (by opacity) the image for completed items */
+#footer #f_left #componentList li.completed img {
+    
+}
+
+#footer #f_left #componentList li h6 {
+    padding: 5px 5px 0 0;
+    width: 140px;
+    float: right;
+}
+/* --- END FOOTER STYLES --- */

@@ -1,0 +1,412 @@
+<? if ($_SERVER["REQUEST_URI"] != '/admin/theme'):?>
+<?php
+$programBrandingImg = $this->siteConfigs['partnerBrandingImgUrl'];
+$companyLogo = $this->siteConfigs['companyLogoImgUrl'];
+$headerTagline = $this->siteConfigs['headerTagline'];
+?>
+
+/** --New Classes -- **/
+/** /images/theme-ui/theme_pggrad_flat2.png **/
+<?php $styleImages = array('flat'=>'','lighter'=> CDN_IMG_URL . '/images/theme-ui/theme_pggrad_lighter.png','darker'=> CDN_IMG_URL . '/images/theme-ui/theme_pggrad_darker.png');
+$header_bkgrnd_style = $styleImages[$this->themeui_header_style];
+$global_bkgrnd_style = '';
+$global_bkgrnd_style = $styleImages[$this->themeui_pagebkg_style];
+?>
+-->
+.linkFocus {
+   outline: 2px solid #0093fb !important; 
+}
+.inputFocus {
+    outline: none !important;
+    border:2px solid #0093fb;
+}
+
+article.ui-accordion-header:focus{
+    -moz-box-shadow:    0px 0px 3px <?=$this->themeui_content_titles_color ?>;
+    -webkit-box-shadow: 0px 0px 3px <?=$this->themeui_content_titles_color ?>;
+    box-shadow:         0px 0px 3px <?=$this->themeui_content_titles_color ?>;
+}
+
+.titleFocusBorder{
+        color: <?=$this->themeui_borders_shading_color ?> !important;
+        background: <?=$this->themeui_content_text_icons_color ?> !important;
+}
+
+#hdrProgramBranding {
+	background-image: url('<?=$programBrandingImg['image']?>');	
+}
+
+.globalBgColor {
+	background-color: <?=$this->themeui_page_outerbgcolor; ?>;
+	background-image: url('<?= $global_bkgrnd_style; ?>');
+	background-repeat: repeat-x;
+	background-position: top left;
+}
+
+.headerBgColor {
+	background-color: <?=$this->themeui_header_bgcolor; ?>;
+	background-image: url('<?= $header_bkgrnd_style; ?>');
+	background-repeat: repeat-x;
+	background-position: top left;
+}
+
+.primaryTextIcons {
+	color: <?=$this->themeui_primary_text_icon_color;?>;
+}
+
+.courses h3 {
+	border-bottom: 1px solid <?=$this->themeui_primary_text_icon_color; ?>;
+}
+
+.secondaryTextIcons {
+	color: <?=$this->themeui_secondary_text_icon_color; ?>;	
+}
+
+.titleBarBtnBgColor {
+	background-color: <?=$this->themeui_titlebar_button_bgcolor; ?>;
+}
+
+button.titleBarBtnBgColor:hover {
+	background-color: <?=$this->themeui_titlebar_button_fgcolor; ?>;
+}
+
+.totalPercentage {
+	background-color: <?=$this->themeui_sidebar_imagebdr_color; ?>;
+        border: 1px solid <?=$this->themeui_borders_shading_color; ?>;
+}
+
+.titleBarBtnFgColor {
+       color: <?=$this->themeui_titlebar_button_fgcolor; ?>;
+	
+}
+
+.customButton, .ui-button {
+	background-color: <?=$this->themeui_titlebar_button_fgcolor; ?>;
+	color: <?=$this->themeui_primary_text_icon_color;?>;
+        border: 1px solid <?=$this->themeui_titlebar_button_fgcolor; ?>;
+}
+
+.customButton:hover, .ui-button:hover {
+	background-color: <?=$this->themeui_sidebar_imagebdr_color; ?>;
+	color: <?=$this->themeui_primary_text_icon_color;?>;
+        border: 1px solid <?=$this->themeui_sidebar_imagebdr_color; ?>;
+}
+
+.customButton:hover > i, .customButton:hover > a {
+	color: <?=$this->themeui_titlebar_button_bgcolor; ?>;
+}
+
+.customDisabledBtn, .customDisabledBtn:hover {
+	background-color: <?=$this->themeui_titlebar_button_bgcolor; ?>;
+	border: 1px solid <?=$this->themeui_titlebar_button_fgcolor; ?>;
+	color: <?=$this->themeui_primary_text_icon_color;?>;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	filter: alpha(opacity=50);
+	-moz-opacity: 0.5;
+	-khtml-opacity: 0.5;
+	opacity: 0.5;
+        cursor: default !important;
+}
+
+.customDisabledGreyBtn, .customDisabledGreyBtn:hover {
+	background: #58595B;
+	background-clip: padding-box;
+	border:solid 1px #666666;
+	color: #FFF;	
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	filter: alpha(opacity=50);
+	-moz-opacity: 0.5;
+	-khtml-opacity: 0.5;
+	opacity: 0.5;
+}
+
+.customSecondaryBtn {
+	background: #58595B;
+	background-clip: padding-box;
+	border:solid 1px #666666;
+	color: #FFF;
+}
+
+.customSecondaryBtn:hover {
+	background: #FFFFFF;
+	background-clip: padding-box;
+	border:solid 1px #666666;
+	color: #58595B;
+}
+
+.loginBtns .selfRegLaunch a.customSecondaryBtn {
+    background-color: <?=$this->themeui_titlebar_button_bgcolor; ?>;
+    color: <?=$this->themeui_primary_text_icon_color;?>;
+    border: 1px solid <?=$this->themeui_titlebar_button_bgcolor; ?>;
+}
+
+.loginBtns .selfRegLaunch a.customSecondaryBtn:hover {
+    background-color: <?=$this->themeui_sidebar_imagebdr_color; ?>;
+    color: <?=$this->themeui_primary_text_icon_color;?>;
+    border: 1px solid <?=$this->themeui_sidebar_imagebdr_color; ?>;
+}
+
+.loginBtn #regCancelBtn.customSecondaryBtn,
+#selfRegWrapper .updateButtons fieldset input#cancelSelfRegist,
+#selfRegWrapper .updateButtons fieldset input#clearSelfRegist {
+    opacity: 0.7;
+    background-color: <?=$this->themeui_sidebar_imagebdr_color; ?>;
+}
+
+.loginBtn #regCancelBtn.customSecondaryBtn:hover,
+#selfRegWrapper .updateButtons fieldset input#cancelSelfRegist:hover,
+#selfRegWrapper .updateButtons fieldset input#clearSelfRegist:hover {
+    background-color: <?=$this->themeui_sidebar_imagebdr_color; ?>;
+    color: <?=$this->themeui_primary_text_icon_color;?>;
+    opacity: 1;
+}
+
+#selfRegWrapper .updateButtons fieldset input#cancelSelfRegist,
+#selfRegWrapper .updateButtons fieldset input#clearSelfRegist {
+    border: 1px solid <?=$this->themeui_sidebar_imagebdr_color; ?>;
+}
+
+#selfRegWrapper .updateButtons fieldset input#cancelSelfRegist:hover,
+#selfRegWrapper .updateButtons fieldset input#clearSelfRegist:hover {
+    border: 1px solid <?=$this->themeui_sidebar_imagebdr_color; ?>;
+}
+
+.titleBarBtnFgColor > i {
+	color: <?=$this->themeui_titlebar_button_fgcolor; ?>;
+}
+
+.contentBgColor {
+	background-color: <?=$this->themeui_content_bgcolor; ?>;
+}
+
+.content .mqItem .mqItemInfo .mqItemInfofade{
+    background: <?=$this->themeui_content_bgcolor; ?>;
+	filter: alpha(opacity=50);
+	background: -webkit-linear-gradient(<?=$this->themeui_content_bgcolor_faded; ?>,<?=$this->themeui_content_bgcolor; ?>);
+	background: -moz-linear-gradient(<?=$this->themeui_content_bgcolor_faded; ?>,<?=$this->themeui_content_bgcolor; ?>);
+	background: linear-gradient(<?=$this->themeui_content_bgcolor_faded; ?>,<?=$this->themeui_content_bgcolor; ?>);
+}
+
+#messageModal {
+	background: <?=$this->themeui_content_bgcolor; ?>;
+}
+
+.secondaryBgColor {
+	background-color: <?=$this->themeui_borders_shading_color ?>;
+}
+
+.borders {
+	border: 1px solid <?=$this->themeui_borders_shading_color; ?>;
+}
+
+.borderBottomThin {
+	border-bottom: 1px solid <?=$this->themeui_borders_shading_color; ?>;
+}
+.borderRightThin {
+	border-right: 1px solid <?=$this->themeui_borders_shading_color; ?>;
+}
+.borderLeftThin {
+	border-left: 1px solid <?=$this->themeui_borders_shading_color; ?>;
+}
+.borderTopThin {
+	border-top: 1px solid <?=$this->themeui_borders_shading_color; ?>;
+}
+
+.borderBottomMedium {
+	border-bottom: 2px solid <?=$this->themeui_borders_shading_color; ?>;
+}
+.borderBottomThick {
+	border-bottom: 3px solid <?=$this->themeui_borders_shading_color; ?>;
+}
+
+.bordersDotted {
+	border: 1px dotted <?=$this->themeui_borders_shading_color; ?>;
+}
+
+.borderBottomThinDotted {
+	border-bottom: 1px dotted <?=$this->themeui_borders_shading_color; ?>;
+}
+.borderRightThinDotted {
+	border-right: 1px dotted <?=$this->themeui_borders_shading_color; ?>;
+}
+.borderLeftThinDotted {
+	border-left: 1px dotted <?=$this->themeui_borders_shading_color; ?>;
+}
+.borderTopThinDotted {
+	border-top: 1px dotted <?=$this->themeui_borders_shading_color; ?>;
+}
+
+.borderBottomMediumDotted {
+	border-bottom: 2px dotted <?=$this->themeui_borders_shading_color; ?>;
+}
+
+.borderBottomThickDotted {
+	border-bottom: 3px dotted <?=$this->themeui_borders_shading_color; ?>;
+}
+
+.contentTextIcons {
+	color: <?=$this->themeui_content_text_icons_color; ?>;
+}
+
+#catalogTable thead th {
+	color: <?=$this->themeui_content_text_icons_color; ?>;
+}
+
+.contentTitles {
+	color: <?=$this->themeui_content_titles_color; ?>;
+}
+
+.sideBarImageBorder {
+	background-color: <?=$this->themeui_sidebar_imagebdr_color; ?>;
+}
+
+.contentImageBorder {
+	background-color: <?=$this->themeui_content_imagebdr_color; ?>;
+}
+
+#ui-datepicker-div {
+	background-color: <?=$this->themeui_borders_shading_color; ?>;	
+	border: 1px solid <?=$this->themeui_sidebar_imagebdr_color; ?>;
+}
+
+#ui-datepicker-div > table > thead {
+	color: <?=$this->themeui_content_titles_color; ?>;
+}
+
+#ui-datepicker-div > table > tbody > tr > td > a {
+	color: <?=$this->themeui_content_text_icons_color; ?>;	
+}
+
+li.active a i, li:hover a i {
+	color: <?=$this->themeui_primary_text_icon_color;?>;
+}
+
+ul.nav li.active a,ul.nav li:hover a {
+	background-color: <?=$this->themeui_secondary_text_icon_color; ?>;
+}
+
+#leftColumn nav ul li > ul.adminNav li a:hover, #leftColumn nav ul li > ul.adminNav li.active a {
+    background-color: <?=$this->themeui_titlebar_button_bgcolor; ?>;
+}
+
+.adminNav li:hover, .adminNav li.active {
+	background-color: <?=$this->themeui_secondary_text_icon_color; ?>;	
+}
+nav ul.themeNav li:hover a span {
+	background-color: red !important;
+}
+.themeNav .active span {
+	background-color: <?=$this->themeui_secondary_text_icon_color; ?>;
+	width: 100px;
+}
+nav ul li:hover span {
+	background-color: transparent;
+}
+
+.viewCertification, .viewCompletionCert, .receivedCredit {
+	border-bottom: 2px solid <?=$this->themeui_borders_shading_color ?>;
+}
+#catalogTable_length {
+	border-bottom: 1px solid <?=$this->themeui_borders_shading_color ?>;
+	border-left: 1px solid <?=$this->themeui_borders_shading_color ?>;
+	border-top: 1px solid <?=$this->themeui_borders_shading_color ?>;
+}
+#catalogTable_filter {
+	border-bottom: 1px solid <?=$this->themeui_borders_shading_color ?>;
+	border-right: 1px solid <?=$this->themeui_borders_shading_color ?>;
+	border-top: 1px solid <?=$this->themeui_borders_shading_color ?>;
+}
+.resourceWrapper .resourceItem .resourceInfo h3 a {
+	color: <?=$this->themeui_content_text_icons_color?>;
+}
+
+#leftColumn nav ul li > ul.adminNav,
+.myStatus {
+    background-color: <?=$this->themeui_secondary_text_icon_color; ?>;
+}
+
+.siteTagline h3 {
+    color: <?=$this->themeui_secondary_text_icon_color; ?>;	
+}
+
+#leftColumn {
+    background-color: <?=$this->themeui_titlebar_button_bgcolor; ?>;
+}
+
+.myStatus h2 {
+    color: <?=$this->themeui_primary_text_icon_color;?>;
+}
+
+.myStatus .totalPercentage .PercentageDone {
+    background-color: <?=$this->themeui_content_imagebdr_color; ?>; 
+}
+
+.myStatus .totalPercentage .completionNum {
+    color: <?=$this->themeui_primary_text_icon_color;?>;
+}
+
+.myStatus .linkRight a {
+    color: <?=$this->themeui_primary_text_icon_color;?>;	
+}
+
+#pageTitle {
+    border-bottom: 2px solid <?=$this->themeui_borders_shading_color; ?>;
+}
+
+#rightColumn {
+    background-color: <?=$this->themeui_borders_shading_color ?>;
+}
+
+#rightColumn .primaryTextIcons {
+    color: <?=$this->themeui_secondary_text_icon_color; ?>;
+}
+
+.myProfile .profileInfo h3, .editProfile .profileInfo h3, .changeProfile .profileInfo h3 {
+    color: <?=$this->themeui_content_titles_color; ?>;
+}
+
+.loginForm.contentBgColor {
+    background-color: transparent;
+}
+
+.loginForm #formFieldset .formField input, 
+.loginForm #formFieldset .formField #languageSelect {
+    border: 1px solid <?=$this->themeui_borders_shading_color; ?>;
+}
+
+.content a,
+.helpLinks #forgotAuthWrapper a.primaryTextIcons,
+.helpLinks #forgotAuthWrapper span.primaryTextIcons {
+    color: <?=$this->themeui_titlebar_button_fgcolor; ?>;
+}
+
+.content a:hover,
+.helpLinks #forgotAuthWrapper a.primaryTextIcons,
+.helpLinks #forgotAuthWrapper span.primaryTextIcons {
+    color: <?=$this->themeui_sidebar_imagebdr_color; ?>;
+}
+
+.courseOptions .viewIcon,
+.courseOptions #dtSearchBtn.viewIcon {
+    background-color: <?=$this->themeui_content_text_icons_color; ?>;
+    color: <?=$this->themeui_primary_text_icon_color;?>;
+}
+
+.historyPage #historyWrapper #historyList .expandable .expandedWrapper .right .viewCompletionCert a.secondaryTextIcons,
+.historyPage #historyWrapper #historyList .expandable .expandedWrapper .right .viewCertification a.secondaryTextIcons {
+    color: <?=$this->themeui_secondary_text_icon_color; ?>;
+}
+
+.historyPage #historyWrapper #historyList .expandable .expandedWrapper .right .viewCompletionCert a.secondaryTextIcons:hover,
+.historyPage #historyWrapper #historyList .expandable .expandedWrapper .right .viewCertification a.secondaryTextIcons:hover {
+    color: <?=$this->themeui_titlebar_button_fgcolor; ?>;
+}
+
+@media (max-width: 767px) {
+    #subHeader .primaryTextIcons {
+        color: <?=$this->themeui_content_text_icons_color; ?>;
+    }
+}
+
+<!--
+<?php endif;?>

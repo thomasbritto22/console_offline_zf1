@@ -1,0 +1,7 @@
+<?php 
+FOREACH ($this->myqueueRecords AS $key => $value):
+   $this->myqueueRecords[$key]['desc'] = $this->escape($this->myqueueRecords[$key]['desc']);
+   $this->myqueueRecords[$key]['name'] = $this->escape($this->myqueueRecords[$key]['name']);
+ENDFOREACH;
+?>
+<?=json_encode($this->myqueueRecords);?>

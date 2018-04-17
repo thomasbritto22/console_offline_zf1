@@ -1,0 +1,13 @@
+div.FixedHeader_Cloned th,
+div.FixedHeader_Cloned td {
+	background-color: white !important;
+}
+#dynamic > #resourceList_wrapper > table > thead > tr > th,
+#dynamicEdit > #resourceListEdit_wrapper > table > thead > tr > th,
+.dataTables_wrapper > table > thead > tr > th {
+	color: white !important;
+}
+
+div.FixedHeader_Cloned > table > thead > tr > th {
+	text-align: left;
+}

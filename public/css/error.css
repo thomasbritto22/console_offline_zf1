@@ -1,0 +1,40 @@
+#container {
+	padding: 0;
+}
+/** --- START ERROR CONTENT --- **/
+#errorWrapper {
+	background-color: #EBEBEB;
+	border: 1px solid #CBCBCB;
+	width: 260px;
+	height: 245px;
+	margin: 200px auto;
+	border-radius: 6px;
+	padding: 0 10px 0 10px;
+	color: #626262;
+	position: relative;
+	font-family: 'Droid Sans', Helvetica, Arial, sans-serif;
+}
+
+#errorTop {
+	margin: 20px 15px;
+	position: relative;
+	border-bottom: 1px solid #AAA;
+	padding: 20px 0px;
+}
+
+#errorTop .messageTop {
+	width: 100%;
+	font-size: 18px;
+}
+
+#errorBottom {
+	padding: 0 10px;
+	font-size: 14px;
+}
+
+#errorBottom p a {
+	text-decoration: none;
+	color: #424242;
+	font-weight: bold;
+}
+/** --- END ERROR CONTENT --- **/

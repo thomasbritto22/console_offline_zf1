@@ -1,0 +1,51 @@
+<?php
+	if(!isset($this->colClass))
+		$this->colClass = 'imgView';
+    if(!isset($this->rightColumnContent))
+        $this->rightColumnContent = '';
+    if(!isset($this->footerFile))
+        $this->footerFile = 'common/footer.phtml';
+?>
+<?= $this->doctype(); ?>
+<html>
+    <head>
+        <?= $this->headTitle(); ?>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="shortcut icon" type="image/x-icon" href="/custom_files/<?=$this->siteName?>.ico?t=<?=mktime()?>" />
+        <?= $this->headLink(); ?>
+
+        <style type="text/css">
+            <?= $this->cssStr; ?>
+        </style>
+
+        <?= $this->headStyle(); ?>
+        <?= $this->headScript(); ?>
+        <script type="text/javascript">jwplayer.key="4a6Y+XobzCyBjjz1hSrM3odEU6CZueg6aresRQ==";</script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                <?= $this->docReadyJS; ?>
+            });
+        </script>
+        <link href="<?=$this->customCSSFile?>" media="screen" rel="stylesheet" type="text/css">
+    </head>
+    <body class="globalBgColor">
+        <?= $this->render('common/header.phtml'); ?>
+        <div class="container clearfix">
+            <?= $this->render('common/sub_header.phtml'); ?>
+            <div id="contentWrapper" class="clearfix row">
+                <?= $this->render('common/left_menu.phtml'); ?>
+                <div id="mainContent" role="main" class="middle col-lg-6 col-md-8 col-sm-8 col-xs-12">
+                    <?= $this->layout()->content; ?>
+                </div>
+                <div id="rightColumn" class="sideBar col-lg-3 col-md-2 col-sm-2 hidden-xs">
+                    <?= $this->render('common/right_column.phtml'); ?>
+                </div>
+            </div>
+        </div>
+        <?= $this->render($this->footerFile); ?>
+        <?= $this->languageConfirmForm($this->siteConfigs, $this->siteLangs, $this->siteLabels,  array('userProfileLangVal' => $this->userProfileLangVal, 'siteDefLang' => $this->siteDefLang));?>
+    </body>
+</html>

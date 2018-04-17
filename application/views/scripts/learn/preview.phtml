@@ -1,0 +1,60 @@
+<?php if(isset($this->modulePer->dataObject) && $this->modulePer->dataObject == 0){?>
+	<div id="emptyQueueTextBox">
+		<h3 class="contentTitles font-size16"><?= $this->siteLabels['ModuleNotAssigned']; ?></h3>
+	</div>
+<?php } else {?>
+	<div class="moduleOverview">
+		<div class="courseNumber contentTextIcons"><?= $this->course['catalogId']; ?></div>
+		<h3 class="contentTitles font-size16">
+			<? if(isset($this->seqChain) && $this->seqChain !='') : ?>
+				<span class="contentTextIcons"><?= $this->seqChain; ?>/<?= $this->totalChain; ?></span>
+				<span class="fa fa-link contentTextIcons"></span>
+			<? endif; ?>
+			<?= $this->course['name']; ?>
+		</h3>
+		<div id="graphicWrapper" class="contentImageBorder" >
+			<img alt="<?= $this->course['name']; ?>" src="<?= $this->course['img']; ?>">
+		    <? if(!empty($this->course['estimatedTime'])){ ?><p class="length"><?= $this->course['estimatedTime']; ?></p><? } ?>
+		</div>
+		<div id="infoWrapper" class="contentTextIcons clearfix">
+			<div class="desc contentTextIcons"><?= $this->course['desc']; ?></div>
+                        <?php
+                            $detect = new Mobile_Detect;
+                            if( $detect->isIpad( $_SERVER['HTTP_USER_AGENT'] ) ) {                            
+                                preg_match_all("/html5|fluidx/i", $this->course['dbTemplates'], $output_array );                           
+                                if( !count( $output_array[0] ) ) {
+                        ?>
+                        <p class="red" style="margin-bottom:10px;">This course is not yet certified for use on an iPad<sup>&reg;</sup> mobile device. Click <b><?= ($this->course['inProgress'] == 'true' ? $this->siteLabels['ModuleResumeBtn'] : $this->siteLabels['ModuleNextBtn']); ?></b> to continue, or log out to complete the course on a computer that is Adobe Flash Player compatible.</p>
+                        <?php
+                                }
+                            }
+                        ?>
+			<div id="courseRatingWrapper"><?= $this->avgRatingsOutput; ?></div>
+                <div class="videoOptions">
+		    <? if(isset($_REQUEST['curriculumId'])) { ?>
+		        <? if($this->course['playbackOptions']){ ?>
+                        <fieldset>
+		        <p id="playbackMode" class="contentTextIcons borders">
+                            
+		        	<input id="playbackModeOn" type="radio" name="playbackMode" value="enhanced" <?= $this->siteConfigs['InitialAudioOn'] === 't' ? 'checked="checked"' : ''?> />
+		        	<label for="playbackModeOn"><?= $this->course['playbackOptions']['enhanced']; ?></label>
+		        	<input id="playbackModeOff" type="radio" name="playbackMode" value="basic" <?= $this->siteConfigs['InitialAudioOn'] === 't' ? '' : 'checked="checked"'?> /> 
+		        	<label for="playbackModeOff"><?= $this->course['playbackOptions']['basic']; ?></label>
+                            
+		        </p></fieldset>
+		        <? } ?>
+		    <? } ?>
+                    <button class="startBtn customButton" id="launchBtn_<?= $this->course['systemId']; ?>" data-systemid="<?= $this->course['systemId']; ?>">
+		        <?= ($this->course['inProgress'] == 'true' ? $this->siteLabels['ModuleResumeBtn'] : $this->siteLabels['ModuleNextBtn']); ?>
+		    </button>
+                </div>
+			<? if(isset($this->course['languages']) && count($this->course['languages']) > 1){ ?>
+		   		 <select name="languageOptions" class="mqItemLangSelect">
+		    		<? foreach($this->course['languages'] as $lang){ ?>
+		    		<option value="<?= $lang->language; ?>"><?= $langMap[$lang->language]; ?></option>
+		    		<? } ?>
+		    	</select>
+			<? } ?>
+		</div>
+	</div>
+<?php }?>

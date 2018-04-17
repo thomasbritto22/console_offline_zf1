@@ -1,0 +1,175 @@
+<?php
+ $auth = CONSOLE_Auth::getInstance();
+ $this->sess = new Console_SessionHelper(SESSION_GLOBAL_NAMESPACE);
+ $loggedInUser = $auth->getStorage()->read();
+ $displayName = $loggedInUser->firstName." ".$loggedInUser->lastName;
+ $cnt = 0;
+ $helpCnt = 0;
+ $profCnt = 0;
+ if($this->sess->lcec_profile){
+     $cnt++;
+ }
+ if($this->sess->logoutURL){
+     $cnt++;
+ }
+ //help icon
+ if( $this->sess->lcec_adminHelp !="" || $this->sess->lcec_referenceGuide !="" || $this->sess->lcec_tutorialGuide !="") {
+     $helpCnt++;
+ }
+ //profile icon
+ if($this->sess->lcec_profile !="" || $this->sess->logoutURL !="" ){
+     $profCnt++;
+ }
+?>
+<?= $this->doctype(); ?> 
+<html>
+    <head>
+        <?= $this->headTitle(); ?>
+        
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=1" name="viewport"/>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+	<link rel="shortcut icon" type="image/x-icon" href="/custom_files/<?=$this->siteName?>.ico?t=<?=mktime()?>" />
+        <?= $this->headLink(); ?>
+
+     
+        <?= $this->headStyle(); ?>
+        <?= $this->headScript(); ?>
+       
+        <script type="text/javascript">
+            $(document).ready(function(){
+                <?= $this->docReadyJS; ?>
+            });
+        </script>
+        <!--[if gte IE 9]>
+          <style type="text/css">
+            button.gradient, button.gradient:hover,
+            p.gradient, p.gradient:hover,
+            input.gradient, input.gradient:hover,
+            #adminAccordion > .ui-tabs > .ui-tabs-nav > li:hover,
+            #tabs > .ui-tabs-nav > li:hover,
+            #fileLibrary > .ui-tabs-nav > li:hover,
+            #adminAccordion > .ui-tabs > .ui-tabs-nav > li.ui-state-active,
+            #tabs > .ui-tabs-nav > li.ui-state-active,
+            #fileLibrary > .ui-tabs-nav > li.ui-state-active {
+               filter: none;
+            }
+          </style>
+        <![endif]-->
+       
+    </head>
+    <body xclass="globalBgColor">
+        <div id="header">
+            <div class="identity-bar">
+                <div class="logo">
+                    <img src="<?=$this->sess->logoUrl?>" alt=""> 
+                </div>
+                 <div class="account-section">
+                    <div class="account-name">
+                       <?=$displayName?>
+                    </div>
+                     <?php if( $profCnt > 0 ) {?>
+                    <div class="account-detail">
+                        <a href="#"> 
+                           
+                            <div class="account-icon"></div>
+                             <?php if($cnt > 0) { ?>
+                            <div class="account-arrow"></div>
+                             <?php } ?>
+                        </a>
+                        <?php if($cnt > 0) { ?>
+                        <ul>
+                            <?php if($this->sess->lcec_profile) {?>
+                               <li><a href="<?=$this->sess->lcec_profile?>">My Profile</a></li> 
+                            <?php } ?>
+                            <?php if($this->sess->logoutURL) {?>
+                                <li><a href="<?=$this->sess->logoutURL?>">Sign Out</a></li>
+                            <?php } ?>
+                        </ul>
+                        <?php } ?>
+
+                    </div>
+                     <?php } if($helpCnt > 0 ) { ?>
+                    <div class="account-help">
+                        <a href="#">
+                            <div class="account-icon"></div>
+                            <div class="account-arrow"></div>
+                        </a>
+                        <ul>
+                            <?php if($this->sess->lcec_adminHelp) {?>
+                            <li><a href="<?=$this->sess->lcec_adminHelp?>" target="_blank">Admin Help</a></li>
+                            <?php } ?>
+                            <?php if($this->sess->lcec_referenceGuide) {?>
+                            <li><a href="<?=$this->sess->lcec_referenceGuide?>" target="_blank">Reference Guide</a></li>
+                             <?php } ?>
+                             <?php if($this->sess->lcec_tutorialGuide) {?>
+                            <li><a href="<?=$this->sess->lcec_tutorialGuide?>" target="_blank">Tutorial Guide</a></li>
+                             <?php } ?>
+                        </ul>
+                    </div>
+                     <?php } ?>
+                </div>
+                <div class="clearfix"></div> 
+            </div>
+            <div class="nav-bar">
+                <ul>
+                    <?php if($this->flag === "vc") { ?>
+                    <li>
+
+                        <a class="active-link">
+                            <div class="nav-icon">
+                                <img src="/lcec-images/ic-console-offline.png" alt="Catalyst Offline">
+                            </div>
+                            <div class="nav-text">
+                                Catalyst Offline
+                            </div>
+                        </a>
+
+                    </li>
+                    <?php } ?>
+                    <?php if($this->flag === "em") { ?>
+                    <li>
+
+                        <a class="active-link">
+                            <div class="nav-icon">
+                                <img src="/lcec-images/ic-export-manager.png" alt="Export Manager">
+                            </div>
+                            <div class="nav-text">
+                                Export Manager
+                            </div>
+                        </a>
+
+                    </li>
+                    <?php } if($this->sess->adminUrl){ ?>
+                    <li>
+                        <a href="<?=$this->sess->adminUrl?>" xclass="active-link">
+                            <div class="nav-icon">
+                                <img src="/lcec-images/ic-admin-tool.png" alt="Admin Tool">
+                            </div>
+                            <div class="nav-text">
+                                Admin Tools
+                            </div>
+                        </a>
+                    </li>
+                    <?php } ?>
+                 
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="container clearfix twoColumn">
+            <div id="xcontentWrapper" class="clearfix">
+               <div id="mainContent" role="main" xclass="middle">
+                  <div class="content clearfix contentBgColor">
+                    <?= $this->layout()->content; ?>
+                  </div>
+               </div>
+            </div>
+        </div>
+        <div id="messageModal" class="hidden"></div>
+	<div id="innerMessageModal" class="hidden"></div>
+	<!-- This div is here to make sure we actually remove the notShow class from the body so that we show our icon fonts -->
+	<div class="testFont" style="display:none;"><i class="fa fa-warning"></i></div>
+    </body>
+</html>

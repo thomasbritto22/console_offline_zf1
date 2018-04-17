@@ -1,0 +1,113 @@
+#container #contentWrapper {
+	width: 100%;
+}
+
+.shareWrapper {
+	width: 425px;
+	margin: 0px auto;
+	background: #EBEBEB;
+	-moz-box-shadow: 0 0 5px 1px #777;
+	-webkit-box-shadow: 0 0 5px 1px #777;
+}
+
+.shareWrapper .shareHeader {
+	height: 80px;
+	width: 100%;
+	margin: 0 0 20px 0;
+	background: #FFF;
+}
+
+.shareWrapper .shareHeader .chatterLogo {
+	background: url(/images/branding/chatter-logo.png) no-repeat;
+	width: 208px;
+	height: 91px;
+	float: left;
+}
+
+.shareWrapper .shareHeader .groupShare {
+	float: right;
+	color: #424242;
+	margin: 20px 20px 0 0;
+	font-weight: bold;
+}
+
+.shareWrapper .shareHeader .groupShare select {
+	width: 130px;
+}
+
+#formSubmit {
+	padding: 0 0 80px 0;
+}
+
+.shareWrapper .shareForm {
+	width: 90%;
+	margin: 0 auto 20px;
+}
+
+.shareWrapper .shareForm .courseImage {
+	width: 25%;
+	height: 52px;
+	float: left;
+	margin: 0 0 20px 0;
+}
+
+.shareWrapper .shareForm .courseImage img {
+	width: 100%;
+	height: auto;
+}
+
+.shareWrapper .shareForm .courseTitle {
+	width: 70%;
+	margin: 0 0 20px 0;
+	float: right;
+	color: #000;
+	font-weight: bold;	
+}
+
+#formSubmit textarea {
+	min-height: 100px;
+	margin: 10px 0 10px;
+    padding: 5px;
+    border: solid 1px #AAA;
+    width: 94%;
+    resize: none;
+}
+
+form label.error {
+	clear: both;
+	color: #F00;
+	display: block;
+	font-weight: bold;
+}
+
+#formSubmit .shareRound {
+	background-color: #AAAAAA;
+    border: 2px solid #888888;
+    border-radius: 6px 6px 6px 6px;
+    color: #FFFFFF;
+    display: block;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 80px auto 0;
+    padding: 10px;
+    text-align: center;
+    width: 200px;
+}
+
+#formSubmit #exit {
+	margin: 50px 0 0 50px;
+	width: 100px;
+}
+
+.shareWrapper fieldset {
+	margin: 0 0 0 30px;
+}
+
+.shareWrapper fieldset button {
+	width: 90px;
+}
+
+-webkit-input-placeholder { color:#999; }
+-ms-input-placeholder { color:#999; }
+-moz-placeholder { color:#999; }
+.placeholder { color:#999; }

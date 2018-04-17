@@ -1,0 +1,55 @@
+
+<!DOCTYPE html><html>
+<head>
+	<title>NSG Group &gt; My Queue</title>
+	<script type="text/javascript" src="/js/jquery/jquery-1.7.1.min.js"></script>
+	<script src="/js/jquery/jquery.cookie.js"></script>
+
+    <script type="text/javascript">
+		$(document).ready(function(){
+	
+			var myURLShouldBe = 'http://qacustomize11-console.dev3.lrn.com/postmsgpoc1.html'
+			if (window.location.href!=myURLShouldBe) {
+				location.replace(myURLShouldBe);
+			}
+
+			var childWin = 'http://lrnknowledge-console.dev3.lrn.com';
+
+			function listener(event){
+			  if ( event.origin !== childWin ) {
+			  	console.log(event.origin);
+			  	return false;
+			  }
+				  document.getElementById("test").innerHTML = "received: "+event.data;
+			}
+
+			if (!$.browser.msie && $.browser.version < 10){
+			  addEventListener("message", listener, false);
+			} else {
+			  var to = setInterval(function(){
+				  if($.cookie('postMessage') && $.cookie('postMessageOrigin')){
+					  listener({data:$.cookie('postMessage'),origin:$.cookie('postMessageOrigin')});
+					  $.removeCookie('postMessage');
+					  $.removeCookie('postMessageOrigin');
+				  }
+			  },1000);
+			}
+	   	});
+
+
+
+					
+
+    </script>	
+</head>
+<body ng-app class="cf">
+<div style="width:100%;height:800px;position:relative;text-align:center;">	
+<p>&nbsp;<p>
+<div id="test">Send me a message!</div>	
+<p>&nbsp;<p>
+<a href="#" id="testlink" onclick="window.open('http://lrnknowledge-console.dev3.lrn.com/postmsgpoc2.html','_blank','channelmode=0,directories=0,fullscreen=0,width=800,height=600,top=0,left=0,menubar=0,resizable=0,scrollbars=0,status=0,titlebar=0,toolbar=0');return false;" style="vertical-align:middle;position:relative;">Open A Window</a>
+
+</div>
+
+</body>
+</html>

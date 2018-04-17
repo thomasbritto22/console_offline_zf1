@@ -1,0 +1,41 @@
+{
+    "image":{
+        "Extension":["jpeg","jpg","gif","png"],
+        "Size":{"Min":"1kB","Max":"1MB"},
+        "ByteSize":{"Min":"1024","Max":"1048576"},
+        "MimeType":["image\/jpeg","image\/gif","image\/png"],
+        "Error":{"MimeType":"Incompatible Mimetype","FileSize":"<strong>This file size should be between 1KB and 1MB.</strong><br /> Please choose another file."}
+    },
+    "video":{
+        "Extension":["mp4","webm"],
+        "Size":{"Min":"1kB","Max":"100MB"},
+        "ByteSize":{"Min":"1024","Max":"104857600"},
+        "MimeType":["video\/mp4","video\/webm"],
+        "Error":{"MimeType":"Incompatible Mimetype","FileSize":"<strong>This file size exceeds 100 MB.</strong><br /> Please reduce the file size or choose another file."}
+    },
+    "doc":{
+        "Extension":["pdf","doc","docx"],
+        "Size":{"Min":"1kB","Max":"20MB"},
+        "ByteSize":{"Min":"1024","Max":"20971520"},
+        "MimeType":["application\/pdf","application\/msword","application\/vnd.openxmlformats-officedocument.wordprocessingml.document"],
+        "Error":{"MimeType":"Incompatible Mimetype","FileSize":"<strong>This file size exceeds 20 MB.</strong><br /> Please reduce the file size or choose another file."}
+    },
+    "all":{
+        "Extension":["mp4","webm","jpeg","jpg","gif","png","pdf","doc","docx"],
+        "Size":{"Min":"1kB","Max":"100MB"},
+        "ByteSize":{"Min":"1024","Max":"104857600"},
+        "MimeType":["video\/mp4","video\/webm","image\/jpeg","image\/gif","image\/png","application\/pdf","application\/msword","application\/vnd.openxmlformats-officedocument.wordprocessingml.document"],
+        "Error":{"MimeType":"Incompatible Mimetype","FileSize":"<strong>This file size exceeds 100 MB.</strong><br /> Please reduce the file size or choose another file."}
+    },
+    "abbr":{
+        "img" : "image",
+        "vid" : "video",
+        "doc" : "doc",
+        "all" : "all"
+    },
+    "aws":{
+    	"key"    : "AKIAJPUCE52KSOAUH6TA",
+		"secret" : "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",
+		"region" : "Region::US_EAST_1"
+    }
+}

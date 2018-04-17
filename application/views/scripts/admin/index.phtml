@@ -1,0 +1,35 @@
+<section class="adminSection ui-corner-all">
+	<div class="adminSectionHeader">
+    	<h3 style="margin:0 0 20px;">Test Admin Form</h3>
+    </div>
+    <div class="adminSectionContent">
+	    <form>
+	        <fieldset>
+	            <p class="formField">
+	                <label for="toggleTest">Toggle Test:</label>
+	                <input type="checkbox" name="toggleTest" class="togglr" />
+	            </p>
+	            <p class="formField">
+	                <label for="testFile1">Test File 1 (landscape size 500x300):</label>
+	                <a href="#" class="getFile" id="testFile1" data-width="<?= 500; ?>" data-height="<?= 300; ?>">Find a file...</a>
+	                <img src="" class="testFile1" width="500" height="300" />
+	                <input type="text" name="testFile1" />
+	                <sub>This field will be hidden in production. It is used here to show the value that the file tool returns.</sub>
+	            </p>
+	            <p class="formField">
+	                <label for="testFile2">Test File 2 (portrait size 200x300):</label>
+	                <a href="#" class="getFile" id="testFile2" data-width="<?= 200; ?>" data-height="<?= 300; ?>">Find a file...</a>
+	                <img class="testFile2" width="200" height="300"/>
+	                <input type="text" name="testFile2" />
+	                <sub>This field will be hidden in production. It is used here to show the value that the file tool returns.</sub>
+	            </p>
+	        </fieldset>
+	        <fieldset class="buttons">
+	        	<button type="reset">Cancel</button>
+	            <button type="submit" class="blue">Save</button>
+	        </fieldset>
+	    </form>
+    </div>
+</section>
+
+<?= $this->fileTool; ?>

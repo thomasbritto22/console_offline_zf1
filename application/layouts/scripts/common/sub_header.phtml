@@ -1,0 +1,18 @@
+<div id="subHeader" class="clearfix">
+    <p class="font-size16 primaryTextIcons">
+        <a href="/profile" class="font-size16 primaryTextIcons">
+           <i class="fa fa-user" aria-hidden="true"></i><span><?= $this->siteLabels['Hello'];?> <?= $this->user->firstName . ' ' . $this->user->lastName; ?></span>
+        </a>
+        <?php if (isset($this->siteConfigs['AllowSelfEdit']) && $this->siteConfigs['AllowSelfEdit'] == 't'):?>
+        	<a href="/profile/edit" id="editProfileLink" title="<?= isset($this->siteLabels['NavProfile']) ? $this->siteLabels['NavProfile'] : "Profile"; ?>" class="primaryTextIcons"><i class="fa fa-edit" aria-hidden="true"></i><span class="editText"><?= $this->siteLabels['EditProfile']; ?></span></a>
+    	<?php endif;?>
+    </p>
+</div>
+<!-- function to attach aria-hidden attribute when editText is invisible -->
+<script>
+    $(document).ready(function(){        
+        if($('.editText').css('display')=='none'){
+            $('#editProfileLink').attr('aria-hidden',true);
+        }        
+    });    
+</script>

@@ -1,0 +1,23 @@
+<?php
+$programBrandingImg = $this->siteConfigs['partnerBrandingImgUrl'];
+$companyLogo = $this->siteConfigs['companyLogoImgUrl'];
+$headerTagline = $this->siteConfigs['headerTagline'];
+?>
+
+<header class ="headerBgColor">
+    <div id="hdrProgramBranding" class="<?=$programBrandingImg['align']?>">
+        <!-- <img src="<?=$programBrandingImg['image']?>" alt="<?= $this->siteConfigs['SiteName']; ?>" title="<?= $this->siteConfigs['SiteName']; ?>" /> -->
+    </div>
+    <div class="headerWrapper">
+        <?php if(isset($companyLogo['image']) && $companyLogo['image'] != '') {?>
+            <div id="siteLogo" class="<?=$companyLogo['align']?>">
+                <img class="customfile aligned" src="<?=$companyLogo['image']?>" alt="<?= $this->siteConfigs['SiteName']; ?>" title="<?= $this->siteConfigs['SiteName']; ?>" />
+            </div>
+        <?php }?>
+        <?php if(isset($headerTagline['title']) && $headerTagline['title'] != '') {?>
+            <div class="siteTagline">
+                <h3 class="primaryTextIcons font-style7 <?=$headerTagline['align']?>"><?=$headerTagline['title']?></h3>
+            </div>
+        <?php }?>    
+    </div>
+</header>

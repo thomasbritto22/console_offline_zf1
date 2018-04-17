@@ -1,0 +1,46 @@
+AddType image/svg+xml .svg .svgz
+AddEncoding gzip .svgz
+AddType video/mp4  .mp4
+AddType video/webm .webm
+AddType video/x-ms-wmv .wmv
+AddType video/ogg .ogv
+AddType font/truetype .ttf
+AddType application/vnd.ms-fontobject .eot
+AddType application/font-woff .woff
+AddType font/opentype .otf
+AddType image/x-icon .ico
+
+AddType audio/mpeg .mp3
+AddType audio/mp4 .m4a
+AddType audio/ogg .ogg
+AddType audio/ogg .oga
+AddType audio/webm .webma
+AddType audio/wav .wav
+AddType video/mp4 .m4v
+AddType video/webm .webmv
+
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILE} !-f
+RewriteRule ^(.*).ico$  - [PT,L]
+
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+RewriteRule !\.(js|ico|gif|jpg|png|css|html|htm|ttf|eot|otf|woff)$ /index.php [NC,L]
+RewriteRule ^.*$ index.php [NC,L]
+
+php_flag file_uploads on 
+php_value post_max_size 100M 
+php_value upload_max_filesize 100M 
+php_value max_input_time -1 
+php_value memory_limit 128M
+php_value precision 20
+php_value log_errors_max_len 0
+
+<FilesMatch "\.(html)$">
+<ifModule mod_headers.c>
+Header set X-Frame-Options "SAMEORIGIN"
+</ifModule>
+</FilesMatch>

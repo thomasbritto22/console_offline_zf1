@@ -1,0 +1,86 @@
+<?php
+	$regexArr = array();
+	$regexArr = $this->regexArr;
+
+	// set up an easy way to check that the site is internationalized.
+	$isValid_profileColumn = ($this->siteConfigs['ProfileColumn'] == 'Language');
+	$isValid_profileColumnDefault = !empty($this->siteConfigs['ProfileColumnDefault']);
+	$isValid_defaultLanguage = !empty($this->siteConfigs['DefaultLanguage']);        
+?>
+<script>
+var regexArray= <?php echo json_encode($regexArr ); ?>;
+var siteErrors = <?php echo json_encode($this->siteErrors); ?>;
+
+//override default title for this page
+document.title = "<?= $this->siteLabels['EditYourProfile']; ?>";
+</script>
+<script>
+        $(document).ready(function(){            
+            $(".profileInfo").find('h3').focus();
+        });
+</script>
+<section class="editProfile" id="slide_2">
+<?php if(isset($this->siteConfigs['AllowSelfEdit']) && $this->siteConfigs['AllowSelfEdit'] == 't'){?>
+	<div class="profileInfo borderBottomThin">
+		<h3 tabindex="0" class="contentTitles"><?= $this->siteLabels['EditYourProfile']; ?></h3>
+		<p tabindex="0" class="contentTextIcons"><?= $this->siteLabels['DisplayOnlyEditable']; ?></p>
+	</div>
+	<?php if(count($this->editableFields) > 0 ) {?>
+	<div class="profileDetails" tabindex="0">
+		<p class="detailsTitle contentTitles bold"><?= $this->siteLabels['ProfileDetails']; ?>:</p>
+		<div class="theDetails secondaryBgColor">
+			<form id="editableForm" name="editableForm" action="/profile/updatefield" method="post">
+				 
+				<?php
+	    		$i = 0;
+	    		foreach($this->allFields as $field){
+					if(isset($field->protectedField) && $field->protectedField == 0 && $field->propertyName != 'username'){?>
+						<?php if($field->propertyName != 'language' || ($isValid_profileColumn && $isValid_profileColumnDefault && $isValid_defaultLanguage && $field->propertyName == 'language')){?>
+			    			<p id="fieldRow<?= $i;?>" class="contentTextIcons clearfix">
+                                                    <?=$field->requiredField == 1 ? '<sup><span class="required">*</span></sup>':''; ?><label for="editablefield_<?= $i;?>" class="titles"><?=isset($field->fieldLabel)? htmlspecialchars($field->fieldLabel):'';?></label>
+			    				<?php if(isset($field->userCustomColumnEnum->entry) && count($field->userCustomColumnEnum->entry)>0){?>
+			    				<span class="values">
+				    	    		<select  name="editablefield_<?= $i;?>" class="editableFieldsVal" tabindex="0" id="editablefield_<?= $i;?>" data-id="<?= $i;?>" <?=$field->requiredField == 1 ? 'aria-required="true"':''; ?>>
+				    	    			<?php
+										$selStatus = 'NotSelected';
+										foreach ($field->userCustomColumnEnum->entry as $val){
+											if($val->key == html_entity_decode($field->value)){
+												$selStatus = 'Selected';
+											}										
+										}
+										if($selStatus == 'NotSelected'){?>
+				    	    				<option  value="" selected ><?php echo $this->siteLabels['Pleaseselect']; ?></option>
+										<?php } 
+										foreach ($field->userCustomColumnEnum->entry as $val){											
+										?>
+										<option role="option" value="<?=$val->key;?>" <?= ($val->key == html_entity_decode($field->value)) ? 'selected' :''; ?> >  <?=htmlspecialchars($val->value);?> </option>
+										<?
+										}
+										?>										
+									</select>
+								</span>
+				    	    	<?php } else {?>
+				    	    		<span class="values">
+                                                            <input type="text" tabindex="0" class="fieldsInput editableFieldsVal"  name="editablefield_<?= $i;?>" id="editablefield_<?= $i;?>" <?=$field->requiredField == 1 ? 'aria-required="true"':''; ?> value="<?=$this->xssSanitize($field->value);?>" data-id="<?= $i;?>" <?= isset($field->fieldLength) && $field->fieldLength != '' ? 'maxlength="'.$field->fieldLength.'"':'';  ?> />
+				    	    		</span>
+				    	    	<?php }?>
+				    	    	<?php if(isset($field->instructionText) && $field->instructionText!=''){?>
+				    	    	<span class="instLabel"><?= $this->xssSanitize($field->instructionText); ?></span>
+				    	    	<?php }?>
+			    			</p>
+		    			<?php
+		    			}
+    				}
+	        	$i++;
+				}?>
+					<div class="updateButtons">
+			            <button role="button" type="submit" id="fieldFormSubmit" class="fieldFormSubmit customButton"><?= $this->siteLabels['Save']; ?></button>
+			            <button role="button" type="reset" id="editCancelBtn" class="customSecondaryBtn"><?= $this->siteLabels['Cancel']; ?></button>
+			        </div>
+				 
+			</form>
+		</div>
+	</div>
+	<?php }?>
+	<?php }?>
+</section>

@@ -1,0 +1,70 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script>
+
+function delCookie( name, path, domain ) {
+   document.cookie=name+"="+((path) ? ";path="+path:"")+((domain)?";domain="+domain:"") +
+                                   ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
+}
+function submitSAMLAuth(){
+    
+	delCookie('edge-auth','/','.lrn.com');
+    // get our location as a string so we can split
+    // into host [0] and params [1]. split on ?
+    var loc = location.toString();
+    var locArray = loc.split('?');
+    
+    // now split up all the query string components
+    // so we can address individually.
+    var paramArray = locArray[1].split('&');
+    
+    // put everything in an object so we can reference
+    // it correctly, without guessing later on.
+    var params = {};
+    for(var i in paramArray){
+        var pData = paramArray[i].split('=');
+        params[pData[0]] = pData[1];
+    }
+    
+    // we can always expect these in the same order
+    // because we are the ones sending the array.
+    var postURI = unescape(params.postURI);
+    var targetURI = unescape(params.targetURI);
+    var SAMLResponse = params.SAMLResponse; // don't unescape()
+    
+    // now create a form we can submit
+    var samlAuthForm = document.createElement('form');
+    samlAuthForm.action = postURI;
+    samlAuthForm.method = 'POST';
+    samlAuthForm.name = 'samlAuthRedirect';
+    document.body.appendChild(samlAuthForm);
+    
+    // target for redirect
+    var targetInput = document.createElement('input');
+    targetInput.name = 'TARGET_URI';
+    targetInput.type = 'hidden'; 
+    targetInput.value = targetURI;
+    samlAuthForm.appendChild(targetInput);
+    
+    // saml response value
+    var samlRespInput = document.createElement('input');
+    samlRespInput.name = 'SAMLResponse';
+    samlRespInput.type = 'hidden';
+    samlRespInput.value = SAMLResponse;
+    samlAuthForm.appendChild(samlRespInput);
+    
+    // isConsole value to do saml authenticate w/w-out saml enabled on site
+    var isConsoleInput = document.createElement('input');
+    isConsoleInput.name = 'isConsole';
+    isConsoleInput.type = 'hidden';
+    isConsoleInput.value = 1;
+    samlAuthForm.appendChild(isConsoleInput);
+
+    samlAuthForm.submit();
+}
+</script>
+</head>
+<body onload="submitSAMLAuth();"></body>
+</html>

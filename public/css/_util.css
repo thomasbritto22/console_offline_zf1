@@ -1,0 +1,7 @@
+/* create a class we can use for float clearing elements */
+.clearFloat {
+    margin: 0;
+    padding: 0;
+    clear: both;
+    float: none;
+}

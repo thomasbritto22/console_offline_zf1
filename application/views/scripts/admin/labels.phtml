@@ -1,0 +1,32 @@
+<hgroup class="adminHeader">
+		<h2>Active labels</h2>
+</hgroup>
+<div id="categorySection" class="ui-corner-all clearfix">
+	<h3 class="sectionHeader"></h3>
+	<div class="instrHeader clearfix">
+		<p style="float: left;">Here you can customize the names of your labels.</p>
+		<?php if (count($this->siteLang)>0):?>
+			<fieldset>
+				<p>
+				<select id="selectLang" name="selectName">
+					<?php foreach($this->siteLang as $lang):
+						$check = '';
+						if ($this->defLang === $lang->language):
+							$check = 'selected';
+						endif;
+					?>
+						<option value="<?=$lang->language;?>" <?=$check;?>><?=$lang->enName;?></option>
+					<?php endforeach;?>
+				</select>
+				</p>
+			</fieldset>
+			<p style="margin-top: 2px;">
+            <span>
+               <i class="fa fa-flag adminColor"></i>
+            </span>
+         Select a language:
+         </p>
+		<?php endif;?>
+	</div>
+	<div id="dynamic" class="clearfix"></div>
+</div>

@@ -1,0 +1,27 @@
+#content {
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.survey_summary{ 
+	font-family: Arial;
+	font-size: 11pt;
+	font-weight: bold;
+}
+
+.survey_questions{
+	font-family: Verdana;
+	font-size: 10pt;
+	font-weight: bold;
+}
+
+.survey_option{
+	font-family: Verdana;
+	font-size: 10pt;
+}
+
+#surveycontent{
+	background-color: #FFFFFF;
+	width: 761px;
+}

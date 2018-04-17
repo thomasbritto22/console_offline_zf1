@@ -1,0 +1,247 @@
+*
+ * --- CUSTOM FORM STYLING ---
+ * do some custom styling of default objects
+ * like buttons, form elements, etc.
+ */
+ /**
+ * --- CUSTOM FORM STYLING ---
+ * do some custom styling of default objects
+ * like buttons, form elements, etc.
+ */
+ /**
+ * --- CUSTOM FORM STYLING ---
+ * do some custom styling of default objects
+ * like buttons, form elements, etc.
+ */
+ 
+ /* form fields are paragraphs that hold a
+  * input field and its label. no styling so far*/
+.formField {
+	text-align: left;
+	position: relative;
+}
+
+/* we want the label to appear over the field
+ * as if its inside the field */
+.formField label {
+	display: block;
+    font-size: 11px;
+    font-weight: bold;
+    margin: 0;
+    text-align: left;
+} 
+.loginForm #formFieldset .formField span {
+    font-size: 11px;
+} 
+ 
+/* give all text inputs a clean modern look */
+#categorySection input[type="text"],
+#categorySection input[type="password"],
+#authWrapper input[type="text"],
+#authWrapper input[type="password"],
+#shareFormWrapper textarea,
+.shareWrapper form#formSubmit .shareForm textarea {
+    margin: 10px 0 10px;
+    padding: 5px;
+    border: solid 1px #AAA;
+    width: 94%;
+}
+#courseconfigurationTable_filter > label > input[type="text"],
+#library > #dynamic > .dataTables_wrapper > .dataTables_filter > label > input[type="text"] {
+    width: 80%;
+    margin: 8px 0;
+}
+#categorySection textarea,
+#formView fieldset textarea,
+#noCompletionView fieldset textarea {
+    margin: 10px 0 10px;
+    padding: 5px;
+    border: solid 1px #AAA;
+    overflow: auto;
+    width: 94%;
+}
+
+/* change the border color on focus */
+#categorySection input[type="text"]:focus,
+#categorySection input[type="password"]:focus,
+.dataTables_filter input[type="text"]:focus,
+#categorySection textarea:focus,
+#authWrapper input[type="text"]:focus,
+#authWrapper input[type="password"]:focus,
+#authWrapper textarea:focus,
+#categorySection input[type="text"]:hover,
+#categorySection input[type="password"]:hover,
+.dataTables_filter input[type="text"]:hover,
+#categorySection textarea:hover,
+#authWrapper input[type="text"]:hover,
+#authWrapper input[type="password"]:hover,
+#authWrapper textarea:hover {
+    border-color: #0AF;
+    color: #333;
+}
+
+/* disable text area resize in firefox */
+textarea {
+    resize: none;
+}
+
+/* this style can be used to fix placeholders. */
+.placeholder {
+    color: #AAA;
+}
+
+/* default style for all buttons */
+/* this is also considered the "secondary" style */
+#rightColumn #rightColumnWrap .rightColSection p a {
+	background: url(/images/icons/bright-blue-btn-bg.jpg) scroll repeat-x top left #0666AA;
+	padding: 5px;
+	background-size: auto 100%;
+	border: none;
+}
+
+/* links styled as buttons need a little extra padding and some margin */ 
+.button {
+    padding: 5px;
+    position: relative;
+}
+
+/* buttons styled to look like links, no hover or active styling */
+button.link, .button.link {
+    padding: 0;
+    border: none;
+    font-weight: normal;
+}
+.link:hover { background: none; }
+.link:active{ background: none; }
+
+/* styles for inline edit fields */
+/* inline edit fields are normally not obvious as a input field */
+input.inline-hide {
+    border: none;
+    padding: inherit;
+    margin: inherit;
+    border-radius: 0;
+}
+
+input.inline-hide:hover {
+    background: #DEF;
+}
+
+/* style for inline field errors */
+input.inline-error {
+    border: solid 1px #F00;
+}
+
+/* styles for slide toggles */
+.slideToggleWrapper {
+    background: none repeat scroll 0 0 #AAAAAA;
+    border: 1px solid #333333;
+    height: 25px;
+    overflow: hidden;
+    position: relative;
+    width: 100px;
+    z-index: 700; 
+}
+
+.slideToggleWrapper .trueSide {
+    background: #38D;
+    color: #FFF;
+    font-size: 13px;
+    font-weight: bold;
+    height: 24px;
+    left: 0;
+    padding: 4px 0 0;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 50px;
+    z-index: 701;
+}
+
+.slideToggleWrapper .falseSide {
+    background: #333;
+    color: #FFF;
+    font-size: 13px;
+    font-weight: bold;
+    height: 24px;
+    left: 50px;
+    padding: 4px 0 0;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 50px;
+    z-index: 701;
+}
+
+.slideToggleWrapper .slider {
+    background: #CCC url(../svg/gradient_grey.svg) repeat-x 0 0;
+    background-size: auto 100%;
+    clear: both;
+    height: 25px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 50px;
+    z-index: 702;
+}
+
+/* styles for slide toggles elements on admin page only */
+/* styles for slide toggles */
+.adminSection .adminSectionHeader fieldset .formField .slideToggleWrapper {
+    background: none repeat scroll 0 0 #AAAAAA;
+    border: 1px solid #333333;
+    height: 25px;
+    position: relative;
+    width: 100px;
+    z-index: 700; 
+}
+
+.adminSection .adminSectionHeader fieldset .formField .slideToggleWrapper span.trueSide {
+    background-image:url('../images/backgrounds/grngrad.jpg');
+    background-repeat:repeat-x;
+    color: #FFF;
+    font-size: 13px;
+    font-weight: bold;
+    height: 24px;
+    left: 0;
+    padding: 4px 0 0;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 50px;
+    z-index: 701;
+    text-transform: lowercase;
+}
+
+.adminSection .adminSectionHeader fieldset .formField .slideToggleWrapper span.falseSide {
+    background-image:url('../images/backgrounds/redgrad.jpg');
+    color: #FFF;
+    font-size: 13px;
+    font-weight: bold;
+    height: 24px;
+    left: 50px;
+    padding: 4px 0 0;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 50px;
+    z-index: 701;
+    text-transform: lowercase;
+}
+
+.adminSection .adminSectionHeader fieldset .formField .slideToggleWrapper span.slider {
+    background: #CCC url(../svg/gradient_grey.svg) repeat-x 0 0;
+    background-size: auto 100%;
+    clear: both;
+    color: #4B4B4B;
+    font-weight: bold;
+    height: 23px;
+    left: 0;
+    padding: 5px;
+    position: absolute;
+    text-transform: lowercase;
+    top: 0;
+    width: 50px;
+    z-index: 702;
+}
+/* --- END CUSTOM FORM STYLING --- 

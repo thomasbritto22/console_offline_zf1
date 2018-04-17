@@ -1,0 +1,57 @@
+<?
+if(isset($this->components['ratings'])){
+	$ratings = $this->components['ratings'];
+	
+}
+
+if(isset($this->components['reviews'])){
+	$reviews = $this->components['reviews'];
+}
+?>
+<section class="adminSection ui-corner-all">
+	<div class="adminSectionHeader">
+		<h3>Ratings &amp; Reviews</h3>
+	</div>
+	<div class="adminSectionContent">
+		<div id="reviewsSection">
+		    <h4>Reviews</h4>
+		    <form id="reviewsForm" action="/admin/updateComponent" method="post">
+		        <fieldset>
+		            <p class="formField">
+		                <label for="reviews">Enable Reviews</label>
+		                <input type="checkbox" name="reviews" id="reviews" class="slideToggle" <?= $reviews['value']=='on' ? 'checked="checked"' : ''; ?> />
+		                <span class="feedback"></span>
+		                <sub class="instruction"></sub>
+		            </p>
+		        </fieldset>
+		   
+		        <fieldset>
+		        	<input type="hidden" name="adminAction" value="updateReviews" />
+		        	<input type="hidden" name="reviews_id" id="reviews_id" value="<?= (!empty($reviews['id'])) ? $reviews['id'] : ''; ?>"/>
+		        	<button type="submit" class="adminFormSubmit">Update Reviews</button>
+		        </fieldset>
+		    </form>
+		</div>
+		
+		
+		<div id="ratingsSection">
+		    <h4>Ratings</h4>
+		    <form id="ratingsForm" action="/admin/updateComponent" method="post">
+		        <fieldset>
+		            <p class="formField">
+		                <label for="ratings">Enable Ratings</label>
+		                <input type="checkbox" name="ratings" class="slideToggle" <?= $ratings['value']=='on' ? 'checked="checked"' : ''; ?> />
+		                <span class="feedback"></span>
+		                <sub class="instruction"></sub>
+		            </p>
+		        </fieldset>
+		        <fieldset id="">
+					<input type="hidden" name="ratings_id" id="ratings_id" value="<?= (!empty($ratings['id'])) ? $ratings['id'] : ''; ?>"/>
+		        	<input type="hidden" name="adminAction" value="updateRatings" />
+		        	<button type="submit" class="adminFormSubmit">Update Ratings</button>
+		        </fieldset>
+		    </form>
+		</div>
+	</div>
+</section>
+<input type="hidden" name="slideVal" id="slideVal" value="NotSet">

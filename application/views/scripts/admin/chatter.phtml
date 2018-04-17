@@ -1,0 +1,26 @@
+<section class="adminSection ui-corner-all">
+    <h3>Salesforce Chatter Setup</h3>
+    <form id="loginChatter" method="post" action="/chatter/login">
+        <fieldset>
+            <p class="formField">
+                <label for="email">Admin Email address:</label>
+                <input type="text" name="email" id="email" length="80" />
+            </p>
+            <p class="formField">
+                <label for="client_key">Client Key:</label>
+                <input type="text" name="client_key" id="client_key" length="80" />
+            </p>
+            <p class="formField">
+                <label for="secret_key">Secret Key:</label>
+                <input type="text" name="secret_key" id="secret_key" length="80" />
+            </p>
+            <p class="formField">
+                <label for="redirect_url">Redirect URL:</label>
+                <input type="text" name="redirect_url" id="redirect_url" length="80" />
+            </p>
+        </fieldset>
+        <fieldset class="buttons">
+            <button id="chatterSubmit" name="submit" value="submit">Submit</button>
+        </fieldset>
+    </form>
+</section>

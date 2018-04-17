@@ -1,0 +1,1 @@
+gXMLBuffer="<?xml version=\"1.0\" encoding=\"utf-8\"?><cki><ck fm=\"&apos;\" to=\"receiv\"/><ck fm=\"recipient\" to=\"”\"/></cki>";

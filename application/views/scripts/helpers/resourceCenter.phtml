@@ -1,0 +1,53 @@
+<div class="resourceSection">
+	<?php if(!empty($this->resourceItems)) {?>
+	<hgroup class="sectionTitle">
+		<h3><?= $this->siteLabels['ResourceCenter'] ; ?></h3>
+	</hgroup>
+	<? } // end of foreach ?>
+	<ul class="rcWrapper">
+
+<? if(!empty($this->resourceItems)) {?>
+	<? foreach($this->resourceItems as $item) { ?>
+		<?
+				switch($item['type']) {
+					case 'text':
+						$rcTitle  = '<h4>' . $item['title'] . '</h4>';
+						$rcText   = $item['text'];
+					break;
+
+					case 'email':
+						$rcTitle  = '<h4><a href="mailto:' . $item['text']  . '">' . $item['title'] . '</a></h4>';
+						$rcText   = '<a href="mailto:' . $item['text']  . '">Send Email</a>';
+					break;
+
+					case 'url':
+						$rcTitle  = '<h4><a href="' . $item['text']  . '" target="_blank">' . $item['title'] . '</a></h4>';
+						$rcText   = '<a href="' . $item['text']  . '" target="_blank">Visit Website</a>';
+					break;
+
+					case 'phone':
+						$rcTitle  = '<h4>' . $item['title'] . '</h4>';
+						$rcText   = $item['text'];
+					break;
+					case 'doc':
+						$rcTitle  = '<h4><a href="' . $item['text']  . '" target="_blank">' . $item['title'] . '</a></h4>';
+						$rcText   = '<a href="' . $item['text']  . '" target="_blank">View Document</a>';
+					break;
+				} // end switch;
+	?>
+		<li>
+			<div class="rcData">
+				<div class="rcInfo">
+					<div class="rcTitle"><?=$rcTitle;?></div>
+					<div class="rcText">
+						<span class="rcElement"><?=$rcText;?></span>
+					</div>
+				</div>
+			</div>
+		</li>
+	<? } // end foreach ?>
+<? }  // end if ?>
+
+	</ul>
+</div>
+

@@ -1,0 +1,61 @@
+#profilePreview {
+    /*overflow: hidden;*/
+}
+
+#profilePreview h3 {
+    margin: 10px 5px 10px 0;
+    padding: 0 !important;
+    width: 90px;
+    font-weight: normal;
+    font-size: 16px;
+    background: none;
+    float: right;
+    text-transform:capitalize;
+}
+
+/* the image needs to appear in a circle */
+#profilePreview img {
+	margin: 0 5px 0 15px;
+    display: block;
+    width: 75px;
+    height: 75px;
+    background: #000;
+    float: left;
+    border-radius: 38px;
+}
+
+#profilePreview .changePhotoLink {
+    margin: 0 0 0 10px;
+    padding: 1px 4px 2px;
+    text-decoration: none;
+    background: #EEE;
+    color: #000;
+    border-radius: 10px;
+    font-size: 10px;
+    float: left;
+}
+
+#profilePreview .divisionTitle {
+    padding: 10px 10px;
+    width: 180px;
+    clear: both;
+}
+
+#profilePreview .percentWrapper {
+    margin: 0 10px;
+    padding: 7px 0 0;
+    width: 180px;
+    height: 23px;
+    text-align: center;
+    background: url(/svg/progressBar.svg) no-repeat 70% 0;
+    border-radius: 10px;
+}
+
+#profilePreview .tellMoreLink {
+    background: #0AF;
+    text-decoration: none;
+    color: #FFF;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+}

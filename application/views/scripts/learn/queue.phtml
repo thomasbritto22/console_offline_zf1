@@ -1,0 +1,93 @@
+<? $langMap = Zend_Registry::get('LangMap');?>
+<?
+$colClass = "";
+if($this->colClass == 'imgView') $colClass = "oneThirdColumn";
+?>
+
+<?php
+if ($this->pendingReviewCount > 0) {
+    ?>
+    <div id="pendingCertReviews">
+        <p id="pendingCert" class="systemMessage"><?= $this->siteLabels['NewCertToReview']; ?></p>
+    </div>
+    <?php
+}
+
+if ($this->returnedCertsCount > 0) {
+    ?>
+    <div id="returnedCerts">
+        <p id="returnCert" class="systemMessage" ><?= $this->siteLabels['UpdateCert']; ?></p>
+    </div>
+    <?php
+}
+?>
+<div class="legend contentTextIcons clearfix">
+    <div class="pageTitleIcon">
+        <span class="pastDue defaultStyle"></span> 
+        <!--<span class="fa fa-exclamation-triangle"></span>-->        
+            <span class="material-icons due" aria-hidden="true" title="<?= $this->siteLabels['PastDue']; ?>">&#xE000;</span>
+           <span class="contentTextIcons"><?= $this->siteLabels['PastDue']; ?></span>
+    </div>
+    <div class="pageTitleIcon" >
+        <span class="inProgress defaultStyle"></span>
+        <!--<span class="fa fa-adjust"></span>-->
+        
+            <span class="material-icons wip" aria-hidden="true" title="<?= $this->siteLabels['InProgress']; ?>">&#xE422;</span>
+            <span class="contentTextIcons"><?= $this->siteLabels['InProgress']; ?></span>
+    </div>
+    <div class="pageTitleIcon">
+        <span class="completed defaultStyle"></span>
+        <!--<span class="fa fa-check-circle"></span>-->        
+            <span class="material-icons complete" aria-hidden="true" title="<?= $this->siteLabels['Completed']; ?>">&#xE86C;</span>
+        
+        <span class="contentTextIcons"><?= $this->siteLabels['Completed']; ?></span>
+    </div>
+    <div class="pageTitleIcon">
+        <span class="fa fa-link"></span>       
+            <span class="material-icons" aria-hidden="true" title="<?= $this->siteLabels['Chain']; ?>">&#xE260;</span>
+            <span class="contentTextIcons"><?= $this->siteLabels['Chain']; ?></span>
+    </div>
+</div>
+<div class="courseOptions clearfix">
+    <fieldset>
+        <label for="filterCourse" class="contentTextIcons font-style4"><?= $this->siteLabels['Show']; ?>:</label>
+        <select  name="filterCourse" id="filterCourse" aria-label="show modules">
+            <option value="all"><?= $this->siteLabels['All']; ?></option>
+            <option value="notStarted"><?= $this->siteLabels['NotStarted']; ?></option>
+            <option value="inProgress"><?= $this->siteLabels['InProgress']; ?></option>
+            <option value="pastDue"><?= $this->siteLabels['PastDue']; ?></option>
+            <?php if (true == $this->hasCompletedModules): ?>
+                <option value="completed"><?= $this->siteLabels['Completed']; ?></option>
+            <?php endif; ?>
+            <option value="optional"><?= $this->siteLabels['Optional']; ?></option>
+            <option value="noDueDate"><?= $this->siteLabels['NoDueDate']; ?></option>
+            <option value="series"><?= $this->siteLabels['Chain'] ?></option> 
+            <option value="selectAny"><?= $this->siteLabels['Selectany'] ?></option>   
+        </select>
+    </fieldset>
+    <button type="button" id="toggleView" aria-label=""  class="viewIcon contentTextIcons font-style4">
+        <span class="fa fa-list"></span><i class="material-icons toggleBtn">&#xE241;</i>  
+    </button>
+</div>
+
+<div id="emptyQueueTextBox" style="display:none">
+    <p class="contentTextIcons contentTitles font-size16"><?= $this->siteLabels['NoModsToDisplay']; ?></p>
+    <p class="contentTextIcons font-size16"><?= $this->siteLabels['AssignmentsCompleted']; ?> <?= $this->siteLabels['FindModsOnHistory']; ?></p>
+</div>
+<div id="dynamic" class="clearfix">
+    <span id="emptyListRecord" class="contentTextIcons font-size16" style="display:none"><?= $this->siteLabels['NoModsToDisplay']; ?></span>
+</div>
+<div id="mqItemWrap" class="group">
+    <p id="emptyRecord" class="contentTextIcons font-size16" style="display:none"><?= $this->siteLabels['NoModsToDisplay']; ?></p>
+    <input type="hidden" id="hrShown" value="No"/>
+</div>
+<div id="mqSpinner" class="mqItem" style="display:none"><img src="<?php echo CDN_IMG_URL ?>/images/backgrounds/ajax-loader.gif" alt="<?= $this->siteLabels['Loading']; ?>" /></div>
+<script type="text/javascript" charset="utf-8">
+    $.fn.dataTableExt.oApi.fnFilterAll = function (oSettings, sInput, iColumn, bRegex, bSmart) {
+        var settings = $.fn.dataTableSettings;
+
+        for (var i = 0; i < settings.length; i++) {
+            settings[i].oInstance.fnFilter(sInput, iColumn, bRegex, bSmart);
+        }
+    };
+</script>

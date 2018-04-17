@@ -1,0 +1,146 @@
+/* --- MAIN REVIEWS STRUCTURE --- */
+#userReviewWrapper {
+    height: 100%;
+    width: 100%;
+    background: #FAA;
+    position: relative;
+}
+
+#userReviewLeft {
+    padding: 2%;
+    width: 56%;
+    float: left;
+    background: #FFF;
+}
+
+#userReviewRight {
+    margin: 0 0 0 2%;
+    padding: 2%;
+    width: 34%;
+    float: right;
+    background: #DDD;
+}
+
+#userReviewHead {
+    padding: 2%;
+    background: #FA0;
+    position: relative;
+    overflow: auto;
+}
+
+#userReviewHead h4 {
+    font-size: 18px;
+    width: 70%;
+    float: left;
+}
+
+#userReviewHead #userReviewSort {
+    width: 30%;
+    float: right;
+    text-align: right;
+    background: #555;
+}
+
+#userReviewHead #userReviewSort button {
+    font-size: 11px;
+}
+
+
+
+/* --- REVIEW FORM --- */
+#userReviewForm fieldset {
+    border: none;
+}
+
+#userReviewForm fieldset .formField {
+    margin: 10px 0;
+    background: #EEE;
+}
+
+#userReviewForm #reviewText {
+    width: 100%;
+    height: 100px;
+    border: solid 1px #AAA;
+}
+
+
+
+/* --- REVIEW LIST SPECIFIC STYLES --- */
+#userReviewList {
+    background: #FFA;
+}
+
+#userReviewList .userReviewItem {
+    margin: 0 0 1%;
+    padding: 2% 2% 2% 15%;
+    list-style: none;
+    background: #FD7;
+    overflow: auto;
+    position: relative;
+}
+
+#userReviewList .userReviewItem img {
+    width: 32px;
+    height: 32px;
+    background: #FFF;
+    overflow: hidden;
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+#userReviewList .userReviewItem h5 {
+    font-size: 12px;
+}
+
+#userReviewList .userReviewItem .reviewTime {
+    font-size: 11px;
+}
+
+#userReviewList .userReviewItem .reviewTime:before {
+    content: " - "
+}
+
+#userReviewList .userReviewItem p {
+    margin: 10px 0;
+    font-size: 11px;
+}
+
+
+
+/* --- COMMENT LIST SPECIFIC STYLES --- */
+#userReviewList .userReviewItem .commentList {
+    background: #DDF;
+}
+
+#userReviewList .userReviewItem .commentList .commentItem {
+    margin: 0 0 1%;
+    padding: 4% 2% 2% 20%;
+    list-style: none;
+    overflow: auto;
+    position: relative;
+}
+
+#userReviewList .userReviewItem .commentList .commentItem img {
+    width: 32px;
+    height: 32px;
+    background: #FFF;
+    overflow: hidden;
+    display: block;
+    position: absolute;
+    top: 15px;
+    left: 10px;
+}
+
+#userReviewList .userReviewItem .commentList .commentItem .commentTime {
+    font-size: 11px;
+}
+
+#userReviewList .userReviewItem .commentList .commentItem .commentTime:before {
+    content: " - ";
+}
+
+#userReviewList .userReviewItem .commentList .commentItem p {
+    margin: 5px 0;
+}

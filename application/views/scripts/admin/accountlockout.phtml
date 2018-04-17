@@ -1,0 +1,26 @@
+<section class="adminSection ui-corner-all">
+	<div class="adminSectionHeader">
+    	<h3>Account Lockout</h3>
+    </div>
+    <div class="adminSectionContent">
+	    <p>Account Lockout is a security feature that is designed to prevent bots from constantly trying to log in a known username in order to gain access to the system. When a specified number of failed login attempts has been made, the users account is locked for a specified amount of time. During this timeout period, no other login attempts can be made. <strong>Setting the timeout length to zero "0" means that the user will be locked out forever and will have to contact support to have their account manually unlocked.</strong></p>
+	    <form id="accountLockout" method="post" action="/admin/updateComponent">
+	        <fieldset>
+	            <p class="formField">
+	                <label for="">How many times can a user fail to login:</label>
+	                <input type="text" name="attemptCount" />
+	            </p>
+	            <p class="formField">
+	                <label for="">How long does the lockout last?</label>
+	                <input type="text" name="timeoutLength" />
+	                <sub>Set the timeout length in minutes</sub>
+	            </p>
+	        </fieldset>
+	        <fieldset class="buttons">
+	            <button type="reset">Cancel</button>
+	            <button type="submit" class="blue">Save</button>
+	        </fieldset>
+	        <input type="hidden" name="adminAction" value="updateAccountLockout" />
+	    </form>
+	</div>
+</section>

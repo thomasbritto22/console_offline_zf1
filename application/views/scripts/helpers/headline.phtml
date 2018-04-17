@@ -1,0 +1,9 @@
+<?php if(count($this->headerItems) > 0) {
+	$items = $this->headerItems;
+?>
+<div id="tagLine" class="contentTitles">
+	<?php if(!empty($items) && isset($items['text']) && $items['text'] != '') {?>
+	<?= $items['text']; ?>
+	<?php }?>
+</div>
+<?php } ?>

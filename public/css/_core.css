@@ -1,0 +1,194 @@
+@CHARSET "ISO-8859-1";
+
+/**
+ * -- DEFINE FONTS ---
+ */
+ 
+@font-face {
+  font-family: 'Droid Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/css/fonts/DroidSans.eot');
+  src: url('/css/fonts/DroidSans.eot?#iefix') format('embedded-opentype'),
+       url('/css/fonts/DroidSans.woff') format('woff'),
+       url('/css/fonts/DroidSans.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Droid Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/css/fonts/DroidSans-Bold.eot');
+  src: url('/css/fonts/DroidSans.eot?#iefix') format('embedded-opentype'),
+       url('/css/fonts/DroidSans-Bold.woff') format('woff'),
+       url('/css/fonts/DroidSans-Bold.ttf') format('truetype');
+}
+
+
+/**
+ * --- CSS RESET ---
+ * These styles are responsible for resetting
+ * the default browser settings so that we
+ * have a good baseline to start from.
+ */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+/* remove default bullet graphics,
+ * we can set this using more specific
+ * css */
+ol, ul {
+    list-style: inside;
+}
+
+/* remove the quotes that typically
+ * display around [block]quote elements */
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+/* remove outlining from focused elements */
+:focus {
+    outline: 0;
+}
+
+/* set default styling for insert/delete elements */
+ins {
+    text-decoration: none;
+}
+del {
+    text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* set the default font size for headings */
+h1 { 
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px; 
+}
+h2 { 
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px; 
+}
+h3 { 
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px; 
+}
+h4 { 
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px; 
+}
+h5 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px; 
+}
+h6 { 
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px; 
+}
+/* set the font-family for all inputs and textareas */
+input, textarea {
+  font-family: Arial, Helvetica, sans-serif;
+}
+/* --- END CSS RESET -- */
+
+
+
+
+
+/**
+ * --- CORE LAYOUT STYLES ---
+ * These styles make sure that the footer is always at the bottom of the screen when
+ * content is not enough, or at the bottom of the content when it is more. There are other
+ * ways of doing this, but they suffer from the footer not 'sinking' and the content 
+ * floating behind and below it.
+ */
+
+/* we need to make sure that the main wrapping elements
+ * take up the full screen width all the time. This helps
+ * the footer stick to the bottom */
+html, body {
+    height: 100%;
+}
+
+/* now set any specific styles for body
+ * and all its children elements. this is
+ * mostly to set fonts and default font 
+ * properties, as well as the main default
+ * background of the page */
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+}
+
+/* make sure that the bottom margin is
+ * zero minus the fspace/footer height */
+#wrapper, .wrapper {
+    margin: 0 0 -35px;
+    width: 100%;
+    /*height: 100%;*/
+}
+/* --- END CORE STYLES --- */
+
+.skip {
+  text-indent: -9999px;
+  display: none;
+  height: 1px;
+  width: 1px;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.ui-widget-overlay{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+}
+
+/* --- CLEARFIX STYLES --- */
+
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: " ";
+}
+
+.clearfix:after {
+  clear: both;
+}

@@ -1,0 +1,87 @@
+<?php header("Access-Control-Allow-Origin: *"); ?>
+<script>
+    var availableLang = <?= $this->availableLang ?>;
+    var exportFormat = "<?=$this->exportFormat?>";
+</script>
+
+<hgroup class="adminHeader">
+    <h2>&nbsp;</h2> 
+    <div class="btnArea">
+        <div id="ie8fix_top"></div>
+        <button type="button" class="adminBlueBtn gradient">Export module package</button>
+    </div>
+</hgroup>
+
+<div class="filterArea borderBottomMedium clearfix">
+    <div class="no_padding entriesLength">
+        <label>Show</label>
+        <select id="entries" class="form-control">
+            <option>10</option>
+            <option>20</option>
+            <option>30</option>
+            <option>40</option>
+            <option>50</option>
+
+        </select>
+        <label>entries</label>
+    </div>
+    <div class="no_padding formatArea">
+        <form name="exportForm" method="post">
+        <label>Select the export format: </label>
+        <select id="exportFormat" name="exportFormat" class="form-control" onchange="document.exportForm.submit();">
+            <option value="aicc" >AICC</option>
+            <option value="aicc_combined" >AICC-Combined</option>        
+            <!--<option value="tutorial_pdf" >Course PDF</option>-->
+            <option value="scorm">SCORM 1.2</option>
+        </select>
+        </form>
+    </div>
+</div>
+<div id="dynamic" class="courseWrapper clearfix">    
+    <div class="sourceArea borderRightThin">
+
+        <table class="tables_ui disNone" id="source" >
+            <thead>
+                <tr class="borderBottomThinr sourceHeader">
+                    <th class="contentTextIcons font_style" role="columnheader">Module ID <i class="fa fa-caret-up"></i></th>
+                    <th class="contentTextIcons font_style" role="columnheader">Module title <i class="fa fa-sort"></i></th>  
+                    <th class="contentTextIcons font_style" role="columnheader">Language <i class="fa fa-sort"></i></th>  
+                    <th class="contentTextIcons font_style" role="columnheader" style="display:none">System Id</th>
+                    <th class="contentTextIcons font_style" role="columnheader" style="display:none">App_type</th>                    
+                    <th class="contentTextIcons font_style" role="columnheader" style="display:none">supportedTemplate</th>                    
+                    <th class="contentTextIcons font_style" role="columnheader" style="display:none">supportedTemplateaicc</th>                    
+                    <th class="contentTextIcons font_style" role="columnheader" style="display:none">pdfTemplate</th>                    
+                </tr> 
+            </thead>
+            <tbody></tbody>
+
+        </table>
+    </div>
+    <!--    <div id="dynamic" class="courseWrapper borderBottomMedium clearfix">    -->
+    <div class="destinationArea">
+
+        <table class="tables_ui disNone" id="destination" >
+            <thead>
+                <tr class="sourceHeader borderBottomThinr">
+                    <th class="contentTextIcons font_style" >Module ID <i class="fa fa-sort"></i></th>
+                    <th class="contentTextIcons font_style" >Module title <i class="fa fa-sort"></i></th>  
+                    <th class="contentTextIcons font_style" >Language <i class="fa fa-sort"></i></th>
+                    <th class="contentTextIcons font_style"  style="display:none">System Id</th>
+                    <th class="contentTextIcons font_style"  style="display:none">App_type</th>
+                    <th class="contentTextIcons font_style"  style="display:none">supportedTemplate</th>
+                    <th class="contentTextIcons font_style"  style="display:none">supportedTemplateaicc</th>
+                    <th class="contentTextIcons font_style"  style="display:none">pdfTemplate</th>
+                    <th class="contentTextIcons font_style"  style="display:none" id="displayLoader"></th>
+                    <th class="contentTextIcons font_style deleteBtnArea" ><button class=" deleteBtn fa fa-times" style="display:none" id="reset" title="Remove all"></button></th>
+                </tr>  
+            </thead>
+            <tbody></tbody>
+
+        </table>
+    </div>
+    <!--</div>-->
+</div>
+<div class="paginateArea">
+    <div class="paginate_left borderRightThin"></div>
+    <div class="paginate_right"></div>
+</div>

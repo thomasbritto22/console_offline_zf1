@@ -1,0 +1,10 @@
+<?php
+// set up default, then override if available
+$profileImage = CDN_IMG_URL .'/images/partners/profile/DeepakCrowley.jpg';
+if(isset($this->user->profileImage)) $profileImage = $this->user->profileImage;
+?>
+<div class="profileSection cf">
+	<img src="<?= $profileImage; ?>" width="75" height="75" />
+	<h3 class="userName"><?= $this->user->firstName . ' ' . $this->user->lastName; ?></h3>
+	<p class="changePhoto"><a href="/profile"><?= $this->siteLabels['ChangePhoto']; ?></a></p>
+</div>

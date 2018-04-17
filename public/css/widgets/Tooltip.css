@@ -1,0 +1,66 @@
+/**
+ * --- RATINGS TOOLTIP WRAPPER ---
+ * This wrapper makes sure that the arrow and the tooltip
+ * stay together. It doesn't necessarily have to be styled,
+ * but should have position:relative so that the tooltip
+ * and arrow can be positioned absolutely, and still be close.
+ */
+.ratingsTooltipWrapper {
+    float: right;
+    position: relative;
+}
+
+/**
+ * --- RATINGS TOOLTIP ARROW ---
+ * This is the little downwards pointing arrow that shows
+ * up next to user and average ratings. It is used to show
+ * the other rating criteria measured via the ratings tooltip.
+ */
+.ratingsTooltipArrow {
+    margin-top: 2px;
+    border-color: #0AF transparent transparent;
+    border-style: solid;
+    border-width: 9px 5px 0;
+    display: block;
+    width: 0;
+    height: 0;
+}
+
+/**
+ * --- RATINGS TOOLTIP ---
+ * The tooltip is what holds all the various types of ratings
+ * that are being measured. It can hold multiple rating controls
+ */
+.ratingsTooltip {
+    border-radius: 8px;
+    -moz-border-radius: 8px;
+    display: none;
+    height: auto;
+    margin: 10px 0 0; /* use margins insted of left/top to keep position. */
+    padding: 10px 10px 5px;
+    position: absolute;
+    width: 140px;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.ratingsTooltip h4 {
+    margin: 0 0 5px;
+    padding: 0 0 5px;
+    border-bottom: solid 1px #AAA;
+}
+
+.ratingsTooltip legend {
+    font-size: 11px;
+    font-weight: normal;
+    word-break: break-word;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
+    overflow: hidden;
+    width: 110px;
+}
+
+.ratingsTooltip .ratingControl.mini .ratingControlList {
+    width: 100%;
+}

@@ -1,0 +1,30 @@
+<footer class="clearfix">
+	<div id="footerWrapper" class="clearfix">
+		<div id="footerImages">
+			<img src="<?php echo CDN_IMG_URL ?>/images/branding/lrn-logo.png" alt="LRN Inspiring Principled Performance" />
+			<img src="<?php echo CDN_IMG_URL ?>/images/branding/lrn-tagline.png" alt="LRN Inspiring Principled Performance" class="footerLogo" />
+		</div>
+		<p id="footerLinks">
+			&copy; <?= str_replace("%CurrentYear%",  date("Y"), $this->siteInstr['FooterRights']); ?> 
+			<span>
+				<a href="/html/terms_and_conditions.html" target="_blank" title="<?= $this->siteInstr['FooterTermsCondition']; ?>">
+					<?= $this->siteInstr['FooterTermsCondition']; ?>
+				</a>
+			</span>
+			<span>
+				<a href="http://lrn.com/privacy-policy/" target="_blank" title="<?= $this->siteLabels['Privacy']; ?>">
+					<?= $this->siteLabels['Privacy']; ?>
+				</a>
+			</span>
+			<span>
+				<a href="http://lrn.com/about/" target="_blank" title="<?= $this->siteInstr['FooterAboutLRN']; ?>">
+					<?= $this->siteInstr['FooterAboutLRN']; ?>
+				</a>
+			</span>
+		</p>
+	</div>
+	<div id="messageModal" class="hidden"></div>
+	<div id="innerMessageModal" class="hidden"></div>
+	<!-- This div is here to make sure we actually remove the notShow class from the body so that we show our icon fonts -->
+	<div class="testFont"><i class="fa fa-warning"></i></div>
+</footer>

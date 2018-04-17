@@ -1,0 +1,29 @@
+	<div class="shareWrapper">
+	    <form id="formSubmit">
+		    <div class="shareHeader">
+			    <div class="chatterLogo"></div>
+    			<div class="groupShare">
+    				<label for="group"><?= $this->siteLabels['ShareWith']; ?>:</label>
+    				<br />
+    				<select name="groupID" id="groupID" class="required">
+    				    <?= $this->chatterGroupsHTML; ?>
+    				</select>
+    			</div>
+    		</div>
+			<div class="shareForm">
+			<?php if(!empty($this->courseImg)) : ?>
+				<div class="courseImage">
+					<img src="<?= $this->courseImg; ?>" alt="Course Image" >
+				</div>
+			<?php endif; ?>
+				<span class="courseTitle"><?= $this->courseName; ?></span>
+				<textarea class="required" name="snippet" id="snippet" placeholder="<?= $this->siteLabels['YourCommentsHere']; ?>..."><?php echo ((isset($this->snippet))) ? $this->snippet : '' ;?></textarea>
+			</div>
+		<fieldset>
+			<div class="loginBtns clearfix">
+				<button id="submitPost" class="customButton" name="submit"><?= $this->siteLabels['Share']; ?></button>
+				<button id="cancel" name="cancel" class="customButton"><?= $this->siteLabels['Cancel']; ?></button>
+			</div>
+		</fieldset>
+		</form>
+	</div>

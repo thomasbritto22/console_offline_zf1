@@ -1,0 +1,18 @@
+/* change the background of the console by replacing the color and/or image */
+#wrapper {
+    background: #222 url('../../images/consoleBG/woodstrip.jpg') 50% 75px;
+}
+
+/* change the background of the header bar */
+#header {
+    background: #FFF url(/images/header/header-bg.jpg) repeat-x; /* default for older browsers */
+    /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#55AADD', endColorstr='#3388DD'); /* for IE */
+    /*background: -webkit-gradient(linear, left top, left bottom, from(#55AADD), to(#3388DD)); /* for webkit browsers */
+    /*background: -moz-linear-gradient(top,  #55AADD,  #3388DD); /* for firefox 3.6+ */
+}
+
+/* choose a background image and how it's applied for the welcome message */
+#authWrapper #authMessageWrapper {
+    background: url('../../images/randomBG/dellbackground.png') repeat;
+    background-size: cover;
+}

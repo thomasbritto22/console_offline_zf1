@@ -1,0 +1,69 @@
+.dialogWrapper {
+	margin: -261px 0 0 -320px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 640px;
+	height: 401px;
+	background: #FFF;
+	overflow: hidden;
+	z-index: 9998;
+	border: solid 1px #888;
+	display: none; /* hidden by default */
+}
+
+.dialogWrapper .header {
+	box-shadow: 0 -18px 20px 10px #000000;
+	-moz-box-shadow: 0 -18px 20px 10px #000000;
+	-webkit-box-shadow: 0 -18px 20px 10px #000000;
+	width: 100%;
+	height: 40px;
+	background: #888;
+	color: #FFF;
+	position: relative;
+	z-index: 2;
+}
+
+.dialogWrapper .header h3 {
+	font-size: 19px;
+	padding: 10px 15px 0 25px;
+	float: left;
+	font-weight: normal;
+}
+
+.dialogWrapper .header .close {
+	margin: 7px 10px 0 0;
+	width: 24px;
+	height: 24px;
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); /* --- Overrides the parent element's filter property --- */	
+	background: url('../../images/icons/close-largeX-light.png') no-repeat top left;
+	-webkit-background-size: 100% auto;
+	border: none;
+	text-indent: -9999px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	cursor: pointer;
+}
+
+.dialogWrapper .header .close:hover {
+	background: url('../../images/icons/close-largeX-dark.png') no-repeat top left;
+}
+
+/* body height MUST be set. for value,
+ * subtract header and footer heights
+ */
+.dialogWrapper .body {
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+	height: 480px;
+}
+
+.dialogWrapper .footer {
+    display: none;
+    visibility: hidden;
+}
+.jwplayer {
+	z-index: 9999 !important;
+}

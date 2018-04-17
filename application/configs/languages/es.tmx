@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+ <header creationtoolversion="1.0.0" datatype="winres" segtype="sentence" adminlang="en-us" srclang="de-at" o-tmf="abc" creationtool="XYZTool" >
+ </header>
+ <body>
+  <tu tuid='Sign In'>
+   <tuv xml:lang="es"><seg>ingresar</seg></tuv>
+   <tuv xml:lang="en"><seg>Sign In</seg></tuv>
+  </tu>
+  <tu tuid='Login ID'>
+   <tuv xml:lang="en"><seg>Login ID</seg></tuv>
+   <tuv xml:lang="es"><seg>iniciar sesi&#243;n identificaci&#243;n</seg></tuv>
+  </tu>
+  
+  <tu tuid='Password'>
+   <tuv xml:lang="en"><seg>Password</seg></tuv>
+   <tuv xml:lang="es"><seg>Contrase&#241;a</seg></tuv>
+  </tu>
+  
+  <tu tuid='Sign Me into the Console'>
+   <tuv xml:lang="en"><seg>Sign Me into the Console</seg></tuv>
+   <tuv xml:lang="es"><seg>Me firmar en la consola</seg></tuv>
+  </tu>
+    
+  <tu tuid='forgot'>
+   <tuv xml:lang="en"><seg>forgot</seg></tuv>
+   <tuv xml:lang="es"><seg>olvidado</seg></tuv>
+  </tu>
+  
+  <tu tuid='always keep me logged in'>
+   <tuv xml:lang="en"><seg>always keep me logged in</seg></tuv>
+   <tuv xml:lang="es"><seg>siempre me mantiene conectado en</seg></tuv>
+  </tu>
+
+  <tu tuid='Console Branding'>
+   <tuv xml:lang="en"><seg>Console Branding</seg></tuv>
+   <tuv xml:lang="es"><seg>Consola de Branding</seg></tuv>
+  </tu>
+
+  <tu tuid='Oops! Incorrect username or password.'>
+   <tuv xml:lang="en"><seg>Oops! Incorrect username or password.</seg></tuv>
+   <tuv xml:lang="es"><seg>Oops! Nombre de usuario o contrase&#241;a incorrecta.</seg></tuv>
+  </tu>
+    
+  </body>
+ </tmx>
+ 
+ 
+

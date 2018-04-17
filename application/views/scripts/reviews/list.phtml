@@ -1,0 +1,25 @@
+<h2 class="contentTextIcons font-size14 borderBottomThin"><?= $this->siteLabels['FeaturedRatings']; ?></h2>
+<? if(empty($this->reviewList)){ ?>
+<div id="listWrapper" class="noReviews">
+    <p class="noRatingsReviews"><?= $this->siteLabels['NoRatingsReviews']; ?></p>
+</div>
+<? } else { ?>
+    <div id="listWrapper">
+        <ul id="reviewList">
+        <?
+        foreach($this->reviewList as $r){
+        ?>
+            <li id="review_<?= $r['id']; ?>" class="reviewItem borderBottomThinDotted">
+                <h5 class="contentTextIcons"><?= $r['reviewer']['firstName'] . ' ' . substr($r['reviewer']['lastName'],0,1).'.'; ?></h5>
+                <? if(isset($r['ratingControl'])){ ?>
+                    <div class="reviewRating">
+                        <?= $r['ratingControl']; ?>
+                    </div>
+                <? } ?>
+                <span class="reviewTime"><?= $r['reviewTime']; ?></span>
+                <div class="reviewText contentTextIcons clearfix"><?= nl2br($r['reviewText']); ?></div>
+            </li>
+        <? } ?>
+        </ul>
+    </div>
+<? } ?>

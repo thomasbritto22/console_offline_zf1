@@ -1,0 +1,28 @@
+<?php 
+/**
+ * Filename					:		plain_layout
+ * Type						:		Layout
+ * Description				:		This is a plain layout for displaying the view.
+ * 
+ * Date Created				:		01/28/2015 11:30 AM
+ * @author					:		Niraj Byanjankar
+ * 
+ * Last Updated				:		01/29/2015 1:30 PM
+ * Description				:		Init.
+ * 
+ */
+?>
+<?= $this->doctype(); ?>
+<html>
+<head>
+	<?= $this->headTitle(); ?>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta id="viewport" name="viewport" content="initial-scale=1; user-scalable=1; minimum-scale=1; maximum-scale=1" />
+</head>
+<body style="margin: 0px; padding: 0;">
+ <?= $this->layout()->content; ?>
+ 
+</body>
+</html>

@@ -1,0 +1,24 @@
+<div id="dynamic" class="clearfix">
+	<table id="catalogTable" class="display">
+		<thead>
+			<tr class="secondaryBgColor borderBottomThinr">
+				<th></th>
+				<th class="contentTextIcons historyHeaderTitle"><?= $this->catalogTitle; ?></th>
+				<th class="contentTextIcons historyHeaderTitle"><?= $this->moduleIdTitle; ?></th>
+				<th class="contentTextIcons historyHeaderTitle"><?= $this->courseLangTitle; ?></th>
+			</tr>
+                    
+                        
+		</thead>
+		<tbody>	</tbody>
+	</table>
+</div>
+    <script>
+            $(document).ready(function() {
+                $(".historyHeaderTitle").click(function(){
+                $(".historyHeaderTitle").removeClass("titleFocusBorder");
+                $(this).addClass("titleFocusBorder");
+                var currentElem = $(this).id ; 
+                });                
+             });         
+   </script>

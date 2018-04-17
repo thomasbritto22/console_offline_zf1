@@ -1,0 +1,115 @@
+/* --- JQUERY UI DIALOG RESTYLE --- */
+#eocDialog, div.ui-dialog-buttonpane {
+    -moz-border-radius-topleft: 0px;
+    -moz-border-radius-topright:0px;
+    -moz-border-radius-bottomleft:15px;
+    -moz-border-radius-bottomright:15px;
+    -webkit-border-top-left-radius:0px;
+    -webkit-border-top-right-radius:0px;
+    -webkit-border-bottom-left-radius:15px;
+    -webkit-border-bottom-right-radius:15px;
+    border-top-left-radius:0px;
+    border-top-right-radius:0px;
+    border-bottom-left-radius:15px;
+    border-bottom-right-radius:15px;
+}
+
+div.ui-dialog {
+    padding: 10px;
+    -moz-border-radius-topleft: 15px;
+    -moz-border-radius-topright:15px;
+    -moz-border-radius-bottomleft:15px;
+    -moz-border-radius-bottomright:15px;
+    -webkit-border-top-left-radius:15px;
+    -webkit-border-top-right-radius:15px;
+    -webkit-border-bottom-left-radius:15px;
+    -webkit-border-bottom-right-radius:15px;
+    border-top-left-radius:15px;
+    border-top-right-radius:15px;
+    border-bottom-left-radius:15px;
+    border-bottom-right-radius:15px;
+}
+
+#messageModal {
+    -moz-border-radius-topleft:  0;
+    -moz-border-radius-topright: 0;
+    -moz-border-radius-bottomleft: 10px;
+    -moz-border-radius-bottomright: 10px;
+    -webkit-border-top-left-radius: 0;
+    -webkit-border-top-right-radius: 0;
+    -webkit-border-bottom-left-radius: 10px;
+    -webkit-border-bottom-right-radius: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    height: auto !important;
+    padding: 20px;
+}
+
+p.systemMessage {
+    text-align: left;
+    padding: 5px;
+    font-weight: bold;
+}
+
+div.ui-dialog-content {
+    padding: 10px;
+    width: 100% !important;
+}
+
+.ui-dialog.ui-widget-content {
+    border-color: #555;
+    border-width: 10px;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+    -moz-border-radius-topleft: 15px;
+    -moz-border-radius-topright:15px;
+    -moz-border-radius-bottomleft:0px;
+    -moz-border-radius-bottomright:0px;
+    -webkit-border-top-left-radius:15px;
+    -webkit-border-top-right-radius:15px;
+    -webkit-border-bottom-left-radius:0px;
+    -webkit-border-bottom-right-radius:0px;
+    border-top-left-radius:15px;
+    border-top-right-radius:15px;
+    border-bottom-left-radius:0px;
+    border-bottom-right-radius:0px;
+    height: 30px;
+    z-index: 100;
+}
+
+.ui-dialog .ui-dialog-titlebar .ui-dialog-title {
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+	height: 20px;
+    padding: 0;
+    width: 20px;
+}
+
+.ui-dialog .ui-dialog-titlebar-close i {
+    font-size: 2em;
+    margin: 0 6px;
+}
+
+.ui-dialog .ui-dialog-titlebar .ui-icon-closethick {
+    background: url('../images/sprites/misc-sprite.png') no-repeat -214px -15px;
+    height: 25px;
+    width: 25px;
+}
+.ui-dialog-buttonpane {
+    margin-top: 0 !important;
+}
+
+/*.eocRateReviewIcon, .eocHistoryIcon, .eocPrintIcon, .eocPrintIcon {
+  float: left;
+  height: 25px;
+  overflow: hidden;
+  margin: 5px 0 0 10px;
+  width: 25px;
+}*/
+/* --- END JQUERY UI DIALOG RESTYLE --- */

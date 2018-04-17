@@ -1,0 +1,30 @@
+<div id="eocDialog" class="ui-corner-all contentBgColor">
+    <h4 class="contentTextIcons"><?= $this->courseTitle . ' - ' . $this->catalogId; ?></h4>
+    <div class="buttonWrapper">
+        <button type="button" id="returnMqBtn" class="customButton" onclick="$('#eocDialog').dialog('close');"><?= $this->siteLabels['ReturnToMyQueue']; ?></button>
+    </div>
+    <ul class="eocOptionList">
+     	<?php if($this->ratingsToggle == 'on') {?>
+        <li class="eocOption secondaryBgColor borders ui-corner-all">
+        	<i id="eocRateReviewIcon" class="contentTextIcons"></i><i id="eocRateReviewIconMaterial" class="contentTextIcons">&#xE838;</i>
+            <a class="linkReview" href="<?= $this->reviewURL; ?>"><h5 class="contentTextIcons"><?= $this->siteLabels['RateReview']; ?></h5></a>
+        </li>
+        <?php }?>
+        <li class="eocOption secondaryBgColor borders ui-corner-all">
+        	<i id="eocHistoryIcon" class="contentTextIcons"></i><i id="eocHistoryIconMaterial" class="contentTextIcons">&#xE8BA;</i>
+            <a class="linkHistory" href="<?= $this->historyURL; ?>"><h5 class="contentTextIcons"><?= $this->siteLabels['ViewCompHistory']; ?></h5></a>
+        </li>
+        <? if($this->hasCert && true == $this->CompletionCertificate){ ?>
+        <li class="eocOption secondaryBgColor borders ui-corner-all">
+            <i id="eocPrintIcon" class="contentTextIcons"></i><i id="eocPrintIconMaterial" class="contentTextIcons">&#xE8AD;</i>
+            <a class="linkPrint" href="<?= $this->printCertURL; ?>"><h5 class="contentTextIcons"><?= $this->siteLabels['PrintCertification']; ?></h5></a>
+        </li>
+        <? } ?>
+        <?php if(true == $this->CompletionCertificate):?>
+        <li class="eocOption secondaryBgColor borders ui-corner-all" style="<?= $this->appType == 'jasper' && true !== $this->embeddedCert ? 'display:none;visibility:hidden;' : '' ; ?>">
+        	<i id="eocCertPrintIcon" class="contentTextIcons"></i><i id="eocCertPrintIconMaterial" class="contentTextIcons">&#xE8AD;</i>
+            <a class="linkPrint" href="<?= $this->printCompletionURL; ?>"><h5 class="contentTextIcons"><?= $this->siteLabels['PrintCertComplete']; ?></h5></a>
+        </li>
+        <?php endif;?>
+    </ul>
+</div>

@@ -1,0 +1,4 @@
+>>>> ORIGINAL //depot/catalyst-zf1/catalystzf1_offline2.0/test.txt#none
+==== THEIRS //depot/catalyst-zf1/catalystzf1_offline2.0/test.txt#1
+==== YOURS //perforce-lcecpub/depot/virtualcatalyst-zf1/virtualcatalystzf1_offline1.0/test.txt
+C:\Users\shrikant.khanzode\shrikant.khanzode_MUMW7L145_3469\shrikant.khanzode_MUMW7L145_3469\depot\virtualcatalyst-api

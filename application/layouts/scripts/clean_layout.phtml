@@ -1,0 +1,42 @@
+<?php
+	if(!isset($this->bodyPrepend))
+		$this->bodyPrepend = '';
+    if(!isset($this->footerFile))
+        $this->footerFile = 'common/footer.phtml';
+    if(!isset($this->bodyAppend))
+    	$this->bodyAppend = '';
+?>
+
+<?= $this->doctype(); ?>
+<html>
+<head>
+	<?= $this->headTitle(); ?>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta id="viewport" name="viewport" content="initial-scale=1; user-scalable=1; minimum-scale=1; maximum-scale=1" />
+	<link rel="shortcut icon" type="image/x-icon" href="/custom_files/<?=$this->siteName?>.ico?t=<?=mktime()?>" />
+    <?= $this->headLink(); ?>
+    <style type="text/css">
+		<?= $this->cssStr; ?>
+	</style>
+    <?= $this->headStyle(); ?>
+    <?= $this->headScript(); ?>
+    
+    <script type="text/javascript">
+		$(document).ready(function(){
+			<?= $this->docReadyJS; ?>
+		});
+    </script>
+</head>
+<body>
+	<?= $this->bodyPrepend; ?>
+    <div id="container" class="cf group">
+		<section id="contentWrapper" <?php if(isset($this->colClass)) echo 'class="' . $this->colClass . ' group cf"'; ?>>
+	    	<?= $this->layout()->content; ?>
+	    </section>
+    </div>
+    <?= $this->bodyAppend; ?>
+</body>
+</html>
+<!--#### clean_layout.phtml ####-->

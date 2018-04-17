@@ -1,0 +1,54 @@
+﻿<html>
+<!-- Sitemap 1.0 -->
+<object type="text/site properties">
+  <param name="FrameName" value="bsscright">
+  <param name="SiteType" value="toc">
+  <param name="Image Width" value="16">
+</object>
+<ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Preface">
+    <param name="Local" value="Preface.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Sign in to LRN Catalyst">
+    <param name="Local" value="Sign_in_to_LRN_Catalyst.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Take a course">
+    <param name="Local" value="Take_a_course.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="View your completed courses">
+    <param name="Local" value="View_your_completed_courses.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Print your course completion certificate">
+    <param name="Local" value="Print_your_course_completion_certificate.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Share a snippet from a course">
+    <param name="Local" value="Share_a_snippet_from_a_course.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Print a list of completed courses">
+    <param name="Local" value="Print_a_list_of_completed_courses.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Rate and review a course">
+    <param name="Local" value="Rate_and_review_a_course.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Read course ratings and reviewView">
+    <param name="Local" value="View_course_ratings_and_reviews.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Change your password">
+    <param name="Local" value="Change_your_password.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Reset a forgotten password">
+    <param name="Local" value="Reset_a_forgotten_password.htm">
+  </object>
+</ul>
+</html>

@@ -1,0 +1,38 @@
+<?= $this->doctype(); ?>
+<html>
+<head>
+	<?= $this->headTitle(); ?>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=2" />
+    <link rel="shortcut icon" type="image/x-icon" href="/custom_files/<?=$this->siteName?>.ico?t=<?=mktime()?>" />
+
+	<?= $this->headLink(); ?>
+	<style type="text/css">
+		<?= $this->cssStr; ?>
+	</style>
+	<?= $this->headStyle(); ?>
+    <?= $this->headScript(); ?>
+    <script type="text/javascript">jwplayer.key="4a6Y+XobzCyBjjz1hSrM3odEU6CZueg6aresRQ==";</script>
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		<?= $this->docReadyJS; ?>
+    	});
+    </script>
+    <link href="<?=$this->customCSSFile?>" media="screen" rel="stylesheet" type="text/css">
+</head>
+<body class="welcome globalBgColor">
+    <?= $this->render('common/header.phtml'); ?>
+    <div class="clearfix container">        
+        <div id="contentWrapper" class="clearfix">
+            <div id="bgLeftAlign"></div>
+            <?= $this->layout()->content; ?>
+            <div id="rightColumn" class="sideBar" style="padding-top: 40px;">
+              <?= $this->render('common/right_column.phtml'); ?>
+           </div>
+        </div>
+    </div>    
+    <?= $this->render('common/footer.phtml'); ?>
+</body>
+</html>

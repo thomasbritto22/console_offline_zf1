@@ -1,0 +1,176 @@
+<hgroup class="adminHeader">
+	<h2>Resource Center</h2>
+</hgroup>
+<div id="categorySection" class="ui-corner-all">
+	<div class="instrHeader clearfix">
+      <h3 class="sectionHeader resourceHeader" id="resourceHeaderText">Add resources</h3>
+		<p id="showRecordNumber"></p>
+      <?php if(!empty($this->siteLangs)) { ?>
+         <fieldset>
+            <p>
+            	<select name="fieldLanguagesRC" id="fieldLanguagesRC">
+            	<?php if(!empty($this->siteLangs) && count($this->siteLangs)> 0) {
+                       foreach ($this->siteLangs as $key=>$lang){
+                       ?>
+                     		<option value="<?=$lang->language;?>" <?= $lang->language == $this->siteDefLang ? 'selected' : ''; ?>><?=$lang->enName;?> </option>
+                       <? }
+            	 } else {
+            	 ?>
+            	 	<option value="<?= $this->siteDefLang; ?>"> <?= $this->siteDefLangName;?> </option>
+            	 <?php }?>
+                  </select>
+             </p>
+		   </fieldset>
+         <p>
+            <span>
+               <i class="fa fa-flag adminColor"></i>
+            </span>
+         Select a language:
+         </p>
+	   <?php } ?>
+	</div>
+
+   <div id="tabs">
+      <ul>
+         <li><a href="#addTabs">Add</a></li>
+         <li><a href="#editTabs">Edit</a></li>
+         <li><a href="#reorderTabs">Reorder</a></li>
+      </ul>
+      <div id="addTabs">
+         <div class="newResource ui-corner-all">
+             	<p class="inst">Add a new resource</p>
+         	    <form name="resourceMgrForm" id="resourceMgrForm" action="/admin/resources">
+         			<fieldset>
+         			    <input type="hidden" id="action" name="action" value="saveResource" />
+         				<p class="resourcesHeaderHr clearfix">
+                        <span class="resourceHeaderVisibility">Visibility</span>
+                        <span class="resourceHeaderType">Type</span>
+         		        	<span class="resourceHeaderTitle">Title</span>
+         		        	<span class="resourceHeaderResource">Resource</span>
+         		        	<span class="resourceHeaderDescription">Description</span>
+         				</p>
+         				<p class="resourceRow">
+                        <span class="resourceRowVisibility">
+                           <span class="resourceHeaderVisibility">Visibility</span>
+                           <select name="resourceVisibility" id="newResourceVisibility">
+                              <?
+                              foreach ($this->visibilityList as $key=>$vType){
+                              ?>
+                              <option value="<?=$key;?>"> <?=$vType;?> </option>
+                              <?
+                              }
+                              ?>
+                           </select>
+                        </span>
+                        <span class="resourceRowType">
+                           <span class="resourceHeaderType">Type</span>
+                           <select name="resourceType" id="newResourceType">
+                              <?
+                              foreach ($this->rcTypes as $key=>$rcType){
+                              ?>
+                              <option value="<?=$key;?>"> <?=$rcType;?> </option>
+                              <?
+                              }
+                              ?>
+                           </select>
+                        </span>
+         					<span class="resourceRowTitle">
+         						<span class="resourceHeaderTitle">Title</span>
+         						<input type="text"  id="newResourceLabel" name="resourceLabel" placeholder="(Recommended: 30 characters)" required />
+         						<input type="hidden" name="resourceLabel_id" id="resourceLabel_id " value="" />
+         					</span>
+         					<span class="resourceRowResource">
+         						<span class="resourceHeaderResource">Resource</span>
+         						<input type="text"  id="newResourceValue" name="resourceValue" required maxlength="1000" class="getfilepath" placeholder="Enter resource here" />
+         						<input type="hidden" name="resourceValue_id" id="resourceValue_id " value="" />
+         						<img id="newVideoImg" class="video_tourcustomfile video_tourthumbnail" height="150" width="150" data-placeholder="<?php echo CDN_IMG_URL ?>/images/placeholders/video-placeholder.png" data-type="vid" src="<?php echo CDN_IMG_URL ?>/images/placeholders/video-placeholder.png" style="display: none; background-color: transparent;"></img>
+         					</span>
+         					<span class="resourceRowDescription">
+         						<span class="resourceHeaderDescription">Description</span>
+         						<textarea  id="newResourceDescription" name="resourceDescription" rows="5" placeholder="(Recommended: 1,000 characters)" /></textarea>
+         						<input type="hidden" name="resourceDescription_id" id="resourceDescription_id " value="" />
+         					</span>
+
+         				</p>
+         			</fieldset>
+         			<span id="fileuploaddiv" style="display:none;">
+		               <fieldset>
+		                   <input type="hidden" name="newresourcecentercustomfile" id="rewRCCustomfile" class="newresourcecentercustomfile" value=""/>
+	        			   <input type="hidden" id="newresourcecentercustomfile_id" name="newresourcecentercustomfile_id" value=""/>
+		        		   <input type="hidden" id="updateRowFile_id">
+		                   <button id="newresourcecentercustomfile" name="newresourcecentercustomfile" class="getFile customfile adminBlueBtn gradient" data-width="120" data-height="160" data-type="doc" >Add document</button>
+			               <p class="constraint">Maximum file size is <?=$this->maxDocSize; ?></p>
+			            </fieldset>
+	            	</span>
+         			<span id="videofileuploaddiv" style="display:none;">
+		               <fieldset>
+		        		   <input type="hidden" id="newRCVideoThumbnailcustomfile" name="newRCVideoThumbnailcustomfile" class="newRCVideoThumbnailcustomfile" value=""/>
+		        		   <input type="hidden" name="newRCVideoThumbnailcustomfile_id" class="newRCVideoThumbnailcustomfile_id" value=""/>
+		                   <button id="newRCVideocustomfileBtn" class="adminBlueBtn gradient" name="newRCVideocustomfileBtn" data-width="120" data-height="160" data-type="vid" >Add video</button>
+		                   <button id="newRCThumbnailBtn" class="adminBlueBtn gradient" name="newRCThumbnailBtn" data-width="640" data-height="480" data-type="img" style="display:none">Replace thumbnail</button>
+			               <p class="constraint">Maximum file size is <?=$this->maxVideoSize; ?></p>
+			            </fieldset>
+	            	</span>
+	            	<span class="addResourceBtn"><button id="addResourceBtn" class="adminBlueBtn gradient">Add resource</button></span>
+         		</form>
+         	</div>
+         <div id="dynamic" class="clearfix"></div>
+      </div>
+      <div id="editTabs" class="clearfix">
+         <p class="inst editTabText">Edit a group or individual resources</p>
+			<fieldset id="actionSet">
+            <p>Edit selected resources</p>
+				<select id="bulkAction">
+					<option value="">-Bulk actions-</option>
+					<?foreach ($this->visibilityList as $key=>$vType):?>
+					<option value="<?=$key;?>">Visible on <?=$vType;?></option>
+					<? endforeach; ?>
+					<option value="delete">Delete permanently</option>
+				</select>
+				<input type="hidden" name="adminAction" value="updateResource" />
+				<button id="submitBulkAction" class="adminBlueBtn gradient">Apply</button>
+			</fieldset>
+			<div class="editResourceUpdateBtns">
+            <button id="updateResourceBtn" class="adminBlueBtn gradient">Save</button>
+            <button id="cancelResourceBtn" class="adminGreyBtn gradient">Cancel</button>
+         </div>
+         <div id="dynamicEdit" class="clearfix"></div>
+      </div>
+      <div id="reorderTabs" class="clearfix">
+         <div id="accordion">
+            <section class="adminSection" id="accordionLogin">
+               <div class="adminSectionHeader">
+                  <h3>Login page (<span id="loginPageRCNumber" class="recordNumber" data-resourceType="loginPage"></span>)</h3>   
+               </div>
+               <div class="adminSectionContent">
+                  <sub class="instruction">Click on a resource to drag it below or above its current position. Let go. It will be saved automatically.</sub>
+                  <div id="dynamicLoginTable" class="clearfix"></div>
+               </div>
+            </section>
+            <section class="adminSection" id="accordionRightSideBar">
+               <div class="adminSectionHeader">
+                  <h3>Right sidebar (<span id="rightSidebarRCNumber" class="recordNumber" data-resourceType="rightSidebar"></span>)</h3>
+               </div>
+               <div class="adminSectionContent">
+                  <sub class="instruction">Click on a resource to drag it below or above its current position. Let go. It will be saved automatically.</sub>
+                  <div id="dynamicRightSidebarTable" class="clearfix"></div>
+               </div>
+            </section>
+            <section class="adminSection" id="accordionResourceCenter">
+               <div class="adminSectionHeader">
+                  <h3>Resource Center (<span id="resourceCenterRCNumber" class="recordNumber" data-resourceType="resourcePage"></span>)</h3>
+               </div>
+               <div class="adminSectionContent">
+                  <sub class="instruction">Click on a resource to drag it below or above its current position. Let go. It will be saved automatically.</sub>
+                  <div id="dynamicResourceCenterTable" class="clearfix"></div>
+               </div>
+            </section>
+         </div>
+      </div>
+   </div>
+
+    <input type="hidden" id="origin" value="NotSet" />
+    <input type="hidden" id="updateThumbnailRowFile_id" groupid="">
+    <input type="hidden" id="updateThumbnailRowFile_name">
+</div>
+<?= $this->fileTool; ?>

@@ -1,0 +1,21 @@
+<div id="authWrapper">
+    <div id="backdoorFormWrapper" class="sideBarImageBorder">
+        <form id="authLogin" name="authLogin" method="post" class="loginForm contentBgColor clearfix" action="/auth/dologin" autocomplete="off">
+            <fieldset id="formFieldset">
+                <p class="<? if(!isset($this->errMsg) && !isset($this->sysMsg)){echo "noMessage"; } else if(isset($this->errMsg)){ echo "errorMessage"; } else if(isset($this->sysMsg)){ echo "systemMessage"; } ?>"><i class="fa '<?= $this->iconClass; ?>'"></i><? if(isset($this->errMsg)){ echo $this->errMsg; } else if(isset($this->sysMsg)){ echo $this->sysMsg; }?></p>
+                <p class="formField contentTextIcons">
+                    <label for="username"><?= $this->siteLabels['UserName']; ?></label>
+                    <input type="text" id="username" name="username" placeholder="<?= $this->siteLabels['UserName']; ?>" />
+                </p>
+                <p class="formField contentTextIcons">
+                    <label for="password"><?= $this->siteLabels['Password']; ?></label>
+                    <input type="password" id="password" name="password" placeholder="<?= $this->siteLabels['Password']; ?>" />
+                </p>
+            </fieldset>
+            <div class="loginBtns clearfix">
+            <input type="hidden" name="submitx" />
+            <p class="loginBtn"><button id="authSubmit" class="customButton"><?= $this->siteLabels['SignInBtn']; ?></button></p>
+            </div>
+        </form>
+    </div>
+</div>

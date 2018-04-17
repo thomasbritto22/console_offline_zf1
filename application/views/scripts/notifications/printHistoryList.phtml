@@ -1,0 +1,86 @@
+<?
+// create an easy way to find out which col is sorted and style it
+// by default, we are sorting the date column in asc order (newest first)
+$isDateSort = true;
+$sortDirClass = 'sortAsc';
+if(!empty($this->sortURL)){
+    $isTitleSort = strpos($this->sortURL, '=title&');
+    $isCatalogSort = strpos($this->sortURL, '=catalogId&');
+    $isTimeSort = strpos($this->sortURL, '=timeSpent&');
+    $isDateSort = strpos($this->sortURL, '=completionDate&');
+    
+    $sortDir = substr($this->sortURL, strpos($this->sortURL,'&sortDir=')+9);
+    $sortDirClass = ($sortDir == 'SORT_ASC') ? 'sortAsc' : 'sortDesc';
+}
+?>
+
+<!-- <p style="text-align: right; padding:0 0 10px;">
+    <span class="pageInfo">Showing all completions</span>
+    <a id="printHistory" href="javascript:window.print();"><?= $this->siteLabels['PrintThisList']; ?></a>
+</p> -->
+<table>
+    <tbody>
+        <tr>
+            <td width="600" class="pageInfo" style="font-size: 1.5em;"></td>
+            <td width="300" class="printLink" style="text-align: right;"><a id="printHistory" href="#"><?= $this->siteLabels['PrintThisPage']; ?></a></td>
+        </tr>
+    </tbody>
+</table>
+<table id="userInfoTable">
+    <tbody>
+        <? $iterations = 0; ?>
+        <? $infoLength = count($this->userLabel); ?>
+        
+        <? foreach ($this->userLabel as $value) { ?>
+        <? $iterations++ ?>
+            <?php if ($iterations == 1) { ?>
+                <? if ($value['displayName'] == "User Name") { ?>
+                    <tr class="contentTextIcons printProfileInfo clearfix usernameRow" style="height: 25px;">
+                        <td width="200" class="profileLabel" style="font-size: 1.4em; font-weight: bold;"><?= $value['displayName']; ?>: </td>
+                        <td width="200" class="profileValue" style="font-size: 1.4em; padding: 0 5px; word-break: break-all;"><?= $value['displayValue']; ?></td>
+                    </tr>
+                    <? $iterations = 0; ?>
+                <? } else { ?>
+                    <tr class="contentTextIcons printProfileInfo clearfix" style="height: 25px;">
+                        <td width="200" class="profileLabel" style="font-size: 1.4em; font-weight: bold;"><?= $value['displayName']; ?>: </td>
+                        <td width="200" class="profileValue" style="font-size: 1.4em; font-weight: normal; padding: 0 5px; word-break: break-all;"><?= $value['displayValue']; ?></td>
+                <? } ?>
+            <?php } elseif ($iterations == 2) { ?>
+                    <td width="200" class="profileLabel" style="font-size: 1.4em; font-weight: bold;"><?= $value['displayName']; ?>: </td>
+                    <td width="200" class="profileValue" style="font-size: 1.4em; font-weight: normal; padding: 0 5px; word-break: break-all;"><?= $value['displayValue']; ?></td>
+                </tr>
+                <? $iterations = 0; ?>    
+            <? } ?>
+        <? } ?>
+        <? if (1 != count($this->userLabel) % 2) { ?>
+            </tr>
+        <? } ?>
+    </tbody>
+</table>
+<!-- <ul class="phSortBar ui-corner-top">
+    <li><span id="title"><?= $this->siteLabels['Title']; ?></span></li>
+    <li><span id="catalogId"><?= $this->siteLabels['CatalogID']; ?></span></li>
+    <li><span id="timeSpent"><?= $this->siteLabels['TimeSpent']; ?></span></li>
+    <li><span id="completionDate"><?= $this->siteLabels['CompletionDate']; ?></span></li>
+</ul> -->
+
+<table id="historyTable">
+    <thead>
+        <tr>
+            <th id="title"><?= $this->siteLabels['Title']; ?></th>
+            <th id="catalogId"><?= $this->siteLabels['CatalogID']; ?></th>
+            <th id="timeSpent"><?= $this->siteLabels['TimeSpent']; ?></th>
+            <th id="completionDate"><?= $this->siteLabels['CompletionDate']; ?></th>
+        </tr>
+    </thead>
+    <tbody>
+    <? foreach((array)$this->historyList as $h){ ?>
+        <tr>
+            <td width="450"><?= $h['title']; ?></td>
+            <td width="150"><?= $h['catalogId']; ?></td>
+            <td width="125"><?= $h['timeSpent'] == "00:00:00" ? "N/A" : $h['timeSpent']; ?></td>
+            <td width="175"><?= $h['completionDateInMDY']; ?></td>
+        </tr>
+    <? } ?>
+    </tbody>
+</table>

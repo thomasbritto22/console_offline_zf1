@@ -1,0 +1,582 @@
+/* the file tool has tabs that need to be flush with the edges,
+this removes padding that is usually part of a modal dialog. */
+#fileTool, #fileLibrary {
+    background: #FFF;
+    background-clip: padding-box;
+    -moz-border-radius-topleft: 0px;
+    -moz-border-radius-topright:0px;
+    -moz-border-radius-bottomleft:0px;
+    -moz-border-radius-bottomright:0px;
+    -webkit-border-top-left-radius:0px;
+    -webkit-border-top-right-radius:0px;
+    -webkit-border-bottom-left-radius:0px;
+    -webkit-border-bottom-right-radius:0px;
+    border-top-left-radius:0px;
+    border-top-right-radius:0px;
+    border-bottom-left-radius:0px;
+    border-bottom-right-radius:0px;
+    color: #000;
+    margin-bottom: 10px;
+    overflow: auto;
+    padding: 0;
+    position: relative;
+    width: 100% !important;
+}
+
+#fileTool {
+    padding: 20px;
+}
+
+.ui-dialog #fileTool .fileToolNav,
+#fileLibrary .fileToolNav {
+	padding: 0;
+}
+
+.uploadStatus {
+    padding: 10px;
+}
+
+#fileTool .ui-tabs-panel,
+#fileLibrary .ui-tabs-panel {
+    background-clip: padding-box;
+    -moz-border-radius-topleft: 0px;
+    -moz-border-radius-topright:0px;
+    -moz-border-radius-bottomleft:0px;
+    -moz-border-radius-bottomright:15px;
+    -webkit-border-top-left-radius:0px;
+    -webkit-border-top-right-radius:0px;
+    -webkit-border-bottom-left-radius:0px;
+    -webkit-border-bottom-right-radius:15px;
+    border-top-left-radius:0px;
+    border-top-right-radius:0px;
+    border-bottom-left-radius:0px;
+    border-bottom-right-radius:15px;
+    border: 1px solid #AAA;
+    padding: 0;
+    height: auto;
+}
+
+#fileTool #tabCurtain,
+#fileLibrary #tabCurtain {
+    width: 100%;
+    height: 100%;
+    background: #FFF;
+    position: absolute;
+    z-index: 2000;
+    display: none;
+}
+
+.fileupload-buttonbar {
+    padding: 20px 10px 0;
+}
+
+.ui-dialog .ui-dialog-buttonpane {
+	border-top: 1px solid grey;
+    margin-top: 0;
+}
+
+#uploadView {
+	border: 1px solid #AAA;
+}
+
+#fileTool #tabCurtain:after,
+#fileLibrary #tabCurtain:after {
+    content: " ";
+    margin: -25px 0 0 -25px;
+    width: 50px;
+    height: 50px;
+    background: url(/images/icons/ajax-loader-light.gif) no-repeat;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+
+/* --- STYLES FOR FILE INPUT REPLACEMENT --- */
+/* position the file-input just over the 'add files' button
+so that when a user clicks 'add files', they click the file input */
+.fileinput-button input {
+    cursor: pointer;
+    direction: ltr;
+    font-size: 12px;
+    margin: 0;
+    -moz-opacity: 0;
+    filter: alpha(opacity: 0);
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 84px;
+    height: 28px;
+}
+/* --- END FILE INPUT STYLES --- */
+
+/* --- STYLE FOR UPLOAD REQUIREMENTS --- */
+.fileupload-buttonbar .uploadRequirements{
+    color: grey;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 20px 0 0 0;
+}
+/* --- END STYLE FOR UPLOAD REQUIREMENTS --- */
+
+/* --- STYLES FOR PROGRESS BAR --- */
+/* wraps the whole progress bar area */
+.fileupload-progress {
+    margin: 10px 0;
+}
+
+/* style for the progress bar background */
+.progress {
+    background-color: #F7F7F7;
+    background-image: linear-gradient(to bottom, #F5F5F5, #F9F9F9);
+    background-repeat: repeat-x;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+    height: 20px;
+    overflow: hidden;
+}
+
+/* color of the bar (and stripes) that shows actual progress */
+.progress-success.progress-striped .bar, .progress-striped .bar-success {
+    background-color: #62C4FF;
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+}
+
+/* animates the stripes */
+.progress.active .bar {
+    animation: 2s linear 0s normal none infinite progress-bar-stripes;
+}
+
+/* repeat the stripes over and over */
+.progress-success .bar, .progress .bar-success {
+    background-repeat: repeat-x;
+}
+
+/* size the stripes on the bar */
+.progress-striped .bar {
+    background-size: 40px 40px;
+}
+
+.progress .bar {
+    -moz-box-sizing: border-box;
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15) inset;
+    color: #FFFFFF;
+    float: left;
+    font-size: 12px;
+    height: 100%;
+    text-align: center;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    transition: width 0.6s ease 0s;
+}
+
+.progress-extended {
+    text-align: right;
+    font-size: 10px;
+}
+/* --- END PROGRESS BAR STYLES --- */
+
+
+/* --- STYLES FOR SELECT ALL --- */
+#uploadView .selectAllBar {
+    color: #1c94c4;
+    display: none;
+    margin: 0 0 10px 10px;
+}
+
+#uploadView .selectAllBar a {
+    color: #1c94c4;
+}
+
+.files {
+    border: 1px solid black;
+    display: none;
+    margin: 10px;
+    height: auto;
+}
+
+/* hide the label for design efficiency */
+#uploadView .selectAllBar label {
+    display: none;
+}
+/* --- END STYLES FOR SELECT ALL --- */
+
+
+/* --- STYLES FOR UPLOAD QUEUE --- */
+.uploadQueue {
+    padding: 10px;
+    position: relative;
+}
+
+.uploadQueue:after {
+    content: " ";
+    display: block;
+    clear: both;
+}
+
+.uploadQueue .delete {
+    float: left;
+    margin: 5px 10px 0 0;
+}
+
+.uploadQueue .preview {
+    width: 90px;
+    float: left;
+}
+
+.uploadQueue .info {
+    float: left;
+    margin: 4px 0 0 0;
+    width: 265px;
+}
+
+.uploadQueue .info h4 {
+    color: grey;
+	display: inline-block;
+	margin: 0 10px 0 0;
+}
+
+.uploadQueue .controls {
+	border-radius: 20px;
+    float: right;
+    height: 25px;
+    width: 25px;
+}
+
+.uploadQueue .controls button {
+	height: 25px;
+	width: 25px;
+}
+
+.uploadQueue .size {
+	color: #4879B4;
+	font-weight: bold;
+}
+
+.ui-button-text {
+	font-weight: bold;
+}
+
+/* error is only a text style */
+.uploadQueue .error {
+    margin: 10px 0 0;
+    border: solid 1px #F00;
+    padding: 5px 10px 5px 30px;
+    position: relative;
+    font-size: 11px;
+}
+
+.uploadQueue .error .ui-icon {
+    position: absolute;
+    top: 7px;
+    left: 10px;
+}
+/* --- END UPLOAD QUEUE STYLES --- */
+
+
+/* --- STYLES FOR TABS --- */
+#fileTool .ui-widget-header,
+#fileLibrary .ui-widget-header {
+    background: none;
+    border-radius: 0;
+    border-bottom: solid 5px #666;
+}
+/* --- END STYLES FOR TABS --- */
+
+
+/* --- MISC STYLES --- */
+.fade {
+    opacity: 0;
+    transition: opacity 0.15s linear 0s;
+}
+
+.fade.in {
+    opacity: 1;
+}
+/* --- END MISC STYLES --- */
+
+
+/* --- STYLES FOR LIBRARY VIEW --- */
+#library-buttonbar {
+    padding: 10px;
+}
+
+#library-buttonbar .instruction {
+    font-size: 11px;
+}
+
+#library-buttonbar .selectAllBar {
+    padding: 10px 0 0;
+    display: none;
+}
+
+/* hide the label for design efficiency */
+#library-buttonbar .selectAllBar label {
+    display: none;
+}
+
+/* styles for the sorting column heads */
+#library-sortbar {
+    background: #DDD;
+    float: left;
+    width: 100%;
+    padding: 5px 10px;  
+}
+
+#library-sortbar li {
+    float: left;
+}
+
+/* specific sizes for sort columns */
+#library-sortbar li.title { width: 240px; padding-left: 88px; }
+#library-sortbar li.size { width: 50px; }
+#library-sortbar li.dimensions { width: 150px; }
+
+/* the entire expandable item (each file in library) */
+.expandable {
+    margin: -1px 0 0;
+    border-bottom: solid 1px #AAA;
+    width: 100%;
+    min-height: 100px;
+}
+
+.expandable:hover {
+    background: #F9F9F9;
+    border-top: 1px solid #AAA;
+}
+
+.expandable:hover .title input {
+    background: #F9F9F9;
+}
+
+/* the portion that is always visible */
+.expandable .collapsed-content {
+    width: 588px;
+    padding: 10px;
+    float: left;
+}
+
+/* use :after to create a clear float */
+.expandable .collapsed-content:after {
+    content: " ";
+    display: block;
+    clear: both;
+}
+
+.expandable .collapsed-content .toggleWrapper {
+    display: none;
+    float: left;
+    width: 30px;
+    visibility: hidden;
+}
+
+.expandable .collapsed-content .preview {
+    height: 170px;
+    width: 240px;
+    float: left;
+    overflow: visible;
+}
+
+.previewImgWrapper{
+	/*margin: 10px;*/
+	padding: 0;
+	height: 80px;
+    overflow: hidden;
+    width: 61px;
+}
+.previewImgWrapper > img {
+    height: auto;
+    width: 100%;
+}
+
+.expandable .collapsed-content .title {
+    float:left;
+    margin-left: 10px;
+}
+.expandable .collapsed-content .preview .title input,
+.expandable .collapsed-content .preview .title input:focus{
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 150px;
+}
+.expandable .collapsed-content .fileSize {
+    width: 50px;
+    height: 30px;
+    float: left;
+}
+
+.expandable .collapsed-content .dimensions {
+    width: 75px;
+    height: 30px;
+    float: left;
+}
+
+.expandable .collapsed-content .controls {
+    width: 203px;
+    height: 30px;
+    float: right;
+}
+
+.expandable .collapsed-content .controls button {
+    float: left;
+    height: 24px;
+    overflow: hidden;
+    padding: 0;
+    min-width: 61px;
+}
+.expandable .collapsed-content .controls button.select {
+    margin: 0 10px;
+}
+
+/* error is only a text style */
+.expandable .collapsed-content .error {
+    border: solid 1px #F00;
+    padding: 5px 10px;
+    font-size: 11px;
+    float: left;
+    position: relative;
+    text-align: center;
+    width: 325px;
+}
+
+.expandable .collapsed-content .error .ui-icon {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+.expandable .expanded-content {
+    display: none;
+    padding: 10px;
+    border-top: solid 1px #AAA;
+    float: left;
+    width: 568px;
+}
+
+.expandable .expanded-content .instruction {
+    font-size: 11px;
+}
+/* --- END LIBRARY VIEW STYLES --- */
+
+
+/* --- STYLES FOR CROP AREA --- */
+.editingArea {
+    margin: 10px 0 0;
+}
+
+/* use a psudo element to clear our floats */
+.editingArea:after {
+    content: " ";
+    display: block;
+    clear: both;
+}
+
+.editingArea .cropArea {
+    width: auto;
+    padding: 0 0 10px;
+}
+
+.editingArea .cropAsForm {
+    padding: 10px 0;
+    border-top: solid 1px #DDD;
+    display: none;
+}
+
+/* style for area with crop preview */
+.expandable .editingArea .cropParams {
+    margin: 50px 0 0 10px;
+    width: 210px;
+    float: left;
+}
+
+.expandable .editingArea .cropParams .instruction {
+    margin: 0 0 10px;
+}
+
+/* by default, the crop preview will be 100px^2
+but will most likely be dynamically set to crop constraints */
+.expandable .editingArea .cropPreviewWrapper {
+    width: 125px;
+    height: 125px;
+    background: #F00;
+    overflow: hidden;
+}
+
+/* style for crop button fieldset area */
+.expandable .editingArea fieldset.buttons {
+    margin: 10px 0 0;
+    width: 575px;
+    float: left;
+}
+/* --- END STYLES FOR CROP AREA --- */
+
+.controls > button.fileupload-cancel,
+.controls > button.fileupload-cancel:hover {
+    background: #CCC; 
+    border-radius: 25px;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.controls > button.fileupload-cancel:hover > i {
+    color: white;
+}
+
+button.ui-button {
+    background: #dddddd; /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2RkZGRkZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top,  #dddddd 0%, #ffffff 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dddddd), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #dddddd 0%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #dddddd 0%,#ffffff 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #dddddd 0%,#ffffff 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #dddddd 0%,#ffffff 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dddddd', endColorstr='#ffffff',GradientType=0 ); /* IE6-8 */    
+    border: 1px solid #666;
+    color: black;
+}
+
+button.ui-button > span {
+    color: black;
+}
+
+button.ui-button:hover {
+    background: #ffffff; /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNkZGRkZGQiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top,  #ffffff 0%, #dddddd 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#dddddd)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ffffff 0%,#dddddd 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ffffff 0%,#dddddd 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ffffff 0%,#dddddd 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #ffffff 0%,#dddddd 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dddddd',GradientType=0 ); /* IE6-8 */
+    border: 1px solid #1861A0;  
+    color: white;
+}
+
+button.ui-button:hover > span {
+    color: white;
+}
+
+.ui-dialog-titlebar-close > i {
+    color: #1861A0;
+}
+
+.ui-dialog-titlebar-close:hover > i {
+    color: #3284c0;
+}
+
+.tagsText {
+    overflow: hidden;
+}
+
+.tagsText > form > textarea {
+    width: 100% !important;
+}
+

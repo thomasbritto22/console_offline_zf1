@@ -1,0 +1,130 @@
+<? if(empty($this->library)){ ?>
+    <p>There are no files to choose from. Please upload some.</p>
+<?
+} else {
+?>
+    <div id="library-buttonbar">
+        <h4>Choose a file from your library</h4>
+        <?php if($this->fileIsImage) {?>
+        	<p class="instruction">The recommended file dimensions are <span class="cropWidth"></span>(w) x <span class="cropHeight"></span>(h) pixels. If you find an image that is larger than that, you can crop it as a new image.</p>
+        <?php }?>
+        <p class="selectAllBar">
+            <label for="selectAll">Select all:</label>
+            <input type="checkbox" class="toggle" name="selectAll" />
+            <a class="delete" href="#">Delete selected</a>
+        </p>
+    </div>
+
+    <ul id="library-sortbar">
+        <li class="title">Title</li>
+        <li class="size">Size</li>
+        <?php if($this->fileIsImage) {?>
+        	<li class="dimensions">Dimensions</li>
+        <?php }?>
+    </ul>
+<?
+	$progressCheck = false;
+    foreach($this->library as $file){
+
+        // if the title is long, create a smaller version with ... in the middle
+        $title = $file->title;
+        settype($file->fileSize,'float');
+
+        if(strlen($title) > 35) $title = substr($title, 0, 5) . '...' . substr($title, -5);
+?>
+        <div class="expandable clearfix" data-file-id="<?= $file->id; ?>">
+        <?php if(isset($file->transcodeStatus) && $file->transcodeStatus != '') {?>
+                <div class="<?= ($file->statusStep == 'Done') ? 'imgNotificationMsg':'imgErrorMsg'?>">
+                    <p>
+                       <?= $file->transcodeStatus;?>
+                    </p>
+                </div>
+                <?php if($file->progress >= 0 && $file->progress < 100) {?>
+	                <span class="totalPercentage titleBarBtnFgColor borders">
+	        			<span class="PercentageDone titleBarBtnBgColor" style="width: <?=$file->progress; ?>%;"></span><span class="completionNum contentTextIcons"><?=$file->progress ?>%</span>
+	        	    </span>
+	        	    <?php if(!$progressCheck) {
+	        	    	$progressCheck = true;
+	        	    ?>
+	        	    <input type="hidden" value="<?=$file->progress; ?>" id="video_progress"/>
+	        	    <?php }
+        	     	}
+                 }?>
+            <div class="collapsed-content">
+                <p class="toggleWrapper"><input type="checkbox" name="toggle" class="toggle" value="1" /></p>
+                <div class="preview">
+                	<div <?=('doc' != $this->filetype ? 'class="previewImgWrapper"' : '');?>>
+                		<?php $path = $this->baseImgUrl . $file->path.'?time='.time();
+                			  if($this->filetype == 'video' && !file_exists(FILES_PATH.$file->imgName))
+                			  	$path = CDN_IMG_URL . '/images/placeholders/video-placeholder.png';
+                		?>
+                		<img src="<?= $path; ?>" width="80" alt="<?= $file->fileName; ?>" title="<?= $file->title; ?>" <?=('doc' == $this->filetype ? 'style="display:none"' : '');?> filesource="<?=$this->baseImgUrl.$file->path;?>"/>
+                    </div>
+                    <span class="title" title="<?= $file->title; ?>" <?= !($this->fileIsImage) ? 'style="height:80px"' : '';?>>
+                	    <input type="text" name="fileTitle" class="inline inline-hide contentBgColor contentTextIcons" placeholder="Enter a title" value="<?= $title; ?>" />
+                    	<!-- <?= $title; ?> -->
+                    </span>
+                </div>
+                <p class="fileSize"><?= number_format($file->fileSize, 2, '.', ''); ?></p>
+                <p class="dimensions"><?php if($this->fileIsImage) {?>
+                		<?= $file->width . ' x ' . $file->height; ?></p>
+                		<?php }?>
+                <p class="controls">
+                <?php if($this->fileIsImage) {?>
+                    <button class="gradient edit adminBlueBtn">Edit</button>
+                <?php }?>
+                    <button class="gradient select adminBlueBtn">Select</button>
+                    <button class="gradient delete adminRedBtn">Delete</button>
+                </p>
+
+            </div>
+            <div class="expanded-content">
+                <h5>Select an area of your image to crop.</h5>
+                <p class="instruction">The preview below may not be the actual size of your image and is used for reference only.</p>
+                <div class="editingArea">
+                    <form class="cropForm" action="/files/update" method="post">
+                        <div class="cropArea">
+                            <img class="cropTarget" src="<?= $file->path.'?time='.time(); ?>" alt="Crop target for <?= $file->fileName; ?>" title="Crop target for <?= $file->fileName; ?>" />
+                            <fieldset class="cropParams">
+                                <p class="instruction">This is how your image will be displayed.</p>
+                                <p class="cropPreviewWrapper">
+                                    <img class="cropPreview" src="<?= $file->path.'?time='.time(); ?>" alt="Crop preview for <?= $file->fileName; ?>" title="Crop preview for <?= $file->fileName; ?>" />
+                                </p>
+                                <input type="hidden" name="doCrop" value="true" />
+                                <input type="hidden" name="x" />
+                                <input type="hidden" name="y" />
+                                <input type="hidden" name="x2" />
+                                <input type="hidden" name="y2" />
+                                <input type="hidden" name="w" />
+                                <input type="hidden" name="h" />
+                                <input type="hidden" name="cropWidth" />
+                                <input type="hidden" name="cropHeight" />
+                                <input type="hidden" name="fileId" value="<?= $file->id; ?>" />
+                                <input type="hidden" name="fileTitle" value="<?= $file->title; ?>" />
+                                <input type="hidden" name="src" value="<?= $file->path; ?>" />
+                            </fieldset>
+                            <fieldset class="buttons">
+                                <p class="formField">
+                                    <button type="submit" class=" cropReplaceBtn">Crop and replace</button>
+                                    <button class="link saveCropAsLink">Save crop as</button>
+                                </p>
+                            </fieldset>
+                        </div>
+                        <div class="cropAsForm">
+                            <h6>Save crop as</h6>
+                            <p class="instruction">Save this crop as a new image instead of cropping the original</p>
+                            <fieldset class="buttons saveCropAsWrapper">
+                                <p class="formField">
+                                    <label for="saveCropAs">Enter a new name for this crop:</label>
+                                    <input type="text" class="saveCropAs" name="saveCropAs" style="width:150px;" />
+                                    <button type="submit" class="">Crop and save</button>
+                                    <button type="reset" class="cancel">Cancel</button>
+                                </p>
+                            </fieldset>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    <? } ?>
+<? } ?>

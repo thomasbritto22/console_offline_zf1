@@ -1,0 +1,328 @@
+/** --- WELCOME PAGE BG COLORS --- ***/
+/*
+.welcome #container {
+	background: #01447d;
+	background: -moz-radial-gradient(center, ellipse cover,#4a84bc 0%,#01447d 100%);
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#4a84bc),color-stop(100%,#01447d));
+	background: -webkit-radial-gradient(center, ellipse cover,#4a84bc 0%,#01447d 100%);
+	background: -o-radial-gradient(center, ellipse cover,#4a84bc 0%,#01447d 100%);
+	background: -ms-radial-gradient(center, ellipse cover,#4a84bc 0%,#01447d 100%);
+	background: radial-gradient(ellipse at center,#4a84bc 0%,#01447d 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4a84bc', endColorstr='#01447d',GradientType=1 );
+}
+*/
+
+#authWrapper {
+	background: #4b4b4b;
+}
+
+#authWrapper .partnerBranding {
+    background: #fff;
+}
+
+#authWrapper #formWrapper {
+    background: #FFF;
+}
+
+/** --- END WELCOME PAGE BG COLORS --- **/
+/**                                    **/
+/** --- WELCOME PAGE FONT COLORS --- **/
+#authWrapper #formWrapper h3 {
+	color: #3384bf;
+}
+
+#authWrapper #formWrapper #forgotAuthWrapper a {
+    color: #3384BF;
+}
+
+#authWrapper .resourceSection {
+	color: #FFF;
+}
+
+.resourceSection .rcElement {
+	color: #6A7796;
+}
+
+.resourceSection .rcElement a {
+	color: #6A7796;
+}
+
+#contentRight #corpComponents div h3 {
+	border-bottom: 1px solid #AEB1B7;
+    color: #FFFFFF;
+}
+
+#contentRight #corpComponents #vipMsg {
+	background: #8d919b;
+    color: #FFFFFF;
+}
+/** --- END WELCOME PAGE FONT COLORS --- **/
+/**                                      **/
+/** --- WELCOME PAGE BUTTONS --- **/
+.welcome button.blue {
+    border: solid 1px #4879B4;
+    color: #FFF;
+    cursor: pointer;
+    background: #568dd4 url(../svg/gradient_blue.svg) repeat-x 0 0;
+}
+
+.welcome button.blue:hover { background: #4879B4; }
+.welcome button.blue:active { background: #3E70B1; }
+/** --- END WELCOME PAGE BUTTONS --- **/
+/**                                  **/
+/** --- MY QUEUE PAGE --- **/
+.mqItem .courseNumber {
+	color: #0AF;
+}
+.mqItemTitle h4 a {
+	color: #4B4B4B;
+}
+.mqItemTitle h4 a:hover {
+	color: #0AF;
+}
+#previewWrapper .courseNumber {
+	color: #0AF;
+	border-bottom: 2px solid #0AF;
+}
+.mqItemDueDate {
+	color: #0AF;
+}
+.mqItemProgress {
+	color: #0AF;
+}
+.chainedMod {
+	color: #4B4B4B;
+}
+.seriesNum {
+	border: 1px solid #0AF;
+	color: #0AF;
+}
+/** --- END MY QUEUE PAGE --- **/
+/**                           **/
+/** --- MY QUEUE PAGE BUTTONS --- **/
+#mqItemWrap button.blue, .button.blue {
+    border: solid 1px #4879B4;
+    color: #FFF;
+    cursor: pointer;
+    background: #568dd4 url(../svg/gradient_blue.svg) repeat-x 0 0;
+}
+
+#mqItemWrap button.blue:hover .button.blue:hover { background: #4879B4; }
+#mqItemWrap button.blue:active .button.blue:active { background: #3E70B1; }
+/** --- END MY QUEUE PAGE BUTTONS --- **/
+/**                                   **/
+/** --- NOTIFICATIONS PAGE --- **/
+#filterBar .filterTitle {
+    background: #FFF;
+    color: #4B4B4B;
+}
+
+#filterBar .filterForm {
+	color: #4B4B4B;
+}
+
+#filterBar .filterForm a {
+	color: #4B4B4B;
+}
+
+#filterBar .filterForm a:hover {
+	color: #0AF;
+}
+
+.sortBar {
+    background: #4B4B4B;
+    color: #FFF;
+}
+
+.sortBar li a {
+	color: #4B4B4B;
+}
+
+.sortBar li a:hover {
+	color: #0AF;
+}
+
+#historyWrapper .collapsedWrapper {
+    background: #FFF;
+    color: #4B4B4B;
+}
+
+#historyWrapper .collapsedWrapper .title {
+    /*color: #4B4B4B;*/
+}
+
+#historyList .expandedWrapper .left .description {
+	color: #4B4B4B;
+}
+
+#historyList .expandedWrapper a {
+	color: #4B4B4B;
+}
+
+#historyList .expandedWrapper a:hover {
+	color: #0AF;
+}
+/** --- END NOTIFICATIONS PAGE --- **/
+/**                                **/
+/** --- LEFT COL NAV --- **/
+#leftColumnNav nav a {
+	color: #FFF;
+}
+#leftColumnNav nav a.selected {
+	background: #666;
+	border-left: solid 3px #0AF;
+	color: white;
+}
+#leftColumnNav nav a:hover {
+	background: #000;
+	border-left: 3px solid #0AF;
+}
+#leftColumnNav nav a:active {
+	background: #000;
+	border-left: 3px solid #0AF;
+	color: #0AF;
+}
+/** --- END LEFT COL NAV --- **/
+/**                          **/
+/** --- HEADER --- **/
+header {
+	background: url(/images/backgrounds/header-bg.jpg) repeat-x;
+	background-color: ;
+}
+
+.branding {
+	color: #4B4B4B;
+	background: #FFF;
+}
+/** --- END HEADER --- **/
+/**                    **/
+/** --- GLOABAL --- **/
+#container {
+	background-color: #4B4B4B;
+}
+/** --- END GLOBAL --- **/
+/**                    **/
+/** --- BUTTONS --- **/
+#welcomeResources .intranetBtn {
+    background: url(/images/icons/bright-blue-btn-bg.jpg) scroll repeat-x top left #0666aa;
+    border: solid 1px #0a62cc;
+    color: #FFF;
+}
+
+button.blue, .button.blue {
+    border: solid 1px #4879B4;
+    color: #FFF;
+    cursor: pointer;
+    background: #568dd4 url(../svg/gradient_blue.svg) repeat-x 0 0;
+}
+
+button.blue:hover, .button.blue:hover { background: #568dd4; }
+button.blue:active, .button.blue:active { background: #3E70B1; }
+/** --- END BUTTONS --- **/
+
+/** --- END --- **/
+
+
+
+
+
+.hdr_on {
+	color:#c0c0c0;
+}
+
+.hdr_off, nav ul li a.iconic {
+	color:white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*header nav ul li a {
+	background: url(/images/sprites/header-sprite.png) no-repeat -5px -19px;
+}
+header nav ul li .notifications {
+	background-position: -103px -20px;
+}
+header nav ul li .admin {
+	background-position: -155px -17px;
+}
+header nav ul li .help {
+	background-position: -205px 0;
+}
+header nav ul .rightAlign .profile {
+	background-position: -55px -20px;
+}
+header nav ul .rightAlign .logout {
+	background-position: -248px -20px;
+}*/
+/* blue button with hover and active 
+button.blue, .button.blue {
+    border: solid 1px #4879B4;
+    color: #FFF;
+    background: #568dd4 url(../svg/gradient_blue.svg) repeat-x 0 0;
+}
+button.blue:hover, .button.blue:hover { background: #568dd4; }
+button.blue:active, .button.blue:active { background: #3E70B1; }*/
+
+/* red button with hover and active 
+button.red, .button.red {
+	border: solid 1px #A9014B;
+	color: #FFF;
+	background: #FF4503 url(../svg/gradient_red.svg) repeat-x 0 0;
+}
+button.red:hover, .button.red:hover { background: #FF4503; }
+button.red:active, .button.red:active { background: #E81220; }*/
+/* green button with hover and active 
+button.green, .button.green {
+	border: solid 1px #678E16;
+	color: #FFF;
+	background: #71B950 url(../svg/gradient_green.svg) repeat-x 0 0;
+}
+button.green:hover, .button.green:hover { background: #71B950; }
+button.green:active, .button.green:active { background: #5aa533; }*/
+/*header nav {
+	background: url(/images/lrn-cat-logo.png) no-repeat 50% 60%;
+}
+#contentRight #tagLine {
+	color: #FFF;
+}
+#contentRight #tagLine .blueHighlight {
+	color: #92c7ec;
+}
+#welcomeResources h3 {
+    color: #FFF;
+}*/

@@ -1,0 +1,13 @@
+<?php
+$programBrandingImg = $this->siteConfigs['partnerBrandingImgUrl'];
+?>
+<header>
+	 <div id="hdrProgramBranding" ><!-- <img src="<?=$programBrandingImg['image']?>" alt="<?= $this->siteConfigs['SiteName']; ?>" title="<?= $this->siteConfigs['SiteName']; ?>" /> --></div>
+    <nav>
+	    <ul>
+	        <li class="skip"><a href="#MainContent" title="Skip Navigation">Skip Navigation</a></li>
+	        <li class="rightAlign"><a class="help" href="/help/UserGuide0.pdf" title="<?= $this->siteLabels['NavHelp']; ?>" target="_blank"><i class="icon-question"></i></a></li>
+	    </ul>
+    </nav>
+    <?= $this->languageSelection; ?>
+</header>

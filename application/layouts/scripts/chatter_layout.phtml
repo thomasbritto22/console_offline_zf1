@@ -1,0 +1,27 @@
+<?= $this->doctype(); ?>
+<html>
+<head>
+	<?= $this->headTitle(); ?>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta id="viewport" name="viewport" content="initial-scale=1; user-scalable=1; minimum-scale=1; maximum-scale=1" />
+	
+    <?= $this->headLink(); ?>
+    <style type="text/css">
+		<?= $this->cssStr; ?>
+	</style>
+    <?= $this->headStyle(); ?>
+    <?= $this->headScript(); ?>
+    
+    <script type="text/javascript">
+		$(document).ready(function(){
+			<?= $this->docReadyJS; ?>
+		});
+    </script>
+</head>
+<body>
+	<?= $this->bodyPrepend; ?>
+	<?= $this->layout()->content; ?>
+    <?= $this->bodyAppend; ?>
+</body>
+</html>

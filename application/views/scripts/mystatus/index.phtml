@@ -1,0 +1,35 @@
+<?php
+if( !empty( $this->myQueueInfo ) ) {
+    $totalAssigned = isset($this->myQueueInfo->totalMandatoryModulesAssigned) ? $this->myQueueInfo->totalMandatoryModulesAssigned : 0;
+    $coursesCompleted = isset($this->myQueueInfo->totalMandatoryModulesCompleted) ? $this->myQueueInfo->totalMandatoryModulesCompleted : 0;
+    $status = 0 ;
+    if($totalAssigned > 0 && $coursesCompleted > 0)
+    $status = ($coursesCompleted/$totalAssigned)*100;
+    
+    $status = ( $status > 100 ) ? 100 : floor($status);?>
+        <div class="myStatus">
+            <h2 class="secondaryTextIcons font-size16"><?= $this->siteLabels['MyStatus']?></h2>
+            <p class="completionContainer primaryTextIcons font-size14"><?= $this->siteLabels['RequiredModules']; ?>
+                <span class="totalPercentage titleBarBtnFgColor">
+                    <span class="PercentageDone titleBarBtnBgColor" style="width: <?=$status; ?>%;"></span><span class="completionNum contentTextIcons"><?=$status; ?>%</span>
+                </span>
+            </p>
+            <p class="primaryTextIcons font-size14 statusText">
+                <span class="statusLabel"><?= $this->siteLabels['NotStarted']?></span>
+                <span class="statusNumber"><?=isset($this->myQueueInfo->totalMandatoryNotStarted) ? $this->myQueueInfo->totalMandatoryNotStarted : '';?></span>
+            </p>
+            <p class="primaryTextIcons font-size14 statusText">
+                <span class="statusLabel"><?= $this->siteLabels['InProgress']?></span>
+                <span class="statusNumber"><?=isset($this->myQueueInfo->totalMandatoryModulesInProgress) ? $this->myQueueInfo->totalMandatoryModulesInProgress : '';?></span>
+            </p>
+            <p class="primaryTextIcons font-size14 statusText">
+                <span class="statusLabel"><?= $this->siteLabels['Completed']?></span>
+                <span class="statusNumber"><?=$coursesCompleted;?></span>
+            </p>
+            <p class="primaryTextIcons font-size14 statusText">
+                <span class="statusLabel"><?= $this->siteLabels['TotalRequired']; ?></span>
+                <span class="statusNumber"><?=$totalAssigned;?></span>
+            </p>
+            <p class="linkRight"><a href="/learn/queue" class="secondaryTextIcons font-size14">>> <?= $this->siteLabels['GoToMyQueue']?></a></p>
+        </div>
+<?php } ?>

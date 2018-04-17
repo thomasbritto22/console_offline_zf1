@@ -1,0 +1,149 @@
+/**
+ * --- MODULE REVIEWS - LIST STYLES ---
+ * These styles pertain to the list of module reviews left by users.
+ */
+#reviewListWrapper {
+    width: 100%;
+}
+
+#reviewListWrapper h3 {
+    /*font-size: 24px;*/
+    margin: 10px;
+    height: 30px;
+    color: #000;
+}
+
+#reviewListWrapper #listWrapper {
+    margin: -5px 0 60px; /* puts the wrapper 'under' the shadow */
+}
+
+#reviewListWrapper #listWrapper.noReviews {
+    padding: 90px 0 0 20px;
+    height: 310px;
+    background: url('/images/randomBG/noUserReviews.png') no-repeat 10px 10px;
+}
+
+#reviewListWrapper #listWrapper.noReviews p {
+    width: 245px;
+    /*font-size: 16px;*/
+    color: #0AF;
+}
+
+#reviewListWrapper #listWrapper #reviewList .reviewItem {
+    margin: 0 10px;
+    padding: 20px 0;
+}
+
+#reviewListWrapper #listWrapper #reviewList .reviewItem:after {
+    content: " ";
+    display: block;
+    clear: both;
+}
+
+#reviewListWrapper #listWrapper #reviewList .reviewItem i {
+    float: left;
+    /*font-size: 2em;*/
+    width: 30px;
+    height: 30px;
+}
+
+#reviewListWrapper #listWrapper #reviewList .reviewItem .reviewTitle {
+    padding: 0 0 0 10px;
+    float: left;
+    height: 25px;
+    width: 370px;
+}
+
+#reviewListWrapper #listWrapper #reviewList .reviewItem .reviewTitle h5 {
+    /*font-size: 14px;*/
+    /*color: #0AF;*/
+    display: inline;
+}
+
+#reviewListWrapper #listWrapper #reviewList .reviewItem .reviewTitle .reviewTime {
+    /*font-size: 11px;*/
+    color: #888;
+}
+
+#reviewListWrapper #listWrapper #reviewList .reviewItem .reviewTitle .reviewRating{
+    float: right;
+}
+
+#reviewListWrapper #listWRapper #reviewList .reviewItem .reviewTitle .reviewRating .ratingsTooltipWrapper {
+    float: right;
+}
+
+#reviewListWrapper #listWrapper #reviewList .reviewItem .reviewText {
+    margin: 0 0 0 10px;
+    float: left;
+    width: 370px;
+    height: auto;
+    /*color: #000;*/
+}
+
+
+
+/**
+ * --- MODULE REVIEW - FORM STYLES ---
+ * These styles pertain to the form views that users use to set
+ * or edit their module reviews.
+ */
+#reviewFormWrapper {
+    background: #DDD;
+    margin: 0 auto 20px;
+    padding: 20px;
+    width: 360px;
+}
+
+#reviewFormWrapper .reviewFormView {
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+    display: none;
+}
+
+#reviewFormWrapper .reviewFormView .reviewFormTitle {
+    /*color: #0AF;*/
+    font-size: 18px;
+}
+
+/* add more space for the buttons fieldset */
+#reviewFormWrapper .reviewFormView .reviewFormButtons {
+    margin: 10px auto 5px;
+}
+
+#reviewFormWrapper .reviewFormView .reviewFormButtons button {
+	width: 125px;
+	text-transform: lowercase;
+}
+
+#reviewFormWrapper .reviewFormView .prepopReviewInput {
+	/*color: #000;*/
+	height: 150px;
+	overflow: auto;
+}
+
+#reviewFormWrapper .reviewFormView fieldset {
+    clear: both;
+    margin: 5px 0;
+    width: 100%;
+}
+
+#reviewFormWrapper .reviewFormView #ratingsPanel {
+    margin: 10px 0 10px;
+}
+
+#reviewFormWrapper .reviewFormView #ratingsPanel .ratingControl {
+    width: 100%;
+    float: none;
+}
+
+#reviewFormWrapper .reviewFormView #ratingsPanel .ratingControl legend {
+    padding: 5px 20px 0 0;
+    /*font-size: 14px;*/
+    font-weight: bold;
+    float: left;
+    width: 160px;
+    text-align: right;
+    /*color: #000;*/
+}

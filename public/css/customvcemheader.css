@@ -1,0 +1,178 @@
+@font-face {
+	font-family: 'proxima_novalight';
+	src: url('/fonts/ProximaNova-Light.eot');
+	src: url('/fonts/ProximaNova-Light.eot?#iefix') format('embedded-opentype'),
+		url('/fonts/ProximaNova-Light.woff2') format('woff2'),
+		url('/fonts/ProximaNova-Light.woff') format('woff'),
+		url('/fonts/ProximaNova-Light.ttf') format('truetype'),
+		url('/fonts/ProximaNova-Light.svg#ProximaNova-Light') format('svg');
+	font-weight: 300;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'proxima_novasemibold';
+	src: url('/fonts/ProximaNova-Semibold.eot');
+	src: url('/fonts/ProximaNova-Semibold.eot?#iefix') format('embedded-opentype'),
+		url('/fonts/ProximaNova-Semibold.woff2') format('woff2'),
+		url('/fonts/ProximaNova-Semibold.woff') format('woff'),
+		url('/fonts/ProximaNova-Semibold.ttf') format('truetype'),
+		url('/fonts/ProximaNova-Semibold.svg#ProximaNova-Semibold') format('svg');
+	font-weight: 600;
+	font-style: normal;
+}
+body {
+	margin:0px;
+	padding:0px;
+	Xfont-family: 'proxima_novalight';
+}
+a, img {
+    border: 0px;
+    outline:0px;
+}
+#header {
+	width:100%;
+	display:block;
+	background-color:#fff;
+}
+#header .identity-bar {
+    
+}
+#header .identity-bar .logo {
+    float: left
+}
+#header .identity-bar .logo img {
+    padding: 30px 0 20px 35px;
+}
+#header .nav-bar {
+    background-color:#0277bd;
+    text-align: center;
+    width: 100%;
+}
+#header .nav-bar.toFixed {
+    position: fixed;
+    z-index: 2;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+}
+.nav-bar ul {
+    margin:0px auto; 
+    padding:0px;
+    display: table;
+}
+.nav-bar ul li {
+    float: left;
+    list-style-type: none;
+    margin: 0px;
+}
+.nav-bar ul li a{
+    padding: 13px 30px;
+    display: block;
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+    font-family: 'proxima_novasemibold';
+    text-decoration: none;
+}
+.nav-bar ul li a:hover, .nav-bar ul li a.active-link {
+    background-color:#014f91;
+}
+.nav-bar ul li a img {
+    width:28px;
+}
+.nav-bar ul li a .nav-text {
+    padding-top: 5px;
+}
+.account-section {
+    float:right;
+    padding-right:35px;
+}
+.account-name, .account-detail, .account-help {
+    float:left;
+    text-align: left;    
+    font-family: 'proxima_novalight';
+    font-size: 14px;
+    color: #666;
+}
+.account-name {
+    padding: 35px 15px 10px 0px;
+}
+.account-section a {
+    float: left;
+    padding: 30px 15px 15px;
+}
+.account-detail, .account-help{
+    position: relative;
+}
+.account-detail a, .account-help a{
+    color: #666;
+}
+.account-detail a .account-icon, .account-help a .account-icon{
+    width: 26px;
+    height: 26px;
+    display: block;
+    float: left;
+}
+.account-detail a .account-icon{
+    background-image: url(/lcec-images/ic-profile-pic.png);  
+}
+.account-detail a:hover .account-icon, .account-detail a.active-link .account-icon{
+    background-image: url(/lcec-images/ic-profile-pic-hover.png);  
+}
+.account-help a .account-icon{
+    background-image: url(/lcec-images/ic-help-icon.png);  
+}
+.account-help a:hover .account-icon, .account-help a.active-link .account-icon{
+    background-image: url(/lcec-images/ic-help-icon-hover.png);  
+}
+.account-detail a .account-arrow, .account-help a .account-arrow{
+    width: 18px;
+    height: 16px;
+    display: block;
+    background-image: url(/lcec-images/ic-down-arrow.png);
+    float: left;
+    margin: 3px 0 0 0;
+}
+.account-detail a:hover .account-arrow, .account-help a:hover .account-arrow, .account-detail a.active-link .account-arrow, .account-help a.active-link .account-arrow{
+    background-image: url(/lcec-images/ic-down-arrow-hover.png);
+}
+.account-detail ul, .account-help ul{
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+    background-color: #fff;
+    top:85px;
+    right:0px;
+    min-width: 120px;
+    -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+	box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+    display: none;
+    z-index:200;
+}
+.account-detail ul li, .account-help ul li{
+    list-style-type: none;
+    clear: both;
+}
+.account-detail ul li a, .account-help ul li a{
+    padding: 10px 30px 10px 20px;
+    white-space: nowrap;
+    min-width: 170px;
+    width:100%;
+    text-decoration: none;
+  
+}
+.account-detail ul li a:hover, .account-help ul li a:hover{
+    background-color:#ffe7b1;
+}
+.account-detail ul:after, .account-help ul:after{
+    background: none repeat scroll 0 0 transparent;
+    border-color: transparent transparent #fff;
+    border-style: solid;
+    border-width: 0 7px 8px;
+    content: "";
+    left: 126px;
+    position: absolute;
+    top: -8px;
+    
+}

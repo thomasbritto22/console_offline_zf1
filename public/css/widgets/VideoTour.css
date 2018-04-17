@@ -1,0 +1,79 @@
+/* Style for just Video Tour Widget*/
+
+.tourPlay {
+	background: url(/images/icons/icons_welcomeScreen.png) no-repeat 0 0;
+	width:50px;
+	height:50px;
+	position:absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -25px;
+	margin-top: -25px;
+	cursor:pointer;
+}
+
+.tourPlay:hover {
+	background-position: -56px 0;
+}
+
+.videoImg {
+	float: none;
+	height: 85px;
+	margin: 10px auto;
+	overflow: hidden;
+	position: relative;
+	width: 140px;
+}
+
+.videoImg img {
+	max-width: 100%;
+}
+
+#videoDialog {
+	width:640px;
+	background-color: rgba(255, 255, 255, .5);
+	overflow: visible;
+	border: none;
+	margin: -225px -325px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+}
+
+#videoDialog .header {
+	background-color: #297eb9;
+	-webkit-box-shadow: 0px 0px 25px 0px #000;
+	-moz-box-shadow: 0px 0px 25px 0px #000;
+	box-shadow: 0px 0px 25px 0px #000;
+}
+
+#videoDialog .body {
+	height: 480px;
+	overflow: hidden;
+}
+
+#videoDialog .footer {
+	background-color: #505663;
+	position: static;
+	/*padding: 30px 0;*/
+	height: auto;
+}
+
+#tourVideo {
+	z-index:100;
+}
+
+.mejs-video {
+	margin: 0 auto;
+}
+
+#videoDialog .footer .videoDescription {
+	color: #FFF;
+	width: 85%;
+	margin: 0 auto;
+	font-size: 16px;
+}
+
+#virtualTour #player2-mode {
+	display: none;
+}

@@ -1,0 +1,379 @@
+/* --- FILTER BAR STYLES --- */
+/* the main styles for the filter UI */
+#filterBar {
+    margin: 0 auto;
+    padding: 15px 0;
+    width: 95%;
+}
+
+/* this is the title area that is clicked to expand */
+#filterBar .filterTitle {
+}
+
+/* this is the region in the expanded part of the filter */
+#filterBar .filterForm {
+    padding: 10px;
+    position: relative;
+}
+
+#filterBar .filterForm div.formField {
+    float: left;
+    margin-top: 10px;
+    width: 50%;
+}
+
+#filterBar .filterForm div.formField p.formField input {
+    width: 70%;
+}
+
+/* hide the labels by default */
+#filterBar .filterForm .formField label {
+    display: inline-block;
+}
+
+/* style for invalid dates */
+#filterBar .filterForm .filterDateWrapper input.invalid {
+    border: solid 1px #F00;
+    background: #FEE;
+    color: #F00;
+}
+
+/* for now, we are positioning our submit to the far right */
+#filterBar .filterForm #filterButtons {
+    float: right;
+    margin-top: 10px;
+}
+
+.clearFilterBtn {
+    float: left;
+    margin-top: 20px;
+}
+/* --- END FILTER BAR STYLES --- */
+
+
+/* --- STYLES FOR SORTING BAR --- */
+.sortBar {
+    font-size: 14px;
+    max-height: 50px;
+    margin: 0 auto;
+    width: 95%;
+}
+
+.sortBar:after {
+    content: " ";
+    display: block;
+    clear: both;
+}
+
+.sortBar li {
+    margin: 0;
+    padding: 0;
+    float: left;
+}
+
+.sortBar li span,
+.sortBar li a {
+    padding: 8px 15px 8px 5px;
+    display: block;
+    text-decoration: none;
+    position: relative;
+}
+
+.sortBar li span:hover,
+.sortBar li a:hover {
+}
+
+.sortBar li .sortNone,
+.sortBar li .sortNone {
+    background: none;
+}
+
+.sortBar li .sortAsc,
+.sortBar li .sortDesc {
+}
+
+.sortBar li .sortAsc:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    border-color: transparent transparent #FFF;
+    border-image: none;
+    border-style: solid;
+    border-width: 5px;
+}
+
+.sortBar li .sortDesc:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 13px;
+    right: 10px;
+    border-color: #FFF transparent transparent;
+    border-image: none;
+    border-style: solid;
+    border-width: 5px;
+}
+
+/* set the widths of the columns */
+.sortBar li #title {           width: 200px; }
+.sortBar li #catalogId {       width: 140px; }
+.sortBar li #timeSpent {       width: 105px; }
+.sortBar li #completionDate {  width: 140px; }
+/* --- END SORTING BAR STYLES --- */
+
+
+/* --- MAIN HISTORY LIST STYLES --- */
+#historyList {
+    margin: 0 auto 20px;
+    width: 95%;
+}
+/* --- END HISTORY LIST STYLES --- */
+
+
+/* --- COLLAPSED STYLES --- */
+#historyWrapper .collapsedWrapper {
+    /*background: #FFF;*/
+}
+
+#historyWrapper .collapsedWrapper p {
+    float: left;
+    padding: 0 10px 0 0;
+}
+
+/* set widths for collapsed info 'columns' */
+#historyWrapper .collapsedWrapper .title {          width: 175px; }
+#historyWrapper .collapsedWrapper .catalogId {      width: 150px; }
+#historyWrapper .collapsedWrapper .timeSpent {      width: 100px; }
+#historyWrapper .collapsedWrapper .completionDate { width: 90px; }
+/* --- END COLLAPSED STYLES --- */
+
+
+/* --- EXPANDED STYLES --- */
+#historyList .expandedWrapper {
+	height: auto;
+    overflow: visible !important;
+}
+
+#historyList .expandedWrapper:after {
+    content: " ";
+    display: block;
+    clear: both;
+}
+
+#historyList .expandedWrapper .left {
+    float: left;
+    width: 260px;
+}
+
+#historyList .expandedWrapper .left .moduleRating {
+    margin: 0;
+    padding: 0 0 20px;
+    font-size: 11px;
+    width: 300px;
+}
+
+#historyList .expandedWrapper .left .moduleRating .ratingControl {
+    float: left;
+    width: 65px;
+}
+
+#historyList .expandedWrapper .left .moduleRating .ratingsTooltipWrapper {
+    float: left;
+}
+
+/* make the arrow a bit smaller */
+#historyList .expandedWrapper .left .moduleRating .ratingsTooltipWrapper .ratingsTooltipArrow {
+    border-width: 8px 4px 0;
+    margin: 2px 0 0 1px;
+}
+
+#historyList .expandedWrapper .left .moduleRating .mainRatingInfo {
+    margin: 0 0 0 10px;
+    float: left;
+}
+
+#historyList .expandedWrapper .left img {
+	float: left;
+	margin: 0 10px 0 0;
+}
+
+#historyList .expandedWrapper .left .description {
+	float: left;
+    margin: 10px 0;
+	width: 95%;
+}
+
+.customDesc p {
+    margin: 10px 0;
+}
+
+.left > p.modStart {
+    clear: both;
+    width: auto;
+}
+
+#historyList .expandedWrapper .left .ratingsLink {
+    clear: both;
+    margin: 10px 0;
+}
+
+#historyList .expandedWrapper .right {
+    float: right;
+    width: 260px;
+    font-size: 15px;
+}
+
+#historyList .expandedWrapper .right .viewCertification {
+	font-weight: bold;
+	padding: 0 0 10px 0;
+	margin: 0 0 10px 0;
+	border-bottom: 2px solid #DDD;
+}
+
+#historyList .expandedWrapper .right .viewCertification a {
+	text-decoration: none;
+}
+
+#historyList .expandedWrapper .right .viewCertification a .coursePrintIcon,
+#historyList .expandedWrapper .right .viewCompletionCert a .coursePrintIcon {
+    display: inline-block;
+	height: 25px;
+	width: 25px;
+    line-height: .5;
+	float: right;
+	font-size:28px;
+	/*position:relative;*/
+	/*top:-7px;*/
+    zoom: 1;
+}
+
+#historyList .expandedWrapper .right .viewCertification a .coursePrintIcon i,
+#historyList .expandedWrapper .right .viewCompletionCert a .coursePrintIcon i {
+    vertical-align: middle;
+}
+
+#historyList .expandedWrapper .right .viewCompletionCert {
+	font-weight: bold;
+	padding: 0 0 10px 0;
+	margin: 0 0 10px 0;
+	border-bottom: 2px solid #DDD;
+}
+
+#historyList .expandedWrapper .right .viewCompletionCert a {
+	text-decoration: none;
+}
+
+#historyList .expandedWrapper .right .receivedCredit {
+	padding: 0 0 10px 0;
+	margin: 0 0 10px 0;
+	border-bottom: 2px solid #DDD;
+}
+
+#historyList .expandedWrapper .right .score {
+	font-weight: bold;
+}
+
+#historyList .expandedWrapper .right .receivedCredit .rightAlign,
+#historyList .expandedWrapper .right .score .rightAlign {
+	float: right;
+    margin: 0;
+}
+
+#historyList .expandedWrapper .right .receivedCredit {
+    font-weight: bold;
+}
+/* --- END EXPANDED STYLES --- */
+
+/* --- STYLES FOR PRINTABLE LIST --- */
+.phSortBar {
+	background: #555;
+	color: #FFF;
+	font-size: 14px;
+	width: 100%;
+}
+
+.phSortBar:after {
+    content: " ";
+    display: block;
+    clear: both;
+}
+
+.phSortBar li {
+    margin: 0;
+    padding: 0;
+    float: left;
+}
+
+.phSortBar li span,
+.phSortBar li a {
+    padding: 8px 15px 8px 5px;
+    display: block;
+    color: #FFF;
+    text-decoration: none;
+    position: relative;
+}
+
+.phSortBar li span:hover,
+.phSortBar li a:hover {
+    color: cornflowerblue;
+}
+
+.phSortBar li .sortNone {
+    background: none;
+}
+
+.phSortBar li .sortAsc,
+.phSortBar li .sortDesc {
+}
+
+.phSortBar li .sortAsc:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    border-color: transparent transparent #FFF;
+    border-image: none;
+    border-style: solid;
+    border-width: 5px;
+}
+
+.phSortBar li .sortDesc:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 13px;
+    right: 10px;
+    border-color: #FFF transparent transparent;
+    border-image: none;
+    border-style: solid;
+    border-width: 5px;
+}
+
+/* set the widths of the columns */
+.phSortBar li #title {           width: 450px; }
+.phSortBar li #catalogId {       width: 151px; }
+.phSortBar li #timeSpent {       width: 125px; }
+.phSortBar li #completionDate {  width: 142px; }
+
+#historyTable td {
+    padding: 5px;
+    color: #000;
+    border: solid 1px #555;
+}
+
+#historyWrapper > div.profileInfo {
+    color: black;
+    font-size: 16px;
+}
+
+div.profileInfo p.profileInfoRow {
+    margin: 5px 0;
+}
+
+div.profileInfo p.profileInfoRow span.rightSideInfo {
+    float: right;
+}
+

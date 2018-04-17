@@ -1,0 +1,592 @@
+/*Custom CSS*/
+
+/*Admin starts*/
+.admin .page_content {
+    border-radius: 10px 0;
+}
+
+.page_content.ui-tabs {
+    padding-bottom: 10px;
+}
+
+.page_content .adminSection .ui-corner-all {
+    border-radius: 0;
+}
+
+.navWrapper {
+    border-bottom: 4px solid #4b4c4d;
+}
+
+.navWrapper .navTab {
+    margin: 0;
+}
+
+.content #dynamic {
+    padding: 15px 10px;
+    color: #666;
+    /*    border: none;
+        -webkit-border-bottom-right-radius: 0px;
+        border-bottom-right-radius: 0px;*/
+}
+
+.tabWrapper .tabSync .entriesLength {
+    margin: 0 0 15px;
+}
+.paging_full_numbers {
+    margin: 15px 0 0;
+}
+
+.content #dynamic .dataTables_wrapper table#vcAdminTable {
+    /*border: 1px solid #000;*/
+}
+
+.content #dynamic .dataTables_wrapper table#vcAdminTable thead {
+    background-color: #ddd;
+}
+
+.tabWrapper.adminContentWrapper .tabSync .entriesLength label,
+.tabWrapper.adminContentWrapper .tabSync .entriesLength select,
+.content #dynamic .dataTables_wrapper table#vcAdminTable thead tr th {
+    color: #000;
+}
+
+.content #dynamic .dataTables_wrapper table#vcAdminTable thead tr th .heading {
+    display: inline-block;
+    width: 92%;
+    vertical-align: middle;
+}
+
+.content #dynamic .dataTables_wrapper table#vcAdminTable thead tr th i {
+    float: right;
+}
+
+.content #dynamic .dataTables_wrapper table#vcAdminTable tbody tr td {
+    /*border-bottom: 1px solid #000;*/
+    color: #000000;
+}
+
+.content #dynamic .dataTables_wrapper table tbody tr td {
+    border-right: none;
+    border-left: none;
+}
+
+.tabDownload .info {
+    text-align: right;
+    color: #797979;
+    font-weight: normal;
+    margin: 0 0 10px;
+}
+.showErrorMsg{display: inline-block;}
+.hideErrorMsg{display:none;}
+#accessResponse{color:green;}
+#errorAccessText{color:red;}
+#accessResponse2{color:green;}
+#errorMsgNotificationEmail{color:red;}
+
+.tabDownload h4 {
+    color: #339ad5;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.tabWrapper .adminSection .adminSectionContent {
+    padding: 10px;
+}
+
+.headerBgSection p,
+.adminEmail .fieldLabel {
+    margin: 10px 0 5px;
+    /*    font-size: 12px;*/
+    /*    width: 80%;*/
+}
+
+/*.headerBgSection .headerSection {
+    font-size: 16px;
+}*/
+
+.headerBgSection input, .headerBgSection textarea {
+    padding: 3px;
+    /*    background-color: #fff;*/
+    width: 82%;
+}
+
+.brandingsection .headerUpdateButtons {
+    margin: 15px 0;
+}
+
+.headerUpdateButtons > button.adminBlueBtn, 
+.headerUpdateButtons > .button, 
+.headerUpdateButtons > button.cancelLink {
+    width: auto;
+}
+
+.pwdWrapper {
+    padding: 15px 0;
+}
+
+.pwdWrapper .pwdArea {
+    margin: 0 0 15px;
+}
+
+.pwdWrapper .pwdArea .pwdLabel {
+    text-align: left;
+    padding-left: 0;
+    float: left;
+    width: 25%;
+    padding-right: 15px;
+    padding-top: 7px;
+    margin-bottom: 0;
+    font-size: 13px;
+}
+
+.pwdWrapper .pwdArea .pwdInputArea {
+    float: left;
+    width: 75%;
+}
+
+.pwdWrapper .pwdArea .pwdInputArea .pwdInput,
+.notification .inputEmail input {
+    border: 1px solid #aaa;
+    border-radius: 0;
+    display: block;
+    width: 100%;
+    padding: 5px;
+    background-color: #fff;
+}
+
+.notification,
+.userCreateWrapper{
+    padding: 5px 0;
+}
+
+.notification .inputEmail,
+.notification .notificationInfo{
+    padding-left: 20px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.userCreate {
+    display: table;
+    width: 100%;
+}
+
+.userCreate .userAvailable, .userCreate .userBtn, .userCreate .userIncluded {
+    display: table-cell;
+    vertical-align: middle;
+    float: none;
+}
+
+.userCreate .userAvailable {
+    width: 42%;
+} 
+.userCreate .userBtn {
+    width: 16%;
+    padding: 0 15px;
+}
+.userCreate .userIncluded {
+    width: 42%;
+}
+
+.userAvailable .headerArea,
+.userIncluded .headerArea{
+    margin: 0 0 1px;
+    color: #666666;
+}
+
+.headerArea h5 {
+    font-weight: bold;
+    width: 50%;
+    float: left;
+}
+
+.headerArea h5.dropped {
+    width: 100%;
+}
+
+.checkArea {
+    padding-right: 0;
+    width: 50%;
+    float: left;
+}
+
+select.userInput {
+    height: 180px;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 6px 16px 6px 6px;
+    color: #666666;
+    display: block;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+.userBtn .btnOptions {
+    background: #dddddd;
+    background-clip: padding-box;
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…EiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top, #dddddd 0%, #ffffff 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dddddd), color-stop(100%,#ffffff));
+    background: -webkit-linear-gradient(top, #dddddd 0%,#ffffff 100%);
+    background: -o-linear-gradient(top, #dddddd 0%,#ffffff 100%);
+    background: -ms-linear-gradient(top, #dddddd 0%,#ffffff 100%);
+    background: linear-gradient(to bottom, #dddddd 0%,#ffffff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dddddd', endColorstr='#ffffff',GradientType=0 );
+    border: 1px solid #CCC;
+    color: #666666;
+    position: relative;
+    padding: 6px 18px 6px 12px;
+    white-space: normal;
+    width: 100%;
+    margin: 5px 0;
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-radius: 4px;
+}
+
+.userBtn .btnOptions:hover {
+    background: #ffffff;
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…EiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top, #ffffff 0%, #dddddd 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#dddddd));
+    background: -webkit-linear-gradient(top, #ffffff 0%,#dddddd 100%);
+    background: -o-linear-gradient(top, #ffffff 0%,#dddddd 100%);
+    background: -ms-linear-gradient(top, #ffffff 0%,#dddddd 100%);
+    background: linear-gradient(to bottom, #ffffff 0%,#dddddd 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dddddd',GradientType=0 );
+    border: 1px solid #1861A0;
+    color: #666666;
+}
+
+.userBtn .btnOptions.disabled {
+    border: #ddd 1px solid;
+    background: #eee;
+    color: #aaa;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFFFFF', endColorstr='#DDDDDD',GradientType=0 ); 
+    background-clip: border-box;
+}
+
+.userBtn .btnOptions:hover {
+    border: #ddd 1px solid;
+    background: #eee;
+    color: #aaa;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFFFFF', endColorstr='#DDDDDD',GradientType=0 ); 
+    background-clip: border-box;
+}
+
+.userBtn .btnOptions span {
+    position: absolute;
+    top: 50%;
+    right: 2px;
+    margin-top: -6px;
+}
+
+.userBtn .btnOptions.remove {
+    padding: 6px 12px 6px 18px;
+}
+
+.userBtn .btnOptions.remove span {
+    right: auto;
+    left: 2px;
+}
+
+/*.adminEmail .fieldLabel {
+    font-size: 14px;
+    width: 80%;
+    margin: 10px 0 5px;
+}*/
+
+.adminEmail .inputEmail {
+    width: 80%;
+}
+
+.adminEmail .inputEmail input {
+    width: 100%;
+}
+
+.downloadBtnWrapper {
+    margin: 0 0 5px;
+    position: relative;
+}
+
+.downloadBtnWrapper p {
+    margin-bottom: 5px;
+}
+
+.downloadBtnWrapper button,
+.downloadBtnWrapper button.disabled:hover {
+    padding: 5px 10px;
+}
+
+.tabWrapper .adminSection .adminSectionContent .updateButtons {
+    width: auto;
+    margin: 15px 0 5px;
+}
+/*Admin ends*/
+
+/*Modal starts*/
+/*Admin modal starts*/
+.adminPopup .modal-title {
+    font-weight: bold;
+}
+
+.adminPopup .userPopupHeader {
+    padding: 15px 15px 5px;
+}
+
+.adminPopup .userPopupBody .adminPwdArea {
+    margin-bottom: 5px;
+}
+
+.adminPopup .userPopupBody label {
+    font-weight: normal;
+    color: #181818;
+}
+
+.adminPopup .userPopupBody input {
+    border-color: #5b5b5b;
+}
+
+@media (min-width: 768px) {
+    .adminPopup .modal-dialog {
+        width: 400px;
+        margin: 11% auto;
+    }
+}
+
+/*Admin modal ends*/
+
+/*Courses modal starts*/
+.coursesPopup,
+.preloaderPopup {
+    text-align: center;
+    padding: 0 !important;
+    height: 100%;
+}
+
+.coursesPopup .userPopupBody {
+    padding: 0 15px 20px;
+}
+
+.preloderImg {
+    margin-bottom: 10px;
+}
+
+.preloderImg img {
+    width: 75px;
+}
+
+.coursesDetails p {
+    margin: 5px 0;
+    color: #4c4c4c;
+}
+
+.coursesDetails p span {
+    font-weight: bold;
+}
+
+.coursesDetails p .syncDone {
+    color: #137700;
+}
+
+.coursesDetails p .syncError {
+    color: #ff0000;
+}
+
+@media (min-width: 768px) {
+    .coursesPopup .modal-dialog {
+        width: 400px;
+        margin: 0 auto;
+        top: 32%;
+    }
+}
+
+
+/*Courses modal ends*/
+
+/*Preloader modal starts*/
+.preloaderPopup .userPopupBody {
+    padding: 20px 15px;
+}
+
+.preloaderDetails p {
+    margin: 5px 0;
+}
+
+@media (min-width: 768px) {
+    .preloaderPopup .modal-dialog {
+        width: 380px;
+        margin: 0 auto;
+        top: 32%;
+    }
+}
+
+/*Preloader modal ends*/
+/*Modal Ends*/
+
+/*Specific classes*/
+.no_padding {
+    padding: 0;
+}
+
+.no_border {
+    border: none;
+}
+
+.alignRight  {
+    text-align: right;
+}
+
+.btn:focus,
+.btn:active:focus {
+    outline: 0;
+}
+
+.checkbox, .radio {
+    position: relative;
+    display: block;
+    margin: 10px 0;
+}
+
+.checkbox label {
+    padding-left: 20px;
+    margin-bottom: 0;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.checkbox input[type=checkbox], .radio input[type=radio] {
+    position: absolute;
+    margin-left: -20px;
+    line-height: normal;
+    cursor: pointer;
+}
+
+.headerBgSection p.errMsg {
+    margin: 3px 0 0;
+}
+
+.errMsg {
+    color: #F00;
+}
+
+/*put in main file*/
+button {
+    cursor: pointer;
+}
+
+button.disabled{
+    cursor: auto;
+}
+/*,
+button.inactive*/
+
+/*button.inactive {
+    opacity: 0.4;
+}
+.no-opacity button.inactive,
+.no-opacity button.inactive:hover {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
+    background: #339AD5;
+}*/
+
+button.disabled:hover {
+    background: #EEE;
+    background-clip: padding-box;
+    border: solid 1px #DDD;
+    color: #AAA;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFFFFF', endColorstr='#DDDDDD',GradientType=0 );
+}
+
+.no-opacity .ie8BtnInactive {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #fff;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+}
+/*put in main file*/
+/*put ie8 class in main html file*/
+/*.no-ie8compat input {
+    padding: 0;
+}
+.no-ie8compat a.btn.disabled {
+    cursor: default;
+}*/
+/*put ie8 class in main html file*/
+
+/*Specific classes ends*/
+
+/* --- CLEARFIX STYLES Starts --- */
+
+.clearfix:before,
+.clearfix:after {
+    display: table;
+    content: " ";
+}
+
+.clearfix:after {
+    clear: both;
+}
+/* --- CLEARFIX STYLES Ends --- */
+
+
+/*Disabled starts*/
+a.btn.disabled, fieldset[disabled] a.btn {
+    pointer-events: none;
+    cursor: not-allowed;
+    filter: alpha(opacity=65);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    opacity: .65;
+}
+
+/*Disabled ends*/
+
+
+/*Change the selector name and remove .ui-tabs .ui-tabs-panel from class*/
+
+
+
+/*.ui-tabs .ui-tabs-panel.tabSync {
+    padding: 0;
+    border: none;
+}*/
+
+/*Change the selector name and remove .ui-tabs .ui-tabs-panel from class*/
+
+
+/*Dummy delete it*/
+
+.ui-tabs .ui-tabs-panel {
+    padding: 0px;
+    /*    padding: 10px;
+        border-radius: 0;
+        border: 1px solid #4B4C4D;
+        -webkit-border-bottom-right-radius: 15px;
+        border-bottom-right-radius: 15px;*/
+}
+
+.dataTables_length {
+    display: none;
+}
+input[type=text]::-ms-clear { display: none; }
+input[type=email]::-ms-clear { display: none; }
+
+.content #dynamic .dataTables_wrapper table thead tr th span {
+    /* float: right; */
+}
+
+/*Dummy delete it ends*/

@@ -1,0 +1,137 @@
+<?php 
+	$twitterState = is_array($this->twitterAdminState) ? $this->twitterAdminState[count($this->twitterAdminState)-1]->value : (isset($this->twitterAdminState) ? $this->twitterAdminState->value : 'off');
+	$twitterStateId = is_array($this->twitterAdminState) ? $this->twitterAdminState[count($this->twitterAdminState)-1]->id : (isset($this->twitterAdminState) ? $this->twitterAdminState->id : '');
+    $twitterGroupId = is_array($this->twitterAdminState) ? $this->twitterAdminState[count($this->twitterAdminState)-1]->groupId : (isset($this->twitterAdminState) ? $this->twitterAdminState->groupId : '');
+	$chatterState = is_array($this->chatterAdminState) ? $this->chatterAdminState[count($this->chatterAdminState)-1]->value : (isset($this->chatterAdminState) ? $this->chatterAdminState->value : 0);
+	$chatterToggle = '';
+	$chatterToggleId = '';
+	if(isset($this->chatterList['toggle'])){
+		$chatterToggleId = $this->chatterList['toggle']->id;
+		if($this->chatterList['toggle']->value == 'on')
+			$chatterToggle = 'checked="checked"';
+	} else {
+		$chatterToggle = '';
+	}
+	if(isset($this->components['ratings'])){
+		$ratings = $this->components['ratings'];
+	
+	}
+	
+	if(isset($this->components['reviews'])){
+		$reviews = $this->components['reviews'];
+	}
+?>
+<hgroup class="adminHeader">
+	<h2>Sitewide social settings</h2>
+</hgroup>
+<div id="categorySection" class="ui-corner-all">
+	<div id="adminAccordion">
+	<section class="adminSection">
+	<form name="twitterForm" action="/admin/updateComponent" method="post" id="twitterForm">
+		<div class="adminSectionHeader">
+	    	<h3>Twitter</h3>
+	    	<fieldset>
+		    	<p class="formField">
+		    	<input type="hidden" name="adminAction" value="updateTwitter"/>
+		            <input type="checkbox" name="twittertoggle" id="twittertoggle" class="slideToggle" show-label="ON" hide-label="OFF" <?= $twitterState=='on' ? 'checked="checked"' : ''; ?> />		            
+		            <input type="hidden" name="twittertoggle_id" id="twittertoggle_id" value="<?= $twitterStateId; ?>" />
+		            <input type="hidden" class="twittergroupId" name="groupId" id="twittergroupId" value="<?= $twitterGroupId; ?>">
+		            <button name="submit" type="submit" id="submit" class="adminFormSubmit hidden">Save</button><div class="helpText"></div>
+		            
+		    	</p>
+		    </fieldset>
+	    </div>
+	    <div class="adminSectionContent">	    
+	        <div class="twitterWrapper">
+	            <p class="twitterInst">
+ 	                <span class="twitterIcon"></span>
+	                <sub class="instruction">Allow users to post to Twitter from within a module.</sub>
+	                <!-- <span class="disabledMsg"><em>Twitter is currently disabled.</em></span> -->
+	                <!-- <span class="enabledMsg"><em>Twitter is currently enabled.</em></span> -->
+	            </p>
+	        </div>
+	    </div>
+    </form>
+	</section>
+	<section class="adminSection">
+	    <div class="adminSectionHeader">
+	    	<h3>Chatter</h3>
+	    	<form name="chatterForm" action="/admin/updateComponent" method="post" id="chatterForm">
+		    	<fieldset>
+			    	<p class="formField">
+						<input type="hidden" name="adminAction" value="updateChatterToggle"/>
+			            <input type="checkbox" name="chattertoggle" class="slideToggle"  <?= $chatterToggle; ?> />		            
+			            <input type="hidden" name="chattertoggle_id" id="chattertoggle_id" value="<?= $chatterToggleId; ?>" />
+			            <button name="submit" type="submit" id="submit" class="adminFormSubmit hidden adminBlueBtn">Save</button>
+			            <div class="helpText"></div>
+			    	</p>
+			    </fieldset>
+	    	</form>
+	    </div>
+	    <div id="chatterWrapper" class="adminSectionContent">
+	    	<form name="chatter" action="/admin/updateComponent" method="post">
+	    		<div class="chatterInfo">
+	    			<img src="<?php echo CDN_IMG_URL ?>/images/icons/chatter-icon.png">
+	    			<p>Allow users to post to the Salesforce Chatter social network from within a course.  To enable this feature, copy and paste in your Chatter infomation below and click "save".</p>
+	    			<!-- <span class="disabledMsg"><em>Chatter is currently disabled.</em></span> -->
+	    			<!-- <span class="enabledMsg"><em>Chatter is currently enabled.</em></span> -->
+	    		</div>
+	        	<fieldset>
+	        		<label for="clientId">Consumer Key:</label>
+	        		<textarea name="chattersocial_client_id" id="chattersocial_client_id" class="required"><?=(isset($this->chatterList['social_client_id']->value)) ? $this->chatterList['social_client_id']->value : '' ; ?></textarea>  
+	        		<input type="hidden" name="chattersocial_client_id_id" id="chattersocial_client_id_id" value="<?=(isset($this->chatterList['social_client_id']->id)) ? $this->chatterList['social_client_id']->id: '' ; ?>">  
+	        	</fieldset>
+	        	<fieldset>
+	        		<label for="secretKey">Consumer Secret:</label>
+	        		<textarea name="chattersocial_secret_key" id="chattersocial_secret_key" class="required"><?=(isset($this->chatterList['social_secret_key']->value)) ? $this->chatterList['social_secret_key']->value : '' ; ?></textarea> 
+	        		<input type="hidden" name="chattersocial_secret_key_id" id="chattersocial_secret_key_id" value="<?=(isset($this->chatterList['social_secret_key']->id)) ? $this->chatterList['social_secret_key']->id : '' ; ?>"> 
+	        		<div class="helpText"></div>
+	        	</fieldset>
+	       		<fieldset>
+	       			<span>Group ID:</span>
+	       			<input type="text" name="chattersocial_group_id" id="chattersocial_group_id" class="required" value="<?=(isset($this->chatterList['social_group_id']->value)) ? $this->chatterList['social_group_id']->value : '' ; ?>"> 
+	       			<input type="hidden" name="chattersocial_group_id_id" id="chattersocial_group_id_id" value="<?=(isset($this->chatterList['social_group_id']->id)) ? $this->chatterList['social_group_id']->id : '' ; ?>"> 
+	       		</fieldset>
+	       		<fieldset class="saveBtn">
+	       		<input type="hidden" class="chattergroupId" name="groupId" id="chattergroupId" value="<?= (isset($this->chatterList['groupId'])) ? $this->chatterList['groupId']->groupId : ''; ?>">
+	       		<input type="hidden" name="adminAction" value="updateChatter" class="adminFormSubmit"/>
+	       		<button name="submit" type="submit" id="submit" class="adminFormSubmit">Save</button><div class="helpText"></div>
+	       		</fieldset>
+			</form>
+		</div>
+	</section>
+	<section class="adminSection">
+		<div class="adminSectionHeader">
+			<h3>Module ratings and reviews</h3>
+			<form id="ratingsForm" action="/admin/updateComponent" method="post">
+		        <fieldset>
+		            <p class="formField">
+		                <input type="checkbox" name="ratingstoggle" class="slideToggle" <?= isset($ratings['value']) && $ratings['value']=='on' ? 'checked="checked"' : ''; ?> />
+			        	<input type="hidden" name="ratingstoggle_id" id="ratingstoggle_id" value="<?= (!empty($ratings['id'])) ? $ratings['id'] : ''; ?>"/>
+				        <input type="hidden" name="adminAction" value="updateRatings" />
+				        <span class="hidden"><button type="submit" class="adminFormSubmit">Update Ratings</button></span>
+		            </p>
+		        </fieldset>
+		    </form>
+		</div>
+		<div class="adminSectionContent">
+			<div class="ratingsWrapper">
+				<div class="ratingsImgWrapper">
+					<img src="<?php echo CDN_IMG_URL ?>/images/icons/ratings-and-reviews-icon.png" />
+				</div>
+				<div class="rrInstructions">
+					<p>Allow users to rate and review a module from:</p>
+					<ul>
+						<li>The end of a module</li>
+						<li>The Completion History page</li>
+						<li>The Reviews link on the Module Overview page (if the user has completed the module; otherwise read-only)</li>
+					</ul>
+				</div>
+				<!-- <span class="disabledMsg"><em>Ratings and Reviews is currently disabled.</em></span> -->
+				<!-- <span class="enabledMsg"><em>Ratings and Reviews is currently enabled.</em></span> -->
+			</div>
+		</div>
+	</section>
+	</div>
+</div>
+<input type="hidden" name="slideVal" id="slideVal" value="NotSet">

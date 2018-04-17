@@ -1,0 +1,648 @@
+
+<?php
+
+$partner_logo 			= (trim($this->siteConfigs['companyLogoImgUrl']['image'].'') != '') ? $this->siteConfigs['companyLogoImgUrl']['image'] : CDN_IMG_URL . '/images/theme-ui/mock_welcome_logo.jpg';
+$partnerLogoAlign = $this->siteConfigs['companyLogoImgUrl']['align'];
+$headerTagline 			= $this->siteConfigs['headerTagline']['title'];
+$headerTaglineAlign 	= $this->siteConfigs['headerTagline']['align'];
+$vip_image 				= '<img src="'.CDN_IMG_URL .'/images/theme-ui/vip_image_mock.jpg" />';
+$bg_image		 		= (trim($this->bgImg.'') != '') ? $this->bgImg : CDN_IMG_URL . '/images/theme-ui/wave_bkg.jpg';
+$partnerBrandingImgUrl  = (trim($this->siteConfigs['partnerBrandingImgUrl']['image'].'') != '') ? $this->siteConfigs['partnerBrandingImgUrl']['image'] : CDN_IMG_URL . '/images/theme-ui/lrn-header-logo.png';
+$partnerBrandingAlign = $this->siteConfigs['partnerBrandingImgUrl']['align'];
+$header_bkgrnd_style = '';
+$styleImages = array('flat'=>'','lighter'=> CDN_IMG_URL . '/images/theme-ui/theme_pggrad_lighter.png','darker'=> CDN_IMG_URL . '/images/theme-ui/theme_pggrad_darker.png');///images/theme-ui/theme_pggrad_flat2.png
+$header_bkgrnd_style = $styleImages[$this->themeui_header_style];
+$global_bkgrnd_style = '';
+$global_bkgrnd_style = $styleImages[$this->themeui_pagebkg_style];
+
+?>
+<style id="cssContainer" type="text/css">
+/* Styles for the UI Display*/
+.globalBgColor {
+	background-color: <?=$this->themeui_page_outerbgcolor ?>;
+	background-image: url('<?= $global_bkgrnd_style; ?>');
+	background-repeat: repeat-x;
+	background-position: top left;
+}
+
+.headerBgColor {
+	background-color: <?=$this->themeui_header_bgcolor ?>;
+	background-image: url(<?= $header_bkgrnd_style; ?>);
+	background-repeat: repeat-x;
+	background-position: top left;
+	background-size: auto 99%;
+}
+
+#hdrProgramBranding {
+	background-image: url(<?= $partnerBrandingImgUrl ?>);
+}
+
+.primaryTextIcons {
+	color: <?=$this->themeui_primary_text_icon_color;?>;
+}
+
+.primaryTextIcons > a {
+	color: <?=$this->themeui_primary_text_icon_color ?>;
+}
+
+.courses h3 {
+	border-bottom: 1px solid <?=$this->themeui_primary_text_icon_color;?>;
+}
+
+.secondaryTextIcons {
+	color: <?=$this->themeui_secondary_text_icon_color ?>;
+}
+
+.middle {
+	border-left: 1px solid <?=$this->themeui_secondary_text_icon_color ?>;
+}
+
+.content {
+	border-left: 1px solid <?=$this->themeui_secondary_text_icon_color ?>;
+}
+
+.titleBarBtnBgColor {
+	background-color: <?=$this->themeui_titlebar_button_bgcolor ?>;
+}
+
+.titleBarBtnFgColor {
+	color: <?=$this->themeui_titlebar_button_fgcolor ?>;
+}
+
+button.mqStartBtn:hover {
+	background-color: <?=$this->themeui_titlebar_button_fgcolor; ?>;
+	border: 1px solid <?=$this->themeui_titlebar_button_bgcolor; ?>;
+}
+
+button.mqStartBtn:hover > i {
+	color: <?=$this->themeui_titlebar_button_bgcolor; ?>;
+}
+
+.contentBgColor {
+	background-color: <?=$this->themeui_content_bgcolor ?>;
+}
+
+.secondaryBgColor {
+	background-color: <?=$this->themeui_borders_shading_color ?>;
+}
+
+.borders {
+	border: 1px solid <?=$this->themeui_borders_shading_color ?>;
+	-moz-box-shadow:    2px 2px 5px <?=$this->themeui_borders_shading_color ?>;
+    -webkit-box-shadow: 2px 2px 5px <?=$this->themeui_borders_shading_color ?>;
+    box-shadow:         2px 2px 5px <?=$this->themeui_borders_shading_color ?>;
+}
+
+article.ui-accordion-header:focus{
+    -moz-box-shadow:    0px 0px 3px <?=$this->themeui_content_titles_color ?>;
+    -webkit-box-shadow: 0px 0px 3px <?=$this->themeui_content_titles_color ?>;
+    box-shadow:         0px 0px 3px <?=$this->themeui_content_titles_color ?>;
+}
+
+.titleFocusBorder{border: 1px solid <?=$this->themeui_content_titles_color ?>;}
+
+.contentTextIcons {
+	color: <?=$this->themeui_content_text_icons_color ?>;
+}
+
+.contentTitles {
+	color: <?=$this->themeui_content_titles_color ?>;
+}
+
+.sideBarImageBorder {
+	background-color: <?=$this->themeui_sidebar_imagebdr_color ?>;
+}
+
+.contentImageBorder {
+	background-color: <?=$this->themeui_content_imagebdr_color ?>;
+}
+
+.themeNav li.active a span,
+.themeNav li:hover a span {
+	background-color: <?=$this->themeui_secondary_text_icon_color ?>;
+}
+
+#hdrProgramBranding img {
+	height: 100%;
+	width: auto;
+}
+
+.borderBottomMedium {
+    border-bottom: 2px solid <?=$this->themeui_borders_shading_color ?>;
+}
+
+.tableHeader {
+    margin: 20px 7px 10px;
+}
+
+#themeui_saving_notification {
+	display:none;
+	z-index:2000;
+	width:100%;
+	height:100%;
+	position:absolute;
+	background-image:url('<?php echo CDN_IMG_URL ?>/images/theme-ui/darkopaque.png');
+	background-repeat:repeat;
+	text-align:center;
+}
+
+#saveinfo {
+	top: 145px;
+	vertical-align: middle;
+	text-align: center;
+	width: 360px;
+	height: 250px;
+	margin: auto;
+	position: relative;
+}
+#saveinfo img {
+	padding-bottom: 20px;
+	position: relative;
+	margin: auto;
+	height: auto;
+	width: 116px;
+	float: center;
+}
+#saveinfo p {
+	font-weight: bolder;
+	color: white;
+	float: center;
+	text-transform:lowercase;
+	font-size: 24px;
+}
+.resourceItem {
+	border-bottom: 1px solid <?=$this->themeui_primary_text_icon_color;?>;
+}
+</style>
+
+<style id="advCssContainer" type="text/css"><?=$this->customCss ?></style>
+
+<div id="themeui_container">
+	<div id="themeui_dialog"></div>
+	<div id="themeui_saving_notification"></div>
+	<div id="themeui_controls">
+		<form method="POST" name="frmThemeUI" id="frmThemeUI" action="/admin/updatetheme">
+		<h4><a href="#header-style-options" rel="#themeui_panel_page" data-rightview="themeContentGSO">Global style options</a></h4>
+		<div class="themeui_section toggleOpen" id="header-style-options">
+			<section>
+				<div class="themeui_wrapper">
+					<!-- Page Outer Background Color -->
+					<div class="themeui_controls_row">
+						<div class="themeui_controls_desc">
+							<label for="themeui_page_outerbgcolor">Global background color:</label>
+						</div>
+						<div class="themeui_controls_data">
+							<input class="minicolors" data-control="wheel" type="text" value="<?=$this->themeui_page_outerbgcolor ?>" name="themeui_page_outerbgcolor" id="themeui_page_outerbgcolor" rel="#themeui_panel_welcome" />
+						</div>
+					</div>
+
+					<!-- Outer Background Style -->
+					<div class="themeui_controls_row">
+						<div class="themeui_controls_desc">
+							<label for="themeui_pagebkg_style">Global background style:</label>
+						</div>
+						<div class="themeui_controls_data">
+							<select id="themeui_pagebkg_style" name="themeui_pagebkg_style" id="themeui_pagebkg_style" rel="#themeui_panel_welcome">
+								<option value="flat" <?if ($this->themeui_pagebkg_style == 'flat'):?>selected<?php endif;?>>Flat</option>
+								<option value="lighter" <?if ($this->themeui_pagebkg_style == 'lighter'):?>selected<?php endif;?>>Lighter</option>
+								<option value="darker" <?if ($this->themeui_pagebkg_style == 'darker'):?>selected<?php endif;?>>Darker</option>
+							</select>
+						</div>
+					</div>
+
+
+				    <!-- Header Background Color -->
+					<div class="themeui_controls_row">
+						<div class="themeui_controls_desc">
+							<label for="themeui_header_bgcolor">Header background color:</label>
+						</div>
+						<div class="themeui_controls_data">
+							<input class="minicolors" data-control="wheel" type="text" value="<?=$this->themeui_header_bgcolor ?>" name="themeui_header_bgcolor" id="themeui_header_bgcolor" />
+						</div>
+					</div>
+
+					<!-- Header Background Style -->
+					<div class="themeui_controls_row">
+						<div class="themeui_controls_desc">
+							<label for="themeui_header_style">Header background style:</label>
+						</div>
+						<div class="themeui_controls_data">
+							<select id="themeui_header_style" name="themeui_header_style" id="themeui_header_style">
+								<option value="flat" <?php if($this->themeui_header_style == 'flat'): ?>selected<?php endif; ?>>Flat</option>
+								<option value="lighter" <?php if($this->themeui_header_style == 'lighter'): ?>selected<?php endif; ?>>Lighter</option>
+								<option value="darker" <?php if($this->themeui_header_style == 'darker'): ?>selected<?php endif; ?>>Darker</option>
+							</select>
+						</div>
+					</div>
+
+					<!-- Subheader Background Style -->
+					<div class="themeui_controls_row">
+						<div class="themeui_controls_desc">
+							<label for="themeui_primary_text_icon_color">Primary text & icons:</label>
+						</div>
+						<div class="themeui_controls_data">
+							<input class="minicolors" data-control="wheel" type="text" value="<?=$this->themeui_primary_text_icon_color;?>" name="themeui_primary_text_icon_color" id="themeui_primary_text_icon_color" />
+						</div>
+					</div>
+
+
+					<!-- Subheader Title Color -->
+					<div class="themeui_controls_row">
+						<div class="themeui_controls_desc">
+							<label for="themeui_secondary_text_icon_color">Secondary text & icons:</label>
+						</div>
+						<div class="themeui_controls_data">
+							<input class="minicolors" data-control="wheel" type="text" value="<?=$this->themeui_secondary_text_icon_color ?>" name="themeui_secondary_text_icon_color" id="themeui_secondary_text_icon_color" />
+						</div>
+					</div>
+
+
+					<!-- Header Icon Mouseout Color -->
+					<div class="themeui_controls_row">
+						<div class="themeui_controls_desc">
+							<label for="themeui_titlebar_button_bgcolor">Titlebar & button background:</label>
+						</div>
+						<div class="themeui_controls_data">
+							<input class="minicolors" data-control="wheel" type="text" value="<?=$this->themeui_titlebar_button_bgcolor ?>" name="themeui_titlebar_button_bgcolor" id="themeui_titlebar_button_bgcolor" />
+						</div>
+					</div>
+
+					<!-- Header Icon Hover Color -->
+					<div class="themeui_controls_row">
+						<div class="themeui_controls_desc">
+							<label for="themeui_titlebar_button_fgcolor">Titlebar & button foreground</label>
+						</div>
+						<div class="themeui_controls_data">
+								<input class="minicolors" data-control="wheel" type="text" value="<?=$this->themeui_titlebar_button_fgcolor ?>" name="themeui_titlebar_button_fgcolor" id="themeui_titlebar_button_fgcolor" />
+						</div>
+					</div>
+
+
+					<!-- Page Inner Background Color -->
+					<div class="themeui_controls_row">
+						<div class="themeui_controls_desc">
+							<label for="themeui_content_bgcolor">Content background:</label>
+						</div>
+						<div class="themeui_controls_data">
+								<input class="minicolors" data-control="wheel" type="text" value="<?=$this->themeui_content_bgcolor ?>" name="themeui_content_bgcolor" id="themeui_content_bgcolor" />
+						</div>
+					</div>
+
+					<!-- Page text Color - CURRENTLY NOT IMPLEMENTED-->
+					<div class="themeui_controls_row">
+						<div class="themeui_controls_desc">
+							<label for="themeui_borders_shading_color">Borders & shading:</label>
+						</div>
+						<div class="themeui_controls_data">
+								<input class="minicolors" data-control="wheel" type="text" value="<?=$this->themeui_borders_shading_color ?>" name="themeui_borders_shading_color" id="themeui_borders_shading_color" />
+						</div>
+					</div>
+
+
+
+					<!-- Page Link Color -->
+					<div class="themeui_controls_row">
+						<div class="themeui_controls_desc">
+							<label for="themeui_content_text_icons_color">Content text & icons:</label>
+						</div>
+						<div class="themeui_controls_data">
+								<input class="minicolors" data-control="wheel" type="text" value="<?=$this->themeui_content_text_icons_color ?>" name="themeui_content_text_icons_color" id="themeui_content_text_icons_color" />
+						</div>
+					</div>
+
+					<!-- Page Active Link Color -->
+					<div class="themeui_controls_row">
+						<div class="themeui_controls_desc">
+							<label for="themeui_content_titles_color">Content titles:</label>
+						</div>
+						<div class="themeui_controls_data">
+								<input class="minicolors" data-control="wheel" type="text" value="<?=$this->themeui_content_titles_color ?>" name="themeui_content_titles_color" id="themeui_content_titles_color" />
+						</div>
+					</div>
+
+					<!-- Page Active Link Color -->
+					<div class="themeui_controls_row">
+						<div class="themeui_controls_desc">
+							<label for="themeui_sidebar_imagebdr_color">Sidebar image border:</label>
+						</div>
+						<div class="themeui_controls_data">
+								<input class="minicolors" data-control="wheel" type="text" value="<?=$this->themeui_sidebar_imagebdr_color ?>" name="themeui_sidebar_imagebdr_color" id="themeui_sidebar_imagebdr_color" />
+						</div>
+					</div>
+
+					<!-- Page Active Link Color -->
+					<div class="themeui_controls_row">
+						<div class="themeui_controls_desc">
+							<label for="themeui_content_imagebdr_color">Content image border:</label>
+						</div>
+						<div class="themeui_controls_data">
+								<input class="minicolors" data-control="wheel" type="text" value="<?=$this->themeui_content_imagebdr_color ?>" name="themeui_content_imagebdr_color" id="themeui_content_imagebdr_color" />
+						</div>
+					</div>
+					<div>
+						<input type="hidden" id="startFgColor" val=""/>
+						<input type="hidden" id="startBgColor" val=""/>
+					</div>
+				</div>
+			</section>
+		</div>
+		<h4>
+			<a href="#start_instructions_panel" rel="#themeui_panel_page" data-rightview="themeContentAdvCSS">Custom CSS</a>
+		</h4>
+		<div id="start_instructions_panel" style="display:none">
+			<section>
+				<div class="themeui_wrapper">
+					<h4>Instructions:</h4>
+					<p>You can apply advanced customization to your site by typing in custom CSS...</p>
+				</div>
+			</section>
+		</div>
+		<div id="themeui_ctrlfooter">
+			<input type="button" name="themeui_apply_changes" id="themeui_apply_changes" value="Apply changes" />
+			<input type="button" name="themeui_restore_default" id="themeui_restore_default" value="Restore default" />
+			<input type="button" id="button_cancel" value="Cancel" />
+		</div>
+		</form>
+
+	</div>
+	<!-- <div id="themeContentPreview"> -->
+	<div class="theme_ui_content_container globalBgColor clearfix themeright active" id="themeContentGSO">
+   <header class ="headerBgColor">
+      <div id="hdrProgramBranding" class="<?=$partnerBrandingAlign;?>"></div>
+      <div class="siteTagline ">
+         <h3 class="primaryTextIcons theme-ui-font-style7 <?= $headerTaglineAlign;?>" style="padding-top: 10px; margin: 0;"><?= $headerTagline ?></h3>
+      </div>
+      <div class="siteLogo <?=$partnerLogoAlign;?>">
+      	<img src="<?= $partner_logo ?>" style="height: 100%;">
+      </div>
+   </header>
+   <div class="container clearfix">
+      <div id="subHeader" class="clearfix">
+         <p class="theme-ui-font-style5 primaryTextIcons">
+            <i class="fa fa-user"></i>
+            <span>Hello, <a href="#" class="theme-ui-font-style5 primaryTextIcons"><?=$this->user->firstName . ' ' .$this->user->middleName. ' ' . $this->user->lastName; ?></a></span>
+            <a href="#" title="Profile" class="primaryTextIcons">
+            	<i class="fa fa-edit"></i>
+            </a>
+         </p>
+      </div>
+      <div id="contentWrapper" class="clearfix">
+         <div id="leftColumn" class="sideBar">
+            <nav>
+				<ul class="themeNav">
+				<?php if (!empty($this->carouselHTML) || !empty($this->vipHTML)):?>
+					<li>
+						<a href="#" title="<?= isset($this->siteLabels['NavHome']) ? $this->siteLabels['NavHome'] : "Home"; ?>" class="primaryTextIcons font-style2">
+                                                    	<i class="fa fa-home secondaryTextIcons"></i>
+                                                        <i class="material-icons home secondaryTextIcons">&#xE88A;</i>
+							<span><?= $this->siteLabels['NavHome']; ?></span></a>
+					</li>
+				<?php endif;?>
+					<li class="active">
+						<a href="#" title="<?= isset($this->siteLabels['MyQueue']) ? $this->siteLabels['MyQueue'] : "My Queue"; ?>" class="primaryTextIcons font-style2">
+                                                        <i class="fa fa-check secondaryTextIcons"></i>	
+                                                        <i class="material-icons list secondaryTextIcons">&#xE241;</i>
+							<span><?= $this->siteLabels['MyQueue']?></span>
+						</a>
+					</li>
+				<?php if ($this->siteConfigs['CourseListModuleButton'] == 't'):?>
+					<li>
+						<a href="#" title="<?= isset($this->siteLabels['Catalog']) ? $this->siteLabels['Catalog'] : "Course Catalog"; ?>" class="primaryTextIcons font-style2">
+                                                        <i class="fa fa-book secondaryTextIcons"></i>	
+                                                        <i class="material-icons library secondaryTextIcons">&#xE54B;</i>
+							<span><?= $this->siteLabels['Catalog']; ?></span>
+						</a>
+					</li>
+				<?php endif;?>
+				<?php if(isset($this->resourcesNumber) && !empty($this->resourcesNumber)):?>
+					<li>
+						<a href="#" title="<?= isset($this->siteLabels['Resources']) ? $this->siteLabels['Resources'] : "Resource Center"; ?>" class="primaryTextIcons font-style2">
+							<i class="fa fa-info-circle secondaryTextIcons"></i>	
+                                                        <i class="material-icons resources secondaryTextIcons">&#xE2C8;</i>
+							<span><?= $this->siteLabels['Resources']; ?></span>
+						</a>
+					</li>
+				<?php endif;?>
+					<li>
+						<a href="#" title="<?= isset($this->siteLabels['NavHistory']) ? $this->siteLabels['NavHistory'] : "History"; ?>" class="primaryTextIcons font-style2">
+                                                    	<i class="fa fa-history secondaryTextIcons"></i>
+                                                        <i class="material-icons history secondaryTextIcons">&#xE8BA;</i>
+							<span><?= $this->siteLabels['NavHistory']; ?></span>
+						</a>
+					</li>
+					<li>
+						<a href="#" title="<?= isset($this->siteLabels['NavProfile']) ? $this->siteLabels['NavProfile'] : "Profile"; ?>" class="primaryTextIcons font-style2">
+							<i class="fa fa-user secondaryTextIcons"></i>
+							<span><?= $this->siteLabels['NavProfile']; ?></span>
+						</a>
+					</li>
+					<li>
+						<a href="#" title="<?= isset($this->siteLabels['NavHelp']) ? $this->siteLabels['NavHelp'] : "Help" ?>" class="primaryTextIcons font-style2">
+							<i class="fa fa-question-circle secondaryTextIcons"></i>
+							<span><?= $this->siteLabels['NavHelp']; ?></span>
+						</a>
+					</li>
+				<?php if($this->user->role == "admin" || $this->user->role == "lcecadmin"){ ?>
+					<li>
+						<?php if($this->user->role == 'admin') {?>
+							<i class="fa fa-gear secondaryTextIcons"></i>
+							<span class="primaryTextIcons font-style2"><?= $this->siteLabels['Settings']?></span>
+						<?php } else { ?>
+							<i class="fa fa-gear secondaryTextIcons"></i>
+							<span class="primaryTextIcons font-style2"><?= $this->siteLabels['Settings']?></span>
+						<?php }?>
+						<ul class="adminNav" style="right: -105px; width: 100px;">
+							<?php if($this->user->role == 'admin') {?>
+								<li>
+									<a href="#" title="Site Customization" class="primaryTextIcons font-style2">Site customization</a>
+								</li>
+								<li>
+									<a href="#" title="Resources Settings" class="primaryTextIcons font-style2">Resources</a>
+								</li>
+								<li>
+									<a href="#" title="Active Labels" class="primaryTextIcons font-style2">Active labels</a>
+								</li>
+								<li>
+									<a href="#" title="Advanced Customization" class="primaryTextIcons font-style2">Advanced Customization</a>
+								</li>
+								<li>
+									<a href="#" title="Library Manager" class="primaryTextIcons font-style2">Library Manager</a>
+								</li>
+								<li>
+									<a href="#" title="Course Configuration	" class="primaryTextIcons font-style2">Course configuration	</a>
+								</li>
+							<?php if ($this->siteConfigs['ProfileColumn'] == 'Language' && !empty($this->siteConfigs['ProfileColumnDefault']) && !empty($this->siteConfigs['DefaultLanguage'])):?>
+								<li>
+									<a href="#" title="Enabled Languages Settings" class="primaryTextIcons font-style2">Enabled Languages</a>
+								</li>
+							<?php endif;?>
+								<li>
+									<a href="#" title="Social Settings" class="primaryTextIcons font-style2">Social Settings</a>
+								</li>
+							<?php } ?>
+							<?php if ($this->user->accessControl->lcecAdmin == 'true' || $this->user->accessControl->aimAdmin == 'true' || $this->user->accessControl->ramAdmin == 'true'):?>
+								<li>
+									<a href="#" title="LCEC Passthru" class="primaryTextIcons font-style2">LCEC</a>
+								</li>
+							<?php endif;?>
+							<?php if($this->user->role == 'admin') {?>
+								<li>
+									<a href="#" title="Admin Guide" class="primaryTextIcons font-style2">Admin guide</a>
+								</li>
+							<?php } ?>
+						</ul>
+					</li>
+				<? } ?>
+					<li>
+						<a href="#" title="<?= isset($this->siteLabels['SignOut']) ? $this->siteLabels['SignOut'] : "Log Out"; ?>" class="primaryTextIcons font-style2">
+							<i class="fa fa-sign-out secondaryTextIcons"></i>
+							<span class="noBorder"><?= $this->siteLabels['SignOut'] ?></span>
+						</a>
+					</li>
+				</ul>
+				</nav>
+         </div>
+         <div id="mainContent" role="main" class="middle">
+            <div id="pageTitle" class="titleBarBtnBgColor">
+			    <h1 class="titleBarBtnFgColor" style="font-size: 12px;">
+			   		<i class="fa fa-check titleBarBtnFgColor"></i><?= $this->siteLabels['MyQueue']?>
+			    </h1>
+			</div>
+            <div id="content" class="clearfix borders contentBgColor" style="width: 100% !important">
+               <div id="mqItemWrap" class="group">
+               		<div class="legend contentTextIcons clearfix">
+                                                <span class="pastDue defaultStyle"></span>
+				   		<i class="material-icons due">&#xE000;</i>
+				   		<span class="contentTextIcons"><?= $this->siteLabels['PastDue']; ?></span>
+				   		<span class="inProgress defaultStyle"></span>
+                                                <i class="material-icons wip">&#xE422;</i>
+				   		<span class="contentTextIcons"><?= $this->siteLabels['InProgress']; ?></span>
+				   		<span class="completed defaultStyle"></span>
+                                                <i class="material-icons complete">&#xE86C;</i>
+				   		<span class="contentTextIcons"><?= $this->siteLabels['Completed']; ?></span>
+				   		<span class="fa fa-link defaultStyle"></span>
+                                                <i class="material-icons">&#xE260;</i>
+				   		<span class="contentTextIcons"><?= $this->siteLabels['Chain']; ?></span>
+					</div>
+               		<div class="courseOptions clearfix">
+               			<div id="toggleView" class="viewIcon contentTextIcons font-style4">
+							<span class="fa fa-list"></span>
+                                                        <i class="material-icons toggleBtn">&#xE241;</i>
+        <span class="arialHiddenSpan" id="acc_toggle_view"></span>
+						</div>
+						<fieldset>
+							<label for="searchCourse" class="contentTextIcons font-style4">Search:</label>
+							<input type="text" placeholder="Enter title or module ID">
+						</fieldset>
+						<fieldset>
+							<label for="filterCourse" class="contentTextIcons font-style4">Show:</label>
+							<select name="filterCourse" id="filterCourse">
+								<option value="all">All</option>
+								<option value="inProgress">In Progress</option>
+								<option value="pastDue">Past Due</option>
+								<option value="completed">Completed</option>
+								<option value="series">Chain</option>
+							</select>
+						</fieldset>
+					</div>
+                  <h3 class="contentTextIcons courseSeparator borderBottomMedium tableHeader">Mandatory</h3>
+                  <div id="251" class="column oneThirdColumn mqItem borders contentBgColor">
+                     <p class="courseNumber contentTextIcons theme-ui-font-style4" tabindex="0" style="margin: 5px 10px 0 10px;">HUR275</p>
+                     <div class="mqItemImage contentImageBorder" tabindex="0">
+                        <a href="#">
+                        	<img src="<?php echo CDN_IMG_URL ?>/images/samples/defaultModuleImage.jpg" alt="module image" />
+                        	<div class="arrowWrapper" style="left: 30%; top: 25%; padding: 4px 13px;">
+								<span class="fa fa-play"></span>
+							</div>
+						</a>
+                     </div>
+                     <div class="mqItemInfo" style="margin-top: 3px;" tabindex="0">
+                        <h4>
+                        	<span class="contentTextIcons">1/3</span><span class="fa fa-link contentTextIcons"></span><span class="material-icons chain-middle-content contentTitles">&#xE260;</span>
+                           <a href="#" class="course-title-link">
+                           <span class="course-title contentTitles theme-ui-font-style6" >Understanding Record Retention</span>
+                           </a>
+                        </h4>
+                        <p class="contentTextIcons theme-ui-font-style3" style="margin-top: 3px;">This course introduces the concept of a record retention program and details the potentially damaging consequences for a company if its employees don't adhere to it consistently. The key principles of an effective record retention program are also di...</p>
+                     </div>
+                     <div class="mqItemMeta secondaryBgColor clearfix">
+                        <div class="infoLeft clearfix">
+                            <p class="inProgress contentTextIcons"><i class="material-icons wip">&#xE422;</i></p>
+                            <p class="mqItemDueDate ieDueDate contentTextIcons theme-ui-font-style1" style="margin: 6px 0;">Due dec 31, 2011</p>
+                        </div>
+                        <div class="languageSection" tabindex="0">
+                           <select name="languageOptions" style="width: 100px;" class="mqItemLangSelect theme-ui-font-style1">
+                              <option value="svSE">Svenska</option>
+                              <option value="fiFI">Suomi</option>
+                              <option value="plPL">Polski</option>
+                              <option value="itIT">Italiano</option>
+                              <option value="deDE">Deutsch</option>
+                              <option value="en">English</option>
+                           </select>
+                        </div>
+                     </div>
+                  </div>
+                  <div id="25" class="column oneThirdColumn mqItem borders contentBgColor">
+                     <p class="courseNumber contentTextIcons theme-ui-font-style4" tabindex="0" style="margin: 5px 10px 0 10px;">CMP212</p>
+                     <div class="mqItemImage contentImageBorder" tabindex="0">
+                        <a href="#">
+                        	<img src="<?php echo CDN_IMG_URL ?>/images/samples/sample_2.png" alt="module image" />
+							<div class="arrowWrapper" style="left: 30%; top: 25%; padding: 4px 13px;">
+								<span class="fa fa-play"></span>
+							</div>
+                        </a>
+                     </div>
+                     <div class="mqItemInfo" style="margin-top: 3px;" tabindex="0">
+                        <h4>
+                           <a href="#" class="course-title-link">
+                           <span class="course-title contentTitles theme-ui-font-style6" >Antitrust: Talking with Your Competitors</span>
+                           </a>
+                        </h4>
+                        <p class="contentTextIcons theme-ui-font-style3" style="margin-top: 3px;">When businesses compete with each other in the marketplace, the result is often a better product or a better price for consumers. In other words, competition helps consumers, and the absence of competition hurts them. The law seeks to protect consume...</p>
+                     </div>
+                     <div class="mqItemMeta secondaryBgColor clearfix">
+                        <div class="infoLeft clearfix">
+                        	<p class="pastDue contentTextIcons"><i class="material-icons due">&#xE000;</i></p>
+                        	<p class="inProgress contentTextIcons"><i class="material-icons wip">&#xE422;</i></p>
+                            <p class="mqItemDueDate ieDueDate contentTextIcons theme-ui-font-style1" style="margin: 6px 0;">Due April 01, 2012</p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div id="rightColumn" class="sideBar" style="width: 100px; margin-top: 5px;">
+	            <div class="resources clearfix">
+	               <h3 class="secondaryTextIcons theme-ui-font-style5">Resource center</h3>
+	               <p class="resourceItem">
+	                  <span class="resourceTitle primaryTextIcons theme-ui-font-style3">My URL</span>
+	                  <span><a href="#" class="secondaryTextIcons theme-ui-font-style1">Visit Website</a></span>
+	               </p>
+	               <p class="resourceItem">
+	                  <span class="resourceTitle primaryTextIcons theme-ui-font-style3">My Email</span>
+	                  <span><a href="#" class="secondaryTextIcons theme-ui-font-style1">Contact via E-Mail</a></span>
+	               </p>
+	               <p class="resourceItem">
+	                  <span class="resourceTitle primaryTextIcons theme-ui-font-style3">My Document</span>
+	                  <span><a href="#" class="secondaryTextIcons theme-ui-font-style1">View Documents</a></span>
+	               </p>
+	               <p class="resourceItem">
+	                  <span class="resourceTitle primaryTextIcons theme-ui-font-style3">My Phone Number</span>
+	                  <span><a href="#" class="secondaryTextIcons theme-ui-font-style1">234-443-2437</a></span>
+	               </p>
+	               <p class="resourceItem">
+	                  <span class="resourceTitle primaryTextIcons theme-ui-font-style3">My Plain Text</span>
+	                  <span class="secondaryTextIcons theme-ui-font-style1">Hello everyone</span>
+	               </p>
+	               <p class="linkRight"><a href="#" class="secondaryTextIcons theme-ui-font-style2">>> More resources</a></p>
+	            </div>
+	         </div>
+         </div>
+      </div>
+   </div>
+<!-- </div> -->
+<div class="theme_ui_content_container globalBgColor clearfix themeright" style="font-size: 10px; display:none;" id="themeContentAdvCSS">
+	<textarea id="themeAdvCSSText"></textarea>
+</div>
+</div>
+</div>

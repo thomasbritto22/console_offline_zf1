@@ -1,0 +1,16 @@
+<div id="authWrapper">
+    <div id="formWrapper" class="sideBarImageBorder">
+        <div class="sloWrapper contentBgColor clearfix">
+            <h3 class="contentTitles">Welcome</h3>
+            <hr id="sloBar">
+            <p id="welcomeMessage" class="contentTextIcons"><?= $this->siteLabels['SloWelcomeMessage']; ?></p>
+            <hr id="sloBar">
+            <div class="loginBtns clearfix">
+            	<p class="loginBtn titleBarBtnBgColor button">
+            		<a href="<?=$this->path?>" class="submitBtn customButton" ><?= $this->siteLabels['SloContinueBtn']; ?></a>
+            	</p>
+            </div>    
+        </div>
+    </div>
+</div>
+<?= $this->languageConfirmForm($this->siteConfigs, $this->siteLangs, $this->siteLabels,  array('userProfileLangVal' => $this->userProfileLangVal, 'siteDefLang' => $this->siteDefLang));?>

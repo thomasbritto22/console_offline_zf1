@@ -1,0 +1,26 @@
+<?php
+if(isset($this->components)){
+    $codeOfConduct = $this->components;
+}
+?>
+
+<section id="codeOfConductSection" class="adminSection">
+    <h3>Ratings</h3>
+    <form id="codeOfConductForm" action="/admin/updateComponent" method="post">
+        <fieldset>
+            <p class="formField">
+                <label for="codeOfConductToggle">Enable Code of Conduct Section</label>
+                <input type="checkbox" id="codeOfConductToggle" name="codeOfConductToggle" class="slideToggle" <?= isset($codeOfConduct['toggle']) && $codeOfConduct['toggle']->value == 'on' ? 'checked="checked"' : ''; ?> />
+            </p>
+            <p class="formField">
+                <label for="codeOfConductURL">Code of Conduct URL</label>
+                <input type="text" name="codeOfConductURL" value="<?= isset($codeOfConduct['text']->value) ? $codeOfConduct['text']->value : ''; ?>"/>
+                <input type="hidden" name="codeOfConduct_id" value="<?= isset($codeOfConduct['text']->id) ? $codeOfConduct['text']->id : ''; ?>" />
+            </p>
+        </fieldset>
+        <fieldset>
+        	<input type="hidden" name="adminAction" value="updateCodeOfConduct" />
+        	<button type="submit" class="adminFormSubmit">Update Code of Conduct</button>
+        </fieldset>
+    </form>
+</section>

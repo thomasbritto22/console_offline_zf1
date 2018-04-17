@@ -1,0 +1,15 @@
+<p>
+    <? if($this->reviewsToggle == 'on' || $this->ratingsToggle == 'on'){ ?>
+    <a href="#" class="openReviewDialog"><?= $this->siteLabels['ReviewLinkTxt']; ?></a> |
+    <? } ?>
+    <a href="/learn/queue">Next -&gt;</a>
+</p>
+
+<iframe src="<?= $this->frameSrc; ?>" id="legacyFrame" width="100%" height="100%"></iframe>
+
+<? if($this->reviewsToggle == 'on' || $this->ratingsToggle == 'on'){ ?>
+<div id="userReviewWrapper" class="reviewDialog">
+    <div id="reviewFormWrapper"><?= $this->reviewForm; ?></div>
+    <div id="reviewListWrapper"><?= $this->reviewList; ?></div>
+</div>
+<? } ?>

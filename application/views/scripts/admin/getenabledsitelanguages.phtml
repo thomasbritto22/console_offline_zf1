@@ -1,0 +1,49 @@
+<?php
+$i = 0;
+foreach($this->languageList as $key=>$language){
+	if(isset($language->enabled) && $language->enabled == 1){
+		++$i;
+	}
+}
+
+$checkedAll = $i === count($this->languageList);
+
+?>
+<hgroup class="adminHeader">
+<h2>Enabled languages</h2>
+</hgroup>
+<div id="categorySection" class="ui-corner-all clearfix">
+	<h3 class="sectionHeader"></h3>
+	<div class="instructionalHeader noInstr">
+		<span></span>
+		<p>Select the language you want to make available to your users. Languages which are not checked will not be displayed or available to your site users.</p>
+	</div>
+	<div id="languagesSection" class="group">
+	<?php if(count($this->languageList)>0){?>
+		<form name="languagesForm" action="/admin/updatesitelanguages" method="post">
+			<fieldset>
+			<p class="noFloat languageListCheckAll">
+				<input type="checkbox" name="selectAll" id="selectAll" <?= $checkedAll ? 'checked="checked"' : ''?>>
+				<label for="selectAll">Select all languages</label>
+			</p>
+			<?php foreach($this->languageList as $key=>$language){?>
+				<p class="languageList">
+					<input type="checkbox" class="languagetoggle" name="languagetoggle[]" id="languagetoggle<?= $key; ?>" value="<?= $language->language; ?>" <?= (isset($language->enabled) && $language->enabled == 1) || $language->language == $this->siteDefLang  ? 'checked="checked"' : ''; ?>
+						<?= ($language->language == $this->siteDefLang) ? 'disabled=disabled data-check=default ':'data-check=non-default '; ?>/>
+						<?php if($language->language == $this->siteDefLang) {?>
+						<input type="hidden" name="languagetoggle[]" value="<?= $language->language; ?>" >
+						<?php }?>
+					<label for="languagetoggle<?= $key; ?>"><?= $language->languageName;?>
+							<!-- //$i = $key; if(++$i % 6 == 0) echo "<br/>";  -->
+					</label>
+				</p>
+			<?php }?>
+			</fieldset>
+			<fieldset class="updateButtons">
+				<button type="submit" id="languagesSubmit" class="adminBlueBtn">Save</button>
+				<p class="adminGreyBtn cancelLink" onclick="location.reload()">Cancel</p>
+			</fieldset>
+		</form>
+	<?php }?>
+	</div>
+</div>

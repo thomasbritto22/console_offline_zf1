@@ -1,0 +1,46 @@
+<hgroup class="adminHeader">
+	<h2>SLO Sites Information</h2>
+</hgroup>
+<div id="categorySection" class="ui-corner-all" style="padding: 5px;">
+
+	<table width="98%" border="0" align="center">
+	<tbody>
+		<tr>
+		<th align="left">Partner</th>
+		<th align="left">Site URL</th>
+		<th align="left">Active</th>
+		<th align="left">Purpose</th>
+		<th align="left">Auto-Viv</th>
+		<th align="left">SLO Access</th>
+		</tr>
+
+			<?php if(!empty($this->sloSitesInfo)){
+           		foreach($this->sloSitesInfo as $key=>$site){
+           			if($site->active == 'true'){?>
+		           		<tr bgcolor="#CCCCEE">
+		            		<td align="left"><?= $site->partnerName;?></td>
+		            		<td align="left"><a href="<?= $site->targetPath;?>"><?= $site->siteURL;?></a></td>
+		                    <td align="left"><?= ($site->active == 'true') ? 'Yes' : 'No';?></td>
+		                    <td align="left"><?= $site->purpose;?></td>
+		                    <td align="left"><?= ($site->autoViv == 'true') ? 'Yes' : 'No';?></td>
+		            		<td>
+		                    	 <form method="post" action="<?= $site->targetPath;?>/sso/consume" name="sso<?= $key;?>">
+		                    	      <?php if($site->autoViv == 'true') {?>
+		                    	 	  <input type="hidden" name="custom_FNAME" value="<?= $site->userId;?>" >
+									  <input type="hidden" name="custom_LNAME" value="<?= $site->userId;?>" >
+									  <input type="hidden" name="custom_PASSWORD" value="123123" >
+		                    	 	  <?php }?>
+									  <input type="hidden" value="<?= $site->userId;?>" name="user_id">
+									  <input type="hidden" value="<?= $site->trustKey;?>" name="trust_key">
+									  <input type="hidden" value="https://lrnmodules-console.qa7.lrn.com/admin/slosites" name="logout_url">
+									  <input type="hidden" value="<?= $site->targetPath;?>" name="target_path">
+									  <input type="hidden" value="<?= $site->serviceCallDate;?>" name="date">
+									  <a href="javascript:document.sso<?= $key;?>.submit();">SLO ACCESS</a>
+								</form>
+							</td>
+		           		</tr>
+					<?php }
+					}
+           		 }?>
+            </tbody></table>
+</div>

@@ -1,0 +1,42 @@
+<?php
+//building Video Tour right Column
+if (isset($this->videoTourBox) && true == $this->videoTourBox && !empty($this->videoTourItems)):
+?>
+   <div id="virtualTour" class="resources clearfix">
+      <h2 class="vTitle secondaryTextIcons font-size16"><?= $this->videoTourItems['title']?></h2>
+      <div class="videoImg"></div>
+      <div class = "videoInfo">
+					<input class="videoText" type="hidden" value="<?= htmlspecialchars($this->videoTourItems['text']);?>">
+					<input class="videoTitle" type="hidden" value="<?= htmlspecialchars($this->videoTourItems['title']);?>">
+					<input class="videoPath" type="hidden" value="<?= htmlspecialchars(isset($this->videoTourItems['customfile']) ? $this->videoTourItems['customfile'] :'');?>">
+					<input class="videoThumbnail" type="hidden" value="<?= htmlspecialchars(isset($this->videoTourItems['thumbnail']) ? $this->videoTourItems['thumbnail'] :'');?>">
+	</div>
+      <p class="videoDescription inProgressTitle primaryTextIcons font-size14"><?= $this->videoTourItems['text']?></p>
+      <span id="player2-mode"></span>
+   </div>
+   <?=$this->videoTour($this->videoTourItems);?>
+<?php
+endif;
+?>
+
+<?php
+//building resource center right Column
+if (isset($this->viewResourceBox) && true == $this->viewResourceBox && !empty($this->resourcesBoxRecords)):
+foreach($this->resourcesBoxRecords as $record){
+	foreach($record as $val){
+		if(isset($val->path))
+			$val->path = $this->baseImgUrl.$val->path;
+	}
+}
+
+?>
+   <div class="resources clearfix">
+      <h2 class="secondaryTextIcons font-size16"><?= $this->siteLabels['Resourcecenter'] ; ?></h2>
+      <?=$this->partialLoop('helpers/resourceCenterRow.phtml', $this->resourcesBoxRecords);?>
+      <?php if (!isset($this->viewResourceMaxRecord) || $this->viewResourceMaxRecord != true):?>
+      <p class="linkRight"><a href="/resourcecenter" class="secondaryTextIcons font-size14">>> <?= $this->siteLabels['MoreResources'] ; ?></a></p>
+      <?php endif;?>
+   </div>
+<?php
+endif;
+?>

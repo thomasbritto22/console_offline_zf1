@@ -1,0 +1,39 @@
+<html>
+<head>
+	<script type="text/javascript" src="/js/jquery/jquery-1.7.1.min.js"></script>
+	<script src="/js/jquery/jquery.cookie.js"></script>
+<script>
+
+
+  $(document).ready(function(){
+  	$('#btnSubmit').on('click',function(e) {
+  		var msg = $('#msg').val();
+  		var parentURL = "http://qacustomize11-console.dev3.lrn.com/postmsgpoc1.html";
+  		if($.browser.msie && $.browser.version < 10){
+  			$.cookie('postMessage',msg,{domain:'.dev3.lrn.com', path:'/', expires:1});
+  			$.cookie('postMessageOrigin',location.protocol+'//'+location.host,{domain:'.dev3.lrn.com', path:'/', expires:1});
+  			e.returnValue = false;
+  			e.preventDefault();
+  		}else
+ 	 		window.opener.postMessage(msg,parentURL,event.origin);
+  	});
+  });
+
+
+</script>
+
+</head>
+<body>
+<div id="container">
+<p>&nbsp;</p>
+
+<form id="frmTest" id="frmTest">
+  <input type="text" name="msg" id="msg" value="Your message"/>
+  <input type="submit" name="btnSubmit" id="btnSubmit"/>
+</form>
+
+
+
+</div>
+</body>
+</html>
